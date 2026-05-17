@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PENGYE LEATHER | Premium Leather Materials Supplier</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
@@ -210,18 +211,26 @@
         [data-category]{display:none;}
         [data-category="all"]{display:block;}
 
-        /* ✅ WhatsApp 悬浮按钮：最高层级 + 不被遮挡 */
+        /* 圆形绿色WhatsApp悬浮按钮 */
         .wa-float{
             position:fixed;
             bottom:30px;
             right:30px;
+            width:60px;
+            height:60px;
+            line-height:60px;
+            text-align:center;
             background:#25d366;
             color:#fff;
-            padding:12px 20px;
-            border-radius:30px;
-            font-size:14px;
-            box-shadow:0 4px 15px rgba(0,0,0,0.15);
-            z-index:99999; /* 拉到最高，永远在最上层 */
+            border-radius:50%;
+            font-size:28px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+            z-index:99999;
+            transition: all 0.3s ease;
+        }
+        .wa-float:hover{
+            background:#128c7e;
+            transform: scale(1.1);
         }
 
         /* 页脚 */
@@ -367,8 +376,10 @@
     </div>
 </div>
 
-<!-- ✅ WhatsApp：新标签页打开 + 最高层级 -->
-<a href="https://wa.me/你的号码" target="_blank" rel="noopener noreferrer" class="wa-float">WhatsApp Contact</a>
+<!-- 圆形WA图标按钮 点击直达网页版登录页 -->
+<a href="https://web.whatsapp.com" target="_blank" rel="noopener noreferrer" class="wa-float">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
 
 <!-- 页脚 -->
 <footer>
