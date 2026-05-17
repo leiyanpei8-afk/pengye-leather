@@ -207,6 +207,42 @@
             line-height:2;
         }
 
+        /* ✅ 新增：联系我们页面 */
+        .contact-page{
+            display:none;
+            padding:80px 5%;
+            background:#fff;
+        }
+        .contact-content{
+            max-width:900px;
+            margin:0 auto;
+        }
+        .contact-content h2{
+            font-size:32px;
+            font-weight:600;
+            color:#b07a47; /* 棕色标题 */
+            margin-bottom:40px;
+        }
+        .contact-item{
+            display:flex;
+            align-items:center;
+            margin:30px 0;
+            font-size:20px;
+        }
+        .contact-item i{
+            color:#b07a47; /* 棕色图标 */
+            font-size:28px;
+            margin-right:20px;
+            width:30px;
+            text-align:center;
+        }
+        .contact-item a{
+            color:#222;
+        }
+        .contact-item a:hover{
+            color:#b07a47;
+        }
+
         /* 隐藏分类 */
         [data-category]{display:none;}
         [data-category="all"]{display:block;}
@@ -245,7 +281,7 @@
 </head>
 <body>
 
-<!-- 导航 英文中文上下分行 全白色 -->
+<!-- 导航 新增联系我们 -->
 <header>
     <div class="header-wrap">
         <div class="logo">PENGYE LEATHER</div>
@@ -281,6 +317,10 @@
             <a href="#" class="nav-link" data-cate="more">
                 <span>More</span>
                 <span>更多</span>
+            </a>
+            <a href="#" class="nav-link" data-cate="contact">
+                <span>Contact Us</span>
+                <span>联系我们</span>
             </a>
         </nav>
     </div>
@@ -376,6 +416,25 @@
     </div>
 </div>
 
+<!-- ✅ 新增：联系我们页面 -->
+<div class="contact-page" id="contactPage">
+    <div class="contact-content">
+        <h2>联系我们</h2>
+        <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>74号地块，7A区，科兰吉工业区，卡拉奇，邮编74900，巴基斯坦</span>
+        </div>
+        <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:Info@hubleather.com">Info@hubleather.com</a>
+        </div>
+        <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:+923151299388">+923151299388</a>
+        </div>
+    </div>
+</div>
+
 <!-- 圆形WA图标按钮 点击直达网页版登录页 -->
 <a href="https://web.whatsapp.com" target="_blank" rel="noopener noreferrer" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
@@ -390,6 +449,7 @@
 const links = document.querySelectorAll(".nav-link");
 const cards = document.querySelectorAll(".product-card");
 const morePage = document.getElementById("morePage");
+const contactPage = document.getElementById("contactPage");
 const productArea = document.querySelector(".container");
 
 links.forEach(link=>{
@@ -398,12 +458,18 @@ links.forEach(link=>{
         let cate = this.getAttribute("data-cate");
         links.forEach(l=>l.classList.remove("active"));
         this.classList.add("active");
+
+        // 隐藏所有页面
+        productArea.style.display = "none";
+        morePage.style.display = "none";
+        contactPage.style.display = "none";
+
         if(cate === "more"){
-            productArea.style.display = "none";
             morePage.style.display = "block";
+        }else if(cate === "contact"){
+            contactPage.style.display = "block";
         }else{
             productArea.style.display = "block";
-            morePage.style.display = "none";
             cards.forEach(card=>{
                 card.style.display = card.dataset.category.includes(cate) ? "block" : "none";
             });
