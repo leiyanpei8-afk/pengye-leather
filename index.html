@@ -1,52 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Pengye Leather | Synthetic PU PVC Leather Supplier</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f5f5f5;color:#222}
-.container{max-width:1200px;margin:0 auto;padding:20px}
-.header{text-align:center;padding:40px 0;background:#1a1a2e;color:white}
-h1{font-size:42px;margin-bottom:10px}
-h2{margin:30px 0 15px;color:#16213e}
-.card{background:white;padding:25px;border-radius:12px;margin:20px 0;box-shadow:0 2px 10px #0001}
-.whatsapp{background:#25d366;color:white;padding:18px;border-radius:8px;text-align:center;font-size:20px;font-weight:bold;text-decoration:none;display:block;margin:30px 0}
-.footer{text-align:center;padding:30px;margin-top:50px;color:#666}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PENGYE LEATHER | Premium Leather Materials Supplier</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
+        a{text-decoration:none;}
+
+        /* 高端导航栏 */
+        header{
+            width:100%;
+            background:#0c0c0c;
+            padding:18px 6%;
+            position:sticky;
+            top:0;
+            z-index:999;
+        }
+        .header-wrap{
+            max-width:1400px;
+            margin:0 auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .logo{
+            color:#fff;
+            font-size:24px;
+            letter-spacing:2px;
+            font-weight:600;
+        }
+        nav a{
+            color:#ccc;
+            margin:0 14px;
+            font-size:14px;
+            letter-spacing:0.5px;
+            transition:0.3s;
+        }
+        nav a:hover,nav a.active{
+            color:#c4a878;
+        }
+
+        /* 首页高级主图 Banner */
+        .hero{
+            width:100%;
+            height:80vh;
+            background:url("images/main-banner.jpg") center center / cover no-repeat;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+        }
+        .hero::after{
+            content:"";
+            position:absolute;
+            left:0;top:0;width:100%;height:100%;
+            background:rgba(0,0,0,0.45);
+        }
+        .hero-text{
+            position:relative;
+            z-index:2;
+            text-align:center;
+            color:#fff;
+        }
+        .hero-text h1{
+            font-size:52px;
+            font-weight:500;
+            letter-spacing:4px;
+            margin-bottom:12px;
+        }
+        .hero-text p{
+            font-size:16px;
+            color:#ddd;
+        }
+
+        /* 产品区域 */
+        .container{
+            max-width:1400px;
+            margin:0 auto;
+            padding:70px 5%;
+        }
+        .title{
+            text-align:center;
+            margin-bottom:50px;
+        }
+        .title h2{
+            font-size:32px;
+            font-weight:500;
+            letter-spacing:1px;
+            color:#111;
+        }
+        .title p{
+            color:#777;
+            margin-top:8px;
+        }
+
+        /* 产品网格 */
+        .product-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+            gap:30px;
+        }
+        .product-card{
+            background:#fff;
+            overflow:hidden;
+            border-radius:6px;
+            box-shadow:0 2px 12px rgba(0,0,0,0.06);
+            transition:0.3s;
+        }
+        .product-card:hover{
+            transform:translateY(-6px);
+        }
+        .product-card img{
+            width:100%;
+            height:240px;
+            object-fit:cover;
+        }
+        .product-info{
+            padding:18px;
+            text-align:center;
+        }
+        .product-info h4{
+            font-size:16px;
+            color:#222;
+            margin-bottom:4px;
+        }
+        .product-info p{
+            font-size:13px;
+            color:#888;
+        }
+
+        /* 更多页面文案区 */
+        .more-page{
+            display:none;
+            padding:80px 5%;
+            background:#fff;
+        }
+        .more-content{
+            max-width:900px;
+            margin:0 auto;
+            text-align:center;
+        }
+        .more-content h3{
+            font-size:28px;
+            margin-bottom:25px;
+            color:#111;
+        }
+        .more-content p{
+            font-size:16px;
+            color:#555;
+            line-height:2;
+        }
+
+        /* 隐藏分类 */
+        [data-category]{display:none;}
+        [data-category="all"]{display:block;}
+
+        /* 悬浮WhatsApp */
+        .wa-float{
+            position:fixed;
+            bottom:30px;
+            right:30px;
+            background:#25d366;
+            color:#fff;
+            padding:12px 20px;
+            border-radius:30px;
+            font-size:14px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        /* 页脚高级深色 */
+        footer{
+            background:#0c0c0c;
+            color:#999;
+            text-align:center;
+            padding:40px 0;
+            font-size:14px;
+        }
+    </style>
 </head>
 <body>
-<div class="header">
-<h1>HUIZHOU PENGYE LEATHER</h1>
-<p>Professional Synthetic PU & PVC Leather Manufacturer For Bags, Shoes, Furniture</p >
-</div>
 
+<!-- 高端导航 -->
+<header>
+    <div class="header-wrap">
+        <div class="logo">PENGYE LEATHER</div>
+        <nav>
+            <a href="#" class="nav-link active" data-cate="all">All Products</a>
+            <a href="#" class="nav-link" data-cate="genuine">Genuine Leather 真皮</a>
+            <a href="#" class="nav-link" data-cate="waterpu">Water-based PU 水性PU</a>
+            <a href="#" class="nav-link" data-cate="ecopu">Eco-friendly PU 环保PU</a>
+            <a href="#" class="nav-link" data-cate="pvc">PVC Leather PVC</a>
+            <a href="#" class="nav-link" data-cate="bio">Bio-based Leather 生物基皮革</a>
+            <a href="#" class="nav-link" data-cate="micro">Microfiber Leather 超纤皮革</a>
+            <a href="#" class="nav-link" data-cate="more">More 更多</a>
+        </nav>
+    </div>
+</header>
+
+<!-- 首页高级主图 -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>PREMIUM LEATHER MATERIALS</h1>
+        <p>20 Years Professional One-Stop Leather Supplier From China</p>
+    </div>
+</section>
+
+<!-- 产品展示区 -->
 <div class="container">
-<div class="card">
-<h2>Our Products</h2>
-<p>High quality synthetic leather, wear-resistant, waterproof, custom color & texture available.</p >
+    <div class="title">
+        <h2>Our Leather Series / 皮革系列</h2>
+        <p>High-quality materials for global footwear & furniture manufacturers</p>
+    </div>
+
+    <div class="product-grid">
+
+        <!-- 真皮 Genuine Leather -->
+        <div class="product-card" data-category="genuine all">
+            <img src="images/genuine1.jpg">
+            <div class="product-info">
+                <h4>Genuine Leather 真皮</h4>
+                <p>Natural top-grain raw leather</p>
+            </div>
+        </div>
+
+        <!-- 水性PU Water-based PU -->
+        <div class="product-card" data-category="waterpu all">
+            <img src="images/waterpu1.jpg">
+            <div class="product-info">
+                <h4>Water-based PU 水性PU</h4>
+                <p>Eco-friendly solvent-free material</p>
+            </div>
+        </div>
+
+        <!-- 环保PU Eco-friendly PU -->
+        <div class="product-card" data-category="ecopu all">
+            <img src="images/ecopu1.jpg">
+            <div class="product-info">
+                <h4>Eco-friendly PU 环保PU</h4>
+                <p>Low-carbon & harmless synthetic leather</p>
+            </div>
+        </div>
+
+        <!-- PVC -->
+        <div class="product-card" data-category="pvc all">
+            <img src="images/pvc1.jpg">
+            <div class="product-info">
+                <h4>PVC Leather PVC革</h4>
+                <p>Durable waterproof heavy-duty leather</p>
+            </div>
+        </div>
+
+        <!-- 生物基 Bio-based -->
+        <div class="product-card" data-category="bio all">
+            <img src="images/bio1.jpg">
+            <div class="product-info">
+                <h4>Bio-based Leather 生物基皮革</h4>
+                <p>Sustainable plant-based materials</p>
+            </div>
+        </div>
+
+        <!-- 超纤 Microfiber -->
+        <div class="product-card" data-category="micro all">
+            <img src="images/micro1.jpg">
+            <div class="product-info">
+                <h4>Microfiber Leather 超纤皮革</h4>
+                <p>High simulation premium microfiber</p>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-<div class="card">
-<h2>Our Advantage</h2>
-<p>✅ Fast delivery<br>
-✅ Factory direct price<br>
-✅ Custom OEM & ODM service<br>
-✅ Stable quality supply</p >
+<!-- 更多 More 专属页面 -->
+<div class="more-page" id="morePage">
+    <div class="more-content">
+        <h3>More Leather Options / 更多皮革款式</h3>
+        <p>
+            Leather materials are continuously upgraded and iterated.
+            The displayed products are only a part of our full inventory.
+            <br><br>
+            If you need more styles, special textures, colors or customized formulas,
+            please feel free to contact us. We can accurately match the most suitable
+            leather materials for you with competitive prices and stable quality.
+            <br><br>
+            皮革材料一直在不断更新换代，页面展示仅为部分款式。
+            如需更多特殊纹路、颜色、定制材质，均可联系我们。
+            我们按需精准匹配，为您提供品质最优、价格最合适的皮革方案。
+        </p>
+    </div>
 </div>
 
-<a class="whatsapp" href=" ">Chat With Us On WhatsApp</a >
+<!-- WhatsApp悬浮 -->
+<a href="#" class="wa-float">WhatsApp Contact</a>
 
-<div class="card">
-<h2>Contact Us</h2>
-<p>WhatsApp: +86 178 5781 517<br>
-Email: 1785781517@qq.com<br>
-Address: Huizhou, Guangdong, China</p >
-</div>
-</div>
+<!-- 页脚 -->
+<footer>
+    © PENGYE LEATHER — Premium Leather Material Supplier
+</footer>
 
-<div class="footer">
-© 2026 Pengye Leather All Rights Reserved
-</div>
+<script>
+// 导航分类切换
+const links = document.querySelectorAll(".nav-link");
+const cards = document.querySelectorAll(".product-card");
+const morePage = document.getElementById("morePage");
+const productArea = document.querySelector(".container");
+
+links.forEach(link=>{
+    link.onclick = function(e){
+        e.preventDefault();
+        let cate = this.getAttribute("data-cate");
+
+        // 清除选中
+        links.forEach(l=>l.classList.remove("active"));
+        this.classList.add("active");
+
+        if(cate === "more"){
+            productArea.style.display = "none";
+            morePage.style.display = "block";
+        }else{
+            productArea.style.display = "block";
+            morePage.style.display = "none";
+            cards.forEach(card=>{
+                if(card.getAttribute("data-category").includes(cate)){
+                    card.style.display = "block";
+                }else{
+                    card.style.display = "none";
+                }
+            });
+        }
+    }
+})
+</script>
+
 </body>
 </html>
