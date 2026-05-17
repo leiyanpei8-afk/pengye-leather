@@ -10,7 +10,7 @@
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
         a{text-decoration:none;}
 
-        /* 通用头部导航 */
+        /* 头部导航 */
         header{
             width:100%;
             background:#0c0c0c;
@@ -41,50 +41,124 @@
             align-items:center;
             line-height:1.3;
         }
-        nav a span{color:#ffffff;}
+        nav a span{color:#fff;}
         nav a span:first-child{font-size:14px;}
         nav a span:last-child{font-size:12px;margin-top:2px;}
-        nav a:hover span,nav a.active span{color:#c4a878;}
+        nav a:hover span,
+        nav a.active span{color:#c4a878;}
 
-        /* 轮播 */
-        .hero {width: 100%;height: 70vh;position: relative;overflow: hidden;}
-        .hero-slides {width: 100%;height: 100%;position: relative;}
-        .slide {width: 100%;height: 100%;position: absolute;background-position: center;background-size: cover;background-repeat: no-repeat;opacity: 0;transition: opacity 1s ease;}
-        .slide.active {opacity: 1;}
-        .hero-text{position:absolute;z-index:2;text-align:center;color:#fff;top: 50%;left: 50%;transform: translate(-50%, -50%);}
-        .hero-text h1{font-size:52px;font-weight:500;letter-spacing:4px;margin-bottom:12px;}
-        .hero-text p{font-size:16px;color:#ddd;}
-        .dots {position: absolute;bottom: 40px;left: 50%;transform: translateX(-50%);display: flex;gap: 10px;z-index: 3;}
-        .dot {width: 10px;height: 10px;border-radius: 50%;background: rgba(255,255,255,0.35);cursor: pointer;transition: 0.3s;}
-        .dot.active {background: #fff;transform: scale(1.15);}
+        /* 顶部轮播 */
+        .hero {
+            width: 100%;
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide{
+            width:100%;height:100%;
+            position:absolute;
+            background-size:cover;
+            background-position:center;
+            opacity:0;
+            transition:opacity 1s;
+        }
+        .slide.active{opacity:1;}
+        .hero-text{
+            position:absolute;
+            top:50%;left:50%;
+            transform:translate(-50%,-50%);
+            color:#fff;
+            text-align:center;
+            z-index:2;
+        }
+        .hero-text h1{font-size:52px;letter-spacing:4px;margin-bottom:12px;}
+        .hero-text p{color:#ddd;}
+        .dots{
+            position:absolute;
+            bottom:40px;left:50%;
+            transform:translateX(-50%);
+            display:flex;gap:10px;z-index:3;
+        }
+        .dot{
+            width:10px;height:10px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.35);
+            cursor:pointer;
+        }
+        .dot.active{background:#fff;transform:scale(1.1);}
 
-        /* 内容区块 */
-        .container{max-width:1400px;margin: 120px auto 0 auto;padding:70px 5%;position: relative;z-index: 2;background: #f6f6f6;}
+        /* 通用内容区块 */
+        .content-box{display:none;padding:80px 5%;background:#fff;}
+        .content-box.show{display:block;}
+        .container{
+            max-width:1400px;
+            margin:120px auto 0;
+            padding:0 5%;
+        }
         .title{text-align:center;margin-bottom:50px;}
-        .title h2{font-size:32px;font-weight:500;letter-spacing:1px;color:#111;}
+        .title h2{font-size:32px;color:#111;}
         .title p{color:#777;margin-top:8px;}
-        .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:30px;}
-        .product-card{background:#fff;overflow:hidden;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:0.3s;}
+
+        .product-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+            gap:30px;
+        }
+        .product-card{
+            background:#fff;border-radius:6px;
+            overflow:hidden;box-shadow:0 2px 12px #0000000a;
+            transition:0.3s;
+        }
         .product-card:hover{transform:translateY(-6px);}
         .product-card img{width:100%;height:240px;object-fit:cover;}
         .product-info{padding:18px;text-align:center;}
-        .product-info h4{font-size:16px;color:#222;margin-bottom:4px;}
+        .product-info h4{font-size:16px;margin-bottom:4px;}
         .product-info p{font-size:13px;color:#888;}
 
-        .more-page,.contact-page{display:none;padding:80px 5%;background:#fff;}
-        .more-content,.contact-content{max-width:900px;margin:0 auto;}
-        .more-content h3{font-size:28px;margin-bottom:25px;color:#111;}
-        .contact-content h2{font-size:32px;font-weight:600;color:#b07a47;margin-bottom:40px;}
-        .contact-item{display:flex;align-items:center;margin:30px 0;font-size:20px;}
-        .contact-item i{color:#b07a47;font-size:28px;margin-right:20px;width:30px;text-align:center;}
+        /* 联系我们样式 */
+        .contact-inner{max-width:900px;margin:0 auto;}
+        .contact-inner h2{
+            font-size:32px;
+            color:#b07a47;
+            margin-bottom:40px;
+        }
+        .contact-item{
+            display:flex;
+            align-items:center;
+            margin:30px 0;
+            font-size:20px;
+        }
+        .contact-item i{
+            color:#b07a47;
+            font-size:28px;
+            width:30px;
+            margin-right:20px;
+            text-align:center;
+        }
         .contact-item a{color:#222;}
         .contact-item a:hover{color:#b07a47;}
 
-        /* WhatsApp悬浮按钮 */
-        .wa-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;line-height:60px;text-align:center;background:#25d366;color:#fff;border-radius:50%;font-size:28px;box-shadow:0 4px 15px rgba(0,0,0,0.2);z-index:99999;transition: all 0.3s ease;}
-        .wa-float:hover{background:#128c7e;transform: scale(1.1);}
+        /* 悬浮按钮 */
+        .wa-float{
+            position:fixed;
+            bottom:30px;right:30px;
+            width:60px;height:60px;
+            border-radius:50%;
+            background:#25d366;color:#fff;
+            font-size:28px;
+            text-align:center;line-height:60px;
+            z-index:99999;
+            transition:0.3s;
+        }
+        .wa-float:hover{background:#128c7e;transform:scale(1.1);}
 
-        footer{background:#0c0c0c;color:#999;text-align:center;padding:40px 0;font-size:14px;}
+        footer{
+            background:#0c0c0c;
+            color:#999;
+            text-align:center;
+            padding:40px 0;
+            font-size:14px;
+        }
     </style>
 </head>
 <body>
@@ -92,39 +166,40 @@
     <div class="header-wrap">
         <div class="logo">PENGYE LEATHER</div>
         <nav>
-            <a href="javascript:;" class="nav-link active" data-page="home">
+            <a href="javascript:;" class="nav-link active" data-type="home">
                 <span>Home</span>
                 <span>首页</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-page="genuine">
+            <a href="javascript:;" class="nav-link" data-type="genuine">
                 <span>Genuine Leather</span>
                 <span>真皮</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-page="waterpu">
+            <a href="javascript:;" class="nav-link" data-type="waterpu">
                 <span>Water-based PU</span>
                 <span>水性PU</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-page="ecopu">
+            <a href="javascript:;" class="nav-link" data-type="ecopu">
                 <span>Eco-friendly PU</span>
                 <span>环保PU</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-page="pvc">
+            <a href="javascript:;" class="nav-link" data-type="pvc">
                 <span>PVC Leather</span>
                 <span>PVC革</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-page="bio">
+            <a href="javascript:;" class="nav-link" data-type="bio">
                 <span>Bio-based Leather</span>
                 <span>生物基皮革</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-page="micro">
+            <a href="javascript:;" class="nav-link" data-type="micro">
                 <span>Microfiber Leather</span>
                 <span>超纤皮革</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-page="more">
+            <a href="javascript:;" class="nav-link" data-type="more">
                 <span>More</span>
                 <span>更多</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-page="contact">
+            <!-- 联系我们 同页切换 -->
+            <a href="javascript:;" class="nav-link" data-type="contact">
                 <span>Contact Us</span>
                 <span>联系我们</span>
             </a>
@@ -133,61 +208,60 @@
 </header>
 
 <section class="hero">
-    <div class="hero-slides">
-        <div class="slide active" style="background-image: url('images/main-banner1.jpg');"></div>
-        <div class="slide" style="background-image: url('images/main-banner2.jpg');"></div>
-        <div class="slide" style="background-image: url('images/main-banner3.jpg');"></div>
-    </div>
+    <div class="slide active" style="background-image:url('images/banner1.jpg')"></div>
+    <div class="slide" style="background-image:url('images/banner2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/banner3.jpg')"></div>
     <div class="hero-text">
         <h1>PREMIUM LEATHER MATERIALS</h1>
         <p>20 Years Professional One-Stop Leather Supplier From China</p>
     </div>
-    <div class="dots" id="dots"></div>
+    <div class="dots" id="dotBox"></div>
 </section>
 
-<div class="container" id="homeBox">
+<!-- 产品主页 -->
+<div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
         <p>High-quality materials for global footwear & furniture manufacturers</p>
     </div>
     <div class="product-grid">
-        <div class="product-card" data-type="genuine">
-            <img src="images/genuine1.jpg">
+        <div class="product-card pro-item" data-tag="genuine">
+            <img src="images/p1.jpg">
             <div class="product-info">
                 <h4>Genuine Leather 真皮</h4>
                 <p>Natural top-grain raw leather</p>
             </div>
         </div>
-        <div class="product-card" data-type="waterpu">
-            <img src="images/waterpu1.jpg">
+        <div class="product-card pro-item" data-tag="waterpu">
+            <img src="images/p2.jpg">
             <div class="product-info">
                 <h4>Water-based PU 水性PU</h4>
                 <p>Eco-friendly solvent-free material</p>
             </div>
         </div>
-        <div class="product-card" data-type="ecopu">
-            <img src="images/ecopu1.jpg">
+        <div class="product-card pro-item" data-tag="ecopu">
+            <img src="images/p3.jpg">
             <div class="product-info">
                 <h4>Eco-friendly PU 环保PU</h4>
                 <p>Low-carbon & harmless synthetic leather</p>
             </div>
         </div>
-        <div class="product-card" data-type="pvc">
-            <img src="images/pvc1.jpg">
+        <div class="product-card pro-item" data-tag="pvc">
+            <img src="images/p4.jpg">
             <div class="product-info">
                 <h4>PVC Leather PVC革</h4>
                 <p>Durable waterproof heavy-duty leather</p>
             </div>
         </div>
-        <div class="product-card" data-type="bio">
-            <img src="images/bio1.jpg">
+        <div class="product-card pro-item" data-tag="bio">
+            <img src="images/p5.jpg">
             <div class="product-info">
                 <h4>Bio-based Leather 生物基皮革</h4>
                 <p>Sustainable plant-based materials</p>
             </div>
         </div>
-        <div class="product-card" data-type="micro">
-            <img src="images/micro1.jpg">
+        <div class="product-card pro-item" data-tag="micro">
+            <img src="images/p6.jpg">
             <div class="product-info">
                 <h4>Microfiber Leather 超纤皮革</h4>
                 <p>High simulation premium microfiber</p>
@@ -196,10 +270,11 @@
     </div>
 </div>
 
-<div class="more-page" id="moreBox">
-    <div class="more-content">
-        <h3>More Leather Options / 更多皮革款式</h3>
-        <p>
+<!-- 更多页面 -->
+<div class="content-box" id="moreBox">
+    <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <h3 style="font-size:28px;margin-bottom:25px;">More Leather Options / 更多皮革款式</h3>
+        <p style="font-size:16px;color:#555;line-height:2;">
             Leather materials are continuously upgraded and iterated.<br>
             The displayed products are only a part of our full inventory.<br><br>
             If you need more styles, special textures, colors or customized formulas,<br>
@@ -211,8 +286,9 @@
     </div>
 </div>
 
-<div class="contact-page" id="contactBox">
-    <div class="contact-content">
+<!-- 联系我们页面（同页切换） -->
+<div class="content-box" id="contactBox">
+    <div class="contact-inner">
         <h2>联系我们 Contact Us</h2>
         <div class="contact-item">
             <i class="fa-solid fa-location-dot"></i>
@@ -229,6 +305,7 @@
     </div>
 </div>
 
+<!-- WhatsApp悬浮按钮 -->
 <a href="https://web.whatsapp.com" target="_blank" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -238,65 +315,66 @@
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded',function(){
-    const navLinks = document.querySelectorAll('.nav-link');
-    const homeBox = document.getElementById('homeBox');
-    const moreBox = document.getElementById('moreBox');
-    const contactBox = document.getElementById('contactBox');
-    const proCards = document.querySelectorAll('.product-card');
+// 页面区块切换
+const navs = document.querySelectorAll('.nav-link');
+const homeBox = document.getElementById('homeBox');
+const moreBox = document.getElementById('moreBox');
+const contactBox = document.getElementById('contactBox');
+const proItems = document.querySelectorAll('.pro-item');
 
-    // 页面切换
-    navLinks.forEach(link=>{
-        link.addEventListener('click',function(e){
-            e.preventDefault();
-            let page = this.dataset.page;
-            navLinks.forEach(l=>l.classList.remove('active'));
-            this.classList.add('active');
+navs.forEach(nav=>{
+    nav.addEventListener('click',function(e){
+        e.preventDefault();
+        let type = this.dataset.type;
+        // 清空选中
+        navs.forEach(n=>n.classList.remove('active'));
+        this.classList.add('active');
+        // 隐藏所有区块
+        homeBox.classList.remove('show');
+        moreBox.classList.remove('show');
+        contactBox.classList.remove('show');
 
-            homeBox.style.display = 'none';
-            moreBox.style.display = 'none';
-            contactBox.style.display = 'none';
-
-            if(page === 'home'){
-                homeBox.style.display = 'block';
-                proCards.forEach(c=>c.style.display='block');
-            }else if(page === 'more'){
-                moreBox.style.display = 'block';
-            }else if(page === 'contact'){
-                contactBox.style.display = 'block';
-            }else{
-                homeBox.style.display = 'block';
-                proCards.forEach(c=>{
-                    c.style.display = c.dataset.type === page ? 'block':'none';
-                })
-            }
-        })
+        if(type === 'home'){
+            homeBox.classList.add('show');
+            proItems.forEach(p=>p.style.display='block');
+        }else if(type === 'more'){
+            moreBox.classList.add('show');
+        }else if(type === 'contact'){
+            // 点击联系我们 直接同页显示
+            contactBox.classList.add('show');
+        }else{
+            homeBox.classList.add('show');
+            proItems.forEach(p=>{
+                p.style.display = p.dataset.tag === type ? 'block':'none';
+            })
+        }
     })
+})
 
-    // 轮播
-    const slides = document.querySelectorAll('.slide');
-    const dotsBox = document.getElementById('dots');
-    let now = 0;
-    slides.forEach((_,i)=>{
-        let d = document.createElement('div');
-        d.className = 'dot';
-        if(i===0) d.classList.add('active');
-        dotsBox.appendChild(d);
-    })
-    const dots = document.querySelectorAll('.dot');
-    function changeSlide(idx){
-        slides.forEach(s=>s.classList.remove('active'));
-        dots.forEach(d=>d.classList.remove('active'));
-        slides[idx].classList.add('active');
-        dots[idx].classList.add('active');
-    }
-    setInterval(()=>{
-        now = (now+1)%slides.length;
-        changeSlide(now);
-    },4000)
-    dots.forEach((d,i)=>{
-        d.onclick = ()=>{now=i;changeSlide(i);}
-    })
+// 轮播逻辑
+const slides = document.querySelectorAll('.slide');
+const dotBox = document.getElementById('dotBox');
+let cur = 0;
+slides.forEach((_,i)=>{
+    let d = document.createElement('div');
+    d.className = 'dot';
+    if(i===0) d.classList.add('active');
+    dotBox.appendChild(d);
+})
+const dots = document.querySelectorAll('.dot');
+
+function switchSlide(idx){
+    slides.forEach(s=>s.classList.remove('active'));
+    dots.forEach(d=>d.classList.remove('active'));
+    slides[idx].classList.add('active');
+    dots[idx].classList.add('active');
+}
+setInterval(()=>{
+    cur = (cur+1)%slides.length;
+    switchSlide(cur);
+},4000)
+dots.forEach((d,i)=>{
+    d.onclick = ()=>{cur=i;switchSlide(i);}
 })
 </script>
 </body>
