@@ -48,6 +48,8 @@
             height: 80vh;
             position: relative;
             overflow: hidden;
+            /* 关键：和下方区域完全隔离 */
+            margin-bottom: 0;
         }
         .hero-slides {
             width: 100%;
@@ -94,33 +96,38 @@
             color:#ddd;
         }
 
-        /* 轮播小圆点 */
+        /* 轮播小圆点（优化位置，不挡图） */
         .dots {
             position: absolute;
-            bottom: 30px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 12px;
+            gap: 10px;
             z-index: 3;
         }
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.35);
             cursor: pointer;
             transition: 0.3s;
         }
         .dot.active {
             background: #fff;
+            transform: scale(1.15);
         }
 
-        /* 产品区域 */
+        /* 产品区域（关键修复：不再和轮播重叠） */
         .container{
             max-width:1400px;
-            margin:0 auto;
+            margin: 0 auto;
+            /* 给顶部加上足够的间距，强制排在轮播下方 */
             padding:70px 5%;
+            position: relative;
+            z-index: 2;
+            background: #f6f6f6;
         }
         .title{
             text-align:center;
@@ -253,8 +260,8 @@
     </div>
 
     <div class="hero-text">
-        <h1>PREMIUM LEATHER MATERIALS</h1>
-        <p>20 Years Professional One-Stop Leather Supplier From China</p>
+        <h1>优质皮革材料</h1>
+        <p>中国专业一站式皮革供应商20年</p>
     </div>
 
     <!-- 小圆点 -->
@@ -264,8 +271,8 @@
 <!-- 产品展示区 -->
 <div class="container">
     <div class="title">
-        <h2>Our Leather Series / 皮革系列</h2>
-        <p>High-quality materials for global footwear & furniture manufacturers</p>
+        <h2>我们的皮革系列 / 皮革系列</h2>
+        <p>为全球鞋类和家具制造商提供高品质材料</p>
     </div>
 
     <div class="product-grid">
@@ -337,7 +344,7 @@
 </div>
 
 <!-- WhatsApp悬浮 -->
-<a href="#" class="wa-float">WhatsApp Contact</a>
+<a href="#" class="wa-float">WhatsApp 联系方式</a>
 
 <!-- 页脚 -->
 <footer>
@@ -413,6 +420,9 @@ dots.forEach((dot, i) => {
     }
 });
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
