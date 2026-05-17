@@ -10,6 +10,7 @@
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
         a{text-decoration:none;}
 
+        /* 导航头部 */
         header{
             width:100%;
             background:#0c0c0c;
@@ -31,6 +32,7 @@
             letter-spacing:2px;
             font-weight:600;
         }
+        /* 导航样式 英文上中文下全白 */
         nav a{
             margin:0 14px;
             letter-spacing:0.5px;
@@ -55,6 +57,7 @@
             color:#c4a878;
         }
 
+        /* 轮播 */
         .hero {
             width: 100%;
             height: 70vh;
@@ -99,6 +102,7 @@
             color:#ddd;
         }
 
+        /* 轮播圆点 */
         .dots {
             position: absolute;
             bottom: 40px;
@@ -121,6 +125,7 @@
             transform: scale(1.15);
         }
 
+        /* 产品区域 */
         .container{
             max-width:1400px;
             margin: 120px auto 0 auto;
@@ -178,43 +183,32 @@
             color:#888;
         }
 
-        .more-page, .contact-page{
+        /* 更多页面 */
+        .more-page{
             display:none;
             padding:80px 5%;
             background:#fff;
         }
-        .more-content, .contact-content{
+        .more-content{
             max-width:900px;
             margin:0 auto;
+            text-align:center;
         }
-        .more-content h3, .contact-content h2{
+        .more-content h3{
             font-size:28px;
             margin-bottom:25px;
             color:#111;
         }
-        .contact-content h2{
-            color:#b07a47;
-        }
-        .contact-item{
-            display:flex;
-            align-items:center;
-            margin:30px 0;
-            font-size:20px;
-        }
-        .contact-item i{
-            color:#b07a47;
-            font-size:28px;
-            margin-right:20px;
-            width:30px;
-            text-align:center;
-        }
-        .contact-item a{
-            color:#222;
-        }
-        .contact-item a:hover{
-            color:#b07a47;
+        .more-content p{
+            font-size:16px;
+            color:#555;
+            line-height:2;
         }
 
+        [data-category]{display:none;}
+        [data-category="all"]{display:block;}
+
+        /* 悬浮WhatsApp圆形按钮 */
         .wa-float{
             position:fixed;
             bottom:30px;
@@ -251,40 +245,40 @@
     <div class="header-wrap">
         <div class="logo">PENGYE LEATHER</div>
         <nav>
-            <a href="#" class="nav-link active" data-target="home">
+            <a href="#" class="nav-link active" data-cate="all">
                 <span>All Products</span>
                 <span>全部产品</span>
             </a>
-            <a href="#" class="nav-link" data-target="genuine">
+            <a href="#" class="nav-link" data-cate="genuine">
                 <span>Genuine Leather</span>
                 <span>真皮</span>
             </a>
-            <a href="#" class="nav-link" data-target="waterpu">
+            <a href="#" class="nav-link" data-cate="waterpu">
                 <span>Water-based PU</span>
                 <span>水性PU</span>
             </a>
-            <a href="#" class="nav-link" data-target="ecopu">
+            <a href="#" class="nav-link" data-cate="ecopu">
                 <span>Eco-friendly PU</span>
                 <span>环保PU</span>
             </a>
-            <a href="#" class="nav-link" data-target="pvc">
+            <a href="#" class="nav-link" data-cate="pvc">
                 <span>PVC Leather</span>
                 <span>PVC革</span>
             </a>
-            <a href="#" class="nav-link" data-target="bio">
+            <a href="#" class="nav-link" data-cate="bio">
                 <span>Bio-based Leather</span>
                 <span>生物基皮革</span>
             </a>
-            <a href="#" class="nav-link" data-target="micro">
+            <a href="#" class="nav-link" data-cate="micro">
                 <span>Microfiber Leather</span>
                 <span>超纤皮革</span>
             </a>
-            <a href="#" class="nav-link" data-target="more">
+            <a href="#" class="nav-link" data-cate="more">
                 <span>More</span>
                 <span>更多</span>
             </a>
-            <!-- 重点：这里改成 data-target="contact" -->
-            <a href="#" class="nav-link" data-target="contact">
+            <!-- 联系我们 点击新开独立页面 -->
+            <a href="contact.html" target="_blank" class="nav-link">
                 <span>Contact Us</span>
                 <span>联系我们</span>
             </a>
@@ -309,48 +303,48 @@
     <div class="dots" id="dots"></div>
 </section>
 
-<div class="container" id="home">
+<div class="container">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
         <p>High-quality materials for global footwear & furniture manufacturers</p>
     </div>
     <div class="product-grid">
-        <div class="product-card" data-category="genuine">
+        <div class="product-card" data-category="genuine all">
             <img src="images/genuine1.jpg">
             <div class="product-info">
                 <h4>Genuine Leather 真皮</h4>
                 <p>Natural top-grain raw leather</p>
             </div>
         </div>
-        <div class="product-card" data-category="waterpu">
+        <div class="product-card" data-category="waterpu all">
             <img src="images/waterpu1.jpg">
             <div class="product-info">
                 <h4>Water-based PU 水性PU</h4>
                 <p>Eco-friendly solvent-free material</p>
             </div>
         </div>
-        <div class="product-card" data-category="ecopu">
+        <div class="product-card" data-category="ecopu all">
             <img src="images/ecopu1.jpg">
             <div class="product-info">
                 <h4>Eco-friendly PU 环保PU</h4>
                 <p>Low-carbon & harmless synthetic leather</p>
             </div>
         </div>
-        <div class="product-card" data-category="pvc">
+        <div class="product-card" data-category="pvc all">
             <img src="images/pvc1.jpg">
             <div class="product-info">
                 <h4>PVC Leather PVC革</h4>
                 <p>Durable waterproof heavy-duty leather</p>
             </div>
         </div>
-        <div class="product-card" data-category="bio">
+        <div class="product-card" data-category="bio all">
             <img src="images/bio1.jpg">
             <div class="product-info">
                 <h4>Bio-based Leather 生物基皮革</h4>
                 <p>Sustainable plant-based materials</p>
             </div>
         </div>
-        <div class="product-card" data-category="micro">
+        <div class="product-card" data-category="micro all">
             <img src="images/micro1.jpg">
             <div class="product-info">
                 <h4>Microfiber Leather 超纤皮革</h4>
@@ -360,7 +354,7 @@
     </div>
 </div>
 
-<div class="more-page" id="more">
+<div class="more-page" id="morePage">
     <div class="more-content">
         <h3>More Leather Options / 更多皮革款式</h3>
         <p>
@@ -376,24 +370,6 @@
     </div>
 </div>
 
-<div class="contact-page" id="contact">
-    <div class="contact-content">
-        <h2>联系我们 Contact Us</h2>
-        <div class="contact-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>74号地块，7A区，科兰吉工业区，卡拉奇，邮编74900，巴基斯坦</span>
-        </div>
-        <div class="contact-item">
-            <i class="fa-solid fa-envelope"></i>
-            <a href="mailto:Info@hubleather.com">Info@hubleather.com</a>
-        </div>
-        <div class="contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <a href="tel:+923151299388">+923151299388</a>
-        </div>
-    </div>
-</div>
-
 <a href="https://web.whatsapp.com" target="_blank" rel="noopener noreferrer" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -403,77 +379,56 @@
 </footer>
 
 <script>
-// 确保 DOM 加载完再绑定事件
-document.addEventListener('DOMContentLoaded', function(){
-    const links = document.querySelectorAll(".nav-link");
-    const sections = {
-        home: document.getElementById("home"),
-        more: document.getElementById("more"),
-        contact: document.getElementById("contact")
-    };
-    const cards = document.querySelectorAll(".product-card");
+const links = document.querySelectorAll(".nav-link");
+const cards = document.querySelectorAll(".product-card");
+const morePage = document.getElementById("morePage");
+const productArea = document.querySelector(".container");
 
-    // 初始化：显示 home
-    sections.home.style.display = "block";
-
-    links.forEach(link => {
-        link.addEventListener('click', function(e){
-            e.preventDefault();
-            const target = this.getAttribute('data-target');
-
-            // 所有 section 隐藏
-            for(let key in sections){
-                sections[key].style.display = "none";
-            }
-
-            // 所有导航取消 active
-            links.forEach(l => l.classList.remove("active"));
-            this.classList.add("active");
-
-            // 显示对应 section
-            if(target === "home"){
-                sections.home.style.display = "block";
-                // 显示全部产品
-                cards.forEach(card => card.style.display = "block");
-            }else if(target === "more"){
-                sections.more.style.display = "block";
-            }else if(target === "contact"){
-                sections.contact.style.display = "block";
-            }else{
-                // 分类
-                sections.home.style.display = "block";
-                cards.forEach(card => {
-                    card.style.display = (card.dataset.category === target) ? "block" : "none";
-                });
-            }
-        });
-    });
-
-    // 轮播
-    const slides = document.querySelectorAll(".slide");
-    const dotsWrap = document.getElementById("dots");
-    let current = 0;
-    slides.forEach((_,i)=>{
-        let d = document.createElement("div");
-        d.className = "dot";
-        if(i===0) d.classList.add("active");
-        dotsWrap.appendChild(d);
-    });
-    const dots = document.querySelectorAll(".dot");
-
-    function showSlide(idx){
-        slides.forEach(s=>s.classList.remove("active"));
-        dots.forEach(d=>d.classList.remove("active"));
-        slides[idx].classList.add("active");
-        dots[idx].classList.add("active");
+links.forEach(link=>{
+    link.onclick = function(e){
+        // 联系我们不执行切换逻辑，直接跳转新页面
+        if(this.getAttribute("href") === "contact.html") return;
+        e.preventDefault();
+        let cate = this.getAttribute("data-cate");
+        links.forEach(l=>l.classList.remove("active"));
+        this.classList.add("active");
+        if(cate === "more"){
+            productArea.style.display = "none";
+            morePage.style.display = "block";
+        }else{
+            productArea.style.display = "block";
+            morePage.style.display = "none";
+            cards.forEach(card=>{
+                card.style.display = card.dataset.category.includes(cate) ? "block" : "none";
+            });
+        }
     }
-    function nextSlide(){
-        current = (current+1)%slides.length;
-        showSlide(current);
-    }
-    setInterval(nextSlide,4000);
-    dots.forEach((d,i)=>d.onclick=()=>{current=i;showSlide(current);});
+})
+
+// 轮播逻辑
+const slides = document.querySelectorAll(".slide");
+const dotsWrap = document.getElementById("dots");
+let current = 0;
+slides.forEach((_,i)=>{
+    let d = document.createElement("div");
+    d.className = "dot";
+    if(i===0) d.classList.add("active");
+    dotsWrap.appendChild(d);
 });
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(idx){
+    slides.forEach(s=>s.classList.remove("active"));
+    dots.forEach(d=>d.classList.remove("active"));
+    slides[idx].classList.add("active");
+    dots[idx].classList.add("active");
+}
+function nextSlide(){
+    current = (current+1)%slides.length;
+    showSlide(current);
+}
+setInterval(nextSlide,4000);
+dots.forEach((d,i)=>d.onclick=()=>{current=i;showSlide(current);})
 </script>
 
 </body>
