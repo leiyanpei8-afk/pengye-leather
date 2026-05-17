@@ -210,7 +210,7 @@
         [data-category]{display:none;}
         [data-category="all"]{display:block;}
 
-        /* 悬浮WhatsApp */
+        /* ✅ WhatsApp 悬浮按钮：最高层级 + 不被遮挡 */
         .wa-float{
             position:fixed;
             bottom:30px;
@@ -221,6 +221,7 @@
             border-radius:30px;
             font-size:14px;
             box-shadow:0 4px 15px rgba(0,0,0,0.15);
+            z-index:99999; /* 拉到最高，永远在最上层 */
         }
 
         /* 页脚 */
@@ -241,8 +242,8 @@
         <div class="logo">PENGYE LEATHER</div>
         <nav>
             <a href="#" class="nav-link active" data-cate="all">
-                <span>Home</span>
-                <span>首页</span>
+                <span>All Products</span>
+                <span>全部产品</span>
             </a>
             <a href="#" class="nav-link" data-cate="genuine">
                 <span>Genuine Leather</span>
@@ -366,8 +367,8 @@
     </div>
 </div>
 
-<!-- 悬浮联系 -->
-<a href="#" class="wa-float">WhatsApp Contact</a>
+<!-- ✅ WhatsApp：新标签页打开 + 最高层级 -->
+<a href="https://wa.me/你的号码" target="_blank" rel="noopener noreferrer" class="wa-float">WhatsApp Contact</a>
 
 <!-- 页脚 -->
 <footer>
