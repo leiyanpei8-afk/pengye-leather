@@ -9,7 +9,7 @@
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
         a{text-decoration:none;}
 
-        /* 导航栏 */
+        /* 高端导航栏 */
         header{
             width:100%;
             background:#0c0c0c;
@@ -31,21 +31,35 @@
             letter-spacing:2px;
             font-weight:600;
         }
+        /* 导航 英文中文全白色 上下分行 */
         nav a{
-            color:#ccc;
             margin:0 14px;
-            font-size:14px;
             letter-spacing:0.5px;
             transition:0.3s;
+            display:inline-flex;
+            flex-direction:column;
+            align-items:center;
+            line-height:1.3;
         }
-        nav a:hover,nav a.active{
+        nav a span{
+            color:#ffffff;
+        }
+        nav a span:first-child{
+            font-size:14px;
+        }
+        nav a span:last-child{
+            font-size:12px;
+            margin-top:2px;
+        }
+        nav a:hover span,
+        nav a.active span{
             color:#c4a878;
         }
 
-        /* 轮播Banner（关键：降低高度，避免被下方区域遮挡） */
+        /* 轮播 Banner 恢复cover全屏铺满 */
         .hero {
             width: 100%;
-            height: 70vh; /* 从80vh降到70vh，给下方留出更多空间 */
+            height: 70vh;
             position: relative;
             overflow: hidden;
         }
@@ -61,13 +75,13 @@
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            background-color: #000;     /* 空白地方黑色 */
             opacity: 0;
             transition: opacity 1s ease;
         }
         .slide.active {
             opacity: 1;
         }
+        /* 移除灰色遮罩 */
         .hero-text{
             position:absolute;
             z-index:2;
@@ -88,10 +102,10 @@
             color:#ddd;
         }
 
-        /* 小圆点（位置上移，避免被遮挡） */
+        /* 轮播小圆点 */
         .dots {
             position: absolute;
-            bottom: 40px; /* 从25px上移到40px，离图片底部更远 */
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -111,10 +125,10 @@
             transform: scale(1.15);
         }
 
-        /* 产品区域（关键：顶部加超大边距，强制和轮播完全分开） */
+        /* 产品区域拉开距离不遮挡 */
         .container{
             max-width:1400px;
-            margin: 100px auto 0 auto; /* 顶部边距从70px加到100px */
+            margin: 120px auto 0 auto;
             padding:70px 5%;
             position: relative;
             z-index: 2;
@@ -221,48 +235,72 @@
 </head>
 <body>
 
-<!-- 导航 -->
+<!-- 导航 英文中文上下分行 全白色 -->
 <header>
     <div class="header-wrap">
         <div class="logo">PENGYE LEATHER</div>
         <nav>
-            <a href="#" class="nav-link active" data-cate="all">All Products</a>
-            <a href="#" class="nav-link" data-cate="genuine">Genuine Leather 真皮</a>
-            <a href="#" class="nav-link" data-cate="waterpu">Water-based PU 水性PU</a>
-            <a href="#" class="nav-link" data-cate="ecopu">Eco-friendly PU 环保PU</a>
-            <a href="#" class="nav-link" data-cate="pvc">PVC Leather PVC</a>
-            <a href="#" class="nav-link" data-cate="bio">Bio-based Leather 生物基皮革</a>
-            <a href="#" class="nav-link" data-cate="micro">Microfiber Leather 超纤皮革</a>
-            <a href="#" class="nav-link" data-cate="more">More 更多</a>
+            <a href="#" class="nav-link active" data-cate="all">
+                <span>All Products</span>
+                <span>全部产品</span>
+            </a>
+            <a href="#" class="nav-link" data-cate="genuine">
+                <span>Genuine Leather</span>
+                <span>真皮</span>
+            </a>
+            <a href="#" class="nav-link" data-cate="waterpu">
+                <span>Water-based PU</span>
+                <span>水性PU</span>
+            </a>
+            <a href="#" class="nav-link" data-cate="ecopu">
+                <span>Eco-friendly PU</span>
+                <span>环保PU</span>
+            </a>
+            <a href="#" class="nav-link" data-cate="pvc">
+                <span>PVC Leather</span>
+                <span>PVC革</span>
+            </a>
+            <a href="#" class="nav-link" data-cate="bio">
+                <span>Bio-based Leather</span>
+                <span>生物基皮革</span>
+            </a>
+            <a href="#" class="nav-link" data-cate="micro">
+                <span>Microfiber Leather</span>
+                <span>超纤皮革</span>
+            </a>
+            <a href="#" class="nav-link" data-cate="more">
+                <span>More</span>
+                <span>更多</span>
+            </a>
         </nav>
     </div>
 </header>
 
-<!-- 轮播Banner -->
+<!-- 轮播 -->
 <section class="hero">
     <div class="hero-slides">
         <div class="slide active" style="background-image: url('images/main-banner1.jpg');"></div>
-        <div class="slide" style="background-image: url('images/main-banner2.jpg.jpg');"></div>
-        <div class="slide" style="background-image: url('images/main-banner3.jpg.png');"></div>
-        <div class="slide" style="background-image: url('images/main-banner4.jpg.jpg');"></div>
-        <div class="slide" style="background-image: url('images/main-banner5.jpg.jpg');"></div>
-        <div class="slide" style="background-image: url('images/main-banner6.jpg.png');"></div>
-        <div class="slide" style="background-image: url('images/main-banner7.jpg.png');"></div>
+        <div class="slide" style="background-image: url('images/main-banner2.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner3.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner4.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner5.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner6.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner7.jpg');"></div>
     </div>
 
     <div class="hero-text">
-        <h1>优质皮革材料</h1>
-        <p>中国专业一站式皮革供应商20年</p>
+        <h1>PREMIUM LEATHER MATERIALS</h1>
+        <p>20 Years Professional One-Stop Leather Supplier From China</p>
     </div>
 
     <div class="dots" id="dots"></div>
 </section>
 
-<!-- 产品区域 -->
+<!-- 产品区 -->
 <div class="container">
     <div class="title">
-        <h2>我们的皮革系列 / 皮革系列</h2>
-        <p>为全球鞋类和家具制造商提供高品质材料</p>
+        <h2>Our Leather Series / 皮革系列</h2>
+        <p>High-quality materials for global footwear & furniture manufacturers</p>
     </div>
 
     <div class="product-grid">
@@ -273,7 +311,6 @@
                 <p>Natural top-grain raw leather</p>
             </div>
         </div>
-
         <div class="product-card" data-category="waterpu all">
             <img src="images/waterpu1.jpg">
             <div class="product-info">
@@ -281,7 +318,6 @@
                 <p>Eco-friendly solvent-free material</p>
             </div>
         </div>
-
         <div class="product-card" data-category="ecopu all">
             <img src="images/ecopu1.jpg">
             <div class="product-info">
@@ -289,7 +325,6 @@
                 <p>Low-carbon & harmless synthetic leather</p>
             </div>
         </div>
-
         <div class="product-card" data-category="pvc all">
             <img src="images/pvc1.jpg">
             <div class="product-info">
@@ -297,7 +332,6 @@
                 <p>Durable waterproof heavy-duty leather</p>
             </div>
         </div>
-
         <div class="product-card" data-category="bio all">
             <img src="images/bio1.jpg">
             <div class="product-info">
@@ -305,7 +339,6 @@
                 <p>Sustainable plant-based materials</p>
             </div>
         </div>
-
         <div class="product-card" data-category="micro all">
             <img src="images/micro1.jpg">
             <div class="product-info">
@@ -333,8 +366,8 @@
     </div>
 </div>
 
-<!-- WhatsApp悬浮 -->
-<a href="#" class="wa-float">WhatsApp 联系方式</a>
+<!-- 悬浮联系 -->
+<a href="#" class="wa-float">WhatsApp Contact</a>
 
 <!-- 页脚 -->
 <footer>
@@ -342,7 +375,6 @@
 </footer>
 
 <script>
-// 导航切换
 const links = document.querySelectorAll(".nav-link");
 const cards = document.querySelectorAll(".product-card");
 const morePage = document.getElementById("morePage");
@@ -352,10 +384,8 @@ links.forEach(link=>{
     link.onclick = function(e){
         e.preventDefault();
         let cate = this.getAttribute("data-cate");
-
         links.forEach(l=>l.classList.remove("active"));
         this.classList.add("active");
-
         if(cate === "more"){
             productArea.style.display = "none";
             morePage.style.display = "block";
@@ -363,52 +393,35 @@ links.forEach(link=>{
             productArea.style.display = "block";
             morePage.style.display = "none";
             cards.forEach(card=>{
-                if(card.getAttribute("data-category").includes(cate)){
-                    card.style.display = "block";
-                }else{
-                    card.style.display = "none";
-                }
+                card.style.display = card.dataset.category.includes(cate) ? "block" : "none";
             });
         }
     }
 })
 
-// 轮播功能
 const slides = document.querySelectorAll(".slide");
 const dotsWrap = document.getElementById("dots");
 let current = 0;
-
-// 生成小圆点
-slides.forEach((_, i) => {
-    const dot = document.createElement("div");
-    dot.classList.add("dot");
-    if (i === 0) dot.classList.add("active");
-    dotsWrap.appendChild(dot);
+slides.forEach((_,i)=>{
+    let d = document.createElement("div");
+    d.className = "dot";
+    if(i===0) d.classList.add("active");
+    dotsWrap.appendChild(d);
 });
 const dots = document.querySelectorAll(".dot");
 
-// 切换函数
-function showSlide(index) {
-    slides.forEach(s => s.classList.remove("active"));
-    dots.forEach(d => d.classList.remove("active"));
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
+function showSlide(idx){
+    slides.forEach(s=>s.classList.remove("active"));
+    dots.forEach(d=>d.classList.remove("active"));
+    slides[idx].classList.add("active");
+    dots[idx].classList.add("active");
 }
-
-// 4秒自动轮播
-function nextSlide() {
-    current = (current + 1) % slides.length;
+function nextSlide(){
+    current = (current+1)%slides.length;
     showSlide(current);
 }
-setInterval(nextSlide, 4000);
-
-// 点击小圆点切换
-dots.forEach((dot, i) => {
-    dot.onclick = () => {
-        current = i;
-        showSlide(i);
-    }
-});
+setInterval(nextSlide,4000);
+dots.forEach((d,i)=>d.onclick=()=>{current=i;showSlide(current);})
 </script>
 
 </body>
