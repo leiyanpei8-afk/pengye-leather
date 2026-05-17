@@ -9,7 +9,7 @@
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
         a{text-decoration:none;}
 
-        /* 高端导航栏 */
+        /* 导航栏 */
         header{
             width:100%;
             background:#0c0c0c;
@@ -42,14 +42,12 @@
             color:#c4a878;
         }
 
-        /* 轮播 Banner */
+        /* 轮播Banner（关键：降低高度，避免被下方区域遮挡） */
         .hero {
             width: 100%;
-            height: 80vh;
+            height: 70vh; /* 从80vh降到70vh，给下方留出更多空间 */
             position: relative;
             overflow: hidden;
-            /* 关键：和下方区域完全隔离 */
-            margin-bottom: 0;
         }
         .hero-slides {
             width: 100%;
@@ -96,10 +94,10 @@
             color:#ddd;
         }
 
-        /* 轮播小圆点（优化位置，不挡图） */
+        /* 小圆点（位置上移，避免被遮挡） */
         .dots {
             position: absolute;
-            bottom: 25px;
+            bottom: 40px; /* 从25px上移到40px，离图片底部更远 */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -119,11 +117,10 @@
             transform: scale(1.15);
         }
 
-        /* 产品区域（关键修复：不再和轮播重叠） */
+        /* 产品区域（关键：顶部加超大边距，强制和轮播完全分开） */
         .container{
             max-width:1400px;
-            margin: 0 auto;
-            /* 给顶部加上足够的间距，强制排在轮播下方 */
+            margin: 100px auto 0 auto; /* 顶部边距从70px加到100px */
             padding:70px 5%;
             position: relative;
             z-index: 2;
@@ -218,7 +215,7 @@
             box-shadow:0 4px 15px rgba(0,0,0,0.15);
         }
 
-        /* 页脚高级深色 */
+        /* 页脚 */
         footer{
             background:#0c0c0c;
             color:#999;
@@ -230,7 +227,7 @@
 </head>
 <body>
 
-<!-- 高端导航 -->
+<!-- 导航 -->
 <header>
     <div class="header-wrap">
         <div class="logo">PENGYE LEATHER</div>
@@ -247,7 +244,7 @@
     </div>
 </header>
 
-<!-- 轮播 Banner -->
+<!-- 轮播Banner -->
 <section class="hero">
     <div class="hero-slides">
         <div class="slide active" style="background-image: url('images/main-banner1.jpg');"></div>
@@ -264,11 +261,10 @@
         <p>中国专业一站式皮革供应商20年</p>
     </div>
 
-    <!-- 小圆点 -->
     <div class="dots" id="dots"></div>
 </section>
 
-<!-- 产品展示区 -->
+<!-- 产品区域 -->
 <div class="container">
     <div class="title">
         <h2>我们的皮革系列 / 皮革系列</h2>
@@ -326,7 +322,7 @@
     </div>
 </div>
 
-<!-- 更多 More 专属页面 -->
+<!-- 更多页面 -->
 <div class="more-page" id="morePage">
     <div class="more-content">
         <h3>More Leather Options / 更多皮革款式</h3>
@@ -352,7 +348,7 @@
 </footer>
 
 <script>
-// 导航分类切换
+// 导航切换
 const links = document.querySelectorAll(".nav-link");
 const cards = document.querySelectorAll(".product-card");
 const morePage = document.getElementById("morePage");
@@ -383,7 +379,7 @@ links.forEach(link=>{
     }
 })
 
-// 轮播图 + 小圆点 + 4秒切换
+// 轮播功能
 const slides = document.querySelectorAll(".slide");
 const dotsWrap = document.getElementById("dots");
 let current = 0;
@@ -405,7 +401,7 @@ function showSlide(index) {
     dots[index].classList.add("active");
 }
 
-// 自动轮播 4秒
+// 4秒自动轮播
 function nextSlide() {
     current = (current + 1) % slides.length;
     showSlide(current);
@@ -420,9 +416,6 @@ dots.forEach((dot, i) => {
     }
 });
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
