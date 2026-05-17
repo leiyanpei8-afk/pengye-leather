@@ -42,27 +42,46 @@
             color:#c4a878;
         }
 
-        /* 首页高级主图 Banner */
-        .hero{
-            width:100%;
-            height:80vh;
-            background:url("images/main-banner.jpg") center center / cover no-repeat;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            position:relative;
+        /* 轮播 Banner */
+        .hero {
+            width: 100%;
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .slide.active {
+            opacity: 1;
         }
         .hero::after{
             content:"";
             position:absolute;
             left:0;top:0;width:100%;height:100%;
             background:rgba(0,0,0,0.45);
+            z-index: 1;
         }
         .hero-text{
-            position:relative;
+            position:absolute;
             z-index:2;
             text-align:center;
             color:#fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         .hero-text h1{
             font-size:52px;
@@ -73,6 +92,28 @@
         .hero-text p{
             font-size:16px;
             color:#ddd;
+        }
+
+        /* 轮播小圆点 */
+        .dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background: #fff;
         }
 
         /* 产品区域 */
@@ -199,12 +240,25 @@
     </div>
 </header>
 
-<!-- 首页高级主图 -->
+<!-- 轮播 Banner -->
 <section class="hero">
+    <div class="hero-slides">
+        <div class="slide active" style="background-image: url('images/main-banner1.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner2.jpg.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner3.jpg.png');"></div>
+        <div class="slide" style="background-image: url('images/main-banner4.jpg.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner5.jpg.jpg');"></div>
+        <div class="slide" style="background-image: url('images/main-banner6.jpg.png');"></div>
+        <div class="slide" style="background-image: url('images/main-banner7.jpg.png');"></div>
+    </div>
+
     <div class="hero-text">
         <h1>PREMIUM LEATHER MATERIALS</h1>
         <p>20 Years Professional One-Stop Leather Supplier From China</p>
     </div>
+
+    <!-- 小圆点 -->
+    <div class="dots" id="dots"></div>
 </section>
 
 <!-- 产品展示区 -->
@@ -215,8 +269,6 @@
     </div>
 
     <div class="product-grid">
-
-        <!-- 真皮 Genuine Leather -->
         <div class="product-card" data-category="genuine all">
             <img src="images/genuine1.jpg">
             <div class="product-info">
@@ -225,7 +277,6 @@
             </div>
         </div>
 
-        <!-- 水性PU Water-based PU -->
         <div class="product-card" data-category="waterpu all">
             <img src="images/waterpu1.jpg">
             <div class="product-info">
@@ -234,7 +285,6 @@
             </div>
         </div>
 
-        <!-- 环保PU Eco-friendly PU -->
         <div class="product-card" data-category="ecopu all">
             <img src="images/ecopu1.jpg">
             <div class="product-info">
@@ -243,7 +293,6 @@
             </div>
         </div>
 
-        <!-- PVC -->
         <div class="product-card" data-category="pvc all">
             <img src="images/pvc1.jpg">
             <div class="product-info">
@@ -252,7 +301,6 @@
             </div>
         </div>
 
-        <!-- 生物基 Bio-based -->
         <div class="product-card" data-category="bio all">
             <img src="images/bio1.jpg">
             <div class="product-info">
@@ -261,7 +309,6 @@
             </div>
         </div>
 
-        <!-- 超纤 Microfiber -->
         <div class="product-card" data-category="micro all">
             <img src="images/micro1.jpg">
             <div class="product-info">
@@ -269,7 +316,6 @@
                 <p>High simulation premium microfiber</p>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -278,15 +324,13 @@
     <div class="more-content">
         <h3>More Leather Options / 更多皮革款式</h3>
         <p>
-            Leather materials are continuously upgraded and iterated.
-            The displayed products are only a part of our full inventory.
-            <br><br>
-            If you need more styles, special textures, colors or customized formulas,
-            please feel free to contact us. We can accurately match the most suitable
-            leather materials for you with competitive prices and stable quality.
-            <br><br>
-            皮革材料一直在不断更新换代，页面展示仅为部分款式。
-            如需更多特殊纹路、颜色、定制材质，均可联系我们。
+            Leather materials are continuously upgraded and iterated.<br>
+            The displayed products are only a part of our full inventory.<br><br>
+            If you need more styles, special textures, colors or customized formulas,<br>
+            please feel free to contact us. We can accurately match the most suitable<br>
+            leather materials for you with competitive prices and stable quality.<br><br>
+            皮革材料一直在不断更新换代，页面展示仅为部分款式。<br>
+            如需更多特殊纹路、颜色、定制材质，均可联系我们。<br>
             我们按需精准匹配，为您提供品质最优、价格最合适的皮革方案。
         </p>
     </div>
@@ -312,7 +356,6 @@ links.forEach(link=>{
         e.preventDefault();
         let cate = this.getAttribute("data-cate");
 
-        // 清除选中
         links.forEach(l=>l.classList.remove("active"));
         this.classList.add("active");
 
@@ -332,6 +375,43 @@ links.forEach(link=>{
         }
     }
 })
+
+// 轮播图 + 小圆点 + 4秒切换
+const slides = document.querySelectorAll(".slide");
+const dotsWrap = document.getElementById("dots");
+let current = 0;
+
+// 生成小圆点
+slides.forEach((_, i) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+    dotsWrap.appendChild(dot);
+});
+const dots = document.querySelectorAll(".dot");
+
+// 切换函数
+function showSlide(index) {
+    slides.forEach(s => s.classList.remove("active"));
+    dots.forEach(d => d.classList.remove("active"));
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+}
+
+// 自动轮播 4秒
+function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+}
+setInterval(nextSlide, 4000);
+
+// 点击小圆点切换
+dots.forEach((dot, i) => {
+    dot.onclick = () => {
+        current = i;
+        showSlide(i);
+    }
+});
 </script>
 
 </body>
