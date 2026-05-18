@@ -10,7 +10,6 @@
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
         a{text-decoration:none;}
 
-        /* 头部导航 */
         header{
             width:100%;
             background:#0c0c0c;
@@ -47,7 +46,6 @@
         nav a:hover span,
         nav a.active span{color:#c4a878;}
 
-        /* 顶部轮播 */
         .hero {
             width: 100%;
             height: 70vh;
@@ -94,7 +92,6 @@
         }
         .dot.active{background:#fff;transform:scale(1.1);}
 
-        /* 通用内容区块 */
         .content-box{display:none;padding:80px 5%;background:#fff;}
         .content-box.show{display:block;}
         .title{text-align:center;margin-bottom:50px;}
@@ -118,7 +115,6 @@
         .product-info h4{font-size:16px;margin-bottom:4px;}
         .product-info p{font-size:13px;color:#888;}
 
-        /* 详情页通用样式 */
         .detail-box{
             max-width:1200px;
             margin:60px auto;
@@ -164,7 +160,6 @@
             background:#95663c;
         }
 
-        /* 联系我们样式 */
         .contact-inner{max-width:900px;margin:0 auto;}
         .contact-inner h2{
             font-size:32px;
@@ -187,7 +182,6 @@
         .contact-item a{color:#222;}
         .contact-item a:hover{color:#b07a47;}
 
-        /* 悬浮WhatsApp按钮 */
         .wa-float{
             position:fixed;
             bottom:30px;right:30px;
@@ -268,7 +262,6 @@
     </div>
 </header>
 
-<!-- 顶部轮播 -->
 <section class="hero" id="hero">
     <div class="slide active" style="background-image:url('images/main-banner1.jpg')"></div>
     <div class="slide" style="background-image:url('images/main-banner2.jpg.jpg')"></div>
@@ -280,63 +273,63 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 首页产品列表 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
         <p>High-quality materials for global footwear & furniture manufacturers</p>
     </div>
     <div class="product-grid">
-        <div class="product-card pro-item" onclick="openPage('zhenpi')">
+        <!-- 所有卡片统一用 onclick="openPage('xxx')" -->
+        <div class="product-card" onclick="openPage('zhenpi')">
             <img src="images/zhenpi.png" alt="真皮">
             <div class="product-info">
                 <h4>Genuine Leather 真皮</h4>
                 <p>天然原生态真皮</p>
             </div>
         </div>
-        <div class="product-card pro-item" onclick="openPage('shuixin')">
+        <div class="product-card" onclick="openPage('shuixin')">
             <img src="images/shuixin.png" alt="水性PU">
             <div class="product-info">
                 <h4>Water-Based PU Leather 水性PU</h4>
                 <p>无溶剂环保水性聚氨酯革</p>
             </div>
         </div>
-        <div class="product-card pro-item" onclick="openPage('huanbao')">
+        <div class="product-card" onclick="openPage('huanbao')">
             <img src="images/huanbao.png" alt="环保PU">
             <div class="product-info">
                 <h4>Eco-Friendly PU Leather 环保PU</h4>
                 <p>低碳合规环保合成PU革</p>
             </div>
         </div>
-        <div class="product-card pro-item" onclick="openPage('putongpu')">
+        <div class="product-card" onclick="openPage('putongpu')">
             <img src="images/main-banner5.jpg.jpg" alt="普通PU">
             <div class="product-info">
                 <h4>Standard PU Leather 普通PU</h4>
                 <p>常规聚氨酯基础合成革</p>
             </div>
         </div>
-        <div class="product-card pro-item" onclick="openPage('pvc')">
+        <div class="product-card" onclick="openPage('pvc')">
             <img src="images/pvc.png" alt="PVC革">
             <div class="product-info">
                 <h4>Cost-Effective PVC Leather PVC革</h4>
                 <p>经济型聚氯乙烯合成革</p>
             </div>
         </div>
-        <div class="product-card pro-item" onclick="openPage('shengwu')">
+        <div class="product-card" onclick="openPage('shengwu')">
             <img src="images/shengwu.png" alt="生物基皮革">
             <div class="product-info">
                 <h4>Bio-Based Leather 生物基皮革</h4>
                 <p>植物萃取可持续生态皮革</p>
             </div>
         </div>
-        <div class="product-card pro-item" onclick="openPage('chaoqian')">
+        <div class="product-card" onclick="openPage('chaoqian')">
             <img src="images/chaoqian.png" alt="超纤皮革">
             <div class="product-info">
                 <h4>Microfiber Leather 超纤皮革</h4>
                 <p>高性能超细纤维仿真皮革</p>
             </div>
         </div>
-        <div class="product-card pro-item" onclick="openPage('teshu')">
+        <div class="product-card" onclick="openPage('teshu')">
             <img src="images/teshu.png" alt="特殊皮革">
             <div class="product-info">
                 <h4>Special Leather 特殊皮革</h4>
@@ -346,7 +339,7 @@
     </div>
 </div>
 
-<!-- 1.真皮详情 -->
+<!-- 1.真皮 -->
 <div class="content-box" id="zhenpiBox">
     <div class="detail-box">
         <div class="title">
@@ -370,7 +363,7 @@
     </div>
 </div>
 
-<!-- 2.水性PU详情 -->
+<!-- 2.水性PU -->
 <div class="content-box" id="shuixinBox">
     <div class="detail-box">
         <div class="title">
@@ -394,7 +387,7 @@
     </div>
 </div>
 
-<!-- 3.环保PU详情 -->
+<!-- 3.环保PU -->
 <div class="content-box" id="huanbaoBox">
     <div class="detail-box">
         <div class="title">
@@ -418,7 +411,7 @@
     </div>
 </div>
 
-<!-- 4.普通PU详情 -->
+<!-- 4.普通PU -->
 <div class="content-box" id="putongpuBox">
     <div class="detail-box">
         <div class="title">
@@ -442,7 +435,7 @@
     </div>
 </div>
 
-<!-- 5.PVC革详情 -->
+<!-- 5.PVC革 -->
 <div class="content-box" id="pvcBox">
     <div class="detail-box">
         <div class="title">
@@ -466,7 +459,7 @@
     </div>
 </div>
 
-<!-- 6.生物基皮革详情 -->
+<!-- 6.生物基皮革 -->
 <div class="content-box" id="shengwuBox">
     <div class="detail-box">
         <div class="title">
@@ -490,7 +483,7 @@
     </div>
 </div>
 
-<!-- 7.超纤皮革详情 -->
+<!-- 7.超纤皮革 -->
 <div class="content-box" id="chaoqianBox">
     <div class="detail-box">
         <div class="title">
@@ -514,7 +507,7 @@
     </div>
 </div>
 
-<!-- 8.特殊皮革详情 -->
+<!-- 8.特殊皮革 -->
 <div class="content-box" id="teshuBox">
     <div class="detail-box">
         <div class="title">
@@ -538,7 +531,7 @@
     </div>
 </div>
 
-<!-- 更多页面 -->
+<!-- 更多 -->
 <div class="content-box" id="moreBox">
     <div style="max-width:900px;margin:0 auto;text-align:center;">
         <h3 style="font-size:28px;margin-bottom:25px;">More Leather Options / 更多皮革款式</h3>
@@ -573,7 +566,6 @@
     </div>
 </div>
 
-<!-- WhatsApp悬浮按钮 -->
 <a href="https://wa.me/923151299388" target="_blank" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -598,7 +590,7 @@ const contactBox = document.getElementById('contactBox');
 const hero = document.getElementById('hero');
 const navs = document.querySelectorAll('.nav-link');
 
-// 隐藏全部内容
+// 隐藏全部
 function hideAll(){
     homeBox.classList.remove('show');
     zhenpiBox.classList.remove('show');
@@ -623,7 +615,7 @@ function backHome(){
     window.scrollTo(0,0);
 }
 
-// 打开对应详情页
+// 打开详情页（统一入口）
 function openPage(name){
     hideAll();
     hero.classList.remove('hidden');
