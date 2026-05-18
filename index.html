@@ -33,7 +33,7 @@
             font-weight:600;
         }
         nav a{
-            margin:0 10px;
+            margin:0 8px;
             letter-spacing:0.5px;
             transition:0.3s;
             display:inline-flex;
@@ -200,6 +200,11 @@
                 <span>Microfiber Leather</span>
                 <span>超纤皮革</span>
             </a>
+            <!-- 新增：特殊皮革导航 -->
+            <a href="javascript:;" class="nav-link" data-tag="special">
+                <span>Special Leather</span>
+                <span>特殊皮革</span>
+            </a>
             <a href="javascript:;" class="nav-link" data-type="more">
                 <span>More</span>
                 <span>更多</span>
@@ -224,7 +229,7 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 产品主页：已按你给的信息全部修改 -->
+<!-- 产品主页 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -278,6 +283,14 @@
             <div class="product-info">
                 <h4>Microfiber Leather 超纤皮革</h4>
                 <p>高性能超细纤维仿真皮革</p>
+            </div>
+        </div>
+        <!-- 预留：特殊皮革产品位置，后续你可以自己加图和文案 -->
+        <div class="product-card pro-item" data-tag="special">
+            <img src="images/main-banner7.jpg.png">
+            <div class="product-info">
+                <h4>Special Leather 特殊皮革</h4>
+                <p>定制纹路特种工艺皮革</p>
             </div>
         </div>
     </div>
@@ -341,21 +354,16 @@ navs.forEach(nav=>{
         e.preventDefault();
         let type = this.dataset.type;
         let tag = this.dataset.tag;
-        // 清空选中
         navs.forEach(n=>n.classList.remove('active'));
         this.classList.add('active');
-        // 隐藏所有区块
         homeBox.classList.remove('show');
         moreBox.classList.remove('show');
         contactBox.classList.remove('show');
 
-        // 控制轮播显示/隐藏
         if (type === 'contact') {
-            // 联系我们：隐藏轮播
             hero.classList.add('hidden');
             contactBox.classList.add('show');
         } else {
-            // 其他菜单：显示轮播
             hero.classList.remove('hidden');
             if(type === 'home'){
                 homeBox.classList.add('show');
