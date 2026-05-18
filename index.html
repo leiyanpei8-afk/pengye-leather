@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PENGYE LEATHER | Premium Leather Materials Supplier</title>
-    <!-- 修复Font Awesome版本，避免拦截问题 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@6.4.0/css/all.min.css">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
@@ -34,7 +33,7 @@
             font-weight:600;
         }
         nav a{
-            margin:0 14px;
+            margin:0 10px;
             letter-spacing:0.5px;
             transition:0.3s;
             display:inline-flex;
@@ -43,8 +42,8 @@
             line-height:1.3;
         }
         nav a span{color:#fff;}
-        nav a span:first-child{font-size:14px;}
-        nav a span:last-child{font-size:12px;margin-top:2px;}
+        nav a span:first-child{font-size:13px;}
+        nav a span:last-child{font-size:11px;margin-top:2px;}
         nav a:hover span,
         nav a.active span{color:#c4a878;}
 
@@ -173,27 +172,31 @@
                 <span>Home</span>
                 <span>首页</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-type="genuine">
+            <a href="javascript:;" class="nav-link" data-tag="genuine">
                 <span>Genuine Leather</span>
                 <span>真皮</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-type="waterpu">
-                <span>Water-based PU</span>
+            <a href="javascript:;" class="nav-link" data-tag="waterpu">
+                <span>Water-Based PU</span>
                 <span>水性PU</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-type="ecopu">
-                <span>Eco-friendly PU</span>
+            <a href="javascript:;" class="nav-link" data-tag="ecopu">
+                <span>Eco-Friendly PU</span>
                 <span>环保PU</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-type="pvc">
+            <a href="javascript:;" class="nav-link" data-tag="standardpu">
+                <span>Standard PU</span>
+                <span>普通PU</span>
+            </a>
+            <a href="javascript:;" class="nav-link" data-tag="pvc">
                 <span>PVC Leather</span>
                 <span>PVC革</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-type="bio">
-                <span>Bio-based Leather</span>
+            <a href="javascript:;" class="nav-link" data-tag="bio">
+                <span>Bio-Based Leather</span>
                 <span>生物基皮革</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-type="micro">
+            <a href="javascript:;" class="nav-link" data-tag="micro">
                 <span>Microfiber Leather</span>
                 <span>超纤皮革</span>
             </a>
@@ -209,7 +212,7 @@
     </div>
 </header>
 
-<!-- 轮播图：完全匹配仓库文件名 -->
+<!-- 轮播图 -->
 <section class="hero" id="hero">
     <div class="slide active" style="background-image:url('images/main-banner1.jpg')"></div>
     <div class="slide" style="background-image:url('images/main-banner2.jpg.jpg')"></div>
@@ -221,7 +224,7 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 产品主页：完全匹配仓库文件名 -->
+<!-- 产品主页：已按你给的信息全部修改 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -229,45 +232,52 @@
     </div>
     <div class="product-grid">
         <div class="product-card pro-item" data-tag="genuine">
-            <img src="images/main-banner4.jpg.jpg" alt="Genuine Leather">
+            <img src="images/main-banner4.jpg.jpg">
             <div class="product-info">
                 <h4>Genuine Leather 真皮</h4>
-                <p>Natural top-grain raw leather</p>
+                <p>天然原生态真皮</p>
             </div>
         </div>
         <div class="product-card pro-item" data-tag="waterpu">
-            <img src="images/main-banner5.jpg.jpg" alt="Water-based PU">
+            <img src="images/main-banner5.jpg.jpg">
             <div class="product-info">
-                <h4>Water-based PU 水性PU</h4>
-                <p>Eco-friendly solvent-free material</p>
+                <h4>Water-Based PU Leather 水性PU</h4>
+                <p>无溶剂环保水性聚氨酯革</p>
             </div>
         </div>
         <div class="product-card pro-item" data-tag="ecopu">
-            <img src="images/main-banner6.jpg.png" alt="Eco-friendly PU">
+            <img src="images/main-banner6.jpg.png">
             <div class="product-info">
-                <h4>Eco-friendly PU 环保PU</h4>
-                <p>Low-carbon & harmless synthetic leather</p>
+                <h4>Eco-Friendly PU Leather 环保PU</h4>
+                <p>低碳合规环保合成PU革</p>
+            </div>
+        </div>
+        <div class="product-card pro-item" data-tag="standardpu">
+            <img src="images/main-banner7.jpg.png">
+            <div class="product-info">
+                <h4>Standard PU Leather 普通PU</h4>
+                <p>常规聚氨酯基础合成革</p>
             </div>
         </div>
         <div class="product-card pro-item" data-tag="pvc">
-            <img src="images/main-banner7.jpg.png" alt="PVC Leather">
+            <img src="images/main-banner4.jpg.jpg">
             <div class="product-info">
-                <h4>PVC Leather PVC革</h4>
-                <p>Durable waterproof heavy-duty leather</p>
+                <h4>Cost-Effective PVC Leather PVC革</h4>
+                <p>经济型聚氯乙烯合成革</p>
             </div>
         </div>
         <div class="product-card pro-item" data-tag="bio">
-            <img src="images/main-banner4.jpg.jpg" alt="Bio-based Leather">
+            <img src="images/main-banner5.jpg.jpg">
             <div class="product-info">
-                <h4>Bio-based Leather 生物基皮革</h4>
-                <p>Sustainable plant-based materials</p>
+                <h4>Bio-Based Leather 生物基皮革</h4>
+                <p>植物萃取可持续生态皮革</p>
             </div>
         </div>
         <div class="product-card pro-item" data-tag="micro">
-            <img src="images/main-banner5.jpg.jpg" alt="Microfiber Leather">
+            <img src="images/main-banner6.jpg.png">
             <div class="product-info">
                 <h4>Microfiber Leather 超纤皮革</h4>
-                <p>High simulation premium microfiber</p>
+                <p>高性能超细纤维仿真皮革</p>
             </div>
         </div>
     </div>
@@ -330,26 +340,32 @@ navs.forEach(nav=>{
     nav.addEventListener('click',function(e){
         e.preventDefault();
         let type = this.dataset.type;
+        let tag = this.dataset.tag;
+        // 清空选中
         navs.forEach(n=>n.classList.remove('active'));
         this.classList.add('active');
+        // 隐藏所有区块
         homeBox.classList.remove('show');
         moreBox.classList.remove('show');
         contactBox.classList.remove('show');
 
+        // 控制轮播显示/隐藏
         if (type === 'contact') {
+            // 联系我们：隐藏轮播
             hero.classList.add('hidden');
             contactBox.classList.add('show');
         } else {
+            // 其他菜单：显示轮播
             hero.classList.remove('hidden');
             if(type === 'home'){
                 homeBox.classList.add('show');
                 proItems.forEach(p=>p.style.display='block');
             }else if(type === 'more'){
                 moreBox.classList.add('show');
-            }else{
+            }else if(tag){
                 homeBox.classList.add('show');
                 proItems.forEach(p=>{
-                    p.style.display = p.dataset.tag === type ? 'block':'none';
+                    p.style.display = p.dataset.tag === tag ? 'block':'none';
                 })
             }
         }
