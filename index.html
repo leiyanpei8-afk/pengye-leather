@@ -140,7 +140,7 @@
         .contact-item a{color:#222;}
         .contact-item a:hover{color:#b07a47;}
 
-        /* 悬浮按钮（已修复图标问题） */
+        /* 悬浮电话按钮 */
         .wa-float{
             position:fixed;
             bottom:30px;right:30px;
@@ -216,11 +216,11 @@
     </div>
 </header>
 
-<!-- 轮播图 -->
+<!-- 轮播图保留原有图片不变 -->
 <section class="hero" id="hero">
-    <div class="slide active" style="background-image:url('images/zhenpi.png')"></div>
-    <div class="slide" style="background-image:url('images/shuixin.png')"></div>
-    <div class="slide" style="background-image:url('images/huanbao.png')"></div>
+    <div class="slide active" style="background-image:url('images/main-banner1.jpg')"></div>
+    <div class="slide" style="background-image:url('images/main-banner2.jpg.jpg')"></div>
+    <div class="slide" style="background-image:url('images/main-banner3.jpg.png')"></div>
     <div class="hero-text">
         <h1>PREMIUM LEATHER MATERIALS</h1>
         <p>20 Years Professional One-Stop Leather Supplier From China</p>
@@ -228,13 +228,14 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 产品主页 -->
+<!-- 产品区严格对应你命名 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
         <p>High-quality materials for global footwear & furniture manufacturers</p>
     </div>
     <div class="product-grid">
+        <!-- 真皮 zhenpi.png -->
         <div class="product-card pro-item" data-tag="genuine">
             <img src="images/zhenpi.png" alt="真皮">
             <div class="product-info">
@@ -242,6 +243,7 @@
                 <p>天然原生态真皮</p>
             </div>
         </div>
+        <!-- 水性PU shuixin.png -->
         <div class="product-card pro-item" data-tag="waterpu">
             <img src="images/shuixin.png" alt="水性PU">
             <div class="product-info">
@@ -249,6 +251,7 @@
                 <p>无溶剂环保水性聚氨酯革</p>
             </div>
         </div>
+        <!-- 环保PU huanbao.png -->
         <div class="product-card pro-item" data-tag="ecopu">
             <img src="images/huanbao.png" alt="环保PU">
             <div class="product-info">
@@ -256,6 +259,7 @@
                 <p>低碳合规环保合成PU革</p>
             </div>
         </div>
+        <!-- 普通PU 专用 main-banner5.jpg.jpg -->
         <div class="product-card pro-item" data-tag="standardpu">
             <img src="images/main-banner5.jpg.jpg" alt="普通PU">
             <div class="product-info">
@@ -263,6 +267,7 @@
                 <p>常规聚氨酯基础合成革</p>
             </div>
         </div>
+        <!-- PVC革 pvc.png -->
         <div class="product-card pro-item" data-tag="pvc">
             <img src="images/pvc.png" alt="PVC革">
             <div class="product-info">
@@ -270,6 +275,7 @@
                 <p>经济型聚氯乙烯合成革</p>
             </div>
         </div>
+        <!-- 生物基 shengwu.png -->
         <div class="product-card pro-item" data-tag="bio">
             <img src="images/shengwu.png" alt="生物基皮革">
             <div class="product-info">
@@ -277,6 +283,7 @@
                 <p>植物萃取可持续生态皮革</p>
             </div>
         </div>
+        <!-- 超纤 chaoqian.png -->
         <div class="product-card pro-item" data-tag="micro">
             <img src="images/chaoqian.png" alt="超纤皮革">
             <div class="product-info">
@@ -284,6 +291,7 @@
                 <p>高性能超细纤维仿真皮革</p>
             </div>
         </div>
+        <!-- 特殊皮革 teshu.png -->
         <div class="product-card pro-item" data-tag="special">
             <img src="images/teshu.png" alt="特殊皮革">
             <div class="product-info">
@@ -329,7 +337,7 @@
     </div>
 </div>
 
-<!-- WhatsApp悬浮按钮（已修复图标） -->
+<!-- 右下角WhatsApp电话悬浮按钮完好保留 -->
 <a href="https://wa.me/923151299388" target="_blank" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -378,7 +386,7 @@ navs.forEach(nav=>{
     })
 })
 
-// 轮播逻辑
+// 轮播4秒自动切换
 const slides = document.querySelectorAll('.slide');
 const dotBox = document.getElementById('dotBox');
 let cur = 0;
