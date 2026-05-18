@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PENGYE LEATHER | Premium Leather Materials Supplier</title>
-    <!-- 换用更稳定的CDN，确保图标正常加载 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 换用国内可访问的稳定CDN -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
@@ -141,20 +141,24 @@
         .contact-item a{color:#222;}
         .contact-item a:hover{color:#b07a47;}
 
-        /* 悬浮电话按钮（已修复） */
+        /* 悬浮电话按钮（修复版，图标稳定显示） */
         .wa-float{
             position:fixed;
             bottom:30px;right:30px;
             width:60px;height:60px;
             border-radius:50%;
-            background:#25d366;color:#fff;
-            font-size:28px;
+            background:#25d366;
+            color:#fff;
+            font-size:30px;
             text-align:center;
             line-height:60px;
             z-index:99999;
             transition:0.3s;
         }
-        .wa-float:hover{background:#128c7e;transform:scale(1.1);}
+        .wa-float:hover{
+            background:#128c7e;
+            transform:scale(1.1);
+        }
 
         footer{
             background:#0c0c0c;
@@ -339,7 +343,7 @@
     </div>
 </div>
 
-<!-- 修复后的 WhatsApp 悬浮按钮 -->
+<!-- WhatsApp悬浮按钮（修复后，用国内CDN，图标稳定显示） -->
 <a href="https://wa.me/923151299388" target="_blank" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
