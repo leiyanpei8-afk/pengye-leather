@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PENGYE LEATHER | Premium Leather Materials Supplier</title>
-    <!-- 换用国内可访问的稳定CDN -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
@@ -111,12 +110,59 @@
             background:#fff;border-radius:6px;
             overflow:hidden;box-shadow:0 2px 12px #0000000a;
             transition:0.3s;
+            cursor:pointer;
         }
         .product-card:hover{transform:translateY(-6px);}
         .product-card img{width:100%;height:240px;object-fit:cover;}
         .product-info{padding:18px;text-align:center;}
         .product-info h4{font-size:16px;margin-bottom:4px;}
         .product-info p{font-size:13px;color:#888;}
+
+        /* 真皮详情页样式 */
+        .detail-box{
+            max-width:1200px;
+            margin:60px auto;
+            padding:0 5%;
+        }
+        .detail-content{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+            align-items:center;
+            background:#fff;
+            padding:40px;
+            border-radius:8px;
+            box-shadow:0 2px 12px #0000000a;
+        }
+        .detail-img img{
+            width:100%;
+            border-radius:6px;
+        }
+        .detail-text h3{
+            font-size:24px;
+            color:#b07a47;
+            margin-bottom:20px;
+        }
+        .detail-text p{
+            color:#555;
+            margin-bottom:15px;
+        }
+        .detail-text ul{
+            margin-left:20px;
+            color:#555;
+        }
+        .back-btn{
+            display:inline-block;
+            margin-top:30px;
+            padding:10px 25px;
+            background:#b07a47;
+            color:#fff;
+            border-radius:4px;
+            transition:0.3s;
+        }
+        .back-btn:hover{
+            background:#95663c;
+        }
 
         /* 联系我们样式 */
         .contact-inner{max-width:900px;margin:0 auto;}
@@ -141,7 +187,7 @@
         .contact-item a{color:#222;}
         .contact-item a:hover{color:#b07a47;}
 
-        /* 悬浮电话按钮（修复版，图标稳定显示） */
+        /* 悬浮电话按钮 */
         .wa-float{
             position:fixed;
             bottom:30px;right:30px;
@@ -174,11 +220,11 @@
     <div class="header-wrap">
         <div class="logo">PENGYE LEATHER</div>
         <nav>
-            <a href="javascript:;" class="nav-link active" data-type="home">
+            <a href="javascript:;" class="nav-link active" data-page="home">
                 <span>Home</span>
                 <span>首页</span>
             </a>
-            <a href="javascript:;" class="nav-link" data-tag="genuine">
+            <a href="javascript:;" class="nav-link" data-page="zhenpi">
                 <span>Genuine Leather</span>
                 <span>真皮</span>
             </a>
@@ -234,22 +280,21 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 产品区 -->
+<!-- 首页产品列表 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
         <p>High-quality materials for global footwear & furniture manufacturers</p>
     </div>
     <div class="product-grid">
-        <!-- 真皮 zhenpi.png -->
-        <div class="product-card pro-item" data-tag="genuine">
+        <!-- 真皮卡片（点击跳转到详情页） -->
+        <div class="product-card pro-item" data-tag="genuine" onclick="showZhenpiDetail()">
             <img src="images/zhenpi.png" alt="真皮">
             <div class="product-info">
                 <h4>Genuine Leather 真皮</h4>
                 <p>天然原生态真皮</p>
             </div>
         </div>
-        <!-- 水性PU shuixin.png -->
         <div class="product-card pro-item" data-tag="waterpu">
             <img src="images/shuixin.png" alt="水性PU">
             <div class="product-info">
@@ -257,7 +302,6 @@
                 <p>无溶剂环保水性聚氨酯革</p>
             </div>
         </div>
-        <!-- 环保PU huanbao.png -->
         <div class="product-card pro-item" data-tag="ecopu">
             <img src="images/huanbao.png" alt="环保PU">
             <div class="product-info">
@@ -265,7 +309,6 @@
                 <p>低碳合规环保合成PU革</p>
             </div>
         </div>
-        <!-- 普通PU 专用 main-banner5.jpg.jpg -->
         <div class="product-card pro-item" data-tag="standardpu">
             <img src="images/main-banner5.jpg.jpg" alt="普通PU">
             <div class="product-info">
@@ -273,7 +316,6 @@
                 <p>常规聚氨酯基础合成革</p>
             </div>
         </div>
-        <!-- PVC革 pvc.png -->
         <div class="product-card pro-item" data-tag="pvc">
             <img src="images/pvc.png" alt="PVC革">
             <div class="product-info">
@@ -281,7 +323,6 @@
                 <p>经济型聚氯乙烯合成革</p>
             </div>
         </div>
-        <!-- 生物基 shengwu.png -->
         <div class="product-card pro-item" data-tag="bio">
             <img src="images/shengwu.png" alt="生物基皮革">
             <div class="product-info">
@@ -289,7 +330,6 @@
                 <p>植物萃取可持续生态皮革</p>
             </div>
         </div>
-        <!-- 超纤 chaoqian.png -->
         <div class="product-card pro-item" data-tag="micro">
             <img src="images/chaoqian.png" alt="超纤皮革">
             <div class="product-info">
@@ -297,12 +337,37 @@
                 <p>高性能超细纤维仿真皮革</p>
             </div>
         </div>
-        <!-- 特殊皮革 teshu.png -->
         <div class="product-card pro-item" data-tag="special">
             <img src="images/teshu.png" alt="特殊皮革">
             <div class="product-info">
                 <h4>Special Leather 特殊皮革</h4>
                 <p>定制纹路特种工艺皮革</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 真皮详情页（隐藏状态，点击后显示） -->
+<div class="content-box" id="zhenpiBox">
+    <div class="detail-box">
+        <div class="title">
+            <h2>Genuine Leather / 真皮详情</h2>
+            <p>Natural and high-quality leather materials for premium products</p>
+        </div>
+        <div class="detail-content">
+            <div class="detail-img">
+                <img src="images/zhenpi.png" alt="真皮">
+            </div>
+            <div class="detail-text">
+                <h3>天然原生态真皮</h3>
+                <p>我们的真皮原料均采用优质头层牛皮，经过严格的鞣制和处理工艺，保留了皮革天然的纹理、透气性和韧性。</p>
+                <ul>
+                    <li>优质头层牛皮，手感柔软细腻</li>
+                    <li>天然透气，耐磨耐刮，使用寿命长</li>
+                    <li>环保鞣制工艺，符合国际环保标准</li>
+                    <li>可定制多种颜色、厚度和表面处理效果</li>
+                </ul>
+                <a href="javascript:;" class="back-btn" onclick="showHome()">← 返回首页</a>
             </div>
         </div>
     </div>
@@ -343,7 +408,7 @@
     </div>
 </div>
 
-<!-- WhatsApp悬浮按钮（修复后，用国内CDN，图标稳定显示） -->
+<!-- WhatsApp悬浮按钮 -->
 <a href="https://wa.me/923151299388" target="_blank" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -356,28 +421,57 @@
 // 页面区块切换
 const navs = document.querySelectorAll('.nav-link');
 const homeBox = document.getElementById('homeBox');
+const zhenpiBox = document.getElementById('zhenpiBox');
 const moreBox = document.getElementById('moreBox');
 const contactBox = document.getElementById('contactBox');
 const proItems = document.querySelectorAll('.pro-item');
 const hero = document.getElementById('hero');
 
+// 显示真皮详情页
+function showZhenpiDetail(){
+    navs.forEach(n=>n.classList.remove('active'));
+    document.querySelector('[data-page="zhenpi"]').classList.add('active');
+    homeBox.classList.remove('show');
+    moreBox.classList.remove('show');
+    contactBox.classList.remove('show');
+    hero.classList.remove('hidden');
+    zhenpiBox.classList.add('show');
+    window.scrollTo(0,0);
+}
+
+// 显示首页
+function showHome(){
+    navs.forEach(n=>n.classList.remove('active'));
+    document.querySelector('[data-page="home"]').classList.add('active');
+    zhenpiBox.classList.remove('show');
+    moreBox.classList.remove('show');
+    contactBox.classList.remove('show');
+    hero.classList.remove('hidden');
+    homeBox.classList.add('show');
+    window.scrollTo(0,0);
+}
+
 navs.forEach(nav=>{
     nav.addEventListener('click',function(e){
         e.preventDefault();
+        let page = this.dataset.page;
         let type = this.dataset.type;
         let tag = this.dataset.tag;
         navs.forEach(n=>n.classList.remove('active'));
         this.classList.add('active');
         homeBox.classList.remove('show');
+        zhenpiBox.classList.remove('show');
         moreBox.classList.remove('show');
         contactBox.classList.remove('show');
 
-        if (type === 'contact') {
+        if (page === 'zhenpi') {
+            showZhenpiDetail();
+        } else if (type === 'contact') {
             hero.classList.add('hidden');
             contactBox.classList.add('show');
         } else {
             hero.classList.remove('hidden');
-            if(type === 'home'){
+            if(page === 'home'){
                 homeBox.classList.add('show');
                 proItems.forEach(p=>p.style.display='block');
             }else if(type === 'more'){
