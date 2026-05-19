@@ -6,11 +6,20 @@
     <title>PENGYE LEATHER | Premium Leather Materials Supplier</title>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
-        a{text-decoration:none;}
-
-        /* 头部导航 */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            font-family:'Montserrat',Arial,sans-serif;
+            background:#f6f6f6;
+            color:#222;
+            line-height:1.8;
+        }
+        a{
+            text-decoration:none;
+        }
         header{
             width:100%;
             background:#0c0c0c;
@@ -41,81 +50,128 @@
             align-items:center;
             line-height:1.3;
         }
-        nav a span{color:#fff;}
-        nav a span:first-child{font-size:13px;}
-        nav a span:last-child{font-size:11px;margin-top:2px;}
-        nav a:hover span,
-        nav a.active span{color:#c4a878;}
-
-        /* 轮播 */
-        .hero {
-            width: 100%;
-            height: 70vh;
-            position: relative;
-            overflow: hidden;
+        nav a span{
+            color:#fff;
         }
-        .hero.hidden {
-            display: none;
+        nav a span:first-child{
+            font-size:13px;
+        }
+        nav a span:last-child{
+            font-size:11px;
+            margin-top:2px;
+        }
+        nav a:hover span,
+        nav a.active span{
+            color:#c4a878;
+        }
+        .hero{
+            width:100%;
+            height:70vh;
+            position:relative;
+            overflow:hidden;
         }
         .slide{
-            width:100%;height:100%;
+            width:100%;
+            height:100%;
             position:absolute;
             background-size:cover;
             background-position:center;
             opacity:0;
             transition:opacity 1s;
         }
-        .slide.active{opacity:1;}
+        .slide.active{
+            opacity:1;
+        }
         .hero-text{
             position:absolute;
-            top:50%;left:50%;
+            top:50%;
+            left:50%;
             transform:translate(-50%,-50%);
             color:#fff;
             text-align:center;
             z-index:2;
         }
-        .hero-text h1{font-size:52px;letter-spacing:4px;margin-bottom:12px;}
-        .hero-text p{color:#ddd;}
+        .hero-text h1{
+            font-size:52px;
+            letter-spacing:4px;
+            margin-bottom:12px;
+        }
+        .hero-text p{
+            color:#ddd;
+        }
         .dots{
             position:absolute;
-            bottom:40px;left:50%;
+            bottom:40px;
+            left:50%;
             transform:translateX(-50%);
-            display:flex;gap:10px;z-index:3;
+            display:flex;
+            gap:10px;
+            z-index:3;
         }
         .dot{
-            width:10px;height:10px;
+            width:10px;
+            height:10px;
             border-radius:50%;
             background:rgba(255,255,255,0.35);
             cursor:pointer;
         }
-        .dot.active{background:#fff;transform:scale(1.1);}
-
-        /* 通用内容区块 */
-        .content-box{display:none;padding:80px 5%;background:#fff;}
-        .content-box.show{display:block;}
-        .title{text-align:center;margin-bottom:50px;}
-        .title h2{font-size:32px;color:#111;}
-        .title p{color:#777;margin-top:8px;}
-
-        /* 首页产品卡片网格 */
+        .dot.active{
+            background:#fff;
+            transform:scale(1.1);
+        }
+        .content-box{
+            display:none;
+            padding:80px 5%;
+            background:#fff;
+        }
+        .content-box.show{
+            display:block;
+        }
+        .title{
+            text-align:center;
+            margin-bottom:50px;
+        }
+        .title h2{
+            font-size:32px;
+            color:#111;
+        }
+        .title p{
+            color:#777;
+            margin-top:8px;
+        }
         .product-grid{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
             gap:30px;
         }
         .product-card{
-            background:#fff;border-radius:6px;
-            overflow:hidden;box-shadow:0 2px 12px #0000000a;
+            background:#fff;
+            border-radius:6px;
+            overflow:hidden;
+            box-shadow:0 2px 12px #0000000a;
             transition:0.3s;
             cursor:pointer;
         }
-        .product-card:hover{transform:translateY(-6px);}
-        .product-card img{width:100%;height:240px;object-fit:cover;}
-        .product-info{padding:18px;text-align:center;}
-        .product-info h4{font-size:16px;margin-bottom:4px;}
-        .product-info p{font-size:13px;color:#888;}
-
-        /* 详情页：全屏大图卡片布局 */
+        .product-card:hover{
+            transform:translateY(-6px);
+        }
+        .product-card img{
+            width:100%;
+            height:240px;
+            object-fit:cover;
+        }
+        .product-info{
+            padding:18px;
+            text-align:center;
+        }
+        .product-info h4{
+            font-size:16px;
+            margin-bottom:4px;
+        }
+        .product-info p{
+            font-size:13px;
+            color:#888;
+        }
         .detail-box{
             max-width:1200px;
             margin:0 auto;
@@ -128,7 +184,6 @@
             overflow:hidden;
             margin-bottom:40px;
         }
-        /* 主图放大镜容器 */
         .zoom-container{
             position:relative;
             width:100%;
@@ -166,7 +221,6 @@
             background-size:250% 250%;
             background-repeat:no-repeat;
         }
-        /* 左右切换箭头 */
         .zoom-arrow{
             position:absolute;
             top:50%;
@@ -182,10 +236,9 @@
             z-index:5;
             transition:0.2s;
         }
-        .zoom-arrow:hover{background:rgba(0,0,0,0.7);}
-        .zoom-arrow-left{left:20px;}
-        .zoom-arrow-right{right:20px;}
-        /* 缩略图列表 */
+        .zoom-arrow:hover{
+            background:rgba(0,0,0,0.7);
+        }
         .thumbnails{
             display:flex;
             gap:12px;
@@ -204,11 +257,11 @@
             transition:0.2s;
             flex-shrink:0;
         }
-        .thumb-item.active, .thumb-item:hover{
+        .thumb-item.active,
+        .thumb-item:hover{
             border-color:#b07a47;
             opacity:1;
         }
-        /* 详情文字 */
         .detail-text{
             padding:30px;
         }
@@ -221,8 +274,6 @@
             color:#555;
             margin-bottom:15px;
         }
-        .split-tip{margin-top:25px;padding-top:20px;border-top:1px solid #eee;color:#444;}
-        .en-tip{color:#666;font-size:14px;}
         .back-btn{
             display:inline-block;
             margin-top:30px;
@@ -232,10 +283,13 @@
             border-radius:4px;
             transition:0.3s;
         }
-        .back-btn:hover{background:#95663c;}
-
-        /* 联系我们 */
-        .contact-inner{max-width:900px;margin:0 auto;}
+        .back-btn:hover{
+            background:#95663c;
+        }
+        .contact-inner{
+            max-width:900px;
+            margin:0 auto;
+        }
         .contact-inner h2{
             font-size:32px;
             color:#b07a47;
@@ -254,28 +308,9 @@
             margin-right:20px;
             text-align:center;
         }
-        .contact-item a{color:#222;}
-        .contact-item a:hover{color:#b07a47;}
-
-        /* 悬浮按钮 */
-        .wa-float{
-            position:fixed;
-            bottom:30px;right:30px;
-            width:60px;height:60px;
-            border-radius:50%;
-            background:#25d366;
-            color:#fff;
-            font-size:30px;
-            text-align:center;
-            line-height:60px;
-            z-index:99999;
-            transition:0.3s;
+        .contact-item a{
+            color:#222;
         }
-        .wa-float:hover{
-            background:#128c7e;
-            transform:scale(1.1);
-        }
-
         footer{
             background:#0c0c0c;
             color:#999;
@@ -286,75 +321,61 @@
     </style>
 </head>
 <body>
+
 <header>
     <div class="header-wrap">
         <div class="logo">PENGYE LEATHER</div>
         <nav>
             <a href="javascript:;" class="nav-link active" data-page="home">
-                <span>Home</span>
-                <span>首页</span>
+                <span>Home</span><span>首页</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="zhenpi">
-                <span>Genuine Leather</span>
-                <span>真皮</span>
+                <span>Genuine Leather</span><span>真皮</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="shuixin">
-                <span>Water-Based PU</span>
-                <span>水性PU</span>
+                <span>Water-Based PU</span><span>水性PU</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="huanbao">
-                <span>Eco-Friendly PU</span>
-                <span>环保PU</span>
+                <span>Eco-Friendly PU</span><span>环保PU</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="putongpu">
-                <span>Standard PU</span>
-                <span>标准PU</span>
+                <span>Standard PU</span><span>标准PU</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="pvc">
-                <span>PVC Leather</span>
-                <span>PVC革</span>
+                <span>PVC Leather</span><span>PVC革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="shengwu">
-                <span>Bio-Based Leather</span>
-                <span>生物基皮革</span>
+                <span>Bio-Based Leather</span><span>生物基皮革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="chaoqian">
-                <span>Microfiber Leather</span>
-                <span>超纤皮革</span>
+                <span>Microfiber Leather</span><span>超纤皮革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="teshu">
-                <span>Special Leather</span>
-                <span>特殊皮革</span>
+                <span>Special Leather</span><span>特殊皮革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="recycled">
-                <span>Recycled Eco Leather</span>
-                <span>回收再生皮革</span>
-            </a>
-            <a href="javascript:;" class="nav-link" data-type="more">
-                <span>More</span>
-                <span>更多</span>
+                <span>Recycled Eco Leather</span><span>回收再生皮革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-type="contact">
-                <span>Contact Us</span>
-                <span>联系我们</span>
+                <span>Contact Us</span><span>联系我们</span>
             </a>
         </nav>
     </div>
 </header>
 
-<!-- 轮播图 路径 images/ -->
+<!-- 轮播图：全部使用 images/ 路径 -->
 <section class="hero" id="hero">
     <div class="slide active" style="background-image:url('images/main-banner1.jpg')"></div>
     <div class="slide" style="background-image:url('images/main-banner2.jpg')"></div>
     <div class="slide" style="background-image:url('images/main-banner3.jpg')"></div>
     <div class="hero-text">
         <h1>PREMIUM LEATHER MATERIALS</h1>
-        <p>20 Years Professional One-Stop Leather Supplier From China</p>
+        <p>20 Years Professional One-Stop Leather Supplier</p>
     </div>
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 首页卡片 全部 images/ -->
+<!-- 首页产品卡片：全部使用 images/ 路径 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -364,335 +385,202 @@
         <div class="product-card" onclick="openPage('zhenpi')">
             <img src="images/zhenpi.png" alt="真皮">
             <div class="product-info">
-                <h4>Genuine Leather 真皮</h4>
+                <h4>Genuine Leather</h4>
                 <p>天然原生态真皮</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('shuixin')">
             <img src="images/shuixin.png" alt="水性PU">
             <div class="product-info">
-                <h4>Water-Based PU Leather 水性PU</h4>
+                <h4>Water-Based PU Leather</h4>
                 <p>无溶剂环保水性聚氨酯革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('huanbao')">
             <img src="images/huanbaopu.png" alt="环保PU">
             <div class="product-info">
-                <h4>Eco-Friendly PU Leather 环保PU</h4>
+                <h4>Eco-Friendly PU Leather</h4>
                 <p>低碳合规环保合成PU革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('putongpu')">
             <img src="images/main-banner5.jpg" alt="标准PU">
             <div class="product-info">
-                <h4>Standard PU Leather 标准PU</h4>
+                <h4>Standard PU Leather</h4>
                 <p>常规聚氨酯基础合成革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('pvc')">
             <img src="images/pvc.png" alt="PVC革">
             <div class="product-info">
-                <h4>PVC Leather PVC革</h4>
+                <h4>PVC Leather</h4>
                 <p>经济型聚氯乙烯合成革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('shengwu')">
             <img src="images/shengwu.png" alt="生物基皮革">
             <div class="product-info">
-                <h4>Bio-Based Leather 生物基皮革</h4>
+                <h4>Bio-Based Leather</h4>
                 <p>植物萃取可持续生态皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('chaoqian')">
             <img src="images/chaoqian.png" alt="超纤皮革">
             <div class="product-info">
-                <h4>Microfiber Leather 超纤皮革</h4>
+                <h4>Microfiber Leather</h4>
                 <p>高性能超细纤维仿真皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('teshu')">
             <img src="images/teshu.png" alt="特殊皮革">
             <div class="product-info">
-                <h4>Special Leather 特殊皮革</h4>
+                <h4>Special Leather</h4>
                 <p>定制纹路特种工艺皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('recycled')">
-            <img src="images/main-banner6.jpg" alt="PET瓶回收再生皮革">
+            <img src="images/main-banner6.jpg" alt="再生皮革">
             <div class="product-info">
-                <h4>Recycled PET Bottle Leather PET瓶回收再生皮革</h4>
+                <h4>Recycled PET Bottle Leather</h4>
                 <p>塑料瓶再生环保循环皮革</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- 环保PU 详情 -->
-<div class="content-box" id="huanbaoBox">
-    <div class="detail-box">
-        <div class="title">
-            <h2>Eco-Friendly PU Leather / 环保PU皮革</h2>
-        </div>
-        <div class="detail-main-card">
-            <div class="zoom-container" id="zoomHuanbao">
-                <img src="" class="zoom-main-img" id="imgHuanbao" alt="环保PU皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('huanbao',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('huanbao',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbHuanbao"></div>
-            <div class="detail-text">
-                <h3>环保 PU 皮革 Eco-Friendly PU Leather</h3>
-                <p>环保 PU 皮革是符合低碳合规标准的合成 PU 革，采用环保型树脂与助剂生产，碳足迹显著低于常规 PU。其生产过程严格管控有害物质排放，满足欧盟 REACH 等国际环保法规要求，可用于对环保指标要求较高的鞋类与家具产品。原料以改性聚氨酯树脂为主，搭配环保型助剂，具备稳定的物理性能与耐候性。鉴别可通过查看环保检测报告、燃烧无刺激性气味、表面无有害涂层析出等方式实现。日常养护同常规 PU，避免强酸强碱清洁剂。</p>
-                <p class="en-tip">English：Eco-friendly PU leather is a low-carbon compliant synthetic PU leather, produced with eco-friendly resins and additives, resulting in a significantly lower carbon footprint than standard PU. Its manufacturing strictly controls harmful substance emissions, meeting international environmental regulations like EU REACH, making it suitable for footwear and furniture with high environmental requirements. Made from modified polyurethane resin with eco-friendly additives, it offers stable physical properties and weather resistance. It can be verified via environmental test reports, lack of irritating odors when burned, and no harmful coating leaching. Daily care is similar to standard PU; avoid strong acid/alkaline cleaners.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 真皮 -->
+<!-- 详情页模块 -->
 <div class="content-box" id="zhenpiBox">
     <div class="detail-box">
-        <div class="title">
-            <h2>Genuine Leather / 真皮详情</h2>
-        </div>
+        <div class="title"><h2>Genuine Leather / 真皮</h2></div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomZhenpi">
-                <img src="" class="zoom-main-img" id="imgZhenpi" alt="真皮">
+                <img src="" class="zoom-main-img">
                 <div class="zoom-lens"></div>
                 <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('zhenpi',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('zhenpi',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="thumbnails" id="thumbZhenpi"></div>
-            <div class="detail-text">
-                <h3>真皮 Genuine Leather</h3>
-                <p>真皮是动物表皮经加工制成的天然皮革，区别于人造合成材料。根据轻工行业标准，面层材料90%以上使用头层皮革方可标注 “真皮”。其原料主要来源于牛皮、羊皮、猪皮，鉴别可通过观察天然毛孔纹理、触摸柔软弹性、嗅闻动物皮毛气味等方法实现。日常养护需避免高温与化学试剂，保持通风防潮。</p>
-                <p class="en-tip">English：Genuine leather is natural leather made from processed animal hides, distinct from man-made synthetic materials. Per light industry standards, only leather with ≥90% top-grain leather in the surface layer may be labeled "genuine leather". Raw materials mainly come from cowhide, sheepskin, and pigskin. It can be identified by observing natural pore patterns, touching for softness and elasticity, and smelling for the characteristic animal hide scent. Daily care requires avoiding high temperatures and harsh chemicals, and keeping it ventilated and moisture-proof.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- 水性PU -->
 <div class="content-box" id="shuixinBox">
     <div class="detail-box">
-        <div class="title">
-            <h2>Water-Based PU Leather / 水性PU皮革</h2>
-        </div>
+        <div class="title"><h2>Water-Based PU / 水性PU</h2></div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomShuixin">
-                <img src="" class="zoom-main-img" id="imgShuixin" alt="水性PU皮革">
+                <img src="" class="zoom-main-img">
                 <div class="zoom-lens"></div>
                 <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shuixin',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shuixin',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="thumbnails" id="thumbShuixin"></div>
-            <div class="detail-text">
-                <h3>水性 PU 皮革 Water-Based PU Leather</h3>
-                <p>水性 PU 皮革是以水为介质、无溶剂添加的环保型聚氨酯合成革，区别于传统溶剂型 PU。其生产过程低 VOC 排放，无有毒溶剂残留，对人体与环境友好。原料以水性聚氨酯树脂为基料，通过湿法成膜工艺制成，具备良好的耐刮性与透气性。鉴别可通过无刺激性气味、燃烧无刺鼻黑烟、手感温润不粘手等方式区分。日常养护可直接用湿布擦拭，避免长时间浸泡与暴晒。</p>
-                <p class="en-tip">English：Water-based PU leather is an eco-friendly polyurethane synthetic leather using water as the medium with no added solvents, different from traditional solvent-based PU. Its production process features low VOC emissions and no toxic solvent residues, making it safe for humans and the environment. Made from water-based polyurethane resin via wet film-forming technology, it offers good scratch resistance and breathability. It can be identified by its lack of irritating odors, no pungent black smoke when burned, and a smooth, non-sticky feel. Daily care allows direct wiping with a damp cloth; avoid prolonged soaking and direct sunlight.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- 标准PU -->
+<div class="content-box" id="huanbaoBox">
+    <div class="detail-box">
+        <div class="title"><h2>Eco-Friendly PU / 环保PU</h2></div>
+        <div class="detail-main-card">
+            <div class="zoom-container" id="zoomHuanbao">
+                <img src="" class="zoom-main-img">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
+            </div>
+            <div class="thumbnails" id="thumbHuanbao"></div>
+        </div>
+    </div>
+</div>
+
 <div class="content-box" id="putongpuBox">
     <div class="detail-box">
-        <div class="title">
-            <h2>Standard PU Leather / 标准PU皮革</h2>
-        </div>
+        <div class="title"><h2>Standard PU / 标准PU</h2></div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomPutongpu">
-                <img src="" class="zoom-main-img" id="imgPutongpu" alt="标准PU皮革">
+                <img src="" class="zoom-main-img">
                 <div class="zoom-lens"></div>
                 <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('putongpu',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('putongpu',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="thumbnails" id="thumbPutongpu"></div>
-            <div class="detail-text">
-                <h3>标准 PU 皮革 Standard PU Leather</h3>
-                <p>标准 PU 皮革是以常规聚氨酯树脂为基料的合成皮革，是目前应用最广泛的人造皮革品类之一。其原料由聚氨酯树脂、基布与助剂组成，通过干法或湿法工艺制成，具备稳定的耐磨性、耐曲折性与易加工性。成本适中，性能均衡，广泛应用于鞋类、箱包、家具等领域。鉴别可通过燃烧有轻微塑料气味、表面均匀无天然毛孔、手感偏挺括等方式区分。日常养护可使用中性清洁剂擦拭，远离尖锐物品防止刮伤。</p>
-                <p class="en-tip">English：Standard PU leather is a synthetic leather based on conventional polyurethane resin, one of the most widely used artificial leather types. Composed of polyurethane resin, base fabric, and additives, made via dry or wet processes, it offers stable wear resistance, flex resistance, and easy processability. With moderate cost and balanced performance, it is widely used in footwear, bags, furniture, and more. It can be identified by a slight plastic odor when burned, uniform surface without natural pores, and a relatively firm feel. Daily care can use neutral cleaners; keep away from sharp objects to prevent scratches.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- PVC -->
 <div class="content-box" id="pvcBox">
     <div class="detail-box">
-        <div class="title">
-            <h2>PVC Leather / PVC皮革</h2>
-        </div>
+        <div class="title"><h2>PVC Leather / PVC革</h2></div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomPvc">
-                <img src="" class="zoom-main-img" id="imgPvc" alt="PVC皮革">
+                <img src="" class="zoom-main-img">
                 <div class="zoom-lens"></div>
                 <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('pvc',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('pvc',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="thumbnails" id="thumbPvc"></div>
-            <div class="detail-text">
-                <h3>PVC 皮革 PVC Leather</h3>
-                <p>PVC 皮革是以聚氯乙烯树脂为主要原料的经济型合成皮革，具备优异的防水性与易打理特性。其原料由 PVC 树脂、增塑剂、稳定剂与基布组成，通过压延或涂覆工艺制成，成本低廉，性价比突出。表面光滑致密，防水防潮性能优异，常用于户外用品、家具与经济型鞋材。鉴别可通过燃烧产生刺鼻氯化氢气味、离火自熄、手感偏硬且有塑料感等方式区分。日常养护可直接水洗，避免高温环境防止软化变形。</p>
-                <p class="en-tip">English：PVC leather is a cost-effective synthetic leather mainly made of polyvinyl chloride resin, featuring excellent water resistance and easy maintenance. Composed of PVC resin, plasticizers, stabilizers, and base fabric, made via calendering or coating processes, it is low-cost and highly cost-effective. With a smooth, dense surface and excellent water/moisture resistance, it is often used in outdoor products, furniture, and budget-friendly footwear. It can be identified by the pungent hydrogen chloride odor when burned, self-extinguishing when removed from flame, and a relatively hard, plastic-like feel. Daily care allows direct washing; avoid high temperatures to prevent softening and deformation.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- 生物基 -->
 <div class="content-box" id="shengwuBox">
     <div class="detail-box">
-        <div class="title">
-            <h2>Bio-Based Leather / 生物基皮革</h2>
-        </div>
+        <div class="title"><h2>Bio-Based Leather / 生物基皮革</h2></div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomShengwu">
-                <img src="" class="zoom-main-img" id="imgShengwu" alt="生物基皮革">
+                <img src="" class="zoom-main-img">
                 <div class="zoom-lens"></div>
                 <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shengwu',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shengwu',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="thumbnails" id="thumbShengwu"></div>
-            <div class="detail-text">
-                <h3>生物基皮革 Bio-Based Leather</h3>
-                <p>生物基皮革是以植物萃取原料为基础的可持续生态皮革，区别于传统石油基合成革。其原料主要来源于植物纤维、淀粉基或生物基聚氨酯树脂，生产过程可降低对化石资源的依赖，减少碳排放。兼具环保属性与皮革般的质感，可生物降解或循环利用，是面向未来的可持续材料。鉴别可通过查看生物基含量检测报告、燃烧有轻微植物纤维气味、手感接近天然皮革等方式实现。日常养护需避免长时间潮湿，保持通风干燥。</p>
-                <p class="en-tip">English：Bio-based leather is a sustainable eco-leather based on plant-derived raw materials, different from traditional petroleum-based synthetic leather. Raw materials mainly come from plant fibers, starch-based or bio-based polyurethane resins, reducing reliance on fossil resources and carbon emissions during production. Combining eco-friendliness with leather-like texture, it is biodegradable or recyclable, making it a future-oriented sustainable material. It can be verified via bio-based content test reports, slight plant fiber odor when burned, and a feel close to natural leather. Daily care requires avoiding prolonged moisture and keeping it ventilated and dry.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- 超纤 -->
 <div class="content-box" id="chaoqianBox">
     <div class="detail-box">
-        <div class="title">
-            <h2>Microfiber Leather / 超纤皮革</h2>
-        </div>
+        <div class="title"><h2>Microfiber Leather / 超纤皮革</h2></div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomChaoqian">
-                <img src="" class="zoom-main-img" id="imgChaoqian" alt="超纤皮革">
+                <img src="" class="zoom-main-img">
                 <div class="zoom-lens"></div>
                 <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('chaoqian',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('chaoqian',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="thumbnails" id="thumbChaoqian"></div>
-            <div class="detail-text">
-                <h3>超纤皮革 Microfiber Leather</h3>
-                <p>超纤皮革是以高性能超细纤维基布与聚氨酯树脂复合而成的仿真皮革，性能接近甚至优于天然真皮。其原料由海岛型超细纤维基布与高性能 PU 树脂组成，通过浸渍、凝固、磨皮等工艺制成，具备优异的耐磨性、抗撕裂性与耐老化性。表面纹理可高度仿真天然皮革，手感柔软细腻，是高端真皮的优质替代材料。鉴别可通过观察均匀细腻的超细纤维纹理、触摸接近真皮的柔软弹性、耐磨测试无明显磨损等方式区分。日常养护可使用皮革专用清洁剂，避免尖锐物体刮擦。</p>
-                <p class="en-tip">English：Microfiber leather is a synthetic leather made from high-performance microfiber base fabric composite with polyurethane resin, with performance close to or even better than natural genuine leather. Composed of island-in-sea microfiber base fabric and high-performance PU resin, made via impregnation, coagulation, and buffing processes, it offers excellent wear resistance, tear strength, and aging resistance. The surface texture can highly simulate natural leather, with a soft, delicate feel, making it a premium alternative to high-end genuine leather. It can be identified by its uniform, fine microfiber texture, soft elasticity close to genuine leather when touched, and no obvious wear after abrasion tests. Daily care can use leather-specific cleaners; avoid scratches from sharp objects.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- 特殊皮革 -->
 <div class="content-box" id="teshuBox">
     <div class="detail-box">
-        <div class="title">
-            <h2>Specialty Leather / 特殊皮革</h2>
-        </div>
+        <div class="title"><h2>Special Leather / 特殊皮革</h2></div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomTeshu">
-                <img src="" class="zoom-main-img" id="imgTeshu" alt="特殊皮革">
+                <img src="" class="zoom-main-img">
                 <div class="zoom-lens"></div>
                 <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('teshu',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('teshu',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="thumbnails" id="thumbTeshu"></div>
-            <div class="detail-text">
-                <h3>特殊皮革 Specialty Leather</h3>
-                <p>特殊皮革是通过定制纹路与特种工艺加工而成的功能性或装饰性皮革，可根据客户需求实现个性化外观与性能。其原料可基于真皮、PU 或超纤等多种基材，通过压花、烫金、覆膜、植绒等特殊工艺处理，打造独特的纹理、光泽与触感效果，如鳄鱼纹、蛇纹、金属光泽、磨砂效果等。可适配高端时尚、奢侈品、定制家具等特殊应用场景。鉴别需结合工艺特征与客户定制要求，查看纹路一致性、工艺细节与特殊性能检测报告。日常养护需根据具体工艺特性选择对应方式，避免损伤特殊涂层或纹路。</p>
-                <p class="en-tip">English：Specialty leather is functional or decorative leather processed with custom patterns and special crafts, enabling personalized appearance and performance per customer requirements. Based on various substrates like genuine leather, PU, or microfiber, it is treated with special processes such as embossing, hot stamping, lamination, and flocking to create unique textures, lusters, and feels (e.g., crocodile pattern, snake pattern, metallic finish, matte effect). Suitable for high-end fashion, luxury goods, custom furniture, and other special applications. Identification requires combining process features with customer customization requirements, checking pattern consistency, craft details, and special performance test reports. Daily care must match the specific craft characteristics to avoid damaging special coatings or patterns.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- 再生皮革 -->
 <div class="content-box" id="recycledBox">
     <div class="detail-box">
-        <div class="title">
-            <h2>Recycled PET Bottle Leather / 回收PET瓶再生皮革</h2>
-        </div>
+        <div class="title"><h2>Recycled Leather / 再生皮革</h2></div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomRecycled">
-                <img src="" class="zoom-main-img" id="imgRecycled" alt="回收PET瓶再生皮革">
+                <img src="" class="zoom-main-img">
                 <div class="zoom-lens"></div>
                 <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('recycled',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('recycled',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="thumbnails" id="thumbRecycled"></div>
-            <div class="detail-text">
-                <h3>回收 PET 瓶再生皮革 Recycled PET Bottle Leather</h3>
-                <p>回收 PET 再生皮革是以废弃矿泉水瓶、塑料瓶回收再造的聚酯原料加工而成的循环环保皮革。通过破碎、造粒、纺丝、织造、贴合涂层工艺，将废旧塑料资源二次利用，大幅减少塑料垃圾污染与石油原料消耗。材料韧性强、拉力好、耐磨损、色牢度高，性能稳定接近超纤皮革，是国际市场认可度极高的可持续环保人造革，广泛用于箱包、鞋材、沙发、户外用品。</p>
-                <p class="en-tip">English：Recycled PET bottle leather is a sustainable eco-friendly material produced from recycled waste plastic bottles. Through crushing, granulation, fiber spinning and lamination processes, waste plastic resources are reused effectively, reducing plastic pollution and reliance on petroleum raw materials. This material features high toughness, strong tensile strength, excellent wear resistance and stable color fastness. With reliable performance similar to microfiber leather, it is highly recognized in the global market and widely used in bags, footwear, furniture and outdoor products.</p>
-                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
-                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
-                <a href="javascript:backHome()" class="back-btn">返回首页</a>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- 更多 -->
-<div class="content-box" id="moreBox">
-    <div style="max-width:900px;margin:0 auto;text-align:center;">
-        <h3 style="font-size:28px;margin-bottom:25px;">More Leather Options / 更多皮革款式</h3>
-        <p style="font-size:16px;color:#555;line-height:2;">
-            Leather materials are continuously upgraded and iterated.<br>
-            The displayed products are only a part of our full inventory.<br><br>
-            If you need more styles, special textures, colors or customized formulas,<br>
-            please feel free to contact us. We can accurately match the most suitable<br>
-            leather materials for you with competitive prices and stable quality.<br><br>
-            皮革材料一直在不断更新换代，页面展示仅为部分款式。<br>
-            如需更多特殊纹路、颜色、定制材质，均可联系我们。
-        </p>
-    </div>
-</div>
-
-<!-- 联系我们 -->
 <div class="content-box" id="contactBox">
     <div class="contact-inner">
-        <h2>联系我们 Contact Us</h2>
+        <h2>Contact Us / 联系我们</h2>
         <div class="contact-item">
             <i class="fa-solid fa-location-dot"></i>
-            <span>74号地块，7A区，科兰吉工业区，卡拉奇，邮编74900，巴基斯坦</span>
+            <span>74号地块，7A区，科兰吉工业区，卡拉奇，巴基斯坦</span>
         </div>
         <div class="contact-item">
             <i class="fa-solid fa-envelope"></i>
@@ -705,20 +593,18 @@
     </div>
 </div>
 
-<a href="https://wa.me/923151299388" target="_blank" class="wa-float">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<footer>
-    © PENGYE LEATHER — Premium Leather Material Supplier
-</footer>
+<footer>© PENGYE LEATHER — Premium Leather Material Supplier</footer>
 
 <script>
-// 图片路径全部匹配 images/文件夹
+// 核心配置：所有图片强制使用 images/ 路径
 const imgData = {
     zhenpi: ["images/zhenpi.png"],
     shuixin: ["images/shuixin.png"],
-    huanbao: ["images/huanbao.png","images/huanbao.jpg","images/huanbao1.jpg","images/huanbao2.jpg","images/huanbao3.jpg","images/huanbao4.jpg","images/huanbao5.jpg","images/huanbao6.jpg","images/huanbao7.jpg","images/huanbao8.jpg","images/huanbao9.jpg","images/huanbao10.jpg","images/huanbao11.jpg"],
+    huanbao: [
+        "images/huanbao.png","images/huanbao.jpg","images/huanbao1.jpg","images/huanbao2.jpg",
+        "images/huanbao3.jpg","images/huanbao4.jpg","images/huanbao5.jpg","images/huanbao6.jpg",
+        "images/huanbao7.jpg","images/huanbao8.jpg","images/huanbao9.jpg","images/huanbao10.jpg","images/huanbao11.jpg"
+    ],
     putongpu: ["images/main-banner5.jpg"],
     pvc: ["images/pvc.png"],
     shengwu: ["images/shengwu.png"],
@@ -728,175 +614,125 @@ const imgData = {
 };
 
 let nowIndex = {};
-Object.keys(imgData).forEach(key=>nowIndex[key]=0);
+Object.keys(imgData).forEach(key => nowIndex[key] = 0);
 
-function initZoom(type){
-    let arr = imgData[type];
-    let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
-    let mainImg = zoomContainer.querySelector(".zoom-main-img");
-    let lens = zoomContainer.querySelector(".zoom-lens");
-    let preview = zoomContainer.querySelector(".zoom-preview");
-    let thumbBox = document.getElementById("thumb"+type.charAt(0).toUpperCase()+type.slice(1));
+// 初始化放大镜
+function initZoom(type) {
+    const arr = imgData[type];
+    const zoomContainer = document.getElementById(`zoom${type.charAt(0).toUpperCase() + type.slice(1)}`);
+    const mainImg = zoomContainer.querySelector(".zoom-main-img");
+    const lens = zoomContainer.querySelector(".zoom-lens");
+    const preview = zoomContainer.querySelector(".zoom-preview");
+    const thumbBox = document.getElementById(`thumb${type.charAt(0).toUpperCase() + type.slice(1)}`);
 
     thumbBox.innerHTML = "";
-    arr.forEach((src,idx)=>{
-        let t = document.createElement("img");
-        t.src = src;
-        t.className = "thumb-item";
-        if(idx===0) t.classList.add("active");
-        t.onclick = ()=>{nowIndex[type]=idx;refreshImg(type);};
-        thumbBox.appendChild(t);
+    arr.forEach((src, idx) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.className = "thumb-item";
+        if (idx === 0) img.classList.add("active");
+        img.onclick = () => { nowIndex[type] = idx; refreshImg(type); };
+        thumbBox.appendChild(img);
     });
     refreshImg(type);
 
-    zoomContainer.onmousemove = function(e){
-        let rect = this.getBoundingClientRect();
+    zoomContainer.onmousemove = function (e) {
+        const rect = this.getBoundingClientRect();
         let x = e.clientX - rect.left;
         let y = e.clientY - rect.top;
-        let scale = preview.offsetWidth / lens.offsetWidth;
+        const scale = preview.offsetWidth / lens.offsetWidth;
 
         lens.style.display = "block";
         preview.style.display = "block";
 
-        let lensX = x - lens.offsetWidth/2;
-        let lensY = y - lens.offsetHeight/2;
-        if(lensX < 0) lensX = 0;
-        if(lensY < 0) lensY = 0;
-        if(lensX > rect.width - lens.offsetWidth) lensX = rect.width - lens.offsetWidth;
-        if(lensY > rect.height - lens.offsetHeight) lensY = rect.height - lens.offsetHeight;
+        let lensX = x - lens.offsetWidth / 2;
+        let lensY = y - lens.offsetHeight / 2;
+        lensX = Math.max(0, Math.min(lensX, rect.width - lens.offsetWidth));
+        lensY = Math.max(0, Math.min(lensY, rect.height - lens.offsetHeight));
 
         lens.style.left = lensX + "px";
         lens.style.top = lensY + "px";
-        preview.style.backgroundPosition = `-${lensX*scale}px -${lensY*scale}px`;
+        preview.style.backgroundPosition = `-${lensX * scale}px -${lensY * scale}px`;
     };
-
-    zoomContainer.onmouseleave = function(){
-        lens.style.display = "none";
-        preview.style.display = "none";
-    };
+    zoomContainer.onmouseleave = () => { lens.style.display = "none"; preview.style.display = "none"; };
 }
 
-function refreshImg(type){
-    let arr = imgData[type];
-    let idx = nowIndex[type];
-    let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
-    let mainImg = zoomContainer.querySelector(".zoom-main-img");
-    let preview = zoomContainer.querySelector(".zoom-preview");
-
+// 刷新图片
+function refreshImg(type) {
+    const arr = imgData[type];
+    const idx = nowIndex[type];
+    const zoomContainer = document.getElementById(`zoom${type.charAt(0).toUpperCase() + type.slice(1)}`);
+    const mainImg = zoomContainer.querySelector(".zoom-main-img");
+    const preview = zoomContainer.querySelector(".zoom-preview");
+    
     mainImg.src = arr[idx];
     preview.style.backgroundImage = `url(${arr[idx]})`;
-
-    document.querySelectorAll("#thumb"+type.charAt(0).toUpperCase()+type.slice(1)+" .thumb-item").forEach((t,i)=>{
-        t.classList.toggle("active",i===idx);
+    document.querySelectorAll(`#thumb${type.charAt(0).toUpperCase() + type.slice(1)} .thumb-item`).forEach((t, i) => {
+        t.classList.toggle("active", i === idx);
     });
 }
 
-function switchImg(type,step){
-    let arr = imgData[type];
+// 切换图片
+function switchImg(type, step) {
+    const arr = imgData[type];
     nowIndex[type] = (nowIndex[type] + step + arr.length) % arr.length;
     refreshImg(type);
 }
 
-const homeBox = document.getElementById('homeBox');
-const zhenpiBox = document.getElementById('zhenpiBox');
-const shuixinBox = document.getElementById('shuixinBox');
-const huanbaoBox = document.getElementById('huanbaoBox');
-const putongpuBox = document.getElementById('putongpuBox');
-const pvcBox = document.getElementById('pvcBox');
-const shengwuBox = document.getElementById('shengwuBox');
-const chaoqianBox = document.getElementById('chaoqianBox');
-const teshuBox = document.getElementById('teshuBox');
-const recycledBox = document.getElementById('recycledBox');
-const moreBox = document.getElementById('moreBox');
-const contactBox = document.getElementById('contactBox');
-const hero = document.getElementById('hero');
+// 页面切换
 const navs = document.querySelectorAll('.nav-link');
-
-function hideAll(){
-    homeBox.classList.remove('show');
-    zhenpiBox.classList.remove('show');
-    shuixinBox.classList.remove('show');
-    huanbaoBox.classList.remove('show');
-    putongpuBox.classList.remove('show');
-    pvcBox.classList.remove('show');
-    shengwuBox.classList.remove('show');
-    chaoqianBox.classList.remove('show');
-    teshuBox.classList.remove('show');
-    recycledBox.classList.remove('show');
-    moreBox.classList.remove('show');
-    contactBox.classList.remove('show');
+function hideAll() {
+    document.querySelectorAll('.content-box').forEach(item => item.classList.remove('show'));
 }
-
-function backHome(){
+function openPage(name) {
     hideAll();
-    homeBox.classList.add('show');
-    hero.classList.remove('hidden');
-    navs.forEach(n=>n.classList.remove('active'));
-    document.querySelector('[data-page="home"]').classList.add('active');
-    window.scrollTo(0,0);
+    navs.forEach(n => n.classList.remove('active'));
+    document.querySelector(`[data-page="${name}"]`).classList.add('active');
+    document.getElementById(`${name}Box`).classList.add('show');
+    initZoom(name);
+    window.scrollTo(0, 0);
 }
 
-function openPage(name){
-    hideAll();
-    hero.classList.remove('hidden');
-    navs.forEach(n=>n.classList.remove('active'));
-    let navActive = document.querySelector(`[data-page="${name}"]`);
-    if(navActive) navActive.classList.add('active');
-    switch(name){
-        case 'home': hero.classList.remove('hidden'); homeBox.classList.add('show'); break;
-        case 'zhenpi': zhenpiBox.classList.add('show'); initZoom("zhenpi"); break;
-        case 'shuixin': shuixinBox.classList.add('show'); initZoom("shuixin"); break;
-        case 'huanbao': huanbaoBox.classList.add('show'); initZoom("huanbao"); break;
-        case 'putongpu': putongpuBox.classList.add('show'); initZoom("putongpu"); break;
-        case 'pvc': pvcBox.classList.add('show'); initZoom("pvc"); break;
-        case 'shengwu': shengwuBox.classList.add('show'); initZoom("shengwu"); break;
-        case 'chaoqian': chaoqianBox.classList.add('show'); initZoom("chaoqian"); break;
-        case 'teshu': teshuBox.classList.add('show'); initZoom("teshu"); break;
-        case 'recycled': recycledBox.classList.add('show'); initZoom("recycled"); break;
-    }
-    window.scrollTo(0,0);
-}
-
-navs.forEach(nav=>{
-    nav.addEventListener('click',function(e){
-        e.preventDefault();
-        let page = this.dataset.page;
-        let type = this.dataset.type;
-        navs.forEach(n=>n.classList.remove('active'));
-        this.classList.add('active');
+navs.forEach(nav => {
+    nav.addEventListener('click', () => {
+        const page = nav.dataset.page;
+        const type = nav.dataset.type;
         hideAll();
+        navs.forEach(n => n.classList.remove('active'));
+        nav.classList.add('active');
         
-        if(page === 'home') backHome();
-        else if(page) openPage(page);
-        else if(type === 'contact'){ hero.classList.add('hidden'); contactBox.classList.add('show'); }
-        else if(type === 'more'){ hero.classList.remove('hidden'); moreBox.classList.add('show'); }
-    })
-})
+        if (page === 'home') {
+            document.getElementById('homeBox').classList.add('show');
+        } else if (page) {
+            openPage(page);
+        } else if (type === 'contact') {
+            document.getElementById('contactBox').classList.add('show');
+        }
+    });
+});
 
-// 轮播
+// 轮播图
 const slides = document.querySelectorAll('.slide');
 const dotBox = document.getElementById('dotBox');
 let cur = 0;
-slides.forEach((_,i)=>{
-    let d = document.createElement('div');
+slides.forEach((_, i) => {
+    const d = document.createElement('div');
     d.className = 'dot';
-    if(i===0) d.classList.add('active');
+    if (i === 0) d.classList.add('active');
     dotBox.appendChild(d);
-})
+});
 const dots = document.querySelectorAll('.dot');
-function switchSlide(idx){
-    slides.forEach(s=>s.classList.remove('active'));
-    dots.forEach(d=>d.classList.remove('active'));
+function switchSlide(idx) {
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
     slides[idx].classList.add('active');
     dots[idx].classList.add('active');
 }
-setInterval(()=>{
-    cur = (cur+1)%slides.length;
+setInterval(() => {
+    cur = (cur + 1) % slides.length;
     switchSlide(cur);
-},4000)
-dots.forEach((d,i)=>{
-    d.onclick = ()=>{cur=i;switchSlide(i);}
-})
+}, 4000);
+
 </script>
 </body>
 </html>
