@@ -342,11 +342,11 @@
     </div>
 </header>
 
-<!-- 轮播图 全部使用你真实存在图片 -->
+<!-- 轮播图 -->
 <section class="hero" id="hero">
-    <div class="slide active" style="background-image:url('main-banner1.jpg')"></div>
-    <div class="slide" style="background-image:url('main-banner2.jpg')"></div>
-    <div class="slide" style="background-image:url('main-banner3.jpg')"></div>
+    <div class="slide active" style="background-image:url('images/main-banner1.jpg')"></div>
+    <div class="slide" style="background-image:url('images/main-banner2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/main-banner3.jpg')"></div>
     <div class="hero-text">
         <h1>PREMIUM LEATHER MATERIALS</h1>
         <p>20 Years Professional One-Stop Leather Supplier From China</p>
@@ -354,7 +354,7 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 首页产品卡片 1:1匹配你的图片 -->
+<!-- 首页产品卡片 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -362,63 +362,63 @@
     </div>
     <div class="product-grid">
         <div class="product-card" onclick="openPage('zhenpi')">
-            <img src="zhenpi.png" alt="真皮">
+            <img src="images/zhenpi.png" alt="真皮">
             <div class="product-info">
                 <h4>Genuine Leather 真皮</h4>
                 <p>天然原生态真皮</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('shuixin')">
-            <img src="shuixin.png" alt="水性PU">
+            <img src="images/shuixin.png" alt="水性PU">
             <div class="product-info">
                 <h4>Water-Based PU Leather 水性PU</h4>
                 <p>无溶剂环保水性聚氨酯革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('huanbao')">
-            <img src="huanbaopu.png" alt="环保PU">
+            <img src="images/huanbaopu.png" alt="环保PU">
             <div class="product-info">
                 <h4>Eco-Friendly PU Leather 环保PU</h4>
                 <p>低碳合规环保合成PU革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('putongpu')">
-            <img src="main-banner5.jpg" alt="标准PU">
+            <img src="images/main-banner5.jpg" alt="标准PU">
             <div class="product-info">
                 <h4>Standard PU Leather 标准PU</h4>
                 <p>常规聚氨酯基础合成革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('pvc')">
-            <img src="pvc.png" alt="PVC革">
+            <img src="images/pvc.png" alt="PVC革">
             <div class="product-info">
                 <h4>PVC Leather PVC革</h4>
                 <p>经济型聚氯乙烯合成革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('shengwu')">
-            <img src="shengwu.png" alt="生物基皮革">
+            <img src="images/shengwu.png" alt="生物基皮革">
             <div class="product-info">
                 <h4>Bio-Based Leather 生物基皮革</h4>
                 <p>植物萃取可持续生态皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('chaoqian')">
-            <img src="chaoqian.png" alt="超纤皮革">
+            <img src="images/chaoqian.png" alt="超纤皮革">
             <div class="product-info">
                 <h4>Microfiber Leather 超纤皮革</h4>
                 <p>高性能超细纤维仿真皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('teshu')">
-            <img src="teshu.png" alt="特殊皮革">
+            <img src="images/teshu.png" alt="特殊皮革">
             <div class="product-info">
                 <h4>Special Leather 特殊皮革</h4>
                 <p>定制纹路特种工艺皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('recycled')">
-            <img src="main-banner6.jpg" alt="PET瓶回收再生皮革">
+            <img src="images/main-banner6.jpg" alt="PET瓶回收再生皮革">
             <div class="product-info">
                 <h4>Recycled PET Bottle Leather PET瓶回收再生皮革</h4>
                 <p>塑料瓶再生环保循环皮革</p>
@@ -714,17 +714,31 @@
 </footer>
 
 <script>
-// 严格匹配你所有已上传图片文件名
+// 全路径配对 images/文件夹
 const imgData = {
-    zhenpi: ["zhenpi.png"],
-    shuixin: ["shuixin.png"],
-    huanbao: ["huanbao.png","huanbao.jpg","huanbao1.jpg","huanbao2.jpg","huanbao3.jpg","huanbao4.jpg","huanbao5.jpg","huanbao6.jpg","huanbao7.jpg","huanbao8.jpg","huanbao9.jpg","huanbao10.jpg","huanbao11.jpg"],
-    putongpu: ["main-banner5.jpg"],
-    pvc: ["pvc.png"],
-    shengwu: ["shengwu.png"],
-    chaoqian: ["chaoqian.png"],
-    teshu: ["teshu.png"],
-    recycled: ["main-banner6.jpg"]
+    zhenpi: ["images/zhenpi.png"],
+    shuixin: ["images/shuixin.png"],
+    huanbao: [
+        "images/huanbao.png",
+        "images/huanbao.jpg",
+        "images/huanbao1.jpg",
+        "images/huanbao2.jpg",
+        "images/huanbao3.jpg",
+        "images/huanbao4.jpg",
+        "images/huanbao5.jpg",
+        "images/huanbao6.jpg",
+        "images/huanbao7.jpg",
+        "images/huanbao8.jpg",
+        "images/huanbao9.jpg",
+        "images/huanbao10.jpg",
+        "images/huanbao11.jpg"
+    ],
+    putongpu: ["images/main-banner5.jpg"],
+    pvc: ["images/pvc.png"],
+    shengwu: ["images/shengwu.png"],
+    chaoqian: ["images/chaoqian.png"],
+    teshu: ["images/teshu.png"],
+    recycled: ["images/main-banner6.jpg"]
 };
 
 let nowIndex = {};
@@ -873,7 +887,7 @@ navs.forEach(nav=>{
     })
 })
 
-// 轮播图自动切换
+// 轮播自动切换
 const slides = document.querySelectorAll('.slide');
 const dotBox = document.getElementById('dotBox');
 let cur = 0;
