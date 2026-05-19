@@ -128,11 +128,11 @@
             overflow:hidden;
             margin-bottom:40px;
         }
-        /* 主图放大镜容器（关键修复） */
+        /* 主图放大镜容器 */
         .zoom-container{
             position:relative;
             width:100%;
-            height:500px; /* 固定高度，保证放大镜正常工作 */
+            height:500px;
             overflow:hidden;
             cursor:crosshair;
         }
@@ -342,11 +342,11 @@
     </div>
 </header>
 
-<!-- 轮播图 -->
+<!-- 轮播图 精准匹配文件名 -->
 <section class="hero" id="hero">
     <div class="slide active" style="background-image:url('main-banner1.jpg')"></div>
-    <div class="slide" style="background-image:url('main-banner2.jpg')"></div>
-    <div class="slide" style="background-image:url('main-banner3.jpg')"></div>
+    <div class="slide" style="background-image:url('main-banner2.jpg.jpg')"></div>
+    <div class="slide" style="background-image:url('main-banner3.jpg.png')"></div>
     <div class="hero-text">
         <h1>PREMIUM LEATHER MATERIALS</h1>
         <p>20 Years Professional One-Stop Leather Supplier From China</p>
@@ -354,7 +354,7 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 首页产品卡片列表 -->
+<!-- 首页产品卡片 全部匹配你现有png图 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -383,7 +383,7 @@
             </div>
         </div>
         <div class="product-card" onclick="openPage('putongpu')">
-            <img src="main-banner5.jpg" alt="标准PU">
+            <img src="main-banner5.jpg.jpg" alt="标准PU">
             <div class="product-info">
                 <h4>Standard PU Leather 标准PU</h4>
                 <p>常规聚氨酯基础合成革</p>
@@ -418,7 +418,7 @@
             </div>
         </div>
         <div class="product-card" onclick="openPage('recycled')">
-            <img src="recycled.png" alt="PET瓶回收再生皮革">
+            <img src="main-banner6.jpg.png" alt="PET瓶回收再生皮革">
             <div class="product-info">
                 <h4>Recycled PET Bottle Leather PET瓶回收再生皮革</h4>
                 <p>塑料瓶再生环保循环皮革</p>
@@ -427,14 +427,13 @@
     </div>
 </div>
 
-<!-- 环保PU皮革详情页（全屏大图卡片+修复放大镜） -->
+<!-- 环保PU详情页 调用现有huanbao系列图 -->
 <div class="content-box" id="huanbaoBox">
     <div class="detail-box">
         <div class="title">
             <h2>Eco-Friendly PU Leather / 环保PU皮革</h2>
         </div>
         <div class="detail-main-card">
-            <!-- 主图放大镜容器 -->
             <div class="zoom-container" id="zoomHuanbao">
                 <img src="" class="zoom-main-img" id="imgHuanbao" alt="环保PU皮革">
                 <div class="zoom-lens"></div>
@@ -442,9 +441,7 @@
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('huanbao',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('huanbao',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
-            <!-- 缩略图列表 -->
             <div class="thumbnails" id="thumbHuanbao"></div>
-            <!-- 文字说明 -->
             <div class="detail-text">
                 <h3>环保 PU 皮革 Eco-Friendly PU Leather</h3>
                 <p>环保 PU 皮革是符合低碳合规标准的合成 PU 革，采用环保型树脂与助剂生产，碳足迹显著低于常规 PU。其生产过程严格管控有害物质排放，满足欧盟 REACH 等国际环保法规要求，可用于对环保指标要求较高的鞋类与家具产品。原料以改性聚氨酯树脂为主，搭配环保型助剂，具备稳定的物理性能与耐候性。鉴别可通过查看环保检测报告、燃烧无刺激性气味、表面无有害涂层析出等方式实现。日常养护同常规 PU，避免强酸强碱清洁剂。</p>
@@ -457,7 +454,7 @@
     </div>
 </div>
 
-<!-- 其他产品详情页（结构和环保PU完全一致，仅文字不同） -->
+<!-- 真皮详情页 -->
 <div class="content-box" id="zhenpiBox">
     <div class="detail-box">
         <div class="title">
@@ -484,6 +481,7 @@
     </div>
 </div>
 
+<!-- 水性PU详情页 -->
 <div class="content-box" id="shuixinBox">
     <div class="detail-box">
         <div class="title">
@@ -510,6 +508,7 @@
     </div>
 </div>
 
+<!-- 标准PU详情页 -->
 <div class="content-box" id="putongpuBox">
     <div class="detail-box">
         <div class="title">
@@ -536,6 +535,7 @@
     </div>
 </div>
 
+<!-- PVC详情页 -->
 <div class="content-box" id="pvcBox">
     <div class="detail-box">
         <div class="title">
@@ -562,6 +562,7 @@
     </div>
 </div>
 
+<!-- 生物基详情页 -->
 <div class="content-box" id="shengwuBox">
     <div class="detail-box">
         <div class="title">
@@ -588,6 +589,7 @@
     </div>
 </div>
 
+<!-- 超纤详情页 -->
 <div class="content-box" id="chaoqianBox">
     <div class="detail-box">
         <div class="title">
@@ -614,6 +616,7 @@
     </div>
 </div>
 
+<!-- 特殊皮革详情页 -->
 <div class="content-box" id="teshuBox">
     <div class="detail-box">
         <div class="title">
@@ -640,6 +643,7 @@
     </div>
 </div>
 
+<!-- 再生皮革详情页 -->
 <div class="content-box" id="recycledBox">
     <div class="detail-box">
         <div class="title">
@@ -711,23 +715,23 @@
 </footer>
 
 <script>
-// 每个产品 12 张图（路径已修正）
+// 严格匹配你现有图片文件名配置
 const imgData = {
-    zhenpi:["zhenpi.jpg","zhenpi1.jpg","zhenpi2.jpg","zhenpi3.jpg","zhenpi4.jpg","zhenpi5.jpg","zhenpi6.jpg","zhenpi7.jpg","zhenpi8.jpg","zhenpi9.jpg","zhenpi10.jpg","zhenpi11.jpg"],
-    shuixin:["shuixin.jpg","shuixin1.jpg","shuixin2.jpg","shuixin3.jpg","shuixin4.jpg","shuixin5.jpg","shuixin6.jpg","shuixin7.jpg","shuixin8.jpg","shuixin9.jpg","shuixin10.jpg","shuixin11.jpg"],
-    huanbao:["huanbao.jpg","huanbao1.jpg","huanbao2.jpg","huanbao3.jpg","huanbao4.jpg","huanbao5.jpg","huanbao6.jpg","huanbao7.jpg","huanbao8.jpg","huanbao9.jpg","huanbao10.jpg","huanbao11.jpg"],
-    putongpu:["putongpu.jpg","putongpu1.jpg","putongpu2.jpg","putongpu3.jpg","putongpu4.jpg","putongpu5.jpg","putongpu6.jpg","putongpu7.jpg","putongpu8.jpg","putongpu9.jpg","putongpu10.jpg","putongpu11.jpg"],
-    pvc:["pvc.jpg","pvc1.jpg","pvc2.jpg","pvc3.jpg","pvc4.jpg","pvc5.jpg","pvc6.jpg","pvc7.jpg","pvc8.jpg","pvc9.jpg","pvc10.jpg","pvc11.jpg"],
-    shengwu:["shengwu.jpg","shengwu1.jpg","shengwu2.jpg","shengwu3.jpg","shengwu4.jpg","shengwu5.jpg","shengwu6.jpg","shengwu7.jpg","shengwu8.jpg","shengwu9.jpg","shengwu10.jpg","shengwu11.jpg"],
-    chaoqian:["chaoqian.jpg","chaoqian1.jpg","chaoqian2.jpg","chaoqian3.jpg","chaoqian4.jpg","chaoqian5.jpg","chaoqian6.jpg","chaoqian7.jpg","chaoqian8.jpg","chaoqian9.jpg","chaoqian10.jpg","chaoqian11.jpg"],
-    teshu:["teshu.jpg","teshu1.jpg","teshu2.jpg","teshu3.jpg","teshu4.jpg","teshu5.jpg","teshu6.jpg","teshu7.jpg","teshu8.jpg","teshu9.jpg","teshu10.jpg","teshu11.jpg"],
-    recycled:["recycled.jpg","recycled1.jpg","recycled2.jpg","recycled3.jpg","recycled4.jpg","recycled5.jpg","recycled6.jpg","recycled7.jpg","recycled8.jpg","recycled9.jpg","recycled10.jpg","recycled11.jpg"]
+    zhenpi:["zhenpi.png"],
+    shuixin:["shuixin.png"],
+    huanbao:["huanbao.png","huanbao.jpg","huanbao1.jpg","huanbao2.jpg","huanbao3.jpg","huanbao4.jpg","huanbao5.jpg","huanbao6.jpg","huanbao7.jpg","huanbao8.jpg","huanbao9.jpg","huanbao10.jpg","huanbao11.jpg"],
+    putongpu:["main-banner5.jpg.jpg"],
+    pvc:["pvc.png"],
+    shengwu:["shengwu.png"],
+    chaoqian:["chaoqian.png"],
+    teshu:["teshu.png"],
+    recycled:["main-banner6.jpg.png"]
 };
 
 let nowIndex = {};
 Object.keys(imgData).forEach(key=>nowIndex[key]=0);
 
-// 初始化放大镜和缩略图（关键修复）
+// 初始化放大镜和缩略图
 function initZoom(type){
     let arr = imgData[type];
     let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
@@ -736,7 +740,6 @@ function initZoom(type){
     let preview = zoomContainer.querySelector(".zoom-preview");
     let thumbBox = document.getElementById("thumb"+type.charAt(0).toUpperCase()+type.slice(1));
 
-    // 初始化缩略图
     thumbBox.innerHTML = "";
     arr.forEach((src,idx)=>{
         let t = document.createElement("img");
@@ -748,7 +751,6 @@ function initZoom(type){
     });
     refreshImg(type);
 
-    // 放大镜事件绑定（修复核心）
     zoomContainer.onmousemove = function(e){
         let rect = this.getBoundingClientRect();
         let x = e.clientX - rect.left;
@@ -758,7 +760,6 @@ function initZoom(type){
         lens.style.display = "block";
         preview.style.display = "block";
 
-        // 限制取景框在容器内
         let lensX = x - lens.offsetWidth/2;
         let lensY = y - lens.offsetHeight/2;
         if(lensX < 0) lensX = 0;
@@ -788,7 +789,6 @@ function refreshImg(type){
     mainImg.src = arr[idx];
     preview.style.backgroundImage = `url(${arr[idx]})`;
 
-    // 更新缩略图选中状态
     document.querySelectorAll("#thumb"+type.charAt(0).toUpperCase()+type.slice(1)+" .thumb-item").forEach((t,i)=>{
         t.classList.toggle("active",i===idx);
     });
@@ -907,13 +907,3 @@ function switchSlide(idx){
     slides[idx].classList.add('active');
     dots[idx].classList.add('active');
 }
-setInterval(()=>{
-    cur = (cur+1)%slides.length;
-    switchSlide(cur);
-},4000)
-dots.forEach((d,i)=>{
-    d.onclick = ()=>{cur=i;switchSlide(i);}
-})
-</script>
-</body>
-</html>
