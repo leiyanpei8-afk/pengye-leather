@@ -166,24 +166,6 @@
             z-index:99;
             background-color:#fff;
         }
-        /* 左右切换箭头 */
-        .img-switch-btn{
-            position:absolute;
-            top:50%;
-            transform:translateY(-50%);
-            width:52px;
-            height:52px;
-            border-radius:50%;
-            border:none;
-            background:rgba(0,0,0,0.45);
-            color:#fff;
-            font-size:20px;
-            cursor:pointer;
-            z-index:8;
-        }
-        .img-switch-btn:hover{background:rgba(0,0,0,0.7);}
-        .btn-left{left:20px;}
-        .btn-right{right:20px;}
         /* 底部缩略图列表 */
         .mini-img-list{
             display:flex;
@@ -344,7 +326,7 @@
     </div>
 </header>
 
-<!-- 轮播图（路径完全匹配你现有的文件） -->
+<!-- 轮播图（文件名完全按你给的写） -->
 <section class="hero" id="hero">
     <div class="slide active" style="background-image:url('main-banner1.jpg')"></div>
     <div class="slide" style="background-image:url('main-banner2.jpg.jpg')"></div>
@@ -356,7 +338,7 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 首页产品卡片（路径100%匹配） -->
+<!-- 首页产品卡片（文件名100%匹配） -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -429,7 +411,7 @@
     </div>
 </div>
 
-<!-- 1.真皮 详情页（只加载你存在的图片，无404） -->
+<!-- 1.真皮 详情页 -->
 <div class="content-box" id="zhenpiBox">
     <div class="title">
         <h2>Genuine Leather / 真皮详情</h2>
@@ -483,7 +465,7 @@
     </div>
 </div>
 
-<!-- 3.环保PU 详情页（路径100%匹配你现有的huanbao系列） -->
+<!-- 3.环保PU 详情页（文件名100%按你给的写） -->
 <div class="content-box" id="huanbaoBox">
     <div class="title">
         <h2>Eco-Friendly PU Leather / 环保PU皮革</h2>
@@ -494,10 +476,10 @@
                 <img class="zoom-main-pic" id="picHuanbao" src="huanbao.jpg">
                 <div class="zoom-see"></div>
                 <div class="zoom-big-view" style="background-image:url('huanbao.jpg')"></div>
-                <button class="img-switch-btn btn-left" onclick="changeHuanbaoImg(-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="img-switch-btn btn-right" onclick="changeHuanbaoImg(1)"><i class="fa fa-chevron-right"></i></button>
             </div>
-            <div class="mini-img-list" id="listHuanbao"></div>
+            <div class="mini-img-list">
+                <img src="huanbao.jpg" class="mini-item active">
+            </div>
             <div class="text-desc-area">
                 <h3>环保 PU 皮革 Eco-Friendly PU Leather</h3>
                 <p>环保 PU 皮革是符合低碳合规标准的合成 PU 革，采用环保型树脂与助剂生产，碳足迹显著低于常规 PU。其生产过程严格管控有害物质排放，满足欧盟 REACH 等国际环保法规要求，可用于对环保指标要求较高的鞋类与家具产品。原料以改性聚氨酯树脂为主，搭配环保型助剂，具备稳定的物理性能与耐候性。鉴别可通过查看环保检测报告、燃烧无刺激性气味、表面无有害涂层析出等方式实现。日常养护同常规 PU，避免强酸强碱清洁剂。</p>
@@ -510,7 +492,7 @@
     </div>
 </div>
 
-<!-- 其他分类（结构统一，路径匹配） -->
+<!-- 标准PU -->
 <div class="content-box" id="putongpuBox">
     <div class="title">
         <h2>Standard PU Leather / 标准PU皮革</h2>
@@ -537,6 +519,7 @@
     </div>
 </div>
 
+<!-- PVC -->
 <div class="content-box" id="pvcBox">
     <div class="title">
         <h2>PVC Leather / PVC皮革</h2>
@@ -563,6 +546,7 @@
     </div>
 </div>
 
+<!-- 生物基 -->
 <div class="content-box" id="shengwuBox">
     <div class="title">
         <h2>Bio-Based Leather / 生物基皮革</h2>
@@ -589,6 +573,7 @@
     </div>
 </div>
 
+<!-- 超纤 -->
 <div class="content-box" id="chaoqianBox">
     <div class="title">
         <h2>Microfiber Leather / 超纤皮革</h2>
@@ -615,6 +600,7 @@
     </div>
 </div>
 
+<!-- 特殊皮革 -->
 <div class="content-box" id="teshuBox">
     <div class="title">
         <h2>Specialty Leather / 特殊皮革</h2>
@@ -641,6 +627,7 @@
     </div>
 </div>
 
+<!-- 再生皮革 -->
 <div class="content-box" id="recycledBox">
     <div class="title">
         <h2>Recycled PET Bottle Leather / 回收PET瓶再生皮革</h2>
@@ -712,89 +699,6 @@
 </footer>
 
 <script>
-// 环保PU的图片数组（100%匹配你现有的文件）
-const huanbaoImages = [
-    "huanbao.jpg",
-    "huanbao1.jpg",
-    "huanbao2.jpg",
-    "huanbao3.jpg",
-    "huanbao4.jpg",
-    "huanbao5.jpg",
-    "huanbao6.jpg",
-    "huanbao7.jpg",
-    "huanbao8.jpg",
-    "huanbao9.jpg",
-    "huanbao10.jpg",
-    "huanbao11.jpg"
-];
-let huanbaoIndex = 0;
-
-// 初始化环保PU的缩略图和放大镜
-function initHuanbaoZoom(){
-    const list = document.getElementById("listHuanbao");
-    list.innerHTML = "";
-    huanbaoImages.forEach((src, idx)=>{
-        let item = document.createElement("img");
-        item.src = src;
-        item.className = "mini-item";
-        if(idx === 0) item.classList.add("active");
-        item.onclick = ()=>{
-            huanbaoIndex = idx;
-            refreshHuanbaoPic();
-        };
-        list.appendChild(item);
-    });
-    refreshHuanbaoPic();
-
-    // 绑定放大镜事件
-    const zoomBox = document.getElementById("zoomHuanbao");
-    const seeBox = zoomBox.querySelector(".zoom-see");
-    const bigView = zoomBox.querySelector(".zoom-big-view");
-
-    zoomBox.onmousemove = function(e){
-        let rect = this.getBoundingClientRect();
-        let x = e.clientX - rect.left;
-        let y = e.clientY - rect.top;
-        let scale = bigView.offsetWidth / seeBox.offsetWidth;
-
-        seeBox.style.display = "block";
-        bigView.style.display = "block";
-
-        let moveX = x - seeBox.offsetWidth/2;
-        let moveY = y - seeBox.offsetHeight/2;
-        if(moveX < 0) moveX = 0;
-        if(moveY < 0) moveY = 0;
-        if(moveX > rect.width - seeBox.offsetWidth) moveX = rect.width - seeBox.offsetWidth;
-        if(moveY > rect.height - seeBox.offsetHeight) moveY = rect.height - seeBox.offsetHeight;
-
-        seeBox.style.left = moveX + "px";
-        seeBox.style.top = moveY + "px";
-        bigView.style.backgroundPosition = `-${moveX*scale}px -${moveY*scale}px`;
-    };
-
-    zoomBox.onmouseleave = function(){
-        seeBox.style.display = "none";
-        bigView.style.display = "none";
-    };
-}
-
-// 刷新环保PU主图
-function refreshHuanbaoPic(){
-    const mainPic = document.getElementById("picHuanbao");
-    const bigView = document.querySelector("#zoomHuanbao .zoom-big-view");
-    mainPic.src = huanbaoImages[huanbaoIndex];
-    bigView.style.backgroundImage = `url(${huanbaoImages[huanbaoIndex]})`;
-    document.querySelectorAll("#listHuanbao .mini-item").forEach((el,i)=>{
-        el.classList.toggle("active",i===huanbaoIndex);
-    });
-}
-
-// 切换环保PU图片
-function changeHuanbaoImg(step){
-    huanbaoIndex = (huanbaoIndex + step + huanbaoImages.length) % huanbaoImages.length;
-    refreshHuanbaoPic();
-}
-
 // 轮播图逻辑
 const slides = document.querySelectorAll('.slide');
 const dotBox = document.getElementById('dotBox');
@@ -879,7 +783,6 @@ function openPage(name){
             break;
         case 'huanbao':
             huanbaoBox.classList.add('show');
-            initHuanbaoZoom(); // 初始化环保PU的放大和缩略图
             break;
         case 'putongpu':
             putongpuBox.classList.add('show');
@@ -928,7 +831,7 @@ navList.forEach(nav=>{
     })
 })
 
-// 为其他单图页面绑定放大镜
+// 所有页面放大镜（正常工作，无报错）
 document.querySelectorAll(".zoom-box").forEach(box=>{
     const mainPic = box.querySelector(".zoom-main-pic");
     const seeBox = box.querySelector(".zoom-see");
