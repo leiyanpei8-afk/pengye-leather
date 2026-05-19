@@ -128,30 +128,35 @@
             overflow:hidden;
             margin-bottom:40px;
         }
-        /* 主图放大镜容器 */
+        /* 主图放大镜容器 - 亚马逊风格优化 */
         .zoom-container{
             position:relative;
             width:100%;
             height:500px;
             overflow:hidden;
-            cursor:crosshair;
+            cursor:zoom-in; /* 亚马逊同款放大镜光标 */
         }
         .zoom-main-img{
             width:100%;
             height:100%;
             object-fit:cover;
             display:block;
+            transition:all 0.3s ease;
         }
+        /* 亚马逊风格放大镜镜片 - 半透明黑色带边框 */
         .zoom-lens{
             position:absolute;
             width:180px;
             height:180px;
             border:2px solid #fff;
-            background:rgba(255,255,255,0.15);
+            background:rgba(0,0,0,0.4);
+            border-radius:50%; /* 亚马逊常用圆形放大镜 */
             display:none;
             z-index:10;
             pointer-events:none;
+            transition:all 0.1s ease; /* 流畅跟随效果 */
         }
+        /* 预览窗口 - 右侧悬浮，亚马逊风格 */
         .zoom-preview{
             position:absolute;
             top:0;
@@ -163,8 +168,9 @@
             box-shadow:0 0 20px rgba(0,0,0,0.12);
             display:none;
             z-index:99;
-            background-size:250% 250%;
+            background-size:250% 250%; /* 优化缩放比例 */
             background-repeat:no-repeat;
+            transition:all 0.3s ease;
         }
         /* 左右切换箭头 */
         .zoom-arrow{
@@ -182,10 +188,10 @@
             z-index:5;
             transition:0.2s;
         }
-        .zoom-arrow:hover{background:rgba(0,0,0.7);}
+        .zoom-arrow:hover{background:rgba(0,0,0,0.7);}
         .zoom-arrow-left{left:20px;}
         .zoom-arrow-right{right:20px;}
-        /* 缩略图列表 */
+        /* 缩略图列表 - 亚马逊风格底部横向排列 */
         .thumbnails{
             display:flex;
             gap:12px;
@@ -744,6 +750,7 @@ const imgData = {
 let nowIndex = {};
 Object.keys(imgData).forEach(key=>nowIndex[key]=0);
 
+// 亚马逊风格放大镜核心功能 - 完全重构
 function initZoom(type){
     let arr = imgData[type];
     let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
@@ -752,6 +759,7 @@ function initZoom(type){
     let preview = zoomContainer.querySelector(".zoom-preview");
     let thumbBox = document.getElementById("thumb"+type.charAt(0).toUpperCase()+type.slice(1));
 
+    // 初始化缩略图
     thumbBox.innerHTML = "";
     arr.forEach((src,idx)=>{
         let t = document.createElement("img");
@@ -763,31 +771,58 @@ function initZoom(type){
     });
     refreshImg(type);
 
+    // 亚马逊风格放大镜逻辑 - 修复坐标计算问题
+    let lensSize = 180; // 放大镜尺寸，亚马逊常用大小
+    let scale = 2.5; // 放大倍数，亚马逊常用2.5倍
+
+    // 鼠标移动事件 - 精准计算位置
     zoomContainer.onmousemove = function(e){
+        // 获取容器相对视口的位置
         let rect = this.getBoundingClientRect();
+        // 计算鼠标在容器内的相对坐标
         let x = e.clientX - rect.left;
         let y = e.clientY - rect.top;
-        let scale = preview.offsetWidth / lens.offsetWidth;
-
-        lens.style.display = "block";
-        preview.style.display = "block";
-
-        let lensX = x - lens.offsetWidth/2;
-        let lensY = y - lens.offsetHeight/2;
+        
+        // 计算放大镜位置，确保不超出容器边界
+        let lensX = x - lensSize / 2;
+        let lensY = y - lensSize / 2;
+        
+        // 边界限制
         if(lensX < 0) lensX = 0;
         if(lensY < 0) lensY = 0;
-        if(lensX > rect.width - lens.offsetWidth) lensX = rect.width - lens.offsetWidth;
-        if(lensY > rect.height - lens.offsetHeight) lensY = rect.height - lens.offsetHeight;
-
+        if(lensX > rect.width - lensSize) lensX = rect.width - lensSize;
+        if(lensY > rect.height - lensSize) lensY = rect.height - lensSize;
+        
+        // 设置放大镜位置
+        lens.style.display = "block";
         lens.style.left = lensX + "px";
         lens.style.top = lensY + "px";
-        preview.style.backgroundPosition = `-${lensX*scale}px -${lensY*scale}px`;
+        
+        // 显示预览窗口并设置背景位置
+        preview.style.display = "block";
+        // 亚马逊风格背景定位计算，确保放大区域精准对应
+        let bgX = -lensX * scale;
+        let bgY = -lensY * scale;
+        preview.style.backgroundPosition = `${bgX}px ${bgY}px`;
     };
 
+    // 鼠标离开时隐藏放大镜和预览窗口
     zoomContainer.onmouseleave = function(){
         lens.style.display = "none";
         preview.style.display = "none";
     };
+
+    // 优化：鼠标点击时切换放大状态（亚马逊也有此交互）
+    zoomContainer.addEventListener('click', function(e) {
+        if(preview.style.display === 'none') {
+            // 点击显示放大镜
+            this.onmousemove(e);
+        } else {
+            // 再次点击隐藏
+            lens.style.display = "none";
+            preview.style.display = "none";
+        }
+    });
 }
 
 function refreshImg(type){
@@ -797,9 +832,13 @@ function refreshImg(type){
     let mainImg = zoomContainer.querySelector(".zoom-main-img");
     let preview = zoomContainer.querySelector(".zoom-preview");
 
+    // 设置主图和预览图
     mainImg.src = arr[idx];
     preview.style.backgroundImage = `url(${arr[idx]})`;
+    // 亚马逊风格预览图背景尺寸，确保放大清晰
+    preview.style.backgroundSize = `${mainImg.width * 2.5}px ${mainImg.height * 2.5}px`;
 
+    // 更新缩略图激活状态
     document.querySelectorAll("#thumb"+type.charAt(0).toUpperCase()+type.slice(1)+" .thumb-item").forEach((t,i)=>{
         t.classList.toggle("active",i===idx);
     });
