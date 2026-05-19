@@ -251,6 +251,10 @@
                 <span>Special Leather</span>
                 <span>特殊皮革</span>
             </a>
+            <a href="javascript:;" class="nav-link" data-page="recycled">
+                <span>Recycled Eco Leather</span>
+                <span>回收再生皮革</span>
+            </a>
             <a href="javascript:;" class="nav-link" data-type="more">
                 <span>More</span>
                 <span>更多</span>
@@ -263,7 +267,7 @@
     </div>
 </header>
 
-<!-- 轮播图（已按你的文件名100%修正） -->
+<!-- 轮播图 -->
 <section class="hero" id="hero">
     <div class="slide active" style="background-image:url('images/main-banner1.jpg')"></div>
     <div class="slide" style="background-image:url('images/main-banner2.jpg.jpg')"></div>
@@ -275,7 +279,7 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 首页产品卡片列表（所有图片已按你的文件名修正） -->
+<!-- 首页产品卡片列表 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -336,6 +340,14 @@
             <div class="product-info">
                 <h4>Special Leather 特殊皮革</h4>
                 <p>定制纹路特种工艺皮革</p>
+            </div>
+        </div>
+        <!-- 新增：回收PET瓶再生皮革卡片 -->
+        <div class="product-card" onclick="openPage('recycled')">
+            <img src="images/recycled.png" alt="PET瓶回收再生皮革">
+            <div class="product-info">
+                <h4>Recycled PET Bottle Leather PET瓶回收再生皮革</h4>
+                <p>塑料瓶再生环保循环皮革</p>
             </div>
         </div>
     </div>
@@ -401,7 +413,7 @@
     </div>
 </div>
 
-<!-- 4.标准PU皮革详情（图片已改为main-banner5.jpg.jpg） -->
+<!-- 4.标准PU皮革详情 -->
 <div class="content-box" id="putongpuBox">
     <div class="detail-box">
         <div class="title">
@@ -501,6 +513,26 @@
     </div>
 </div>
 
+<!-- 9. 新增：回收PET瓶再生皮革详情 -->
+<div class="content-box" id="recycledBox">
+    <div class="detail-box">
+        <div class="title">
+            <h2>Recycled PET Bottle Leather / 回收PET瓶再生皮革</h2>
+        </div>
+        <div class="detail-content">
+            <div class="detail-img"><img src="images/recycled.png"></div>
+            <div class="detail-text">
+                <h3>回收 PET 瓶再生皮革 Recycled PET Bottle Leather</h3>
+                <p>回收 PET 再生皮革是以废弃矿泉水瓶、塑料瓶回收再造的聚酯原料加工而成的循环环保皮革。通过破碎、造粒、纺丝、织造、贴合涂层工艺，将废旧塑料资源二次利用，大幅减少塑料垃圾污染与石油原料消耗。材料韧性强、拉力好、耐磨损、色牢度高，性能稳定接近超纤皮革，是国际市场认可度极高的可持续环保人造革，广泛用于箱包、鞋材、沙发、户外用品。</p>
+                <p class="en-tip">English：Recycled PET bottle leather is a sustainable eco-friendly material produced from recycled waste plastic bottles. Through crushing, granulation, fiber spinning and lamination processes, waste plastic resources are reused effectively, reducing plastic pollution and reliance on petroleum raw materials. This material features high toughness, strong tensile strength, excellent wear resistance and stable color fastness. With reliable performance similar to microfiber leather, it is highly recognized in the global market and widely used in bags, footwear, furniture and outdoor products.</p>
+                <p class="split-tip">若上述皮革都没有你满意的，可以联系我们进行定制，所展示的产品只是一小部分。</p>
+                <p class="en-tip">English：If none of the above leathers satisfy you, you can contact us for customization. The displayed products are only a small part of our products.</p>
+                <a href="javascript:backHome()" class="back-btn">返回首页</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 更多页面 -->
 <div class="content-box" id="moreBox">
     <div style="max-width:900px;margin:0 auto;text-align:center;">
@@ -556,6 +588,7 @@ const pvcBox = document.getElementById('pvcBox');
 const shengwuBox = document.getElementById('shengwuBox');
 const chaoqianBox = document.getElementById('chaoqianBox');
 const teshuBox = document.getElementById('teshuBox');
+const recycledBox = document.getElementById('recycledBox');
 const moreBox = document.getElementById('moreBox');
 const contactBox = document.getElementById('contactBox');
 const hero = document.getElementById('hero');
@@ -572,6 +605,7 @@ function hideAll(){
     shengwuBox.classList.remove('show');
     chaoqianBox.classList.remove('show');
     teshuBox.classList.remove('show');
+    recycledBox.classList.remove('show');
     moreBox.classList.remove('show');
     contactBox.classList.remove('show');
 }
@@ -594,6 +628,10 @@ function openPage(name){
     let navActive = document.querySelector(`[data-page="${name}"]`);
     if(navActive) navActive.classList.add('active');
     switch(name){
+        case 'home':
+            hero.classList.remove('hidden');
+            homeBox.classList.add('show');
+            break;
         case 'zhenpi': zhenpiBox.classList.add('show');break;
         case 'shuixin': shuixinBox.classList.add('show');break;
         case 'huanbao': huanbaoBox.classList.add('show');break;
@@ -602,6 +640,7 @@ function openPage(name){
         case 'shengwu': shengwuBox.classList.add('show');break;
         case 'chaoqian': chaoqianBox.classList.add('show');break;
         case 'teshu': teshuBox.classList.add('show');break;
+        case 'recycled': recycledBox.classList.add('show');break;
     }
     window.scrollTo(0,0);
 }
@@ -615,7 +654,11 @@ navs.forEach(nav=>{
         navs.forEach(n=>n.classList.remove('active'));
         this.classList.add('active');
         hideAll();
-        if(page){
+        
+        if(page === 'home'){
+            backHome();
+        }
+        else if(page){
             openPage(page);
         }else if(type === 'contact'){
             hero.classList.add('hidden');
