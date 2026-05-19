@@ -182,7 +182,7 @@
             z-index:5;
             transition:0.2s;
         }
-        .zoom-arrow:hover{background:rgba(0,0,0,0.7);}
+        .zoom-arrow:hover{background:rgba(0,0,0.7);}
         .zoom-arrow-left{left:20px;}
         .zoom-arrow-right{right:20px;}
         /* 缩略图列表 */
@@ -342,7 +342,7 @@
     </div>
 </header>
 
-<!-- 轮播图 匹配本地正确文件名 -->
+<!-- 轮播图 全部使用你真实存在图片 -->
 <section class="hero" id="hero">
     <div class="slide active" style="background-image:url('main-banner1.jpg')"></div>
     <div class="slide" style="background-image:url('main-banner2.jpg')"></div>
@@ -354,7 +354,7 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 首页卡片 全部匹配你本地图片 -->
+<!-- 首页产品卡片 1:1匹配你的图片 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -714,7 +714,7 @@
 </footer>
 
 <script>
-// 严格匹配你本地所有图片文件名，无多余后缀
+// 严格匹配你所有已上传图片文件名
 const imgData = {
     zhenpi: ["zhenpi.png"],
     shuixin: ["shuixin.png"],
@@ -873,7 +873,7 @@ navs.forEach(nav=>{
     })
 })
 
-// 轮播
+// 轮播图自动切换
 const slides = document.querySelectorAll('.slide');
 const dotBox = document.getElementById('dotBox');
 let cur = 0;
