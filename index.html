@@ -342,7 +342,7 @@
     </div>
 </header>
 
-<!-- 轮播图 精准匹配文件名 -->
+<!-- 轮播图 严格对照你的清单 -->
 <section class="hero" id="hero">
     <div class="slide active" style="background-image:url('main-banner1.jpg')"></div>
     <div class="slide" style="background-image:url('main-banner2.jpg.jpg')"></div>
@@ -354,7 +354,7 @@
     <div class="dots" id="dotBox"></div>
 </section>
 
-<!-- 首页产品卡片 全部匹配你现有png图 -->
+<!-- 首页卡片 严格对照 -->
 <div class="content-box show" id="homeBox">
     <div class="title">
         <h2>Our Leather Series / 皮革系列</h2>
@@ -427,7 +427,7 @@
     </div>
 </div>
 
-<!-- 环保PU详情页 调用现有huanbao系列图 -->
+<!-- 环保PU 详情 -->
 <div class="content-box" id="huanbaoBox">
     <div class="detail-box">
         <div class="title">
@@ -454,7 +454,7 @@
     </div>
 </div>
 
-<!-- 真皮详情页 -->
+<!-- 真皮 -->
 <div class="content-box" id="zhenpiBox">
     <div class="detail-box">
         <div class="title">
@@ -481,7 +481,7 @@
     </div>
 </div>
 
-<!-- 水性PU详情页 -->
+<!-- 水性PU -->
 <div class="content-box" id="shuixinBox">
     <div class="detail-box">
         <div class="title">
@@ -508,7 +508,7 @@
     </div>
 </div>
 
-<!-- 标准PU详情页 -->
+<!-- 标准PU -->
 <div class="content-box" id="putongpuBox">
     <div class="detail-box">
         <div class="title">
@@ -535,7 +535,7 @@
     </div>
 </div>
 
-<!-- PVC详情页 -->
+<!-- PVC -->
 <div class="content-box" id="pvcBox">
     <div class="detail-box">
         <div class="title">
@@ -562,7 +562,7 @@
     </div>
 </div>
 
-<!-- 生物基详情页 -->
+<!-- 生物基 -->
 <div class="content-box" id="shengwuBox">
     <div class="detail-box">
         <div class="title">
@@ -589,7 +589,7 @@
     </div>
 </div>
 
-<!-- 超纤详情页 -->
+<!-- 超纤 -->
 <div class="content-box" id="chaoqianBox">
     <div class="detail-box">
         <div class="title">
@@ -616,7 +616,7 @@
     </div>
 </div>
 
-<!-- 特殊皮革详情页 -->
+<!-- 特殊皮革 -->
 <div class="content-box" id="teshuBox">
     <div class="detail-box">
         <div class="title">
@@ -643,7 +643,7 @@
     </div>
 </div>
 
-<!-- 再生皮革详情页 -->
+<!-- 再生皮革 -->
 <div class="content-box" id="recycledBox">
     <div class="detail-box">
         <div class="title">
@@ -670,7 +670,7 @@
     </div>
 </div>
 
-<!-- 更多页面 -->
+<!-- 更多 -->
 <div class="content-box" id="moreBox">
     <div style="max-width:900px;margin:0 auto;text-align:center;">
         <h3 style="font-size:28px;margin-bottom:25px;">More Leather Options / 更多皮革款式</h3>
@@ -705,7 +705,6 @@
     </div>
 </div>
 
-<!-- WhatsApp悬浮按钮 -->
 <a href="https://wa.me/923151299388" target="_blank" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -715,23 +714,22 @@
 </footer>
 
 <script>
-// 严格匹配你现有图片文件名配置
+// 100% 对照你提供的图片清单
 const imgData = {
-    zhenpi:["zhenpi.png"],
-    shuixin:["shuixin.png"],
-    huanbao:["huanbao.png","huanbao.jpg","huanbao1.jpg","huanbao2.jpg","huanbao3.jpg","huanbao4.jpg","huanbao5.jpg","huanbao6.jpg","huanbao7.jpg","huanbao8.jpg","huanbao9.jpg","huanbao10.jpg","huanbao11.jpg"],
-    putongpu:["main-banner5.jpg.jpg"],
-    pvc:["pvc.png"],
-    shengwu:["shengwu.png"],
-    chaoqian:["chaoqian.png"],
-    teshu:["teshu.png"],
-    recycled:["main-banner6.jpg.png"]
+    zhenpi: ["zhenpi.png"],
+    shuixin: ["shuixin.png"],
+    huanbao: ["huanbao.png","huanbao.jpg","huanbao1.jpg","huanbao2.jpg","huanbao3.jpg","huanbao4.jpg","huanbao5.jpg","huanbao6.jpg","huanbao7.jpg","huanbao8.jpg","huanbao9.jpg","huanbao10.jpg","huanbao11.jpg"],
+    putongpu: ["main-banner5.jpg.jpg"],
+    pvc: ["pvc.png"],
+    shengwu: ["shengwu.png"],
+    chaoqian: ["chaoqian.png"],
+    teshu: ["teshu.png"],
+    recycled: ["main-banner6.jpg.png"]
 };
 
 let nowIndex = {};
 Object.keys(imgData).forEach(key=>nowIndex[key]=0);
 
-// 初始化放大镜和缩略图
 function initZoom(type){
     let arr = imgData[type];
     let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
@@ -778,7 +776,6 @@ function initZoom(type){
     };
 }
 
-// 刷新图片
 function refreshImg(type){
     let arr = imgData[type];
     let idx = nowIndex[type];
@@ -794,14 +791,12 @@ function refreshImg(type){
     });
 }
 
-// 左右切换图片
 function switchImg(type,step){
     let arr = imgData[type];
     nowIndex[type] = (nowIndex[type] + step + arr.length) % arr.length;
     refreshImg(type);
 }
 
-// 页面切换逻辑
 const homeBox = document.getElementById('homeBox');
 const zhenpiBox = document.getElementById('zhenpiBox');
 const shuixinBox = document.getElementById('shuixinBox');
@@ -848,10 +843,7 @@ function openPage(name){
     let navActive = document.querySelector(`[data-page="${name}"]`);
     if(navActive) navActive.classList.add('active');
     switch(name){
-        case 'home':
-            hero.classList.remove('hidden');
-            homeBox.classList.add('show');
-            break;
+        case 'home': hero.classList.remove('hidden'); homeBox.classList.add('show'); break;
         case 'zhenpi': zhenpiBox.classList.add('show'); initZoom("zhenpi"); break;
         case 'shuixin': shuixinBox.classList.add('show'); initZoom("shuixin"); break;
         case 'huanbao': huanbaoBox.classList.add('show'); initZoom("huanbao"); break;
@@ -865,7 +857,6 @@ function openPage(name){
     window.scrollTo(0,0);
 }
 
-// 导航点击事件
 navs.forEach(nav=>{
     nav.addEventListener('click',function(e){
         e.preventDefault();
@@ -875,22 +866,14 @@ navs.forEach(nav=>{
         this.classList.add('active');
         hideAll();
         
-        if(page === 'home'){
-            backHome();
-        }
-        else if(page){
-            openPage(page);
-        }else if(type === 'contact'){
-            hero.classList.add('hidden');
-            contactBox.classList.add('show');
-        }else if(type === 'more'){
-            hero.classList.remove('hidden');
-            moreBox.classList.add('show');
-        }
+        if(page === 'home') backHome();
+        else if(page) openPage(page);
+        else if(type === 'contact'){ hero.classList.add('hidden'); contactBox.classList.add('show'); }
+        else if(type === 'more'){ hero.classList.remove('hidden'); moreBox.classList.add('show'); }
     })
 })
 
-// 轮播图逻辑
+// 轮播
 const slides = document.querySelectorAll('.slide');
 const dotBox = document.getElementById('dotBox');
 let cur = 0;
@@ -907,3 +890,13 @@ function switchSlide(idx){
     slides[idx].classList.add('active');
     dots[idx].classList.add('active');
 }
+setInterval(()=>{
+    cur = (cur+1)%slides.length;
+    switchSlide(cur);
+},4000)
+dots.forEach((d,i)=>{
+    d.onclick = ()=>{cur=i;switchSlide(i);}
+})
+</script>
+</body>
+</html>
