@@ -220,7 +220,7 @@
         nav a span:first-child{font-size:13px;}
         nav a span:last-child{font-size:11px;margin-top:2px;}
         nav a:hover span,
-        nav a.active span{color:#c4a878;}
+        nav a.active span{color:#FF7A00;}
 
         /* 轮播 */
         .hero {
@@ -263,7 +263,7 @@
             background:rgba(255,255,255,0.35);
             cursor:pointer;
         }
-        .dot.active{background:#fff;transform:scale(1.1);}
+        .dot.active{background:#FF7A00;transform:scale(1.1);}
 
         /* 通用内容区块 */
         .content-box{display:none;padding:80px 5%;background:#fff;}
@@ -284,13 +284,13 @@
             transition:0.3s;
             cursor:pointer;
         }
-        .product-card:hover{transform:translateY(-6px);}
+        .product-card:hover{transform:translateY(-6px);border-color:#FF7A00;}
         .product-card img{width:100%;height:240px;object-fit:cover;}
         .product-info{padding:18px;text-align:center;}
         .product-info h4{font-size:16px;margin-bottom:4px;}
         .product-info p{font-size:13px;color:#888;}
 
-        /* 详情页：全屏大图卡片布局 */
+        /* 详情页：移除放大镜，普通大图展示 */
         .detail-box{
             max-width:1200px;
             margin:0 auto;
@@ -303,91 +303,13 @@
             overflow:hidden;
             margin-bottom:40px;
         }
-        /* 主图放大镜容器 - 亚马逊风格优化 */
-        .zoom-container{
-            position:relative;
+        /* 普通产品图片，固定尺寸不变形 */
+        .detail-img{
             width:100%;
             height:500px;
-            overflow:hidden;
-            cursor:zoom-in; /* 亚马逊同款放大镜光标 */
-        }
-        .zoom-main-img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            display:block;
-            transition:all 0.3s ease;
-        }
-        /* 亚马逊风格放大镜镜片 - 半透明黑色带边框 */
-        .zoom-lens{
-            position:absolute;
-            width:180px;
-            height:180px;
-            border:2px solid #fff;
-            background:rgba(0,0,0,0.4);
-            border-radius:50%; /* 亚马逊常用圆形放大镜 */
-            display:none;
-            z-index:10;
-            pointer-events:none;
-            transition:all 0.1s ease; /* 流畅跟随效果 */
-        }
-        /* 预览窗口 - 右侧悬浮，亚马逊风格 */
-        .zoom-preview{
-            position:absolute;
-            top:0;
-            right:-520px;
-            width:500px;
-            height:500px;
-            background:#fff;
-            border:1px solid #eee;
-            box-shadow:0 0 20px rgba(0,0,0,0.12);
-            display:none;
-            z-index:99;
-            background-size:250% 250%; /* 优化缩放比例 */
-            background-repeat:no-repeat;
-            transition:all 0.3s ease;
-        }
-        /* 左右切换箭头 */
-        .zoom-arrow{
-            position:absolute;
-            top:50%;
-            transform:translateY(-50%);
-            width:50px;
-            height:50px;
-            border-radius:50%;
-            border:none;
-            background:rgba(0,0,0,0.4);
-            color:#fff;
-            font-size:20px;
-            cursor:pointer;
-            z-index:5;
-            transition:0.2s;
-        }
-        .zoom-arrow:hover{background:rgba(0,0,0,0.7);}
-        .zoom-arrow-left{left:20px;}
-        .zoom-arrow-right{right:20px;}
-        /* 缩略图列表 - 亚马逊风格底部横向排列 */
-        .thumbnails{
-            display:flex;
-            gap:12px;
-            padding:20px;
-            overflow-x:auto;
+            object-fit:contain;
             background:#f9f9f9;
-        }
-        .thumb-item{
-            width:80px;
-            height:80px;
-            object-fit:cover;
-            border-radius:4px;
-            cursor:pointer;
-            border:2px solid transparent;
-            opacity:0.7;
-            transition:0.2s;
-            flex-shrink:0;
-        }
-        .thumb-item.active, .thumb-item:hover{
-            border-color:#b07a47;
-            opacity:1;
+            display:block;
         }
         /* 详情文字 */
         .detail-text{
@@ -395,7 +317,7 @@
         }
         .detail-text h3{
             font-size:24px;
-            color:#b07a47;
+            color:#FF7A00;
             margin-bottom:20px;
         }
         .detail-text p{
@@ -408,18 +330,18 @@
             display:inline-block;
             margin-top:30px;
             padding:10px 25px;
-            background:#b07a47;
+            background:#FF7A00;
             color:#fff;
             border-radius:4px;
             transition:0.3s;
         }
-        .back-btn:hover{background:#95663c;}
+        .back-btn:hover{background:#e66a00;}
 
         /* 联系我们 */
         .contact-inner{max-width:900px;margin:0 auto;}
         .contact-inner h2{
             font-size:32px;
-            color:#b07a47;
+            color:#FF7A00;
             margin-bottom:40px;
         }
         .contact-item{
@@ -429,14 +351,14 @@
             font-size:20px;
         }
         .contact-item i{
-            color:#b07a47;
+            color:#FF7A00;
             font-size:28px;
             width:30px;
             margin-right:20px;
             text-align:center;
         }
         .contact-item a{color:#222;}
-        .contact-item a:hover{color:#b07a47;}
+        .contact-item a:hover{color:#FF7A00;}
 
         /* 悬浮按钮 */
         .wa-float{
@@ -793,14 +715,7 @@
             <h2>Eco-Friendly PU Leather / 环保PU皮革</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomHuanbao">
-                <img src="" class="zoom-main-img" id="imgHuanbao" alt="环保PU皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('huanbao',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('huanbao',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbHuanbao"></div>
+            <img src="images/huanbao.png" class="detail-img" alt="环保PU皮革">
             <div class="detail-text">
                 <h3>环保 PU 皮革 Eco-Friendly PU Leather</h3>
                 <p>环保 PU 皮革是符合低碳合规标准的合成 PU 革，采用环保型树脂与助剂生产，碳足迹显著低于常规 PU。其生产过程严格管控有害物质排放，满足欧盟 REACH 等国际环保法规要求，可用于对环保指标要求较高的鞋类与家具产品。原料以改性聚氨酯树脂为主，搭配环保型助剂，具备稳定的物理性能与耐候性。鉴别可通过查看环保检测报告、燃烧无刺激性气味、表面无有害涂层析出等方式实现。日常养护同常规 PU，避免强酸强碱清洁剂。</p>
@@ -820,14 +735,7 @@
             <h2>Genuine Leather / 真皮详情</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomZhenpi">
-                <img src="" class="zoom-main-img" id="imgZhenpi" alt="真皮">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('zhenpi',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('zhenpi',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbZhenpi"></div>
+            <img src="images/zhenpi.png" class="detail-img" alt="真皮">
             <div class="detail-text">
                 <h3>真皮 Genuine Leather</h3>
                 <p>真皮是动物表皮经加工制成的天然皮革，区别于人造合成材料。根据轻工行业标准，面层材料90%以上使用头层皮革方可标注 “真皮”。其原料主要来源于牛皮、羊皮、猪皮，鉴别可通过观察天然毛孔纹理、触摸柔软弹性、嗅闻动物皮毛气味等方法实现。日常养护需避免高温与化学试剂，保持通风防潮。</p>
@@ -847,14 +755,7 @@
             <h2>Water-Based PU Leather / 水性PU皮革</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomShuixin">
-                <img src="" class="zoom-main-img" id="imgShuixin" alt="水性PU皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shuixin',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shuixin',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbShuixin"></div>
+            <img src="images/shuixin.png" class="detail-img" alt="水性PU皮革">
             <div class="detail-text">
                 <h3>水性 PU 皮革 Water-Based PU Leather</h3>
                 <p>水性 PU 皮革是以水为介质、无溶剂添加的环保型聚氨酯合成革，区别于传统溶剂型 PU。其生产过程低 VOC 排放，无有毒溶剂残留，对人体与环境友好。原料以水性聚氨酯树脂为基料，通过湿法成膜工艺制成，具备良好的耐刮性与透气性。鉴别可通过无刺激性气味、燃烧无刺鼻黑烟、手感温润不粘手等方式区分。日常养护可直接用湿布擦拭，避免长时间浸泡与暴晒。</p>
@@ -874,14 +775,7 @@
             <h2>Standard PU Leather / 标准PU皮革</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomPutongpu">
-                <img src="" class="zoom-main-img" id="imgPutongpu" alt="标准PU皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('putongpu',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('putongpu',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbPutongpu"></div>
+            <img src="images/main-banner5.jpg" class="detail-img" alt="标准PU皮革">
             <div class="detail-text">
                 <h3>标准 PU 皮革 Standard PU Leather</h3>
                 <p>标准 PU 皮革是以常规聚氨酯树脂为基料的合成皮革，是目前应用最广泛的人造皮革品类之一。其原料由聚氨酯树脂、基布与助剂组成，通过干法或湿法工艺制成，具备稳定的耐磨性、耐曲折性与易加工性。成本适中，性能均衡，广泛应用于鞋类、箱包、家具等领域。鉴别可通过燃烧有轻微塑料气味、表面均匀无天然毛孔、手感偏挺括等方式区分。日常养护可使用中性清洁剂擦拭，远离尖锐物品防止刮伤。</p>
@@ -901,14 +795,7 @@
             <h2>PVC Leather / PVC皮革</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomPvc">
-                <img src="" class="zoom-main-img" id="imgPvc" alt="PVC皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('pvc',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('pvc',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbPvc"></div>
+            <img src="images/pvc.png" class="detail-img" alt="PVC皮革">
             <div class="detail-text">
                 <h3>PVC 皮革 PVC Leather</h3>
                 <p>PVC 皮革是以聚氯乙烯树脂为主要原料的经济型合成皮革，具备优异的防水性与易打理特性。其原料由 PVC 树脂、增塑剂、稳定剂与基布组成，通过压延或涂覆工艺制成，成本低廉，性价比突出。表面光滑致密，防水防潮性能优异，常用于户外用品、家具与经济型鞋材。鉴别可通过燃烧产生刺鼻氯化氢气味、离火自熄、手感偏硬且有塑料感等方式区分。日常养护可直接水洗，避免高温环境防止软化变形。</p>
@@ -928,14 +815,7 @@
             <h2>Bio-Based Leather / 生物基皮革</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomShengwu">
-                <img src="" class="zoom-main-img" id="imgShengwu" alt="生物基皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shengwu',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shengwu',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbShengwu"></div>
+            <img src="images/shengwu.png" class="detail-img" alt="生物基皮革">
             <div class="detail-text">
                 <h3>生物基皮革 Bio-Based Leather</h3>
                 <p>生物基皮革是以植物萃取原料为基础的可持续生态皮革，区别于传统石油基合成革。其原料主要来源于植物纤维、淀粉基或生物基聚氨酯树脂，生产过程可降低对化石资源的依赖，减少碳排放。兼具环保属性与皮革般的质感，可生物降解或循环利用，是面向未来的可持续材料。鉴别可通过查看生物基含量检测报告、燃烧有轻微植物纤维气味、手感接近天然皮革等方式实现。日常养护需避免长时间潮湿，保持通风干燥。</p>
@@ -955,14 +835,7 @@
             <h2>Microfiber Leather / 超纤皮革</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomChaoqian">
-                <img src="" class="zoom-main-img" id="imgChaoqian" alt="超纤皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('chaoqian',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('chaoqian',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbChaoqian"></div>
+            <img src="images/chaoqian.png" class="detail-img" alt="超纤皮革">
             <div class="detail-text">
                 <h3>超纤皮革 Microfiber Leather</h3>
                 <p>超纤皮革是以高性能超细纤维基布与聚氨酯树脂复合而成的仿真皮革，性能接近甚至优于天然真皮。其原料由海岛型超细纤维基布与高性能 PU 树脂组成，通过浸渍、凝固、磨皮等工艺制成，具备优异的耐磨性、抗撕裂性与耐老化性。表面纹理可高度仿真天然皮革，手感柔软细腻，是高端真皮的优质替代材料。鉴别可通过观察均匀细腻的超细纤维纹理、触摸接近真皮的柔软弹性、耐磨测试无明显磨损等方式区分。日常养护可使用皮革专用清洁剂，避免尖锐物体刮擦。</p>
@@ -982,14 +855,7 @@
             <h2>Specialty Leather / 特殊皮革</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomTeshu">
-                <img src="" class="zoom-main-img" id="imgTeshu" alt="特殊皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('teshu',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('teshu',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbTeshu"></div>
+            <img src="images/teshu.png" class="detail-img" alt="特殊皮革">
             <div class="detail-text">
                 <h3>特殊皮革 Specialty Leather</h3>
                 <p>特殊皮革是通过定制纹路与特种工艺加工而成的功能性或装饰性皮革，可根据客户需求实现个性化外观与性能。其原料可基于真皮、PU 或超纤等多种基材，通过压花、烫金、覆膜、植绒等特殊工艺处理，打造独特的纹理、光泽与触感效果，如鳄鱼纹、蛇纹、金属光泽、磨砂效果等。可适配高端时尚、奢侈品、定制家具等特殊应用场景。鉴别需结合工艺特征与客户定制要求，查看纹路一致性、工艺细节与特殊性能检测报告。日常养护需根据具体工艺特性选择对应方式，避免损伤特殊涂层或纹路。</p>
@@ -1009,14 +875,7 @@
             <h2>Recycled PET Bottle Leather / 回收PET瓶再生皮革</h2>
         </div>
         <div class="detail-main-card">
-            <div class="zoom-container" id="zoomRecycled">
-                <img src="" class="zoom-main-img" id="imgRecycled" alt="回收PET瓶再生皮革">
-                <div class="zoom-lens"></div>
-                <div class="zoom-preview"></div>
-                <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('recycled',-1)"><i class="fa fa-chevron-left"></i></button>
-                <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('recycled',1)"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <div class="thumbnails" id="thumbRecycled"></div>
+            <img src="images/main-banner6.jpg" class="detail-img" alt="回收PET瓶再生皮革">
             <div class="detail-text">
                 <h3>回收 PET 瓶再生皮革 Recycled PET Bottle Leather</h3>
                 <p>回收 PET 再生皮革是以废弃矿泉水瓶、塑料瓶回收再造的聚酯原料加工而成的循环环保皮革。通过破碎、造粒、纺丝、织造、贴合涂层工艺，将废旧塑料资源二次利用，大幅减少塑料垃圾污染与石油原料消耗。材料韧性强、拉力好、耐磨损、色牢度高，性能稳定接近超纤皮革，是国际市场认可度极高的可持续环保人造革，广泛用于箱包、鞋材、沙发、户外用品。</p>
@@ -1075,133 +934,16 @@
 <script>
 // 全路径配对 images/文件夹
 const imgData = {
-    zhenpi: ["images/zhenpi.png"],
-    shuixin: ["images/shuixin.png"],
-    huanbao: [
-        "images/huanbao.png",
-        "images/huanbao.jpg",
-        "images/huanbao1.jpg",
-        "images/huanbao2.jpg",
-        "images/huanbao3.jpg",
-        "images/huanbao4.jpg",
-        "images/huanbao5.jpg",
-        "images/huanbao6.jpg",
-        "images/huanbao7.jpg",
-        "images/huanbao8.jpg",
-        "images/huanbao9.jpg",
-        "images/huanbao10.jpg",
-        "images/huanbao11.jpg"
-    ],
-    putongpu: ["images/main-banner5.jpg"],
-    pvc: ["images/pvc.png"],
-    shengwu: ["images/shengwu.png"],
-    chaoqian: ["images/chaoqian.png"],
-    teshu: ["images/teshu.png"],
-    recycled: ["images/main-banner6.jpg"]
+    zhenpi: "images/zhenpi.png",
+    shuixin: "images/shuixin.png",
+    huanbao: "images/huanbao.png",
+    putongpu: "images/main-banner5.jpg",
+    pvc: "images/pvc.png",
+    shengwu: "images/shengwu.png",
+    chaoqian: "images/chaoqian.png",
+    teshu: "images/teshu.png",
+    recycled: "images/main-banner6.jpg"
 };
-
-let nowIndex = {};
-Object.keys(imgData).forEach(key=>nowIndex[key]=0);
-
-// 亚马逊风格放大镜核心功能 - 完全重构
-function initZoom(type){
-    let arr = imgData[type];
-    let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
-    let mainImg = zoomContainer.querySelector(".zoom-main-img");
-    let lens = zoomContainer.querySelector(".zoom-lens");
-    let preview = zoomContainer.querySelector(".zoom-preview");
-    let thumbBox = document.getElementById("thumb"+type.charAt(0).toUpperCase()+type.slice(1));
-
-    // 初始化缩略图
-    thumbBox.innerHTML = "";
-    arr.forEach((src,idx)=>{
-        let t = document.createElement("img");
-        t.src = src;
-        t.className = "thumb-item";
-        if(idx===0) t.classList.add("active");
-        t.onclick = ()=>{nowIndex[type]=idx;refreshImg(type);};
-        thumbBox.appendChild(t);
-    });
-    refreshImg(type);
-
-    // 亚马逊风格放大镜逻辑 - 修复坐标计算问题
-    let lensSize = 180; // 放大镜尺寸，亚马逊常用大小
-    let scale = 2.5; // 放大倍数，亚马逊常用2.5倍
-
-    // 鼠标移动事件 - 精准计算位置
-    zoomContainer.onmousemove = function(e){
-        // 获取容器相对视口的位置
-        let rect = this.getBoundingClientRect();
-        // 计算鼠标在容器内的相对坐标
-        let x = e.clientX - rect.left;
-        let y = e.clientY - rect.top;
-        
-        // 计算放大镜位置，确保不超出容器边界
-        let lensX = x - lensSize / 2;
-        let lensY = y - lensSize / 2;
-        
-        // 边界限制
-        if(lensX < 0) lensX = 0;
-        if(lensY < 0) lensY = 0;
-        if(lensX > rect.width - lensSize) lensX = rect.width - lensSize;
-        if(lensY > rect.height - lensSize) lensY = rect.height - lensSize;
-        
-        // 设置放大镜位置
-        lens.style.display = "block";
-        lens.style.left = lensX + "px";
-        lens.style.top = lensY + "px";
-        
-        // 显示预览窗口并设置背景位置
-        preview.style.display = "block";
-        // 亚马逊风格背景定位计算，确保放大区域精准对应
-        let bgX = -lensX * scale;
-        let bgY = -lensY * scale;
-        preview.style.backgroundPosition = `${bgX}px ${bgY}px`;
-    };
-
-    // 鼠标离开时隐藏放大镜和预览窗口
-    zoomContainer.onmouseleave = function(){
-        lens.style.display = "none";
-        preview.style.display = "none";
-    };
-
-    // 优化：鼠标点击时切换放大状态（亚马逊也有此交互）
-    zoomContainer.addEventListener('click', function(e) {
-        if(preview.style.display === 'none') {
-            // 点击显示放大镜
-            this.onmousemove(e);
-        } else {
-            // 再次点击隐藏
-            lens.style.display = "none";
-            preview.style.display = "none";
-        }
-    });
-}
-
-function refreshImg(type){
-    let arr = imgData[type];
-    let idx = nowIndex[type];
-    let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
-    let mainImg = zoomContainer.querySelector(".zoom-main-img");
-    let preview = zoomContainer.querySelector(".zoom-preview");
-
-    // 设置主图和预览图
-    mainImg.src = arr[idx];
-    preview.style.backgroundImage = `url(${arr[idx]})`;
-    // 亚马逊风格预览图背景尺寸，确保放大清晰
-    preview.style.backgroundSize = `${mainImg.width * 2.5}px ${mainImg.height * 2.5}px`;
-
-    // 更新缩略图激活状态
-    document.querySelectorAll("#thumb"+type.charAt(0).toUpperCase()+type.slice(1)+" .thumb-item").forEach((t,i)=>{
-        t.classList.toggle("active",i===idx);
-    });
-}
-
-function switchImg(type,step){
-    let arr = imgData[type];
-    nowIndex[type] = (nowIndex[type] + step + arr.length) % arr.length;
-    refreshImg(type);
-}
 
 const homeBox = document.getElementById('homeBox');
 const zhenpiBox = document.getElementById('zhenpiBox');
@@ -1250,15 +992,15 @@ function openPage(name){
     if(navActive) navActive.classList.add('active');
     switch(name){
         case 'home': hero.classList.remove('hidden'); homeBox.classList.add('show'); break;
-        case 'zhenpi': zhenpiBox.classList.add('show'); initZoom("zhenpi"); break;
-        case 'shuixin': shuixinBox.classList.add('show'); initZoom("shuixin"); break;
-        case 'huanbao': huanbaoBox.classList.add('show'); initZoom("huanbao"); break;
-        case 'putongpu': putongpuBox.classList.add('show'); initZoom("putongpu"); break;
-        case 'pvc': pvcBox.classList.add('show'); initZoom("pvc"); break;
-        case 'shengwu': shengwuBox.classList.add('show'); initZoom("shengwu"); break;
-        case 'chaoqian': chaoqianBox.classList.add('show'); initZoom("chaoqian"); break;
-        case 'teshu': teshuBox.classList.add('show'); initZoom("teshu"); break;
-        case 'recycled': recycledBox.classList.add('show'); initZoom("recycled"); break;
+        case 'zhenpi': zhenpiBox.classList.add('show'); break;
+        case 'shuixin': shuixinBox.classList.add('show'); break;
+        case 'huanbao': huanbaoBox.classList.add('show'); break;
+        case 'putongpu': putongpuBox.classList.add('show'); break;
+        case 'pvc': pvcBox.classList.add('show'); break;
+        case 'shengwu': shengwuBox.classList.add('show'); break;
+        case 'chaoqian': chaoqianBox.classList.add('show'); break;
+        case 'teshu': teshuBox.classList.add('show'); break;
+        case 'recycled': recycledBox.classList.add('show'); break;
     }
     window.scrollTo(0,0);
 }
