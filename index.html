@@ -107,33 +107,6 @@
             font-weight: 600;
         }
 
-        /* 板块三：主营产品列表 */
-        .product-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .product-item {
-            background: #fff;
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: 0.3s;
-        }
-        .product-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-            border: 1px solid #FF7A00;
-        }
-        .product-item i {
-            font-size: 36px;
-            color: #FF7A00;
-            margin-bottom: 16px;
-        }
-
         /* 板块四：信任背书卡片 */
         .trust-cards {
             display: grid;
@@ -403,6 +376,59 @@
         }
         .back-btn:hover{background:#e66a00;}
 
+        /* 微信式全屏图片弹窗 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .image-modal.show {
+            display: flex;
+        }
+        .image-modal img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 100000;
+        }
+        .modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 60px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            width: 70px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+        .modal-arrow-left {
+            left: 30px;
+        }
+        .modal-arrow-right {
+            right: 30px;
+        }
+
         /* 联系我们 */
         .contact-inner{max-width:900px;margin:0 auto;}
         .contact-inner h2{
@@ -472,6 +498,15 @@
             }
             /* 移动端隐藏右侧放大窗口 */
             .zoom-preview{display:none !important;}
+            .modal-arrow {
+                width: 50px;
+                height: 70px;
+                font-size: 40px;
+            }
+            .modal-close {
+                font-size: 30px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -743,7 +778,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomHuanbao">
-                <img src="" class="zoom-main-img" id="imgHuanbao" alt="环保PU皮革">
+                <img src="" class="zoom-main-img" id="imgHuanbao" alt="环保PU皮革" onclick="openImageModal('huanbao')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('huanbao',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('huanbao',1)"><i class="fa fa-chevron-right"></i></button>
@@ -769,7 +804,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomZhenpi">
-                <img src="" class="zoom-main-img" id="imgZhenpi" alt="真皮">
+                <img src="" class="zoom-main-img" id="imgZhenpi" alt="真皮" onclick="openImageModal('zhenpi')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('zhenpi',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('zhenpi',1)"><i class="fa fa-chevron-right"></i></button>
@@ -795,7 +830,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomShuixin">
-                <img src="" class="zoom-main-img" id="imgShuixin" alt="水性PU皮革">
+                <img src="" class="zoom-main-img" id="imgShuixin" alt="水性PU皮革" onclick="openImageModal('shuixin')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shuixin',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shuixin',1)"><i class="fa fa-chevron-right"></i></button>
@@ -821,7 +856,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomPutongpu">
-                <img src="" class="zoom-main-img" id="imgPutongpu" alt="标准PU皮革">
+                <img src="" class="zoom-main-img" id="imgPutongpu" alt="标准PU皮革" onclick="openImageModal('putongpu')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('putongpu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('putongpu',1)"><i class="fa fa-chevron-right"></i></button>
@@ -847,7 +882,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomPvc">
-                <img src="" class="zoom-main-img" id="imgPvc" alt="PVC皮革">
+                <img src="" class="zoom-main-img" id="imgPvc" alt="PVC皮革" onclick="openImageModal('pvc')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('pvc',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('pvc',1)"><i class="fa fa-chevron-right"></i></button>
@@ -873,7 +908,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomShengwu">
-                <img src="" class="zoom-main-img" id="imgShengwu" alt="生物基皮革">
+                <img src="" class="zoom-main-img" id="imgShengwu" alt="生物基皮革" onclick="openImageModal('shengwu')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shengwu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shengwu',1)"><i class="fa fa-chevron-right"></i></button>
@@ -899,7 +934,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomChaoqian">
-                <img src="" class="zoom-main-img" id="imgChaoqian" alt="超纤皮革">
+                <img src="" class="zoom-main-img" id="imgChaoqian" alt="超纤皮革" onclick="openImageModal('chaoqian')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('chaoqian',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('chaoqian',1)"><i class="fa fa-chevron-right"></i></button>
@@ -925,7 +960,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomTeshu">
-                <img src="" class="zoom-main-img" id="imgTeshu" alt="特殊皮革">
+                <img src="" class="zoom-main-img" id="imgTeshu" alt="特殊皮革" onclick="openImageModal('teshu')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('teshu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('teshu',1)"><i class="fa fa-chevron-right"></i></button>
@@ -951,7 +986,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomRecycled">
-                <img src="" class="zoom-main-img" id="imgRecycled" alt="回收PET瓶再生皮革">
+                <img src="" class="zoom-main-img" id="imgRecycled" alt="回收PET瓶再生皮革" onclick="openImageModal('recycled')">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('recycled',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('recycled',1)"><i class="fa fa-chevron-right"></i></button>
@@ -1004,6 +1039,14 @@
     </div>
 </div>
 
+<!-- 微信式全屏图片弹窗 -->
+<div class="image-modal" id="imageModal">
+    <span class="modal-close" onclick="closeImageModal()">&times;</span>
+    <span class="modal-arrow modal-arrow-left" onclick="modalPrev()">&#10094;</span>
+    <img id="modalImg" src="" alt="大图预览">
+    <span class="modal-arrow modal-arrow-right" onclick="modalNext()">&#10095;</span>
+</div>
+
 <a href="https://wa.me/923151299388" target="_blank" class="wa-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -1042,6 +1085,10 @@ const imgData = {
 
 let nowIndex = {};
 Object.keys(imgData).forEach(key=>nowIndex[key]=0);
+
+// 弹窗全局变量
+let modalCurrentType = "";
+let modalCurrentIndex = 0;
 
 // 右侧画中画放大功能（移除圆形放大镜镜片）
 function initZoom(type){
@@ -1099,92 +1146,3 @@ function refreshImg(type){
     let thumbs = document.getElementById("thumb"+type.charAt(0).toUpperCase()+type.slice(1)).querySelectorAll(".thumb-item");
     
     mainImg.src = arr[idx];
-    preview.style.backgroundImage = `url(${arr[idx]})`;
-    
-    // 缩略图高亮
-    thumbs.forEach((t,i)=>{
-        t.classList.toggle("active", i===idx);
-    });
-}
-
-// 切换产品图片
-function switchImg(type, step){
-    let max = imgData[type].length - 1;
-    nowIndex[type] += step;
-    if(nowIndex[type] < 0) nowIndex[type] = max;
-    if(nowIndex[type] > max) nowIndex[type] = 0;
-    refreshImg(type);
-}
-
-// 轮播图初始化
-function initSlider(){
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.getElementById('dotBox');
-    let current = 0;
-
-    // 创建指示器
-    slides.forEach((_,i)=>{
-        const dot = document.createElement('div');
-        dot.className = i===0 ? 'dot active' : 'dot';
-        dot.onclick = ()=>{current=i;changeSlide()};
-        dots.appendChild(dot);
-    });
-
-    // 切换轮播
-    function changeSlide(){
-        slides.forEach(s=>s.classList.remove('active'));
-        document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
-        slides[current].classList.add('active');
-        document.querySelectorAll('.dot')[current].classList.add('active');
-    }
-
-    // 自动轮播
-    setInterval(()=>{
-        current = (current+1)%slides.length;
-        changeSlide();
-    },4000);
-}
-
-// 页面切换
-function openPage(page){
-    // 隐藏所有内容
-    document.querySelectorAll('.content-box').forEach(box=>box.classList.remove('show'));
-    document.getElementById('hero').classList.add('hidden');
-    // 显示对应页面
-    document.getElementById(page+'Box').classList.add('show');
-    // 导航高亮
-    document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
-    document.querySelector(`.nav-link[data-page="${page}"]`)?.classList.add('active');
-    // 初始化图片缩放
-    if(imgData[page]) initZoom(page);
-}
-
-// 返回首页
-function backHome(){
-    document.querySelectorAll('.content-box').forEach(box=>box.classList.remove('show'));
-    document.getElementById('homeBox').classList.add('show');
-    document.getElementById('hero').classList.remove('hidden');
-    document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
-    document.querySelector('.nav-link[data-page="home"]').classList.add('active');
-}
-
-// 导航绑定事件
-document.querySelectorAll('.nav-link').forEach(a=>{
-    a.onclick = ()=>{
-        const page = a.dataset.page;
-        const type = a.dataset.type;
-        if(type === 'more') openPage('more');
-        else if(type === 'contact') openPage('contact');
-        else openPage(page);
-    }
-});
-
-// 页面加载初始化
-window.onload = function(){
-    initSlider();
-    // 初始化环保PU默认图片
-    initZoom('huanbao');
-};
-</script>
-</body>
-</html>
