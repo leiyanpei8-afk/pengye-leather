@@ -483,14 +483,14 @@
             .logo{font-size:20px;}
         }
 
-        /* 图片弹窗放大 */
+        /* 图片弹窗放大 —— 已升级：带左右箭头切换 */
         .img-popup {
           position: fixed;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(0, 0, 0, 0.9);
+          background: rgba(0, 0, 0, 0.95);
           z-index: 999999;
           display: none;
           align-items: center;
@@ -520,7 +520,28 @@
           justify-content:center;
           font-size:20px;
           cursor:pointer;
+          z-index: 10;
         }
+        .popup-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.15);
+          border: none;
+          color: #fff;
+          font-size: 24px;
+          cursor: pointer;
+          z-index: 10;
+          transition: 0.2s;
+        }
+        .popup-arrow:hover {
+          background: rgba(255,255,255,0.3);
+        }
+        .popup-prev { left: 40px; }
+        .popup-next { right: 40px; }
     </style>
 </head>
 <body>
@@ -1220,26 +1241,63 @@ window.onload = function(){
     initZoom('huanbao');
 };
 
-// 点击图片弹出放大
+// =============== 升级：点击图片弹出全屏放大 + 左右箭头切换 ===============
 (function() {
+  // 创建弹窗
   const popup = document.createElement('div');
   popup.className = 'img-popup';
   popup.innerHTML = `
     <div class="close-btn"><i class="fa fa-times"></i></div>
+    <button class="popup-arrow popup-prev"><i class="fa fa-chevron-left"></i></button>
     <img src="" alt="放大预览">
+    <button class="popup-arrow popup-next"><i class="fa fa-chevron-right"></i></button>
   `;
   document.body.appendChild(popup);
 
   const popupImg = popup.querySelector('img');
   const closeBtn = popup.querySelector('.close-btn');
+  const prevBtn = popup.querySelector('.popup-prev');
+  const nextBtn = popup.querySelector('.popup-next');
 
+  let currentPopupType = '';
+
+  // 点击大图打开弹窗
   document.addEventListener('click', function(e) {
     if (e.target.classList.contains('zoom-main-img')) {
+      // 找到当前产品类型
+      const zoomContainer = e.target.closest('.zoom-container');
+      const id = zoomContainer.id;
+      currentPopupType = id.replace('zoom', '').charAt(0).toLowerCase() + id.replace('zoom', '').slice(1);
       popupImg.src = e.target.src;
       popup.classList.add('show');
     }
   });
 
+  // 上一张
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!currentPopupType || !imgData[currentPopupType]) return;
+    let list = imgData[currentPopupType];
+    let idx = list.indexOf(popupImg.src);
+    idx = (idx - 1 + list.length) % list.length;
+    popupImg.src = list[idx];
+    nowIndex[currentPopupType] = idx;
+    refreshImg(currentPopupType);
+  });
+
+  // 下一张
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!currentPopupType || !imgData[currentPopupType]) return;
+    let list = imgData[currentPopupType];
+    let idx = list.indexOf(popupImg.src);
+    idx = (idx + 1) % list.length;
+    popupImg.src = list[idx];
+    nowIndex[currentPopupType] = idx;
+    refreshImg(currentPopupType);
+  });
+
+  // 关闭
   function closePopup() {
     popup.classList.remove('show');
   }
