@@ -71,7 +71,7 @@
             gap: 8px;
         }
         .value-proposition .quote {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             font-size: 22px;
             color: #333;
@@ -79,6 +79,41 @@
             border-left: 4px solid #FF7A00;
             padding-left: 24px;
             text-align: left;
+            white-space: nowrap;
+        }
+
+        /* CTA 按钮 */
+        .cta-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin: 30px 0 10px 0;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 8px;
+            background: #FF7A00;
+            color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            min-width: 220px;
+            transition: 0.2s;
+        }
+        .cta-btn small {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        .cta-btn:hover {
+            background: #e66d00;
+        }
+        .cta-note {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
         }
 
         /* 板块二：为什么选择鹏业而不是直接找工厂 */
@@ -217,20 +252,32 @@
             justify-content:center;
         }
         nav a{
-            padding:6px 8px;
+            padding:6px 10px;
             border-radius:4px;
             transition:0.3s;
             display:inline-flex;
-            flex-direction:column;
             align-items:center;
+            justify-content: center;
+            flex-direction: column;
             line-height:1.3;
             white-space:nowrap;
         }
-        nav a span{color:#fff;transition:0.2s;}
-        nav a span:first-child{font-size:13px;}
-        nav a span:last-child{font-size:11px;margin-top:2px;color:#ccc;}
-        nav a:hover span,
-        nav a.active span{color:#FF7A00;}
+        nav a span{
+            transition:0.2s;
+        }
+        nav a .en-nav{
+            color:#fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        nav a .zh-nav{
+            color:#ccc;
+            font-size: 12px;
+        }
+        nav a:hover .en-nav,
+        nav a.active .en-nav{color:#FF7A00;}
+        nav a:hover .zh-nav,
+        nav a.active .zh-nav{color:#fff;}
 
         /* 轮播 */
         .hero {
@@ -481,6 +528,10 @@
             .zoom-container{height:360px;}
             .hero-text h1{font-size:32px;}
             .logo{font-size:20px;}
+            .value-proposition .quote {
+                white-space: normal;
+                line-height: 1.5;
+            }
         }
 
         /* 图片弹窗放大 —— 已升级：带左右箭头切换 */
@@ -550,52 +601,52 @@
         <div class="logo">PENGYE LEATHER</div>
         <nav>
             <a href="javascript:;" class="nav-link active" data-page="home">
-                <span>Home</span>
-                <span>首页</span>
+                <span class="en-nav">Home</span>
+                <span class="zh-nav">首页</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="zhenpi">
-                <span>Genuine Leather</span>
-                <span>真皮</span>
+                <span class="en-nav">Genuine Leather</span>
+                <span class="zh-nav">真皮</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="shuixin">
-                <span>Water-Based PU</span>
-                <span>水性PU</span>
+                <span class="en-nav">Water-Based PU</span>
+                <span class="zh-nav">水性PU</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="huanbao">
-                <span>Eco-Friendly PU</span>
-                <span>环保PU</span>
+                <span class="en-nav">Eco-Friendly PU</span>
+                <span class="zh-nav">环保PU</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="putongpu">
-                <span>Standard PU</span>
-                <span>标准PU</span>
+                <span class="en-nav">Standard PU</span>
+                <span class="zh-nav">标准PU</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="pvc">
-                <span>PVC Leather</span>
-                <span>PVC革</span>
+                <span class="en-nav">PVC Leather</span>
+                <span class="zh-nav">PVC革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="shengwu">
-                <span>Bio-Based Leather</span>
-                <span>生物基皮革</span>
+                <span class="en-nav">Bio-Based Leather</span>
+                <span class="zh-nav">生物基皮革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="chaoqian">
-                <span>Microfiber Leather</span>
-                <span>超纤皮革</span>
+                <span class="en-nav">Microfiber Leather</span>
+                <span class="zh-nav">超纤皮革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="teshu">
-                <span>Special Leather</span>
-                <span>特殊皮革</span>
+                <span class="en-nav">Special Leather</span>
+                <span class="zh-nav">特殊皮革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-page="recycled">
-                <span>Recycled Eco Leather</span>
-                <span>回收再生皮革</span>
+                <span class="en-nav">Recycled Eco Leather</span>
+                <span class="zh-nav">再生环保皮革</span>
             </a>
             <a href="javascript:;" class="nav-link" data-type="more">
-                <span>More</span>
-                <span>更多</span>
+                <span class="en-nav">More</span>
+                <span class="zh-nav">更多</span>
             </a>
             <a href="javascript:;" class="nav-link" data-type="contact">
-                <span>Contact Us</span>
-                <span>联系我们</span>
+                <span class="en-nav">Contact Us</span>
+                <span class="zh-nav">联系我们</span>
             </a>
         </nav>
     </div>
@@ -623,15 +674,15 @@
         <div class="sub-title">
             <div class="tag">
                 <i class="fa-solid fa-check-circle highlight"></i>
-                <span class="en-text"><span class="highlight">20</span> Years Proven Experience</span>
+                <span class="en-text highlight">20 Years Proven Experience</span>
             </div>
             <div class="tag">
                 <i class="fa-solid fa-check-circle highlight"></i>
-                <span class="en-text"><span class="highlight">50</span> Yards Low MOQ</span>
+                <span class="en-text highlight">50 Yards Low MOQ</span>
             </div>
             <div class="tag">
                 <i class="fa-solid fa-check-circle highlight"></i>
-                <span class="en-text">One-Stop Full Range Supply</span>
+                <span class="en-text highlight">One-Stop Full Range Supply</span>
             </div>
         </div>
         
@@ -639,6 +690,18 @@
             <p class="en-text">We solve all your leather sourcing headaches: No high MOQ, no limited styles, no quality issues, no delayed delivery.</p>
             <p class="zh-text">我们解决你所有皮革采购难题：没有高起订量、没有款式限制、没有质量问题、没有交货延误。</p>
         </div>
+
+        <!-- 两个行动按钮 -->
+        <div class="cta-wrapper">
+            <a href="https://wa.me/923151299388?text=Hi,%20I'm%20interested%20in%20your%20leather%20samples.%20Could%20you%20share%20the%20shipping%20cost%20to%20my%20country?" class="cta-btn" target="_blank">
+                Request Free Sample <small>(Buyer pays shipping)</small>
+            </a>
+            <a href="https://wa.me/923151299388?text=Hi,%20I%20want%20to%20consult%20about%20leather%20products%20quotation." class="cta-btn" target="_blank">
+                Chat On WhatsApp <small>Instant Reply</small>
+            </a>
+        </div>
+        <p class="cta-note">Free samples available. We’ll send shipping quote after you confirm address.</p>
+
     </div>
 
     <!-- 板块二：为什么选择鹏业而不是直接找工厂 -->
