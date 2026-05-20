@@ -1241,7 +1241,7 @@ window.onload = function(){
     initZoom('huanbao');
 };
 
-// =============== 升级：点击图片弹出全屏放大 + 左右箭头切换 ===============
+// =============== 修复版：点击图片弹出全屏放大 + 左右箭头切换 ===============
 (function() {
   // 创建弹窗
   const popup = document.createElement('div');
@@ -1259,16 +1259,19 @@ window.onload = function(){
   const prevBtn = popup.querySelector('.popup-prev');
   const nextBtn = popup.querySelector('.popup-next');
 
-  let currentPopupType = '';
+  let currentType = '';    // 当前产品类型
+  let currentIdx = 0;      // 当前图片索引（彻底解决 404）
 
   // 点击大图打开弹窗
   document.addEventListener('click', function(e) {
     if (e.target.classList.contains('zoom-main-img')) {
-      // 找到当前产品类型
       const zoomContainer = e.target.closest('.zoom-container');
       const id = zoomContainer.id;
-      currentPopupType = id.replace('zoom', '').charAt(0).toLowerCase() + id.replace('zoom', '').slice(1);
-      popupImg.src = e.target.src;
+      currentType = id.replace('zoom', '').charAt(0).toLowerCase() + id.replace('zoom', '').slice(1);
+      
+      // 直接用索引，不解析路径，从根源解决 404
+      currentIdx = nowIndex[currentType];
+      popupImg.src = imgData[currentType][currentIdx];
       popup.classList.add('show');
     }
   });
@@ -1276,25 +1279,23 @@ window.onload = function(){
   // 上一张
   prevBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (!currentPopupType || !imgData[currentPopupType]) return;
-    let list = imgData[currentPopupType];
-    let idx = list.indexOf(popupImg.src);
-    idx = (idx - 1 + list.length) % list.length;
-    popupImg.src = list[idx];
-    nowIndex[currentPopupType] = idx;
-    refreshImg(currentPopupType);
+    if (!currentType || !imgData[currentType]) return;
+    const list = imgData[currentType];
+    currentIdx = (currentIdx - 1 + list.length) % list.length;
+    popupImg.src = list[currentIdx];
+    nowIndex[currentType] = currentIdx;
+    refreshImg(currentType);
   });
 
   // 下一张
   nextBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (!currentPopupType || !imgData[currentPopupType]) return;
-    let list = imgData[currentPopupType];
-    let idx = list.indexOf(popupImg.src);
-    idx = (idx + 1) % list.length;
-    popupImg.src = list[idx];
-    nowIndex[currentPopupType] = idx;
-    refreshImg(currentPopupType);
+    if (!currentType || !imgData[currentType]) return;
+    const list = imgData[currentType];
+    currentIdx = (currentIdx + 1) % list.length;
+    popupImg.src = list[currentIdx];
+    nowIndex[currentType] = currentIdx;
+    refreshImg(currentType);
   });
 
   // 关闭
