@@ -81,7 +81,7 @@
             text-align: left;
         }
 
-        /* 板块二：优势对比表格 */
+        /* 板块二：为什么选择鹏业而不是直接找工厂 */
         .benefits-table {
             width: 100%;
             max-width: 1200px;
@@ -185,12 +185,11 @@
             color: #fff;
         }
 
-        /* 原有样式保留 */
         /* 头部导航 */
         header{
             width:100%;
             background:#0c0c0c;
-            padding:18px 6%;
+            padding:18px 3%;
             position:sticky;
             top:0;
             z-index:999;
@@ -201,25 +200,35 @@
             display:flex;
             justify-content:space-between;
             align-items:center;
+            flex-wrap:wrap;
+            gap:12px;
         }
         .logo{
             color:#fff;
-            font-size:24px;
-            letter-spacing:2px;
+            font-size:22px;
+            letter-spacing:1px;
             font-weight:600;
+            white-space:nowrap;
+        }
+        nav{
+            display:flex;
+            flex-wrap:wrap;
+            gap:6px;
+            justify-content:center;
         }
         nav a{
-            margin:0 8px;
-            letter-spacing:0.5px;
+            padding:6px 8px;
+            border-radius:4px;
             transition:0.3s;
             display:inline-flex;
             flex-direction:column;
             align-items:center;
             line-height:1.3;
+            white-space:nowrap;
         }
-        nav a span{color:#fff;}
+        nav a span{color:#fff;transition:0.2s;}
         nav a span:first-child{font-size:13px;}
-        nav a span:last-child{font-size:11px;margin-top:2px;}
+        nav a span:last-child{font-size:11px;margin-top:2px;color:#ccc;}
         nav a:hover span,
         nav a.active span{color:#FF7A00;}
 
@@ -280,18 +289,19 @@
             gap:30px;
         }
         .product-card{
-            background:#fff;border-radius:6px;
+            background:#fff;border-radius:8px;
             overflow:hidden;box-shadow:0 2px 12px #0000000a;
             transition:0.3s;
             cursor:pointer;
+            border:1px solid transparent;
         }
-        .product-card:hover{transform:translateY(-6px);border-color:#FF7A00;}
+        .product-card:hover{transform:translateY(-6px);border-color:#FF7A00;box-shadow:0 8px 20px rgba(0,0,0,0.08);}
         .product-card img{width:100%;height:240px;object-fit:cover;}
         .product-info{padding:18px;text-align:center;}
         .product-info h4{font-size:16px;margin-bottom:4px;}
         .product-info p{font-size:13px;color:#888;}
 
-        /* 详情页：保留右侧画中画放大，移除圆形放大镜镜片 */
+        /* 详情页 */
         .detail-box{
             max-width:1200px;
             margin:0 auto;
@@ -304,7 +314,6 @@
             overflow:hidden;
             margin-bottom:40px;
         }
-        /* 主图容器，保留右侧放大预览 */
         .zoom-container{
             position:relative;
             width:100%;
@@ -319,7 +328,6 @@
             display:block;
             transition:all 0.3s ease;
         }
-        /* 仅保留右侧放大预览窗口，移除圆形放大镜镜片 */
         .zoom-preview{
             position:absolute;
             top:0;
@@ -335,7 +343,6 @@
             background-repeat:no-repeat;
             transition:all 0.3s ease;
         }
-        /* 左右切换箭头 */
         .zoom-arrow{
             position:absolute;
             top:50%;
@@ -354,7 +361,6 @@
         .zoom-arrow:hover{background:rgba(0,0,0,0.7);}
         .zoom-arrow-left{left:20px;}
         .zoom-arrow-right{right:20px;}
-        /* 缩略图列表 */
         .thumbnails{
             display:flex;
             gap:12px;
@@ -377,7 +383,6 @@
             border-color:#FF7A00;
             opacity:1;
         }
-        /* 详情文字 */
         .detail-text{
             padding:30px;
         }
@@ -395,11 +400,12 @@
         .back-btn{
             display:inline-block;
             margin-top:30px;
-            padding:10px 25px;
+            padding:12px 28px;
             background:#FF7A00;
             color:#fff;
             border-radius:4px;
             transition:0.3s;
+            font-weight:500;
         }
         .back-btn:hover{background:#e66a00;}
 
@@ -423,7 +429,7 @@
             margin-right:20px;
             text-align:center;
         }
-        .contact-item a{color:#222;}
+        .contact-item a{color:#222;transition:0.2s;}
         .contact-item a:hover{color:#FF7A00;}
 
         /* 悬浮按钮 */
@@ -439,6 +445,7 @@
             line-height:60px;
             z-index:99999;
             transition:0.3s;
+            box-shadow:0 4px 12px rgba(0,0,0,0.15);
         }
         .wa-float:hover{
             background:#128c7e;
@@ -453,7 +460,7 @@
             font-size:14px;
         }
 
-        /* 响应式优化 */
+        /* 响应式 */
         @media (max-width: 768px) {
             .value-proposition h1 {
                 font-size: 32px;
@@ -470,11 +477,13 @@
             .trust-cards {
                 grid-template-columns: 1fr;
             }
-            /* 移动端隐藏右侧放大窗口 */
             .zoom-preview{display:none !important;}
+            .zoom-container{height:360px;}
+            .hero-text h1{font-size:32px;}
+            .logo{font-size:20px;}
         }
 
-        /* 新增：图片弹窗放大样式（不影响原有代码） */
+        /* 图片弹窗放大 */
         .img-popup {
           position: fixed;
           top: 0;
@@ -505,12 +514,12 @@
           height: 40px;
           background: rgba(255,255,255,0.2);
           color: #fff;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 20px;
-          cursor: pointer;
+          border-radius:50%;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:20px;
+          cursor:pointer;
         }
     </style>
 </head>
@@ -1082,7 +1091,7 @@ const imgData = {
 let nowIndex = {};
 Object.keys(imgData).forEach(key=>nowIndex[key]=0);
 
-// 右侧画中画放大功能（移除圆形放大镜镜片）
+// 右侧画中画放大功能
 function initZoom(type){
     let arr = imgData[type];
     let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
@@ -1090,7 +1099,6 @@ function initZoom(type){
     let preview = zoomContainer.querySelector(".zoom-preview");
     let thumbBox = document.getElementById("thumb"+type.charAt(0).toUpperCase()+type.slice(1));
 
-    // 初始化缩略图
     thumbBox.innerHTML = "";
     arr.forEach((src,idx)=>{
         let t = document.createElement("img");
@@ -1102,27 +1110,23 @@ function initZoom(type){
     });
     refreshImg(type);
 
-    // 鼠标移动显示右侧放大窗口
     let scale = 2.5;
     zoomContainer.onmousemove = function(e){
         let rect = this.getBoundingClientRect();
         let x = e.clientX - rect.left;
         let y = e.clientY - rect.top;
         
-        // 边界限制
         if(x < 0) x = 0;
         if(y < 0) y = 0;
         if(x > rect.width) x = rect.width;
         if(y > rect.height) y = rect.height;
         
-        // 显示预览窗口并设置背景位置
         preview.style.display = "block";
         let bgX = -x * scale + (rect.width/2)*scale;
         let bgY = -y * scale + (rect.height/2)*scale;
         preview.style.backgroundPosition = `${bgX}px ${bgY}px`;
     };
 
-    // 鼠标离开时隐藏预览窗口
     zoomContainer.onmouseleave = function(){
         preview.style.display = "none";
     };
@@ -1140,7 +1144,6 @@ function refreshImg(type){
     mainImg.src = arr[idx];
     preview.style.backgroundImage = `url(${arr[idx]})`;
     
-    // 缩略图高亮
     thumbs.forEach((t,i)=>{
         t.classList.toggle("active", i===idx);
     });
@@ -1161,7 +1164,6 @@ function initSlider(){
     const dots = document.getElementById('dotBox');
     let current = 0;
 
-    // 创建指示器
     slides.forEach((_,i)=>{
         const dot = document.createElement('div');
         dot.className = i===0 ? 'dot active' : 'dot';
@@ -1169,7 +1171,6 @@ function initSlider(){
         dots.appendChild(dot);
     });
 
-    // 切换轮播
     function changeSlide(){
         slides.forEach(s=>s.classList.remove('active'));
         document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
@@ -1177,7 +1178,6 @@ function initSlider(){
         document.querySelectorAll('.dot')[current].classList.add('active');
     }
 
-    // 自动轮播
     setInterval(()=>{
         current = (current+1)%slides.length;
         changeSlide();
@@ -1186,15 +1186,11 @@ function initSlider(){
 
 // 页面切换
 function openPage(page){
-    // 隐藏所有内容
     document.querySelectorAll('.content-box').forEach(box=>box.classList.remove('show'));
     document.getElementById('hero').classList.add('hidden');
-    // 显示对应页面
     document.getElementById(page+'Box').classList.add('show');
-    // 导航高亮
     document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
     document.querySelector(`.nav-link[data-page="${page}"]`)?.classList.add('active');
-    // 初始化图片缩放
     if(imgData[page]) initZoom(page);
 }
 
@@ -1221,13 +1217,11 @@ document.querySelectorAll('.nav-link').forEach(a=>{
 // 页面加载初始化
 window.onload = function(){
     initSlider();
-    // 初始化环保PU默认图片
     initZoom('huanbao');
 };
 
-// 新增：点击图片弹出放大（微信式预览，不影响原有功能）
+// 点击图片弹出放大
 (function() {
-  // 动态创建弹窗
   const popup = document.createElement('div');
   popup.className = 'img-popup';
   popup.innerHTML = `
@@ -1239,7 +1233,6 @@ window.onload = function(){
   const popupImg = popup.querySelector('img');
   const closeBtn = popup.querySelector('.close-btn');
 
-  // 点击主图弹出放大
   document.addEventListener('click', function(e) {
     if (e.target.classList.contains('zoom-main-img')) {
       popupImg.src = e.target.src;
@@ -1247,7 +1240,6 @@ window.onload = function(){
     }
   });
 
-  // 关闭弹窗
   function closePopup() {
     popup.classList.remove('show');
   }
