@@ -3,13 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PENGYE LEATHER | Premium Leather Materials Supplier</title>
+    <title>PENGYE LEATHER | Your Trusted Leather Sourcing Partner In China</title>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Montserrat',Arial,sans-serif;background:#f6f6f6;color:#222;line-height:1.8;}
         a{text-decoration:none;}
 
+        /* 新增：外贸专属优化样式 */
+        .highlight {
+            color: #FF7A00;
+            font-weight: 700;
+        }
+        .section {
+            padding: 80px 5%;
+            background: #fff;
+            margin-bottom: 2px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            color: #111;
+            margin-bottom: 12px;
+        }
+        .section-title p {
+            color: #777;
+            font-size: 16px;
+        }
+        .en-text {
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .zh-text {
+            font-size: 14px;
+            color: #666;
+            display: block;
+        }
+
+        /* 板块一：核心价值主张 */
+        .value-proposition {
+            text-align: center;
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+        }
+        .value-proposition h1 {
+            font-size: 48px;
+            margin-bottom: 24px;
+            color: #111;
+        }
+        .value-proposition .sub-title {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .value-proposition .tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .value-proposition .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 22px;
+            color: #333;
+            line-height: 1.6;
+            border-left: 4px solid #FF7A00;
+            padding-left: 24px;
+            text-align: left;
+        }
+
+        /* 板块二：优势对比表格 */
+        .benefits-table {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .benefits-table th, .benefits-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .benefits-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .benefits-table tr:hover {
+            background: #fafafa;
+        }
+        .benefits-table .benefit-item {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* 板块三：主营产品列表 */
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .product-item {
+            background: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: 0.3s;
+        }
+        .product-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+        .product-item i {
+            font-size: 36px;
+            color: #FF7A00;
+            margin-bottom: 16px;
+        }
+
+        /* 板块四：信任背书卡片 */
+        .trust-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .trust-card {
+            background: #fff;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .trust-card:hover {
+            transform: translateY(-4px);
+        }
+        .trust-card.featured {
+            background: linear-gradient(135deg, #FF7A00 0%, #e66a00 100%);
+            color: #fff;
+        }
+        .trust-card.featured .en-text,
+        .trust-card.featured .zh-text {
+            color: #fff;
+        }
+        .trust-card.featured .quote {
+            color: rgba(255,255,255,0.9);
+            border-left-color: rgba(255,255,255,0.7);
+        }
+        .trust-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .trust-card .quote {
+            border-left: 3px solid #FF7A00;
+            padding-left: 16px;
+            margin-top: 16px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .trust-card i {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #FF7A00;
+        }
+        .trust-card.featured i {
+            color: #fff;
+        }
+
+        /* 原有样式保留 */
         /* 头部导航 */
         header{
             width:100%;
@@ -128,27 +303,49 @@
             overflow:hidden;
             margin-bottom:40px;
         }
-        /* 主图容器 - 修复比例问题：改为contain保持原始比例，不再裁剪 */
+        /* 主图放大镜容器 - 亚马逊风格优化 */
         .zoom-container{
             position:relative;
             width:100%;
-            min-height:400px;
-            max-height:600px;
-            background:#f5f5f5; /* 图片比例不同时显示灰色背景 */
-            cursor:pointer; /* 点击提示 */
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            height:500px;
+            overflow:hidden;
+            cursor:zoom-in; /* 亚马逊同款放大镜光标 */
         }
         .zoom-main-img{
             width:100%;
             height:100%;
-            object-fit:contain; /* 核心修复：保持原始比例，完整显示图片 */
+            object-fit:cover;
             display:block;
             transition:all 0.3s ease;
         }
-        .zoom-main-img:hover{
-            opacity:0.9;
+        /* 亚马逊风格放大镜镜片 - 半透明黑色带边框 */
+        .zoom-lens{
+            position:absolute;
+            width:180px;
+            height:180px;
+            border:2px solid #fff;
+            background:rgba(0,0,0,0.4);
+            border-radius:50%; /* 亚马逊常用圆形放大镜 */
+            display:none;
+            z-index:10;
+            pointer-events:none;
+            transition:all 0.1s ease; /* 流畅跟随效果 */
+        }
+        /* 预览窗口 - 右侧悬浮，亚马逊风格 */
+        .zoom-preview{
+            position:absolute;
+            top:0;
+            right:-520px;
+            width:500px;
+            height:500px;
+            background:#fff;
+            border:1px solid #eee;
+            box-shadow:0 0 20px rgba(0,0,0,0.12);
+            display:none;
+            z-index:99;
+            background-size:250% 250%; /* 优化缩放比例 */
+            background-repeat:no-repeat;
+            transition:all 0.3s ease;
         }
         /* 左右切换箭头 */
         .zoom-arrow{
@@ -169,7 +366,7 @@
         .zoom-arrow:hover{background:rgba(0,0,0,0.7);}
         .zoom-arrow-left{left:20px;}
         .zoom-arrow-right{right:20px;}
-        /* 缩略图列表 */
+        /* 缩略图列表 - 亚马逊风格底部横向排列 */
         .thumbnails{
             display:flex;
             gap:12px;
@@ -268,77 +465,22 @@
             font-size:14px;
         }
 
-        /* ==================== 新增：画中画图片预览模态框 ==================== */
-        .image-modal{
-            position:fixed;
-            top:0;left:0;
-            width:100%;height:100%;
-            background:rgba(0,0,0,0.9);
-            display:none;
-            z-index:999999;
-            align-items:center;
-            justify-content:center;
-            padding:20px;
-        }
-        .image-modal.show{
-            display:flex;
-        }
-        .modal-close{
-            position:absolute;
-            top:20px;right:30px;
-            color:#fff;
-            font-size:40px;
-            font-weight:bold;
-            cursor:pointer;
-            transition:0.3s;
-            z-index:1000000;
-        }
-        .modal-close:hover{
-            color:#b07a47;
-        }
-        .modal-arrow{
-            position:absolute;
-            top:50%;
-            transform:translateY(-50%);
-            width:60px;
-            height:60px;
-            border-radius:50%;
-            border:none;
-            background:rgba(255,255,255,0.2);
-            color:#fff;
-            font-size:24px;
-            cursor:pointer;
-            z-index:1000000;
-            transition:0.3s;
-        }
-        .modal-arrow:hover{
-            background:rgba(255,255,255,0.4);
-        }
-        .modal-arrow-left{left:30px;}
-        .modal-arrow-right{right:30px;}
-        .modal-image{
-            max-width:90%;
-            max-height:90%;
-            object-fit:contain; /* 保持原始比例 */
-            border-radius:4px;
-            box-shadow:0 0 50px rgba(0,0,0,0.5);
-        }
-        /* 移动端适配 */
-        @media (max-width:768px){
-            .modal-arrow{
-                width:40px;
-                height:40px;
-                font-size:18px;
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .value-proposition h1 {
+                font-size: 32px;
             }
-            .modal-arrow-left{left:10px;}
-            .modal-arrow-right{right:10px;}
-            .modal-close{
-                top:10px;right:20px;
-                font-size:30px;
+            .value-proposition .sub-title {
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
             }
-            .modal-image{
-                max-width:95%;
-                max-height:85%;
+            .benefits-table {
+                display: block;
+                overflow-x: auto;
+            }
+            .trust-cards {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -414,9 +556,168 @@
 
 <!-- 首页产品卡片 -->
 <div class="content-box show" id="homeBox">
-    <div class="title">
-        <h2>Our Leather Series / 皮革系列</h2>
-        <p>为全球鞋类和家具制造商提供高品质材料</p>
+    <!-- 新增板块一：核心价值主张 -->
+    <div class="value-proposition">
+        <h1 class="en-text">Your Trusted Leather Sourcing Partner In China</h1>
+        <h2 class="zh-text">中国值得信赖的皮革采购合作伙伴</h2>
+        
+        <div class="sub-title">
+            <div class="tag">
+                <i class="fa-solid fa-check-circle highlight"></i>
+                <span class="en-text"><span class="highlight">20</span> Years Proven Experience</span>
+            </div>
+            <div class="tag">
+                <i class="fa-solid fa-check-circle highlight"></i>
+                <span class="en-text"><span class="highlight">50</span> Yards Low MOQ</span>
+            </div>
+            <div class="tag">
+                <i class="fa-solid fa-check-circle highlight"></i>
+                <span class="en-text">One-Stop Full Range Supply</span>
+            </div>
+        </div>
+        
+        <div class="quote">
+            <p class="en-text">We solve all your leather sourcing headaches: No high MOQ, no limited styles, no quality issues, no delayed delivery.</p>
+            <p class="zh-text">我们解决你所有皮革采购难题：没有高起订量、没有款式限制、没有质量问题、没有交货延误。</p>
+        </div>
+    </div>
+
+    <!-- 新增板块二：为什么选择鹏业而不是直接找工厂 -->
+    <div class="section">
+        <div class="section-title">
+            <h2 class="en-text">Why Choose Pengye Over Direct Factories?</h2>
+            <p class="zh-text">为什么选择鹏业，而不是直接找工厂？</p>
+        </div>
+        
+        <table class="benefits-table">
+            <thead>
+                <tr>
+                    <th>核心优势</th>
+                    <th>英文说明</th>
+                    <th>客户获得的实际利益</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="benefit-item"><span class="highlight">50码超低起订</span></td>
+                    <td><span class="highlight">50 Yards Minimum Order</span></td>
+                    <td>不用为了小单被迫囤货，完美适配新品打样和小批量生产</td>
+                </tr>
+                <tr>
+                    <td class="benefit-item"><span class="highlight">全品类一站式采购</span></td>
+                    <td><span class="highlight">One-Stop Full Range Supply</span></td>
+                    <td>不用同时对接10家不同工厂，找我们一家就能配齐所有材料</td>
+                </tr>
+                <tr>
+                    <td class="benefit-item"><span class="highlight">严格品控把关</span></td>
+                    <td><span class="highlight">100% Pre-Shipment Inspection</span></td>
+                    <td>我们帮你验货，杜绝次品，不用飞到中国工厂检查</td>
+                </tr>
+                <tr>
+                    <td class="benefit-item"><span class="highlight">更快交货时效</span></td>
+                    <td><span class="highlight">7 Days Fast Delivery</span></td>
+                    <td>整合多家工厂库存，调货更快，比单一工厂交货早3-5天</td>
+                </tr>
+                <tr>
+                    <td class="benefit-item"><span class="highlight">更优采购价格</span></td>
+                    <td><span class="highlight">Competitive Factory Direct Prices</span></td>
+                    <td>20年深度合作关系，拿到比你自己找工厂更低的价格</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 新增板块三：我们的主营产品 -->
+    <div class="section" style="background: #f8f9fa;">
+        <div class="section-title">
+            <h2 class="en-text">Our Premium Leather Materials</h2>
+            <p class="zh-text">我们的优质皮革面料</p>
+        </div>
+        
+        <div class="product-list">
+            <div class="product-item">
+                <i class="fa-solid fa-palette"></i>
+                <span class="en-text">Woven Pattern PU Leather</span>
+                <span class="zh-text">编织纹PU皮革</span>
+            </div>
+            <div class="product-item">
+                <i class="fa-solid fa-palette"></i>
+                <span class="en-text">Matte Texture PU Leather</span>
+                <span class="zh-text">磨砂质感PU皮革</span>
+            </div>
+            <div class="product-item">
+                <i class="fa-solid fa-palette"></i>
+                <span class="en-text">Smooth Nappa PU Leather</span>
+                <span class="zh-text">纳帕平纹PU皮革</span>
+            </div>
+            <div class="product-item">
+                <i class="fa-solid fa-palette"></i>
+                <span class="en-text">Oil Wax Style PU Leather</span>
+                <span class="zh-text">油蜡风格PU皮革</span>
+            </div>
+            <div class="product-item">
+                <i class="fa-solid fa-palette"></i>
+                <span class="en-text">Microfiber Leather</span>
+                <span class="zh-text">超纤皮革</span>
+            </div>
+            <div class="product-item">
+                <i class="fa-solid fa-palette"></i>
+                <span class="en-text">PVC Leather</span>
+                <span class="zh-text">PVC皮革</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增板块四：20年行业信任背书 -->
+    <div class="section">
+        <div class="section-title">
+            <h2 class="en-text">Trusted By <span class="highlight">1000+</span> Manufacturers Worldwide</h2>
+            <p class="zh-text">全球<span class="highlight">1000+</span>制造商的信赖之选</p>
+        </div>
+        
+        <div class="trust-cards">
+            <div class="trust-card featured">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>
+                    <span class="en-text">Veteran-Owned & Operated</span>
+                    <span class="zh-text">退伍军人诚信经营</span>
+                </h3>
+                <div class="quote">
+                    <p class="en-text">We run our business with military discipline and integrity. No hidden fees, no quality cutting, no broken promises.</p>
+                    <p class="zh-text">我们以军人的纪律和诚信经营生意。没有隐藏费用，不偷工减料，不违背承诺。</p>
+                </div>
+            </div>
+            
+            <div class="trust-card">
+                <i class="fa-solid fa-clock highlight"></i>
+                <h3>
+                    <span class="en-text"><span class="highlight">20</span> Years Industry Experience</span>
+                    <span class="zh-text"><span class="highlight">20</span>年行业深耕</span>
+                </h3>
+                <div class="quote">
+                    <p class="en-text">Since 2006, we have been specializing in leather sourcing. We know every factory, every material, and every trick of the trade.</p>
+                    <p class="zh-text">自2006年起，我们专注于皮革采购。我们了解每一家工厂、每一种材料和行业的每一个细节。</p>
+                </div>
+            </div>
+            
+            <div class="trust-card">
+                <i class="fa-solid fa-handshake highlight"></i>
+                <h3>
+                    <span class="en-text">Long-Term Factory Partnerships</span>
+                    <span class="zh-text">长期工厂合作关系</span>
+                </h3>
+                <div class="quote">
+                    <p class="en-text">We have exclusive partnerships with <span class="highlight">50+</span> top leather factories in China. This gives us priority access to stock and better prices.</p>
+                    <p class="zh-text">我们与中国<span class="highlight">50+</span>家顶级皮革工厂有独家合作关系。这让我们能优先获得库存和更优惠的价格。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 原有产品系列展示 -->
+    <div class="title" style="margin-top: 80px;">
+        <h2>Our Full Leather Series / 全系列皮革产品</h2>
+        <p>点击查看详细产品信息与样品展示</p>
     </div>
     <div class="product-grid">
         <div class="product-card" onclick="openPage('zhenpi')">
@@ -494,6 +795,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomHuanbao">
                 <img src="" class="zoom-main-img" id="imgHuanbao" alt="环保PU皮革">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('huanbao',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('huanbao',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -519,6 +822,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomZhenpi">
                 <img src="" class="zoom-main-img" id="imgZhenpi" alt="真皮">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('zhenpi',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('zhenpi',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -544,6 +849,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomShuixin">
                 <img src="" class="zoom-main-img" id="imgShuixin" alt="水性PU皮革">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shuixin',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shuixin',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -569,6 +876,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomPutongpu">
                 <img src="" class="zoom-main-img" id="imgPutongpu" alt="标准PU皮革">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('putongpu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('putongpu',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -594,6 +903,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomPvc">
                 <img src="" class="zoom-main-img" id="imgPvc" alt="PVC皮革">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('pvc',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('pvc',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -619,6 +930,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomShengwu">
                 <img src="" class="zoom-main-img" id="imgShengwu" alt="生物基皮革">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shengwu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shengwu',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -644,6 +957,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomChaoqian">
                 <img src="" class="zoom-main-img" id="imgChaoqian" alt="超纤皮革">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('chaoqian',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('chaoqian',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -669,6 +984,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomTeshu">
                 <img src="" class="zoom-main-img" id="imgTeshu" alt="特殊皮革">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('teshu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('teshu',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -694,6 +1011,8 @@
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomRecycled">
                 <img src="" class="zoom-main-img" id="imgRecycled" alt="回收PET瓶再生皮革">
+                <div class="zoom-lens"></div>
+                <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('recycled',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('recycled',1)"><i class="fa fa-chevron-right"></i></button>
             </div>
@@ -750,16 +1069,8 @@
 </a>
 
 <footer>
-    © PENGYE LEATHER — Premium Leather Material Supplier
+    © PENGYE LEATHER — Your Trusted Leather Sourcing Partner In China
 </footer>
-
-<!-- ==================== 新增：全局画中画预览模态框 ==================== -->
-<div class="image-modal" id="imageModal">
-    <span class="modal-close" onclick="closeModal()">&times;</span>
-    <button class="modal-arrow modal-arrow-left" onclick="modalSwitchImg(-1)"><i class="fa fa-chevron-left"></i></button>
-    <img src="" class="modal-image" id="modalImage" alt="大图预览">
-    <button class="modal-arrow modal-arrow-right" onclick="modalSwitchImg(1)"><i class="fa fa-chevron-right"></i></button>
-</div>
 
 <script>
 // 全路径配对 images/文件夹
@@ -792,56 +1103,13 @@ const imgData = {
 let nowIndex = {};
 Object.keys(imgData).forEach(key=>nowIndex[key]=0);
 
-// 当前打开的产品类型（用于模态框切换）
-let currentProductType = "";
-
-// ==================== 画中画模态框核心功能 ====================
-function openModal(type){
-    currentProductType = type;
-    let modal = document.getElementById("imageModal");
-    let modalImg = document.getElementById("modalImage");
-    modalImg.src = imgData[type][nowIndex[type]];
-    modal.classList.add("show");
-    // 禁止页面滚动
-    document.body.style.overflow = "hidden";
-}
-
-function closeModal(){
-    let modal = document.getElementById("imageModal");
-    modal.classList.remove("show");
-    // 恢复页面滚动
-    document.body.style.overflow = "";
-}
-
-function modalSwitchImg(step){
-    let arr = imgData[currentProductType];
-    nowIndex[currentProductType] = (nowIndex[currentProductType] + step + arr.length) % arr.length;
-    let modalImg = document.getElementById("modalImage");
-    modalImg.src = imgData[currentProductType][nowIndex[currentProductType]];
-    // 同步更新主图
-    refreshImg(currentProductType);
-}
-
-// 键盘事件支持
-document.addEventListener('keydown', function(e){
-    let modal = document.getElementById("imageModal");
-    if(modal.classList.contains("show")){
-        if(e.key === "Escape") closeModal();
-        if(e.key === "ArrowLeft") modalSwitchImg(-1);
-        if(e.key === "ArrowRight") modalSwitchImg(1);
-    }
-});
-
-// 点击背景关闭模态框
-document.getElementById("imageModal").addEventListener('click', function(e){
-    if(e.target === this) closeModal();
-});
-
-// ==================== 初始化产品图片（移除旧放大镜） ====================
+// 亚马逊风格放大镜核心功能 - 完全重构
 function initZoom(type){
     let arr = imgData[type];
     let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
     let mainImg = zoomContainer.querySelector(".zoom-main-img");
+    let lens = zoomContainer.querySelector(".zoom-lens");
+    let preview = zoomContainer.querySelector(".zoom-preview");
     let thumbBox = document.getElementById("thumb"+type.charAt(0).toUpperCase()+type.slice(1));
 
     // 初始化缩略图
@@ -851,18 +1119,63 @@ function initZoom(type){
         t.src = src;
         t.className = "thumb-item";
         if(idx===0) t.classList.add("active");
-        t.onclick = ()=>{
-            nowIndex[type]=idx;
-            refreshImg(type);
-            // 点击缩略图也打开模态框
-            openModal(type);
-        };
+        t.onclick = ()=>{nowIndex[type]=idx;refreshImg(type);};
         thumbBox.appendChild(t);
     });
     refreshImg(type);
 
-    // 点击主图打开模态框
-    mainImg.onclick = ()=>openModal(type);
+    // 亚马逊风格放大镜逻辑 - 修复坐标计算问题
+    let lensSize = 180; // 放大镜尺寸，亚马逊常用大小
+    let scale = 2.5; // 放大倍数，亚马逊常用2.5倍
+
+    // 鼠标移动事件 - 精准计算位置
+    zoomContainer.onmousemove = function(e){
+        // 获取容器相对视口的位置
+        let rect = this.getBoundingClientRect();
+        // 计算鼠标在容器内的相对坐标
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+        
+        // 计算放大镜位置，确保不超出容器边界
+        let lensX = x - lensSize / 2;
+        let lensY = y - lensSize / 2;
+        
+        // 边界限制
+        if(lensX < 0) lensX = 0;
+        if(lensY < 0) lensY = 0;
+        if(lensX > rect.width - lensSize) lensX = rect.width - lensSize;
+        if(lensY > rect.height - lensSize) lensY = rect.height - lensSize;
+        
+        // 设置放大镜位置
+        lens.style.display = "block";
+        lens.style.left = lensX + "px";
+        lens.style.top = lensY + "px";
+        
+        // 显示预览窗口并设置背景位置
+        preview.style.display = "block";
+        // 亚马逊风格背景定位计算，确保放大区域精准对应
+        let bgX = -lensX * scale;
+        let bgY = -lensY * scale;
+        preview.style.backgroundPosition = `${bgX}px ${bgY}px`;
+    };
+
+    // 鼠标离开时隐藏放大镜和预览窗口
+    zoomContainer.onmouseleave = function(){
+        lens.style.display = "none";
+        preview.style.display = "none";
+    };
+
+    // 优化：鼠标点击时切换放大状态（亚马逊也有此交互）
+    zoomContainer.addEventListener('click', function(e) {
+        if(preview.style.display === 'none') {
+            // 点击显示放大镜
+            this.onmousemove(e);
+        } else {
+            // 再次点击隐藏
+            lens.style.display = "none";
+            preview.style.display = "none";
+        }
+    });
 }
 
 function refreshImg(type){
@@ -870,9 +1183,13 @@ function refreshImg(type){
     let idx = nowIndex[type];
     let zoomContainer = document.getElementById("zoom"+type.charAt(0).toUpperCase()+type.slice(1));
     let mainImg = zoomContainer.querySelector(".zoom-main-img");
+    let preview = zoomContainer.querySelector(".zoom-preview");
 
-    // 设置主图
+    // 设置主图和预览图
     mainImg.src = arr[idx];
+    preview.style.backgroundImage = `url(${arr[idx]})`;
+    // 亚马逊风格预览图背景尺寸，确保放大清晰
+    preview.style.backgroundSize = `${mainImg.width * 2.5}px ${mainImg.height * 2.5}px`;
 
     // 更新缩略图激活状态
     document.querySelectorAll("#thumb"+type.charAt(0).toUpperCase()+type.slice(1)+" .thumb-item").forEach((t,i)=>{
