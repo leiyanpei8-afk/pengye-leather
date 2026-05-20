@@ -616,7 +616,11 @@
 <!-- 首页产品卡片 -->
 <div class="content-box show" id="homeBox">
     <!-- 板块一：核心价值主张 -->
-    <div class="value-proposition">
+    <div class="value-proposition {
+        text-align: center;
+        padding: 100px 5%;
+        background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    }">
         <h1 class="en-text">Your Trusted Leather Sourcing Partner In China</h1>
         <h2 class="zh-text">中国值得信赖的皮革采购合作伙伴</h2>
         
@@ -1180,10 +1184,15 @@ function switchImg(type, step){
 }
 
 // 轮播图初始化
+let sliderInterval = null;
 function initSlider(){
     const slides = document.querySelectorAll('.slide');
     const dots = document.getElementById('dotBox');
     let current = 0;
+
+    // 清空旧轮播，防止重复
+    dots.innerHTML = '';
+    clearInterval(sliderInterval);
 
     slides.forEach((_,i)=>{
         const dot = document.createElement('div');
@@ -1199,13 +1208,13 @@ function initSlider(){
         document.querySelectorAll('.dot')[current].classList.add('active');
     }
 
-    setInterval(()=>{
+    sliderInterval = setInterval(()=>{
         current = (current+1)%slides.length;
         changeSlide();
     },4000);
 }
 
-// 页面切换
+// 页面切换 —— 已修复轮播
 function openPage(page){
     document.querySelectorAll('.content-box').forEach(box=>box.classList.remove('show'));
     document.getElementById('hero').classList.add('hidden');
@@ -1213,15 +1222,22 @@ function openPage(page){
     document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
     document.querySelector(`.nav-link[data-page="${page}"]`)?.classList.add('active');
     if(imgData[page]) initZoom(page);
+
+    // 回到首页时重启轮播
+    if(page === 'home'){
+        document.getElementById('hero').classList.remove('hidden');
+        initSlider();
+    }
 }
 
-// 返回首页
+// 返回首页 —— 已修复轮播
 function backHome(){
     document.querySelectorAll('.content-box').forEach(box=>box.classList.remove('show'));
     document.getElementById('homeBox').classList.add('show');
     document.getElementById('hero').classList.remove('hidden');
     document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
     document.querySelector('.nav-link[data-page="home"]').classList.add('active');
+    initSlider(); // 重启轮播
 }
 
 // 导航绑定事件
