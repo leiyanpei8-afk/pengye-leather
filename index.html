@@ -1113,9 +1113,9 @@
     </div>
 </div>
 
-<!-- 更多 -->
+<!-- 更多页面：介绍文案+样品申请表单合并 -->
 <div class="content-box" id="moreBox">
-    <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <div style="max-width:900px;margin:0 auto;text-align:center;padding:20px;">
         <h3 style="font-size:28px;margin-bottom:25px;">More Leather Options / 更多皮革款式</h3>
         <p style="font-size:16px;color:#555;line-height:2;">
             Leather materials are continuously upgraded and iterated.<br>
@@ -1126,6 +1126,50 @@
             皮革材料一直在不断更新换代，页面展示仅为部分款式。<br>
             如需更多特殊纹路、颜色、定制材质，均可联系我们。
         </p>
+
+        <!-- 样品申请表单 -->
+        <div class="sample-form-wrap">
+            <h3 style="text-align:center;margin-bottom:25px;font-size:22px;color:#FF7A00;">Sample Request Form / 样品申请表单</h3>
+            <form action="mailto:postmaster@pengye-leather.com" method="get" enctype="text/plain">
+                <div class="form-row">
+                    <label>Full Name / 姓名</label>
+                    <input type="text" name="Full Name" placeholder="Please enter your full name" required>
+                </div>
+                <div class="form-row">
+                    <label>Company / 公司名称</label>
+                    <input type="text" name="Company" placeholder="Please enter your company name">
+                </div>
+                <div class="form-row">
+                    <label>Email / 邮箱</label>
+                    <input type="email" name="Email" placeholder="Please enter your email" required>
+                </div>
+                <div class="form-row">
+                    <label>Phone / 联系电话</label>
+                    <input type="text" name="Phone" placeholder="Please enter your phone number">
+                </div>
+                <div class="form-row">
+                    <label>Required Leather Type / 申请样品类型</label>
+                    <select name="Leather Type" required>
+                        <option value="">Please select leather category</option>
+                        <option value="Genuine Leather">Genuine Leather 真皮</option>
+                        <option value="Water-Based PU">Water-Based PU 水性PU</option>
+                        <option value="Eco-Friendly PU">Eco-Friendly PU 环保PU</option>
+                        <option value="Standard PU">Standard PU 标准PU</option>
+                        <option value="PVC Leather">PVC Leather PVC革</option>
+                        <option value="Bio-Based Leather">Bio-Based Leather 生物基皮革</option>
+                        <option value="Microfiber Leather">Microfiber Leather 超纤皮革</option>
+                        <option value="Special Leather">Special Leather 特殊皮革</option>
+                        <option value="Recycled Leather">Recycled Leather 再生皮革</option>
+                        <option value="More Types">More Types 更多款式</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>Remark / 备注需求</label>
+                    <textarea name="Remark" rows="4" placeholder="Specify color, size, quantity and other requirements"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application 提交申请</button>
+            </form>
+        </div>
     </div>
 </div>
 
