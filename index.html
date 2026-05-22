@@ -758,12 +758,13 @@
 
     <div style="max-width:1000px; margin:0 auto;">
         <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; background:#000; box-shadow:0 2px 12px rgba(0,0,0,0.05);">
-            <iframe 
-                style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-                src="https://www.youtube.com/embed/uk7nA6CllKc?rel=0&modestbranding=1&controls=1&showinfo=0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+          <iframe 
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+            src="https://www.youtube.com/embed/uk7nA6CllKc?rel=0&modestbranding=1&controls=1&playsinline=1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
         <p style="text-align:center; margin-top:20px; color:#777; font-size:14px;">
             From raw material to finished leather, strict quality control at every step.
@@ -836,63 +837,63 @@
     </div>
     <div class="product-grid">
         <div class="product-card" onclick="openPage('zhenpi')">
-            <img src="images/zhenpi.png" alt="真皮">
+            <img src="images/zhenpi.png" alt="真皮" loading="lazy">
             <div class="product-info">
                 <h4>Genuine Leather 真皮</h4>
                 <p>天然原生态真皮</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('shuixin')">
-            <img src="images/shuixin.png" alt="水性PU">
+            <img src="images/shuixin.png" alt="水性PU" loading="lazy">
             <div class="product-info">
                 <h4>Water-Based PU Leather 水性PU</h4>
                 <p>无溶剂环保水性聚氨酯革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('huanbao')">
-            <img src="images/huanbaoq.png" alt="环保PU">
+            <img src="images/huanbaoq.png" alt="环保PU" loading="lazy">
             <div class="product-info">
                 <h4>Eco-Friendly PU Leather 环保PU</h4>
                 <p>低碳合规环保合成PU革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('putongpu')">
-            <img src="images/main-banner5.jpg" alt="标准PU">
+            <img src="images/main-banner5.jpg" alt="标准PU" loading="lazy">
             <div class="product-info">
                 <h4>Standard PU Leather 标准PU</h4>
                 <p>常规聚氨酯基础合成革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('pvc')">
-            <img src="images/pvc.png" alt="PVC革">
+            <img src="images/pvc.png" alt="PVC革" loading="lazy">
             <div class="product-info">
                 <h4>PVC Leather PVC革</h4>
                 <p>经济型聚氯乙烯合成革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('shengwu')">
-            <img src="images/shengwu.png" alt="生物基皮革">
+            <img src="images/shengwu.png" alt="生物基皮革" loading="lazy">
             <div class="product-info">
                 <h4>Bio-Based Leather 生物基皮革</h4>
                 <p>植物萃取可持续生态皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('chaoqian')">
-            <img src="images/chaoqian.png" alt="超纤皮革">
+            <img src="images/chaoqian.png" alt="超纤皮革" loading="lazy">
             <div class="product-info">
                 <h4>Microfiber Leather 超纤皮革</h4>
                 <p>高性能超细纤维仿真皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('teshu')">
-            <img src="images/teshu.png" alt="特殊皮革">
+            <img src="images/teshu.png" alt="特殊皮革" loading="lazy">
             <div class="product-info">
                 <h4>Special Leather 特殊皮革</h4>
                 <p>定制纹路特种工艺皮革</p>
             </div>
         </div>
         <div class="product-card" onclick="openPage('recycled')">
-            <img src="images/huanbaopu.png" alt="PET瓶回收再生皮革">
+            <img src="images/huanbaopu.png" alt="PET瓶回收再生皮革" loading="lazy">
             <div class="product-info">
                 <h4>Recycled PET Bottle Leather PET瓶回收再生皮革</h4>
                 <p>塑料瓶再生环保循环皮革</p>
@@ -909,7 +910,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomHuanbao">
-                <img src="" class="zoom-main-img" id="imgHuanbao" alt="环保PU皮革">
+                <img src="" class="zoom-main-img" id="imgHuanbao" alt="环保PU皮革" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('huanbao',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('huanbao',1)"><i class="fa fa-chevron-right"></i></button>
@@ -935,7 +936,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomZhenpi">
-                <img src="" class="zoom-main-img" id="imgZhenpi" alt="真皮">
+                <img src="" class="zoom-main-img" id="imgZhenpi" alt="真皮" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('zhenpi',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('zhenpi',1)"><i class="fa fa-chevron-right"></i></button>
@@ -961,7 +962,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomShuixin">
-                <img src="" class="zoom-main-img" id="imgShuixin" alt="水性PU皮革">
+                <img src="" class="zoom-main-img" id="imgShuixin" alt="水性PU皮革" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shuixin',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shuixin',1)"><i class="fa fa-chevron-right"></i></button>
@@ -987,7 +988,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomPutongpu">
-                <img src="" class="zoom-main-img" id="imgPutongpu" alt="标准PU皮革">
+                <img src="" class="zoom-main-img" id="imgPutongpu" alt="标准PU皮革" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('putongpu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('putongpu',1)"><i class="fa fa-chevron-right"></i></button>
@@ -1013,7 +1014,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomPvc">
-                <img src="" class="zoom-main-img" id="imgPvc" alt="PVC皮革">
+                <img src="" class="zoom-main-img" id="imgPvc" alt="PVC皮革" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('pvc',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('pvc',1)"><i class="fa fa-chevron-right"></i></button>
@@ -1039,7 +1040,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomShengwu">
-                <img src="" class="zoom-main-img" id="imgShengwu" alt="生物基皮革">
+                <img src="" class="zoom-main-img" id="imgShengwu" alt="生物基皮革" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('shengwu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('shengwu',1)"><i class="fa fa-chevron-right"></i></button>
@@ -1065,7 +1066,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomChaoqian">
-                <img src="" class="zoom-main-img" id="imgChaoqian" alt="超纤皮革">
+                <img src="" class="zoom-main-img" id="imgChaoqian" alt="超纤皮革" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('chaoqian',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('chaoqian',1)"><i class="fa fa-chevron-right"></i></button>
@@ -1091,7 +1092,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomTeshu">
-                <img src="" class="zoom-main-img" id="imgTeshu" alt="特殊皮革">
+                <img src="" class="zoom-main-img" id="imgTeshu" alt="特殊皮革" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('teshu',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('teshu',1)"><i class="fa fa-chevron-right"></i></button>
@@ -1117,7 +1118,7 @@
         </div>
         <div class="detail-main-card">
             <div class="zoom-container" id="zoomRecycled">
-                <img src="" class="zoom-main-img" id="imgRecycled" alt="回收PET瓶再生皮革">
+                <img src="" class="zoom-main-img" id="imgRecycled" alt="回收PET瓶再生皮革" loading="lazy">
                 <div class="zoom-preview"></div>
                 <button class="zoom-arrow zoom-arrow-left" onclick="switchImg('recycled',-1)"><i class="fa fa-chevron-left"></i></button>
                 <button class="zoom-arrow zoom-arrow-right" onclick="switchImg('recycled',1)"><i class="fa fa-chevron-right"></i></button>
@@ -1365,6 +1366,7 @@ function initZoom(type){
         let t = document.createElement("img");
         t.src = src;
         t.className = "thumb-item";
+        t.loading = "lazy";
         if(idx===0) t.classList.add("active");
         t.onclick = ()=>{nowIndex[type]=idx;refreshImg(type);};
         thumbBox.appendChild(t);
