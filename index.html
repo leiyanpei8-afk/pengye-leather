@@ -1549,7 +1549,7 @@ window.onload = function(){
   const nextBtn = popup.querySelector('.popup-next');
 
   let currentType = '';    // 当前产品类型
-  let currentIdx = 0;      // 当前图片索引（彻底解决404
+  let currentIdx = 0;      // 当前图片索引（彻底解决404）
   // 点击大图打开弹窗
   document.addEventListener('click', function(e) {
     if (e.target.classList.contains('zoom-main-img')) {
@@ -1564,7 +1564,8 @@ window.onload = function(){
     }
   });
 
-  // 上一张  prevBtn.addEventListener('click', (e) => {
+  // 上一张
+  prevBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     if (!currentType || !imgData[currentType]) return;
     const list = imgData[currentType];
@@ -1574,7 +1575,8 @@ window.onload = function(){
     refreshImg(currentType);
   });
 
-  // 下一张  nextBtn.addEventListener('click', (e) => {
+  // 下一张
+  nextBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     if (!currentType || !imgData[currentType]) return;
     const list = imgData[currentType];
