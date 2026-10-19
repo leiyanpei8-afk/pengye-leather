@@ -1577,6 +1577,79 @@ function bindSampleForm() {
 
 /* ---------- Router ---------- */
 
+function renderTrack() {
+  var carriers = [
+    { n: 'Auto Detect (recommended)', c: '' },
+    { n: 'DHL', c: 'dhl' },
+    { n: 'FedEx', c: 'fedex' },
+    { n: 'UPS', c: 'ups' },
+    { n: 'TNT', c: 'tnt' },
+    { n: 'EMS', c: 'ems' },
+    { n: 'China Post', c: 'chinapost' },
+    { n: 'ePacket', c: 'epacket' },
+    { n: 'SF Express', c: 'sf-express' },
+    { n: 'USPS', c: 'usps' },
+    { n: 'Other / not sure', c: '' }
+  ].map(function (x) {
+    return '<option value="' + x.c + '">' + x.n + '</option>';
+  }).join('');
+
+  return '' +
+    '<div class="page-head">' +
+      '<div class="container">' +
+        '<div class="crumb"><a href="#/home">Home</a> / Track Order</div>' +
+        '<span class="kicker">Order Tracking</span>' +
+        '<h1>Track Your Shipment in Real Time</h1>' +
+        '<p>Once your order ships, we send your tracking number and carrier by WhatsApp and email. Enter it below to follow your shipment live \u2014 status updates come straight from the carrier in real time.</p>' +
+      '</div>' +
+    '</div>' +
+
+    '<section class="section">' +
+      '<div class="container">' +
+        '<div class="track-box">' +
+          '<form class="track-form" id="trackForm" onsubmit="return trackShip();">' +
+            '<div class="track-field">' +
+              '<label class="spec-label" for="trackNo">Tracking Number *</label>' +
+              '<input type="text" id="trackNo" name="trackNo" placeholder="e.g. JD0146000030699 / 1Z999AA10123456784" required>' +
+            '</div>' +
+            '<div class="track-field">' +
+              '<label class="spec-label" for="trackCarrier">Carrier</label>' +
+              '<select id="trackCarrier" name="trackCarrier">' + carriers + '</select>' +
+            '</div>' +
+            '<button type="submit" class="btn btn-primary btn-lg">Track Now \u2192</button>' +
+          '</form>' +
+          '<p class="track-hint">Covers 1,200+ carriers (DHL, FedEx, UPS, TNT, EMS, China Post, SF Express, USPS, air &amp; ocean freight). Not sure which carrier? Leave Auto Detect selected \u2014 the tracking number identifies it automatically.</p>' +
+          '<div class="track-links">' +
+            '<span>Prefer the carrier\u2019s own site?</span>' +
+            '<a href="https://www.dhl.com/cn-en/home/tracking.html" target="_blank" rel="noopener">DHL</a>' +
+            '<a href="https://www.fedex.com/fedextrack/" target="_blank" rel="noopener">FedEx</a>' +
+            '<a href="https://www.ups.com/track" target="_blank" rel="noopener">UPS</a>' +
+            '<a href="https://global.ems.com.cn/" target="_blank" rel="noopener">EMS</a>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="track-help">' +
+          '<div class="contact-card">' + ICONS.whatsappLg +
+            '<div><h3>Lost your tracking number?</h3><p>Message us on WhatsApp \u2014 we reply with your tracking number and current shipment status within minutes.</p><a class="btn btn-outline" href="' + waLink('Hi, please send me my tracking number and current shipment status.') + '" target="_blank" rel="noopener">' + ICONS.whatsapp + 'Ask on WhatsApp</a></div>' +
+          '</div>' +
+          '<div class="contact-card">' + icon('mail', 'icon') +
+            '<div><h3>Questions about delivery?</h3><p>Email our logistics team: <a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a> \u2014 we confirm real-time freight rates before payment and support customer-nominated carriers.</p></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</section>';
+}
+
+function trackShip() {
+  var no = document.getElementById('trackNo').value.trim();
+  if (!no) return false;
+  var fc = document.getElementById('trackCarrier').value;
+  var url = 'https://www.17track.net/en/track?nums=' + encodeURIComponent(no);
+  if (fc) url += '&fc=' + encodeURIComponent(fc);
+  window.open(url, '_blank', 'noopener');
+  return false;
+}
+
 var VIEWS = {
   home: renderHome,
   products: renderProducts,
@@ -1584,7 +1657,8 @@ var VIEWS = {
   certifications: renderCertifications,
   contact: renderContact,
   sample: renderSample,
-  checkout: renderCheckout
+  checkout: renderCheckout,
+  track: renderTrack
 };
 
 var PAGE_META = {
@@ -1615,6 +1689,10 @@ var PAGE_META = {
   sample: {
     title: 'Request a Sample | Pengye Leather Sample Service',
     desc: 'Request leather samples online \u2014 genuine leather (per Chi) and synthetic leather (per Yard) have separate forms. Sample fees advised on inquiry; contact us first for the right sample and shipping quote.'
+  },
+  track: {
+    title: 'Track Your Order | Pengye Leather Real-Time Shipment Tracking',
+    desc: 'Track your Pengye Leather shipment in real time. Enter your tracking number to see live carrier updates for DHL, FedEx, UPS, EMS, China Post, SF Express and 1,200+ carriers. Lost your number? Ask on WhatsApp.'
   }
 };
 
