@@ -18,8 +18,8 @@ var PRODUCTS = [
   {
     id: 'genuine',
     no: 'PL-01',
-    name: 'Genuine Leather for Shoes & Bags - Full Grain, Split & Reconstituted Cowhide, Sold Per Chi (尺)',
-    tagline: 'Natural cow, sheep and goat hides. Priced per 尺 (chi) - sold per hide, ~13-14 chi each.',
+    name: 'Genuine Leather for Shoes & Bags - Full Grain, Split & Reconstituted Cowhide, Sold Per Chi',
+    tagline: 'Natural cow, sheep and goat hides. Priced per Chi - sold per hide, ~13-14 Chi each.',
     desc: 'Genuine leather is natural leather made from processed animal hides, distinct from man-made synthetic materials. Per light industry standards, only leather with 90%+ top-grain leather in the surface layer may be labeled \u201cgenuine leather\u201d. Raw materials mainly come from cowhide, sheepskin and pigskin. It can be identified by observing natural pore patterns, touching for softness and elasticity, and smelling for the characteristic animal hide scent. Daily care requires avoiding high temperatures and harsh chemicals, and keeping it ventilated and moisture-proof.',
     features: ['Natural grain and texture', 'Breathable and durable', 'Premium hand-feel', 'Timeless, high-end look'],
     applications: ['Footwear', 'Bags & accessories', 'Furniture', 'Garments'],
@@ -31,8 +31,8 @@ var PRODUCTS = [
   {
     id: 'water-based-pu',
     no: 'PL-02',
-    name: 'Water-Based PU Leather for Shoe Upper - Eco-Friendly Solvent-Free Synthetic Leather, Scratch & Hydrolysis Resistant, Sold by Yard (码)',
-    tagline: 'Solvent-free, low-VOC eco polyurethane. Priced per 码 (1 码 = 0.9 m x 1.37 m).',
+    name: 'Water-Based PU Leather for Shoe Upper - Eco-Friendly Solvent-Free Synthetic Leather, Scratch & Hydrolysis Resistant, Sold by Yard',
+    tagline: 'Solvent-free, low-VOC eco polyurethane. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
     desc: 'Water-based PU leather is an eco-friendly polyurethane synthetic leather using water as the medium with no added solvents, different from traditional solvent-based PU. Its production process features low VOC emissions and no toxic solvent residues, making it safe for humans and the environment. Made from water-based polyurethane resin via wet film-forming technology, it offers good scratch resistance and breathability. It can be identified by its lack of irritating odors, no pungent black smoke when burned, and a smooth, non-sticky feel. Daily care allows direct wiping with a damp cloth; avoid prolonged soaking and direct sunlight.',
     features: ['No added solvents, low VOC', 'Safe for people and environment', 'Good scratch resistance', 'Breathable and smooth feel'],
     applications: ['Footwear', 'Upholstery', 'Bags', 'Auto interior'],
@@ -43,8 +43,8 @@ var PRODUCTS = [
   {
     id: 'eco-pu',
     no: 'PL-03',
-    name: 'Eco-Friendly PU Leather - REACH Compliant Low-Carbon Synthetic Leather for Shoes & Furniture, Sold by Yard (码)',
-    tagline: 'Low-carbon, REACH-compliant synthetic PU. Priced per 码 (1 码 = 0.9 m x 1.37 m).',
+    name: 'Eco-Friendly PU Leather - REACH Compliant Low-Carbon Synthetic Leather for Shoes & Furniture, Sold by Yard',
+    tagline: 'Low-carbon, REACH-compliant synthetic PU. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
     desc: 'Eco-friendly PU leather is a low-carbon compliant synthetic PU leather, produced with eco-friendly resins and additives, resulting in a significantly lower carbon footprint than standard PU. Its manufacturing strictly controls harmful substance emissions, meeting international environmental regulations like EU REACH, making it suitable for footwear and furniture with high environmental requirements. Made from modified polyurethane resin with eco-friendly additives, it offers stable physical properties and weather resistance. It can be verified via environmental test reports, lack of irritating odors when burned, and no harmful coating leaching.',
     features: ['Lower carbon footprint', 'REACH & EU compliant', 'Stable physical properties', 'Verified via test reports'],
     applications: ['Footwear', 'Furniture', 'Bags', 'Eco product lines'],
@@ -55,8 +55,8 @@ var PRODUCTS = [
   {
     id: 'standard-pu',
     no: 'PL-04',
-    name: 'Standard PU Leather for Shoes, Bags & Furniture - Versatile Polyurethane Synthetic Leather, Sold by Yard (码)',
-    tagline: 'Balanced, versatile everyday polyurethane. Priced per 码 (1 码 = 0.9 m x 1.37 m).',
+    name: 'Standard PU Leather for Shoes, Bags & Furniture - Versatile Polyurethane Synthetic Leather, Sold by Yard',
+    tagline: 'Balanced, versatile everyday polyurethane. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
     desc: 'Standard PU leather is a synthetic leather based on conventional polyurethane resin, one of the most widely used artificial leather types. Composed of polyurethane resin, base fabric and additives, made via dry or wet processes, it offers stable wear resistance, flex resistance and easy processability. With moderate cost and balanced performance, it is widely used in footwear, bags, furniture and more. It can be identified by a slight plastic odor when burned, a uniform surface without natural pores, and a relatively firm feel. Daily care can use neutral cleaners; keep away from sharp objects to prevent scratches.',
     features: ['Stable wear and flex resistance', 'Easy to process', 'Moderate cost, balanced performance', 'Wide color and grain range'],
     applications: ['Footwear', 'Bags', 'Furniture', 'Stationery'],
@@ -67,8 +67,8 @@ var PRODUCTS = [
   {
     id: 'pvc',
     no: 'PL-05',
-    name: 'PVC Leather - Waterproof Vinyl Synthetic Leather for Bags, Furniture & Outdoor Use, Sold by Yard (码)',
-    tagline: 'Economical, waterproof vinyl-based leather. Priced per 码 (1 码 = 0.9 m x 1.37 m).',
+    name: 'PVC Leather - Waterproof Vinyl Synthetic Leather for Bags, Furniture & Outdoor Use, Sold by Yard',
+    tagline: 'Economical, waterproof vinyl-based leather. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
     desc: 'PVC leather is a cost-effective synthetic leather mainly made of polyvinyl chloride resin, featuring excellent water resistance and easy maintenance. Composed of PVC resin, plasticizers, stabilizers and base fabric, made via calendering or coating processes, it is low-cost and highly cost-effective. With a smooth, dense surface and excellent water and moisture resistance, it is often used in outdoor products, furniture and budget-friendly footwear. It can be identified by the pungent hydrogen chloride odor when burned, self-extinguishing when removed from flame, and a relatively hard, plastic-like feel. Daily care allows direct washing; avoid high temperatures to prevent softening and deformation.',
     features: ['Excellent waterproofing', 'Easy to clean and maintain', 'Low cost, high value', 'Dense, smooth surface'],
     applications: ['Outdoor products', 'Furniture', 'Budget footwear', 'Cases & covers'],
@@ -79,8 +79,8 @@ var PRODUCTS = [
   {
     id: 'bio-based',
     no: 'PL-06',
-    name: 'Bio-Based Leather - Plant-Derived Sustainable Eco Leather for Footwear & Bags, Sold by Yard (码)',
-    tagline: 'Plant-derived sustainable material. Priced per 码 (1 码 = 0.9 m x 1.37 m).',
+    name: 'Bio-Based Leather - Plant-Derived Sustainable Eco Leather for Footwear & Bags, Sold by Yard',
+    tagline: 'Plant-derived sustainable material. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
     desc: 'Bio-based leather is a sustainable eco-leather based on plant-derived raw materials, different from traditional petroleum-based synthetic leather. Raw materials mainly come from plant fibers, starch-based or bio-based polyurethane resins, reducing reliance on fossil resources and carbon emissions during production. Combining eco-friendliness with leather-like texture, it is biodegradable or recyclable, making it a future-oriented sustainable material. It can be verified via bio-based content test reports, slight plant fiber odor when burned, and a feel close to natural leather. Daily care requires avoiding prolonged moisture and keeping it ventilated and dry.',
     features: ['Plant-derived raw materials', 'Lower carbon footprint', 'Biodegradable or recyclable', 'Leather-like texture'],
     applications: ['Footwear', 'Bags', 'Auto interior', 'Eco brands'],
@@ -91,8 +91,8 @@ var PRODUCTS = [
   {
     id: 'microfiber',
     no: 'PL-07',
-    name: 'Microfiber Leather for Shoes, Bags & Sports - Ultra-Durable Premium Synthetic Leather, Sold by Yard (码)',
-    tagline: 'High-performance ultra-fine fiber leather. Priced per 码 (1 码 = 0.9 m x 1.37 m).',
+    name: 'Microfiber Leather for Shoes, Bags & Sports - Ultra-Durable Premium Synthetic Leather, Sold by Yard',
+    tagline: 'High-performance ultra-fine fiber leather. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
     desc: 'Microfiber leather is a synthetic leather made from high-performance microfiber base fabric composite with polyurethane resin, with performance close to or even better than natural genuine leather. Composed of island-in-sea microfiber base fabric and high-performance PU resin, made via impregnation, coagulation and buffing processes, it offers excellent wear resistance, tear strength and aging resistance. The surface texture can highly simulate natural leather, with a soft, delicate feel, making it a premium alternative to high-end genuine leather. It can be identified by its uniform, fine microfiber texture, soft elasticity close to genuine leather when touched, and no obvious wear after abrasion tests.',
     features: ['Wear, tear and aging resistant', 'Highly simulates natural leather', 'Soft, delicate hand-feel', 'Premium genuine-leather alternative'],
     applications: ['Footwear', 'Bags', 'Sports goods', 'Auto interior'],
@@ -103,8 +103,8 @@ var PRODUCTS = [
   {
     id: 'specialty',
     no: 'PL-08',
-    name: 'Specialty Leather - Custom Embossed, Printed & Finished Leather for Fashion & Luxury, Sold by Yard (码)',
-    tagline: 'Custom embossed, printed and finished leather. Priced per 码 (1 码 = 0.9 m x 1.37 m).',
+    name: 'Specialty Leather - Custom Embossed, Printed & Finished Leather for Fashion & Luxury, Sold by Yard',
+    tagline: 'Custom embossed, printed and finished leather. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
     desc: 'Specialty leather is functional or decorative leather processed with custom patterns and special crafts, enabling personalized appearance and performance per customer requirements. Based on various substrates like genuine leather, PU or microfiber, it is treated with special processes such as embossing, hot stamping, lamination and flocking to create unique textures, lusters and feels \u2014 e.g., crocodile pattern, snake pattern, metallic finish and matte effect. Suitable for high-end fashion, luxury goods, custom furniture and other special applications. Identification requires combining process features with customer requirements, checking pattern consistency, craft details and special performance test reports.',
     features: ['Custom patterns and textures', 'Hot stamping, embossing, flocking', 'Unique luster and hand-feel', 'Made to your specification'],
     applications: ['High-end fashion', 'Luxury goods', 'Custom furniture', 'Fashion accessories'],
@@ -115,8 +115,8 @@ var PRODUCTS = [
   {
     id: 'recycled-pet',
     no: 'PL-09',
-    name: 'Recycled PET Bottle Leather - Sustainable Eco Material for Bags & Footwear, Sold by Yard (码)',
-    tagline: 'Bottle-to-leather circular material. Priced per 码 (1 码 = 0.9 m x 1.37 m).',
+    name: 'Recycled PET Bottle Leather - Sustainable Eco Material for Bags & Footwear, Sold by Yard',
+    tagline: 'Bottle-to-leather circular material. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
     desc: 'Recycled PET bottle leather is a sustainable eco-friendly material produced from recycled waste plastic bottles. Through crushing, granulation, fiber spinning and lamination processes, waste plastic resources are reused effectively, reducing plastic pollution and reliance on petroleum raw materials. This material features high toughness, strong tensile strength, excellent wear resistance and stable color fastness. With reliable performance similar to microfiber leather, it is highly recognized in the global market and widely used in bags, footwear, furniture and outdoor products.',
     features: ['Made from recycled bottles', 'High toughness and tensile strength', 'Stable color fastness', 'Globally recognized eco material'],
     applications: ['Bags', 'Footwear', 'Furniture', 'Outdoor products'],
@@ -130,7 +130,7 @@ var BENEFITS = [
   {
     icon: 'box',
     title: 'Flexible MOQ \u2014 Real-Time',
-    desc: 'MOQ confirmed in real time with our sales team \u2014 genuine leather priced per \u5c3a, synthetics per \u7801. No forced stockpiling \u2014 perfect for sampling and small batches.'
+    desc: 'MOQ confirmed in real time with our sales team \u2014 genuine leather priced per Chi, synthetics per Yard. No forced stockpiling \u2014 perfect for sampling and small batches.'
   },
   {
     icon: 'layers',
@@ -184,10 +184,10 @@ var TRUST = [
 
 var PARTNERS = [
   'COSTCO WHOLESALE', 'Walmart', 'amazon', 'Alibaba', 'Lazada', 'TEMU',
-  'TikTok', 'ebay', 'mercado libre', 'fruugo', '三全', '展艺',
-  '安井', 'amfori BSCI', '巴比馒头', '思念食品', '湾仔码头', 'ISO 9001',
+  'TikTok', 'ebay', 'mercado libre', 'fruugo', 'Sanquan', 'Zhanyi',
+  'Anjoy', 'amfori BSCI', 'Babi', 'Synear', 'Wan Chai Ferry', 'ISO 9001',
   'OXO', 'LIFETIME', 'ISO 14001', 'tescoma', 'IKEA', 'ALDI',
-  '惠优得', 'cotta', 'wish'
+  'Huiyoude', 'cotta', 'wish'
 ];
 
 var CERTS = {
@@ -390,8 +390,8 @@ function addToCart(id, qty, priceIn, specs) {
 }
 
 function unitLabel(u) {
-  if (u === 'ft') return '\u5c3a';
-  return '\u7801';
+  if (u === 'ft') return 'Chi';
+  return 'Yard';
 }
 
 function specsSummary(specs) {
@@ -492,7 +492,7 @@ function renderCartDrawer() {
             '<button type="button" data-cart-inc="' + i + '" aria-label="Increase quantity">+</button>' +
             '<span class="unit">' + ul + '</span>' +
           '</div>' +
-          '<div class="price-in"><input type="text" placeholder="Target price (optional), e.g. $2.5/' + (it.unit === 'ft' ? '\u5c3a' : '\u7801') + '" value="' + esc(it.priceIn || '') + '" data-cart-price="' + i + '" aria-label="Target price"></div>' +
+          '<div class="price-in"><input type="text" placeholder="Target price (optional), e.g. $2.5/' + (it.unit === 'ft' ? 'Chi' : 'Yard') + '" value="' + esc(it.priceIn || '') + '" data-cart-price="' + i + '" aria-label="Target price"></div>' +
         '</div>' +
         '<button class="cart-item-remove" data-cart-del="' + i + '" aria-label="Remove item">' + ICONS.close + '</button>' +
       '</div>';
@@ -527,8 +527,8 @@ function renderCheckout() {
       rows += '<div class="co-item"><span class="nm">' + esc(it.no) + ' ' + esc(it.name) + (spec ? '<small>' + esc(spec) + '</small>' : '') + '</span><span class="qt">' + it.qty + ' ' + ul + '</span></div>';
     }
     var totHtml = '';
-    if (hasFt) totHtml += '<div class="co-total"><span>Genuine Leather Total</span><span>' + ftTotal + ' \u5c3a</span></div>';
-    if (hasYd) totHtml += '<div class="co-total"><span>Synthetic Leather Total</span><span>' + ydTotal + ' \u7801</span></div>';
+    if (hasFt) totHtml += '<div class="co-total"><span>Genuine Leather Total</span><span>' + ftTotal + ' Chi</span></div>';
+    if (hasYd) totHtml += '<div class="co-total"><span>Synthetic Leather Total</span><span>' + ydTotal + ' Yard</span></div>';
     itemsHtml = rows + totHtml;
   }
 
@@ -598,7 +598,7 @@ function renderCheckout() {
           '<aside class="checkout-summary">' +
             '<h3>Order Summary</h3>' +
             itemsHtml +
-            '<p class="co-note">Material price: quoted by our team based on type, quantity and specification \u2014 usually within 24 hours.<br>Freight: real-time carrier rate, confirmed before payment.<br>Genuine leather priced per \u5c3a; synthetic leather per \u7801.<br>Testing: domestic (CN) standard by default \u2014 international tests (REACH, FDA, OEKO-TEX\u2026) must be requested in advance.</p>' +
+            '<p class="co-note">Material price: quoted by our team based on type, quantity and specification \u2014 usually within 24 hours.<br>Freight: real-time carrier rate, confirmed before payment.<br>Genuine leather priced per Chi; synthetic leather per Yard.<br>Testing: domestic (CN) standard by default \u2014 international tests (REACH, FDA, OEKO-TEX\u2026) must be requested in advance.</p>' +
           '</aside>' +
         '</div>' +
       '</div>' +
@@ -973,13 +973,13 @@ function renderProduct(id) {
 
   var others = PRODUCTS.filter(function (x) { return x.id !== id; }).slice(0, 3);
 
-  var unit = p.unit === 'ft' ? '\u5c3a' : '\u7801';
+  var unit = p.unit === 'ft' ? 'Chi' : 'Yard';
   var moqNote = p.unit === 'ft'
-    ? 'Genuine leather is priced per \u5c3a. 1 hide \u2248 13\u201314 \u5c3a. For reference: 1 \u7801 = 0.9 m long \u00d7 1.37 m wide (54\u201d). Quantity and MOQ confirmed in real time. Samples: genuine &amp; microfiber charged, others advised \u2014 contact us first.'
+    ? 'Genuine leather is priced per Chi. 1 hide \u2248 13\u201314 Chi. For reference: 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d). Quantity and MOQ confirmed in real time. Samples: genuine &amp; microfiber charged, others advised \u2014 contact us first.'
     : 'MOQ is flexible and confirmed in real time \u2014 samples: genuine &amp; microfiber charged, others advised. Contact us first.';
   var unitNote = p.unit === 'ft'
-    ? 'Unit: \u5c3a \u2014 1 hide \u2248 13\u201314 \u5c3a \u00b7 1 \u7801 = 0.9 m long \u00d7 1.37 m wide (54\u201d)'
-    : 'Unit: \u7801 \u2014 1 \u7801 = 0.9 m long \u00d7 1.37 m wide (54\u201d), priced per \u7801';
+    ? 'Unit: Chi \u2014 1 hide \u2248 13\u201314 Chi \u00b7 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d)'
+    : 'Unit: Yard \u2014 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d), priced per Yard';
 
   var gradeRow = '';
   if (p.subtypes && p.subtypes.length) {
@@ -1339,7 +1339,7 @@ function renderContact() {
               '<div class="form-row"><label for="fEmail">Email *</label><input id="fEmail" name="email" type="email" required placeholder="Your email"></div>' +
               '<div class="form-row"><label for="fPhone">Phone / WhatsApp</label><input id="fPhone" name="phone" type="text" placeholder="Your phone number"></div>' +
               '<div class="form-row"><label for="fType">Leather Type *</label><select id="fType" name="leatherType" required><option value="">Select a leather category</option>' + typeOptions + '<option value="Custom / Other">Custom / Other</option></select></div>' +
-              '<div class="form-row"><label for="fQty">Estimated Quantity</label><input id="fQty" name="quantity" type="text" placeholder="e.g. 500 \u5c3a genuine / 300 \u7801 PU"></div>' +
+              '<div class="form-row"><label for="fQty">Estimated Quantity</label><input id="fQty" name="quantity" type="text" placeholder="e.g. 500 Chi genuine / 300 Yard PU"></div>' +
               '<div class="form-row"><label for="fDetails">Requirements</label><textarea id="fDetails" name="details" placeholder="Color, texture, thickness, application and any special requirements"></textarea></div>' +
               '<div class="form-actions">' +
                 '<button type="submit" class="btn btn-primary">Send by Email</button>' +
@@ -1359,13 +1359,13 @@ function renderContact() {
           '<h2>Frequently Asked Questions</h2>' +
         '</div>' +
         '<div class="faq-list">' +
-          faqItem('What is your minimum order quantity (MOQ)?', 'MOQ is flexible \u2014 confirmed in real time based on current stock and market conditions. Genuine leather is priced per \u5c3a; synthetic leather per \u7801. Samples are available \u2014 fee policy advised on inquiry.'),
-          faqItem('How are materials priced and measured?', 'Genuine leather is priced per \u5c3a; synthetic leather is priced per \u7801. For reference: 1 \u7801 = 0.9 m long \u00d7 1.37 m wide (54\u201d), and an average genuine hide is about 13\u201314 \u5c3a. Your quotation always states the unit clearly.'),
+          faqItem('What is your minimum order quantity (MOQ)?', 'MOQ is flexible \u2014 confirmed in real time based on current stock and market conditions. Genuine leather is priced per Chi; synthetic leather per Yard. Samples are available \u2014 fee policy advised on inquiry.'),
+          faqItem('How are materials priced and measured?', 'Genuine leather is priced per Chi; synthetic leather is priced per Yard. For reference: 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d), and an average genuine hide is about 13\u201314 Chi. Your quotation always states the unit clearly.'),
           faqItem('How is genuine leather classified?', 'Genuine leather comes in three grades: full grain, split (second layer) and reconstituted (bonded). We supply all three \u2014 tell us the grade, thickness and finish you need.'),
           faqItem('Which testing standards do you use?', 'Domestic (CN) standard by default. International tests such as REACH, FDA, OEKO-TEX and EN71-3 are available \u2014 please request them in advance and tell us your target country.'),
           faqItem('How are samples handled and priced?', 'Samples for genuine leather and microfiber are charged (material cost). For other materials we\u2019ll advise whether a sample fee applies \u2014 please contact us first so we can arrange the right sample and quote the shipping.'),
           faqItem('How is the international freight charged?', 'Freight is charged at the real-time carrier rate (DHL, FedEx, UPS, sea freight, etc.) and confirmed with you before payment \u2014 no hidden fees. If you have your own carrier or forwarder, we can prepare the goods for your nominated pickup instead.'),
-          faqItem('How do I pay?', 'Send your order first \u2014 we reply with a real-time quotation within 24 hours. Once you approve the material and freight quote, we arrange the payment method for you based on order size: large orders via T/T bank transfer (corporate account, standard for international trade); small orders via Tenpay Global (腾讯智汇鹅, Tencent\u2019s licensed cross-border payment, settles to CNY) or PayPal. Every payment is matched to your order with a proforma invoice and full documents \u2014 clean and traceable for customs and banks.'),
+          faqItem('How do I pay?', 'Send your order first \u2014 we reply with a real-time quotation within 24 hours. Once you approve the material and freight quote, we arrange the payment method for you based on order size: large orders via T/T bank transfer (corporate account, standard for international trade); small orders via Tenpay Global (Tencent\u2019s licensed cross-border payment, settles to CNY) or PayPal. Every payment is matched to your order with a proforma invoice and full documents \u2014 clean and traceable for customs and banks.'),
           faqItem('How long is the delivery time?', 'Lead time depends on stock and your specifications \u2014 we confirm the exact timing in the quotation for every order, so there are no surprises.'),
           faqItem('Can I get production videos before shipping?', 'Yes. We share daily production and quality-inspection videos so you can see the progress and quality of your order anytime.'),
           faqItem('Do you support custom colors, textures and formulas?', 'Yes. Special textures, colors, thickness, backing materials and properties (high elasticity, high scratch resistance, hydrolysis resistance\u2026) can be developed to your specification.'),
@@ -1428,11 +1428,11 @@ function renderSample() {
               '<div class="sample-cats">' +
                 '<label class="radio-card" id="catFt">' +
                   '<input type="radio" name="sampleCat" value="genuine" checked onchange="SampleUI.toggle(this.value)">' +
-                  '<div><h4>Genuine Leather</h4><p>Priced per \u5c3a (尺). Fill in grade, thickness, texture \u2014 1 hide \u2248 13\u201314 \u5c3a.</p></div>' +
+                  '<div><h4>Genuine Leather</h4><p>Priced per Chi. Fill in grade, thickness, texture \u2014 1 hide \u2248 13\u201314 Chi.</p></div>' +
                 '</label>' +
                 '<label class="radio-card" id="catYd">' +
                   '<input type="radio" name="sampleCat" value="synthetic" onchange="SampleUI.toggle(this.value)">' +
-                  '<div><h4>Synthetic &amp; Other Leather</h4><p>Priced per \u7801 (码). PU, PVC, microfiber, bio-based, recycled \u2014 1 \u7801 = 0.9 m \u00d7 1.37 m.</p></div>' +
+                  '<div><h4>Synthetic &amp; Other Leather</h4><p>Priced per Yard. PU, PVC, microfiber, bio-based, recycled \u2014 1 Yard = 0.9 m \u00d7 1.37 m.</p></div>' +
                 '</label>' +
               '</div>' +
 
@@ -1449,7 +1449,7 @@ function renderSample() {
                   '<div class="spec-field"><span class="spec-label">Thickness (mm)</span><input type="text" id="sThickness" placeholder="e.g. 1.2 / 1.5 / 2.0"></div>' +
                   '<div class="spec-field"><span class="spec-label">Texture / Finish</span><input type="text" id="sTexture" placeholder="e.g. Smooth, Embossed, Nubuck"></div>' +
                   '<div class="spec-field"><span class="spec-label">Color / Article No.</span><input type="text" id="sColor" placeholder="Color name or article number"></div>' +
-                  '<div class="spec-field"><span class="spec-label">Quantity (\u5c3a)</span><input type="text" id="sQty" placeholder="e.g. 50 \u5c3a \u2014 flexible, confirm with us"></div>' +
+                  '<div class="spec-field"><span class="spec-label">Quantity (Chi)</span><input type="text" id="sQty" placeholder="e.g. 50 Chi \u2014 flexible, confirm with us"></div>' +
                   '<div class="spec-field"><span class="spec-label">Eco-Friendly Requirement</span><input type="text" id="sEco" placeholder="e.g. Standard, Eco, REACH"></div>' +
                   '<div class="spec-field"><span class="spec-label">Backing Material</span><input type="text" id="sBacking" placeholder="e.g. Knit, Velvet, Non-woven"></div>' +
                 '</div>' +
@@ -1462,7 +1462,7 @@ function renderSample() {
                   '<div class="spec-field"><span class="spec-label">Thickness (mm)</span><input type="text" id="sThickness2" placeholder="e.g. 0.8 / 1.0 / 1.2"></div>' +
                   '<div class="spec-field"><span class="spec-label">Texture / Finish</span><input type="text" id="sTexture2" placeholder="e.g. Smooth, Embossed, Nappa"></div>' +
                   '<div class="spec-field"><span class="spec-label">Color / Article No.</span><input type="text" id="sColor2" placeholder="Color name or article number"></div>' +
-                  '<div class="spec-field"><span class="spec-label">Quantity (\u7801)</span><input type="text" id="sQty2" placeholder="e.g. 50 \u7801 \u2014 flexible, confirm with us"></div>' +
+                  '<div class="spec-field"><span class="spec-label">Quantity (Yard)</span><input type="text" id="sQty2" placeholder="e.g. 50 Yard \u2014 flexible, confirm with us"></div>' +
                   '<div class="spec-field full"><span class="spec-label">Special Properties / Other Requirements</span><input type="text" id="sProps" placeholder="e.g. High elasticity, hydrolysis resistant, scratch resistant"></div>' +
                   '<div class="spec-field"><span class="spec-label">Eco-Friendly Requirement</span><input type="text" id="sEco2" placeholder="e.g. Standard, Eco, REACH"></div>' +
                   '<div class="spec-field"><span class="spec-label">Backing Material</span><input type="text" id="sBacking2" placeholder="e.g. Knit, Velvet, Non-woven"></div>' +
@@ -1486,7 +1486,7 @@ function renderSample() {
             '<div class="quote-note">' + ICONS.check + '<span><strong>Real-time quote.</strong> Material prices and freight move with the market \u2014 both are confirmed with you before we send samples or take payment.</span></div>' +
             '<div class="quote-note">' + ICONS.check + '<span><strong>Testing.</strong> Domestic (CN) standard by default. International tests (REACH, FDA, OEKO-TEX, EN71-3\u2026) are extra \u2014 request in advance and tell us your target country.</span></div>' +
             '<div class="quote-note">' + ICONS.check + '<span><strong>Receive by email.</strong> Sample requests and orders land in our inbox at <a href="mailto:sales@pengye-leather.com">sales@pengye-leather.com</a> \u2014 or chat with us on WhatsApp.</span></div>' +
-            '<div class="quote-note">' + ICONS.check + '<span><strong>Units.</strong> Genuine leather is priced per \u5c3a (尺); synthetic leather per \u7801 (码). 1 \u7801 = 0.9 m long \u00d7 1.37 m wide; 1 hide \u2248 13\u201314 \u5c3a.</span></div>' +
+            '<div class="quote-note">' + ICONS.check + '<span><strong>Units.</strong> Genuine leather is priced per Chi; synthetic leather per Yard. 1 Yard = 0.9 m long \u00d7 1.37 m wide; 1 hide \u2248 13\u201314 Chi.</span></div>' +
           '</aside>' +
         '</div>' +
       '</div>' +
@@ -1520,13 +1520,13 @@ function buildSampleMessage(d) {
   L.push('From: ' + (d.name || '-') + (d.company ? ' (' + d.company + ')' : ''));
   L.push('Email: ' + (d.email || '-') + ' | Phone/WA: ' + (d.phone || '-'));
   if (d.country) L.push('Country: ' + d.country);
-  L.push('Category: ' + (d.cat === 'genuine' ? 'Genuine Leather (priced per \u5c3a)' : 'Synthetic / Other Leather (priced per \u7801)'));
+  L.push('Category: ' + (d.cat === 'genuine' ? 'Genuine Leather (priced per Chi)' : 'Synthetic / Other Leather (priced per Yard)'));
   if (d.cat === 'genuine') {
     if (d.grade) L.push('Grade: ' + d.grade);
     if (d.thickness) L.push('Thickness: ' + d.thickness + ' mm');
     if (d.texture) L.push('Texture / Finish: ' + d.texture);
     if (d.color) L.push('Color / Article: ' + d.color);
-    if (d.qty) L.push('Quantity: ' + d.qty + ' \u5c3a');
+    if (d.qty) L.push('Quantity: ' + d.qty + ' Chi');
     if (d.eco) L.push('Eco: ' + d.eco);
     if (d.backing) L.push('Backing: ' + d.backing);
   } else {
@@ -1534,7 +1534,7 @@ function buildSampleMessage(d) {
     if (d.thickness) L.push('Thickness: ' + d.thickness + ' mm');
     if (d.texture) L.push('Texture / Finish: ' + d.texture);
     if (d.color) L.push('Color / Article: ' + d.color);
-    if (d.qty) L.push('Quantity: ' + d.qty + ' \u7801');
+    if (d.qty) L.push('Quantity: ' + d.qty + ' Yard');
     if (d.props) L.push('Properties: ' + d.props);
     if (d.eco) L.push('Eco: ' + d.eco);
     if (d.backing) L.push('Backing: ' + d.backing);
@@ -1590,7 +1590,7 @@ var VIEWS = {
 var PAGE_META = {
   home: {
     title: 'Pengye Leather | Shoe Material & Leather Supplier from China — Low MOQ, Factory Direct',
-    desc: 'Shoe material specialist since 2006: genuine leather (priced per \u5c3a), water-based PU, eco PU, PVC, microfiber, bio-based and recycled leather from China. Low MOQ, online ordering, instant WhatsApp support.'
+    desc: 'Shoe material specialist since 2006: genuine leather (priced per Chi), water-based PU, eco PU, PVC, microfiber, bio-based and recycled leather from China. Low MOQ, online ordering, instant WhatsApp support.'
   },
   products: {
     title: 'Leather for Shoes & Products | Genuine, PU, PVC, Microfiber, Recycled — Pengye Leather',
@@ -1610,11 +1610,11 @@ var PAGE_META = {
   },
   checkout: {
     title: 'Checkout & Shipping | Pengye Leather Online Order',
-    desc: 'Submit your leather material order. Genuine leather priced per \u5c3a, synthetics per \u7801. Freight charged at real-time carrier rates, confirmed before payment. Customer-nominated carriers supported.'
+    desc: 'Submit your leather material order. Genuine leather priced per Chi, synthetics per Yard. Freight charged at real-time carrier rates, confirmed before payment. Customer-nominated carriers supported.'
   },
   sample: {
     title: 'Request a Sample | Pengye Leather Sample Service',
-    desc: 'Request leather samples online \u2014 genuine leather (per \u5c3a) and synthetic leather (per \u7801) have separate forms. Sample fees advised on inquiry; contact us first for the right sample and shipping quote.'
+    desc: 'Request leather samples online \u2014 genuine leather (per Chi) and synthetic leather (per Yard) have separate forms. Sample fees advised on inquiry; contact us first for the right sample and shipping quote.'
   }
 };
 
