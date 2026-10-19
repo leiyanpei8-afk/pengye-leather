@@ -1618,7 +1618,7 @@ function renderTrack() {
             '</div>' +
             '<button type="submit" class="btn btn-primary btn-lg">Track Now \u2192</button>' +
           '</form>' +
-          '<p class="track-hint">Covers 1,200+ carriers (DHL, FedEx, UPS, TNT, EMS, China Post, SF Express, USPS, air &amp; ocean freight). Not sure which carrier? Leave Auto Detect selected \u2014 the tracking number identifies it automatically.</p>' +
+          '<p class="track-hint">Covers 1,200+ carriers (DHL, FedEx, UPS, TNT, EMS, China Post, SF Express, USPS, air &amp; ocean freight). Not sure which carrier? Leave Auto Detect selected \u2014 the tracking number identifies it automatically. Sea freight (FCL/LCL) is tracked via the shipping line\u2019s bill of lading \u2014 we send you the vessel tracking link with your booking. If a number shows no result or stops updating, message us on WhatsApp and we\u2019ll check it with the carrier for you.</p>' +
           '<div class="track-links">' +
             '<span>Prefer the carrier\u2019s own site?</span>' +
             '<a href="https://www.dhl.com/cn-en/home/tracking.html" target="_blank" rel="noopener">DHL</a>' +
@@ -1630,7 +1630,7 @@ function renderTrack() {
 
         '<div class="track-help">' +
           '<div class="contact-card">' + ICONS.whatsappLg +
-            '<div><h3>Lost your tracking number?</h3><p>Message us on WhatsApp \u2014 we reply with your tracking number and current shipment status within minutes.</p><a class="btn btn-outline" href="' + waLink('Hi, please send me my tracking number and current shipment status.') + '" target="_blank" rel="noopener">' + ICONS.whatsapp + 'Ask on WhatsApp</a></div>' +
+            '<div><h3>Number not working or lost?</h3><p>Message us on WhatsApp with your order number \u2014 we\u2019ll confirm your tracking number, carrier and live shipment status within minutes.</p><a class="btn btn-outline" href="' + waLink('Hi, my tracking number is not showing updates (or I lost it). Please check the current shipment status for me.') + '" target="_blank" rel="noopener">' + ICONS.whatsapp + 'Ask on WhatsApp</a></div>' +
           '</div>' +
           '<div class="contact-card">' + icon('mail', 'icon') +
             '<div><h3>Questions about delivery?</h3><p>Email our logistics team: <a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a> \u2014 we confirm real-time freight rates before payment and support customer-nominated carriers.</p></div>' +
