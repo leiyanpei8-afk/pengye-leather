@@ -145,6 +145,10 @@
       <a href="#/contact" class="nav-link" data-nav="contact">Contact</a>
       <a href="#/checkout" class="btn btn-primary btn-sm nav-cta">Start an Order</a>
     </nav>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button type="button" class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+    </div>
     <button class="cart-btn" id="cartBtn" aria-label="Open order cart">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
       <span class="cart-count" id="cartCount">0</span>

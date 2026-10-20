@@ -7,8 +7,351 @@
 
 /* ---------- Data ---------- */
 
+/* ---------- i18n: EN / 中文 ---------- */
+var LANG = 'en';
+try { LANG = localStorage.getItem('pl-lang') || 'en'; } catch (e) {}
+function T(en, zh) { return LANG === 'zh' ? zh : en; }
+function setLang(l) {
+  LANG = l;
+  try { localStorage.setItem('pl-lang', l); } catch (e) {}
+  updateNavLang();
+  router();
+}
+function updateNavLang() {
+  var map = { home: T('Home', '\u9996\u9875'), products: T('Products', '\u4ea7\u54c1'), about: T('About', '\u5173\u4e8e\u6211\u4eec'), certifications: T('Certifications', '\u8ba4\u8bc1'), track: T('Track Order', '\u7269\u6d41\u8ddf\u8e2a'), contact: T('Contact', '\u8054\u7cfb\u6211\u4eec') };
+  var links = document.querySelectorAll('#siteNav .nav-link');
+  for (var i = 0; i < links.length; i++) {
+    var k = links[i].getAttribute('data-nav');
+    if (k && map[k]) links[i].textContent = map[k];
+  }
+  var cta = document.querySelector('#siteNav .nav-cta');
+  if (cta) cta.textContent = T('Start an Order', '\u5728\u7ebf\u4e0b\u5355');
+  var btns = document.querySelectorAll('.lang-btn');
+  for (var j = 0; j < btns.length; j++) {
+    btns[j].classList.toggle('active', btns[j].getAttribute('data-lang') === LANG);
+  }
+}
+
+/* Post-render dictionary translation (exact text-node match) for static copy. */
+function applyLang() {
+  if (LANG !== 'zh') return;
+  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+  var stack = [];
+  while (walker.nextNode()) stack.push(walker.currentNode);
+  for (var i = 0; i < stack.length; i++) {
+    var n = stack[i];
+    var key = n.nodeValue.trim();
+    if (key && I18N_ZH.hasOwnProperty(key)) n.nodeValue = I18N_ZH[key];
+  }
+}
+
+/* Rendered-text -> Chinese dictionary for static copy (exact text-node match). */
+var I18N_ZH = {
+  /* nav / generic */
+  'Home': '\u9996\u9875',
+  'Products': '\u4ea7\u54c1',
+  'About': '\u5173\u4e8e\u6211\u4eec',
+  'Certifications': '\u8ba4\u8bc1',
+  'Track Order': '\u7269\u6d41\u8ddf\u8e2a',
+  'Contact': '\u8054\u7cfb\u6211\u4eec',
+  'Start an Order': '\u5728\u7ebf\u4e0b\u5355',
+  'Request a Sample': '\u7533\u8bf7\u6837\u54c1',
+  'Fee policy on inquiry': '\u6837\u54c1\u8d39\u7528\u54a8\u8be2\u786e\u8ba4',
+  'Chat on WhatsApp': 'WhatsApp \u5728\u7ebf\u54a8\u8be2',
+  'Instant Reply': '\u5b9e\u65f6\u56de\u590d',
+  'View details': '\u67e5\u770b\u8be6\u60c5',
+  'Browse All Products': '\u6d4f\u89c8\u5168\u90e8\u4ea7\u54c1',
+  'Shop on Amazon': '\u5728\u4e9a\u9a6c\u900a\u8d2d\u4e70',
+  'Shop on Amazon →': '\u5728\u4e9a\u9a6c\u900a\u8d2d\u4e70 →',
+  'Wholesale Quote on WhatsApp': 'WhatsApp \u6279\u53d1\u8be2\u4ef7',
+  'WhatsApp Us': 'WhatsApp \u8054\u7cfb\u6211\u4eec',
+  'Add to Order': '\u52a0\u5165\u8ba2\u5355',
+  'Track Now': '\u7acb\u5373\u67e5\u8be2',
+  'Ask on WhatsApp': 'WhatsApp \u54a8\u8be2',
+  'Copy': '\u590d\u5236',
+  'WeChat': '\u5fae\u4fe1',
+  'Email': '\u90ae\u7bb1',
+  'Tel': '\u7535\u8bdd',
+  '(tap to copy)': '(\u70b9\u51fb\u590d\u5236)',
+  'Years Experience': '\u4ece\u4e1a\u7ecf\u9a8c',
+  'Real-Time Quote': '\u5b9e\u65f6\u62a5\u4ef7',
+  'Product Lines': '\u4ea7\u54c1\u7cfb\u5217',
+  'Pre-Shipment Inspection': '\u51fa\u8d27\u524d\u5168\u68c0',
+  'Premium Leather Materials': '\u9ad8\u7aef\u76ae\u9769\u6750\u6599',
+  'Your Trusted Leather Sourcing Partner in China': '\u4e2d\u56fd\u503c\u5f97\u4fe1\u8d56\u7684\u76ae\u9769\u91c7\u8d2d\u5408\u4f5c\u4f19\u4f34',
+  /* hero */
+  '20 years of one-stop leather supply \u2014 genuine, PU, PVC, microfiber, bio-based and recycled eco materials. Low MOQ, verified quality and on-time delivery for global buyers.': '20 \u5e74\u4e00\u7ad9\u5f0f\u76ae\u9769\u4f9b\u5e94\u2014\u2014\u771f\u76ae\u3001PU\u3001PVC\u3001\u8d85\u7ea4\u3001\u751f\u7269\u57fa\u3001\u518d\u751f\u73af\u4fdd\u6750\u6599\u3002\u4f4e\u8d77\u8ba2\u91cf\u3001\u54c1\u8d28\u53ef\u9760\u3001\u51c6\u65f6\u4ea4\u4ed8\uff0c\u670d\u52a1\u5168\u7403\u4e70\u5bb6\u3002',
+  'Samples available \u2014 genuine leather & microfiber samples are charged, others advised on inquiry. Contact us first and we\u2019ll arrange the right sample.': '\u6837\u54c1\u653f\u7b56\uff1a\u771f\u76ae\u4e0e\u8d85\u7ea4\u6837\u54c1\u6536\u8d39\uff0c\u5176\u4ed6\u6750\u6599\u54a8\u8be2\u786e\u8ba4\u3002\u8bf7\u5148\u8054\u7cfb\u6211\u4eec\uff0c\u4e3a\u60a8\u5b89\u6392\u5408\u9002\u7684\u6837\u54c1\u3002',
+  /* scope cards */
+  'Shoe Material Specialist': '\u9774\u6750\u76ae\u9769\u4e13\u5bb6',
+  'We focus on leather for footwear \u2014 uppers, linings and more. Every series below is built for shoe production.': '\u6211\u4eec\u4e13\u6ce8\u4e8e\u978b\u6750\u76ae\u9769\u2014\u2014\u9762\u6599\u3001\u91cc\u6599\u7b49\u3002\u4e0b\u9762\u6bcf\u4e2a\u7cfb\u5217\u90fd\u4e3a\u5236\u978b\u800c\u751f\u3002',
+  'Sofa & Automotive Leather': '\u6c99\u53d1\u4e0e\u6c7d\u8f66\u76ae\u9769',
+  'Need upholstery-grade leather for sofas or car interiors? We source it too \u2014 just mention your application in advance.': '\u9700\u8981\u6c99\u53d1\u6216\u6c7d\u8f66\u5185\u9970\u7528\u76ae\u9769\uff1f\u6211\u4eec\u4e5f\u53ef\u4ee5\u4e3a\u60a8\u5bfb\u627e\u2014\u2014\u53ea\u9700\u63d0\u524d\u544a\u8bc9\u7528\u9014\u5373\u53ef\u3002',
+  'Visit Our Showroom': '\u53c2\u89c2\u6211\u4eec\u7684\u95e8\u5e97',
+  'Buyers and partners are welcome to visit our showroom & office in Huidong, Guangdong. Book a visit on WhatsApp.': '\u6b22\u8fce\u4e70\u5bb6\u4e0e\u5408\u4f5c\u4f19\u4f34\u524d\u5f80\u5e7f\u4e1c\u60e0\u4e1c\u7684\u95e8\u5e97\u4e0e\u529e\u516c\u5ba4\u53c2\u89c2\u3002\u53ef\u901a\u8fc7 WhatsApp \u9884\u7ea6\u3002',
+  'Retail on Amazon': '\u4e9a\u9a6c\u900a\u96f6\u552e',
+  'Need a small quantity fast? Our Amazon store sells hydrolysis-resistant PU leather for retail buyers.': '\u9700\u8981\u5c0f\u6279\u91cf\u5feb\u901f\u8d2d\u4e70\uff1f\u6211\u4eec\u7684\u4e9a\u9a6c\u900a\u5e97\u9488\u5bf9\u96f6\u552e\u4e70\u5bb6\u9500\u552e\u8010\u6c34\u89e3 PU \u76ae\u9769\u3002',
+  /* value prop */
+  'We solve all your leather sourcing headaches: no high MOQ, no limited styles, no quality issues, no delayed delivery.': '\u6211\u4eec\u89e3\u51b3\u60a8\u6240\u6709\u76ae\u9769\u91c7\u8d2d\u7684\u75db\u70b9\uff1a\u6ca1\u6709\u9ad8\u8d77\u8ba2\u91cf\u3001\u6ca1\u6709\u6837\u5f0f\u9650\u5236\u3001\u6ca1\u6709\u8d28\u91cf\u95ee\u9898\u3001\u6ca1\u6709\u5ef6\u8bef\u4ea4\u8d27\u3002',
+  'One supplier, every leather you need \u2014 matched to your specification, budget and timeline.': '\u4e00\u4e2a\u4f9b\u5e94\u5546\uff0c\u6ee1\u8db3\u60a8\u6240\u9700\u7684\u4e00\u5207\u76ae\u9769\u2014\u2014\u6309\u60a8\u7684\u89c4\u683c\u3001\u9884\u7b97\u548c\u65f6\u95f4\u8868\u5339\u914d\u3002',
+  '20 Years Proven Experience': '20 \u5e74\u4e1a\u754c\u7ecf\u9a8c',
+  'Specialized leather sourcing since 2006.': '\u81ea 2006 \u5e74\u4e13\u6ce8\u76ae\u9769\u91c7\u8d2d\u3002',
+  'Flexible MOQ \u2014 Real-Time': '\u7075\u6d3b\u4f4e\u8d77\u8ba2\u91cf\u2014\u2014\u5b9e\u65f6\u786e\u8ba4',
+  'MOQ and pricing confirmed live with our sales team.': '\u8d77\u8ba2\u91cf\u4e0e\u4ef7\u683c\u7531\u6211\u4eec\u7684\u9500\u552e\u56e2\u961f\u5b9e\u65f6\u786e\u8ba4\u3002',
+  'One-Stop Full Range Supply': '\u4e00\u7ad9\u5f0f\u5168\u54c1\u7c7b\u4f9b\u5e94',
+  'All leather categories from a single partner.': '\u6240\u6709\u76ae\u9769\u54c1\u7c7b\u6765\u81ea\u5355\u4e00\u5408\u4f5c\u4f19\u4f34\u3002',
+  /* why pengye */
+  'Why Pengye': '\u4e3a\u4f55\u9009\u9e4f\u4e1a',
+  'Why Choose Pengye Over Direct Factories?': '\u4e3a\u4ec0\u4e48\u9009\u9e4f\u4e1a\u800c\u4e0d\u662f\u76f4\u63a5\u627e\u5de5\u5382\uff1f',
+  'We sit between global buyers and China\u2019s best leather factories \u2014 so you get factory-direct prices with none of the sourcing headaches.': '\u6211\u4eec\u8de8\u5728\u5168\u7403\u4e70\u5bb6\u4e0e\u4e2d\u56fd\u4f18\u8d28\u76ae\u9769\u5de5\u5382\u4e4b\u95f4\u2014\u2014\u60a8\u53ef\u4ee5\u62ff\u5230\u5de5\u5382\u76f4\u4f9b\u4ef7\u683c\uff0c\u5374\u65e0\u9700\u627f\u62c5\u4efb\u4f55\u91c7\u8d2d\u9ebb\u70e6\u3002',
+  /* range */
+  'Our Range': '\u4ea7\u54c1\u4f18\u52bf',
+  'Full Leather Series': '\u5168\u7cfb\u5217\u76ae\u9769',
+  'Nine product lines, hundreds of textures and colors. The displayed styles are only a small part of our inventory.': '\u4e5d\u5927\u4ea7\u54c1\u7cfb\u5217\uff0c\u6570\u767e\u79cd\u7eb9\u7406\u4e0e\u989c\u8272\u3002\u5c55\u793a\u7684\u6b3e\u5f0f\u4ec5\u662f\u6211\u4eec\u5e93\u5b58\u7684\u4e00\u5c0f\u90e8\u5206\u3002',
+  /* factory */
+  'Factory & Quality': '\u5de5\u5382\u4e0e\u54c1\u8d28',
+  'Leather Factory Production Process': '\u76ae\u9769\u5de5\u5382\u751f\u4ea7\u6d41\u7a0b',
+  'From raw material to finished leather, strict quality control at every step.': '\u4ece\u539f\u6599\u5230\u6210\u54c1\u76ae\u9769\uff0c\u6bcf\u4e2a\u73af\u8282\u4e25\u683c\u54c1\u63a7\u3002',
+  'Factory Tour Video': '\u5de5\u5382\u5b9e\u62cd\u89c6\u9891',
+  'Cooperative Factories & Quality Certificates': '\u5408\u4f5c\u5de5\u5382\u4e0e\u8d28\u91cf\u8ba4\u8bc1',
+  'Long-term stable cooperative leather factories, complete international test certificates to guarantee product quality.': '\u957f\u671f\u7a33\u5b9a\u5408\u4f5c\u7684\u76ae\u9769\u5de5\u5382\uff0c\u5b8c\u6574\u7684\u56fd\u9645\u68c0\u6d4b\u8bc1\u4e66\uff0c\u786e\u4fdd\u4ea7\u54c1\u54c1\u8d28\u3002',
+  /* trust */
+  'Track Record': '\u4e1a\u7ee9\u8ffd\u8e2a',
+  'Proven Trust in Global Leather Sourcing': '\u5168\u7403\u76ae\u9769\u91c7\u8d2d\u7684\u8bc1\u660e\u4fe1\u4efb',
+  'Integrity, transparency and reliability \u2014 the way we have done business since 2006.': '\u8bda\u4fe1\u3001\u900f\u660e\u4e0e\u53ef\u9760\u2014\u2014\u8fd9\u662f\u6211\u4eec\u81ea 2006 \u5e74\u4ee5\u6765\u7684\u7ecf\u8425\u4e4b\u9053\u3002',
+  /* partners */
+  'Who We Supply': '\u6211\u4eec\u670d\u52a1\u8c01',
+  'Trusted by Global Brands & Platforms': '\u53d7\u5168\u7403\u54c1\u724c\u4e0e\u5e73\u53f0\u4fe1\u8d56',
+  'Our materials reach end products sold through leading global retail and e-commerce channels.': '\u6211\u4eec\u7684\u6750\u6599\u8fdb\u5165\u5168\u7403\u4e3b\u6d41\u96f6\u552e\u4e0e\u7535\u5546\u6e20\u9053\u9500\u552e\u7684\u6700\u7ec8\u4ea7\u54c1\u3002',
+  /* amazon band */
+  'Need a Small Quantity Fast? We\u2019re on Amazon.': '\u9700\u8981\u5c0f\u6279\u91cf\u5feb\u901f\u8d2d\u4e70\uff1f\u6211\u4eec\u5728\u4e9a\u9a6c\u900a\u4e0a\u3002',
+  'Our hydrolysis-resistant PU leather is available on Amazon for retail and small-quantity buyers. Wholesale buyers: same material, better price \u2014 request a real-time quote on WhatsApp.': '\u6211\u4eec\u7684\u8010\u6c34\u89e3 PU \u76ae\u9769\u5728\u4e9a\u9a6c\u900a\u4e0a\u5bf9\u96f6\u552e\u4e0e\u5c0f\u6279\u91cf\u4e70\u5bb6\u9500\u552e\u3002\u6279\u53d1\u4e70\u5bb6\uff1a\u540c\u6837\u6750\u6599\u66f4\u4f18\u4ef7\u683c\u2014\u2014\u901a\u8fc7 WhatsApp \u83b7\u53d6\u5b9e\u65f6\u62a5\u4ef7\u3002',
+  'Only the hydrolysis-resistant PU leather is sold on Amazon (retail, small quantity). All other series on this website \u2014 genuine leather, PU, PVC, microfiber, bio-based, recycled \u2014 are wholesale only: order or request a quote here.': '\u4e9a\u9a6c\u900a\u4e0a\u4ec5\u9500\u552e\u8010\u6c34\u89e3 PU \u76ae\u9769\uff08\u96f6\u552e\u3001\u5c0f\u6279\u91cf\uff09\u3002\u672c\u7f51\u7ad9\u5176\u4ed6\u6240\u6709\u7cfb\u5217\u2014\u2014\u771f\u76ae\u3001PU\u3001PVC\u3001\u8d85\u7ea4\u3001\u751f\u7269\u57fa\u3001\u518d\u751f\u2014\u2014\u4ec5\u63d0\u4f9b\u6279\u53d1\uff1a\u5728\u6b64\u4e0b\u5355\u6216\u8be2\u4ef7\u3002',
+  /* cta band */
+  'Need a material that isn\u2019t listed?': '\u9700\u8981\u672a\u5217\u51fa\u7684\u6750\u6599\uff1f',
+  'Tell us your specification \u2014 we\u2019ll match the right leather and send you samples (sample fee advised on inquiry).': '\u544a\u8bc9\u6211\u4eec\u60a8\u7684\u89c4\u683c\u2014\u2014\u6211\u4eec\u5c06\u4e3a\u60a8\u5339\u914d\u5408\u9002\u7684\u76ae\u9769\u5e76\u5bc4\u9001\u6837\u54c1\uff08\u6837\u54c1\u8d39\u7528\u54a8\u8be2\u786e\u8ba4\uff09\u3002',
+  'Looking for something specific?': '\u5728\u627e\u67d0\u79cd\u7279\u5b9a\u6750\u6599\uff1f',
+  'Tell us your application, texture or color requirement \u2014 we\u2019ll match the best material and send samples.': '\u544a\u8bc9\u6211\u4eec\u60a8\u7684\u7528\u9014\u3001\u7eb9\u7406\u6216\u989c\u8272\u8981\u6c42\u2014\u2014\u6211\u4eec\u5c06\u5339\u914d\u6700\u5408\u9002\u7684\u6750\u6599\u5e76\u5bc4\u9001\u6837\u54c1\u3002',
+  /* about */
+  'About Us': '\u5173\u4e8e\u6211\u4eec',
+  '20 Years of Trusted Leather Sourcing': '20 \u5e74\u503c\u5f97\u4fe1\u8d56\u7684\u76ae\u9769\u91c7\u8d2d',
+  'Pengye Leather connects global buyers with China\u2019s best leather factories \u2014 with integrity, transparency and quality you can verify.': '\u9e4f\u4e1a\u76ae\u9769\u5c06\u5168\u7403\u4e70\u5bb6\u4e0e\u4e2d\u56fd\u4f18\u8d28\u76ae\u9769\u5de5\u5382\u8fde\u63a5\u8d77\u6765 \u2014 \u4ee5\u8bda\u4fe1\u3001\u900f\u660e\u4e0e\u53ef\u9a8c\u8bc1\u7684\u54c1\u8d28\u3002',
+  'A Sourcing Partner, Not Just Another Supplier': '\u662f\u91c7\u8d2d\u4f19\u4f34\uff0c\u800c\u4e0d\u53ea\u662f\u53c8\u4e00\u4e2a\u4f9b\u5e94\u5546',
+  'By the Numbers': '\u6570\u636e\u4e00\u89c8',
+  'Experience You Can Measure': '\u53ef\u8861\u91cf\u7684\u7ecf\u9a8c',
+  'Years in Leather Sourcing': '\u76ae\u9769\u91c7\u8d2d\u5e74\u9650',
+  'Utility Patents': '\u5b9e\u7528\u65b0\u578b\u4e13\u5229',
+  'Invention Patents': '\u53d1\u660e\u4e13\u5229',
+  'Our Values': '\u6211\u4eec\u7684\u4ef7\u503c\u89c2',
+  'What We Stand For': '\u6211\u4eec\u7684\u575a\u5b88',
+  'Integrity First': '\u8bda\u4fe1\u4e3a\u672c',
+  'Veteran discipline in every order \u2014 honest pricing, honest materials, honest timelines.': '\u6bcf\u4e00\u7b14\u8ba2\u5355\u90fd\u4f53\u73b0\u519b\u4eba\u7eaa\u5f8b \u2014 \u4ef7\u683c\u8bda\u5b9e\u3001\u6750\u6599\u8bda\u5b9e\u3001\u65f6\u95f4\u8bda\u5b9e\u3002',
+  'Full Transparency': '\u5168\u9762\u900f\u660e',
+  'Daily production and inspection videos shared with you, so quality is always visible.': '\u4e0e\u60a8\u5206\u4eab\u6bcf\u65e5\u751f\u4ea7\u4e0e\u68c0\u9a8c\u89c6\u9891\uff0c\u54c1\u8d28\u59cb\u7ec8\u53ef\u89c1\u3002',
+  'Global Reliability': '\u5168\u7403\u53ef\u9760',
+  'Stable stock access, competitive prices and on-time delivery for buyers worldwide.': '\u7a33\u5b9a\u7684\u8d27\u6e90\u3001\u6709\u7ade\u4e89\u529b\u7684\u4ef7\u683c\u4e0e\u51c6\u65f6\u4ea4\u4ed8\uff0c\u670d\u52a1\u5168\u7403\u4e70\u5bb6\u3002',
+  'Let\u2019s build your material plan together': '\u4e00\u8d77\u5236\u5b9a\u60a8\u7684\u6750\u6599\u65b9\u6848\u5427',
+  'Tell us what you need \u2014 we\u2019ll match the right leather and arrange samples (fee advised on inquiry).': '\u544a\u8bc9\u6211\u4eec\u60a8\u7684\u9700\u6c42 \u2014 \u6211\u4eec\u5c06\u5339\u914d\u5408\u9002\u7684\u76ae\u9769\u5e76\u5b89\u6392\u6837\u54c1\uff08\u8d39\u7528\u54a8\u8be2\u786e\u8ba4\uff09\u3002',
+  'Contact Us': '\u8054\u7cfb\u6211\u4eec',
+  /* certifications */
+  'Quality & Compliance': '\u54c1\u8d28\u4e0e\u5408\u89c4',
+  'Certifications & Patents': '\u8ba4\u8bc1\u4e0e\u4e13\u5229',
+  'Independent test reports, international compliance standards and 40+ patents \u2014 proof of quality you can check before you order.': '\u72ec\u7acb\u68c0\u6d4b\u62a5\u544a\u3001\u56fd\u9645\u5408\u89c4\u6807\u51c6\u4e0e 40+ \u9879\u4e13\u5229 \u2014 \u4e0b\u5355\u524d\u5373\u53ef\u6838\u9a8c\u7684\u54c1\u8d28\u8bc1\u660e\u3002',
+  'Test Reports': '\u68c0\u6d4b\u62a5\u544a',
+  'Environmental & Safety Testing': '\u73af\u4fdd\u4e0e\u5b89\u5168\u68c0\u6d4b',
+  'Product Description Sheet': '\u4ea7\u54c1\u8bf4\u660e\u8868',
+  'Environmental & Physical Test Results': '\u73af\u4fdd\u4e0e\u7269\u7406\u68c0\u6d4b\u7ed3\u679c',
+  'Our standard product description sheet \u2014 environmental and physical test values as supplied on inquiry.': '\u6211\u4eec\u7684\u6807\u51c6\u4ea7\u54c1\u8bf4\u660e\u8868 \u2014 \u73af\u4fdd\u4e0e\u7269\u7406\u68c0\u6d4b\u503c\uff0c\u8be2\u4ef7\u65f6\u63d0\u4f9b\u3002',
+  'Full description sheet as printed \u2014 click to enlarge.': '\u5b8c\u6574\u8bf4\u660e\u8868\u539f\u6837\u5c55\u793a \u2014 \u70b9\u51fb\u653e\u5927\u3002',
+  'ECO-Friendly Standards': '\u73af\u4fdd\u6807\u51c6',
+  'Physical Property': '\u7269\u7406\u6027\u80fd',
+  /* contact */
+  'Request a Sample or Quotation': '\u7533\u8bf7\u6837\u54c1\u6216\u8be2\u4ef7',
+  'Tell us what you need and we\u2019ll reply within one business day. Samples available \u2014 genuine leather & microfiber charged, other materials advised on inquiry. Contact us first.': '\u544a\u8bc9\u6211\u4eec\u60a8\u7684\u9700\u6c42\uff0c\u6211\u4eec\u5c06\u5728\u4e00\u4e2a\u5de5\u4f5c\u65e5\u5185\u56de\u590d\u3002\u6837\u54c1\u653f\u7b56\uff1a\u771f\u76ae\u4e0e\u8d85\u7ea4\u6536\u8d39\uff0c\u5176\u4ed6\u6750\u6599\u54a8\u8be2\u786e\u8ba4\u3002\u8bf7\u5148\u8054\u7cfb\u6211\u4eec\u3002',
+  'Factory, Office & Showroom': '\u5de5\u5382\u3001\u529e\u516c\u5ba4\u4e0e\u5c55\u5385',
+  'Buyers and partners are welcome to visit \u2014 book a visit on WhatsApp and we\u2019ll be ready for you.': '\u6b22\u8fce\u4e70\u5bb6\u4e0e\u5408\u4f5c\u4f19\u4f34\u5230\u8bbf \u2014 \u901a\u8fc7 WhatsApp \u9884\u7ea6\uff0c\u6211\u4eec\u968f\u65f6\u606d\u5019\u3002',
+  'Phone / WhatsApp': '\u7535\u8bdd / WhatsApp',
+  'Chat with us instantly': '\u7acb\u5373\u4e0e\u6211\u4eec\u804a\u5929',
+  'Retail on Amazon': '\u4e9a\u9a6c\u900a\u96f6\u552e',
+  'Need a small quantity? Our Amazon store sells hydrolysis-resistant PU leather for retail buyers.': '\u9700\u8981\u5c0f\u6279\u91cf\uff1f\u6211\u4eec\u7684\u4e9a\u9a6c\u900a\u5e97\u9488\u5bf9\u96f6\u552e\u4e70\u5bb6\u9500\u552e\u8010\u6c34\u89e3 PU \u76ae\u9769\u3002',
+  'Copy WeChat Number': '\u590d\u5236\u5fae\u4fe1\u53f7',
+  'Send Your Inquiry': '\u53d1\u9001\u60a8\u7684\u8be2\u76d8',
+  'Fields marked * are required. Your inquiry goes directly to our sales team.': '\u5e26 * \u4e3a\u5fc5\u586b\u9879\u3002\u60a8\u7684\u8be2\u76d8\u5c06\u76f4\u63a5\u53d1\u9001\u81f3\u6211\u4eec\u7684\u9500\u552e\u56e2\u961f\u3002',
+  'Full Name *': '\u59d3\u540d *',
+  'Company': '\u516c\u53f8',
+  'Leather Type *': '\u76ae\u9769\u7c7b\u578b *',
+  'Estimated Quantity': '\u9884\u8ba1\u6570\u91cf',
+  'Requirements': '\u9700\u6c42\u63cf\u8ff0',
+  'Send by Email': '\u90ae\u4ef6\u53d1\u9001',
+  'Send via Email': '\u90ae\u4ef6\u53d1\u9001',
+  'Send via WhatsApp': '\u901a\u8fc7 WhatsApp \u53d1\u9001',
+  'Prefer instant chat? The WhatsApp button opens a pre-filled message to our sales line.': '\u66f4\u559c\u6b22\u5373\u65f6\u6c9f\u901a\uff1fWhatsApp \u6309\u94ae\u4f1a\u6253\u5f00\u9884\u586b\u6d88\u606f\u53d1\u9001\u81f3\u6211\u4eec\u7684\u9500\u552e\u8d26\u53f7\u3002',
+  'FAQ': '\u5e38\u89c1\u95ee\u9898',
+  'Frequently Asked Questions': '\u5e38\u89c1\u95ee\u9898\u89e3\u7b54',
+  /* sample page */
+  'Sample Service': '\u6837\u54c1\u670d\u52a1',
+  'Tell us which material and what you need \u2014 we confirm the sample fee and shipping with you before sending.': '\u544a\u8bc9\u6211\u4eec\u60a8\u9700\u8981\u7684\u6750\u6599\u4e0e\u8981\u6c42 \u2014 \u5bc4\u51fa\u524d\u6211\u4eec\u4f1a\u4e0e\u60a8\u786e\u8ba4\u6837\u54c1\u8d39\u7528\u4e0e\u8fd0\u8d39\u3002',
+  'Sample Request Form': '\u6837\u54c1\u7533\u8bf7\u8868',
+  'Choose the material category first \u2014 genuine leather and other leathers are filled in differently.': '\u8bf7\u5148\u9009\u62e9\u6750\u6599\u7c7b\u522b \u2014 \u771f\u76ae\u4e0e\u5176\u4ed6\u76ae\u9769\u7684\u586b\u5199\u65b9\u5f0f\u4e0d\u540c\u3002',
+  'Genuine Leather': '\u771f\u76ae',
+  'Priced per Chi. Fill in grade, thickness, texture \u2014 1 hide \u2248 13\u201314 Chi.': '\u6309\u5c3a\u8ba1\u4ef7\u3002\u586b\u5199\u7b49\u7ea7\u3001\u539a\u5ea6\u3001\u7eb9\u7406 \u2014 \u6bcf\u5f20\u76ae\u7ea6 13\u201314 \u5c3a\u3002',
+  'Synthetic & Other Leather': '\u5408\u6210\u9769\u4e0e\u5176\u4ed6\u76ae\u9769',
+  'Priced per Yard. PU, PVC, microfiber, bio-based, recycled \u2014 1 Yard = 0.9 m \u00d7 1.37 m.': '\u6309\u7801\u8ba1\u4ef7\u3002PU\u3001PVC\u3001\u8d85\u7ea4\u3001\u751f\u7269\u57fa\u3001\u518d\u751f \u2014 1 \u7801 = 0.9 \u7c73 \u00d7 1.37 \u7c73\u3002',
+  'Name *': '\u59d3\u540d *',
+  'Company (optional)': '\u516c\u53f8\uff08\u9009\u586b\uff09',
+  'Your Country': '\u60a8\u7684\u56fd\u5bb6',
+  'Genuine Leather Specs': '\u771f\u76ae\u89c4\u683c',
+  'Synthetic Leather Specs': '\u5408\u6210\u9769\u89c4\u683c',
+  'Free text \u2014 type what you need. No fixed choices.': '\u81ea\u7531\u586b\u5199 \u2014 \u8f93\u5165\u60a8\u9700\u8981\u7684\u89c4\u683c\uff0c\u65e0\u56fa\u5b9a\u9009\u9879\u3002',
+  'Domestic (CN) standard by default. International tests (REACH, FDA, OEKO-TEX, EN71-3...) are extra and must be requested in advance \u2014 mention your target country.': '\u9ed8\u8ba4\u4e2d\u56fd\u56fd\u5185\u6807\u51c6\u3002\u56fd\u9645\u68c0\u6d4b\uff08REACH\u3001FDA\u3001OEKO-TEX\u3001EN71-3\u2026\uff09\u989d\u5916\u6536\u8d39\uff0c\u5fc5\u987b\u63d0\u524d\u7533\u8bf7 \u2014 \u8bf7\u6ce8\u660e\u76ee\u6807\u56fd\u5bb6\u3002',
+  'Domestic (CN) standard by default. International tests (REACH, FDA, OEKO-TEX, EN71-3\u2026) are extra and must be requested in advance \u2014 mention your target country.': '\u9ed8\u8ba4\u4e2d\u56fd\u56fd\u5185\u6807\u51c6\u3002\u56fd\u9645\u68c0\u6d4b\uff08REACH\u3001FDA\u3001OEKO-TEX\u3001EN71-3\u2026\uff09\u989d\u5916\u6536\u8d39\uff0c\u5fc5\u987b\u63d0\u524d\u7533\u8bf7 \u2014 \u8bf7\u6ce8\u660e\u76ee\u6807\u56fd\u5bb6\u3002',
+  'Leather Grade': '\u76ae\u9769\u7b49\u7ea7',
+  'Thickness (mm)': '\u539a\u5ea6\uff08\u6beb\u7c73\uff09',
+  'Texture / Finish': '\u7eb9\u7406 / \u8868\u9762',
+  'Color / Article No.': '\u989c\u8272 / \u8d27\u53f7',
+  'Quantity (Chi)': '\u6570\u91cf\uff08\u5c3a\uff09',
+  'Eco-Friendly Requirement': '\u73af\u4fdd\u8981\u6c42',
+  'Backing Material': '\u5e95\u9762\u6750\u6599',
+  'Material Type': '\u6750\u6599\u7c7b\u578b',
+  'Quantity (Yard)': '\u6570\u91cf\uff08\u7801\uff09',
+  'Special Properties / Other Requirements': '\u7279\u6b8a\u6027\u80fd / \u5176\u4ed6\u8981\u6c42',
+  'Anything else (testing, target price, documents)': '\u5176\u4ed6\u9700\u6c42\uff08\u68c0\u6d4b\u3001\u76ee\u6807\u4ef7\u683c\u3001\u6587\u4ef6\uff09',
+  'Sample fee: genuine leather & microfiber samples are charged (material cost). For other materials we\u2019ll advise on inquiry \u2014 we confirm the fee and shipping with you before sending.': '\u6837\u54c1\u8d39\u7528\uff1a\u771f\u76ae\u4e0e\u8d85\u7ea4\u6837\u54c1\u6536\u8d39\uff08\u6750\u6599\u6210\u672c\uff09\u3002\u5176\u4ed6\u6750\u6599\u54a8\u8be2\u786e\u8ba4 \u2014 \u5bc4\u51fa\u524d\u6211\u4eec\u4f1a\u4e0e\u60a8\u786e\u8ba4\u8d39\u7528\u4e0e\u8fd0\u8d39\u3002',
+  'Copy Request': '\u590d\u5236\u7533\u8bf7',
+  'Email button opens <strong>your own</strong> email app with the request addressed to <strong>sales@pengye-leather.com</strong> \u2014 just press send. Or tap Copy Request and paste it into any email or chat.': '\u90ae\u4ef6\u6309\u94ae\u4f1a\u6253\u5f00\u60a8\u81ea\u5df1\u7684\u90ae\u4ef6\u5e94\u7528\uff0c\u6536\u4ef6\u4eba\u5df2\u9884\u586b\u4e3a sales@pengye-leather.com \u2014 \u70b9\u51fb\u53d1\u9001\u5373\u53ef\u3002\u6216\u70b9\u51fb\u590d\u5236\u7533\u8bf7\uff0c\u7c98\u8d34\u5230\u4efb\u4f55\u90ae\u4ef6\u6216\u804a\u5929\u5e94\u7528\u3002',
+  'Sample fee policy.': '\u6837\u54c1\u8d39\u7528\u653f\u7b56\u3002',
+  'Real-time quote.': '\u5b9e\u65f6\u62a5\u4ef7\u3002',
+  'Testing.': '\u68c0\u6d4b\u6807\u51c6\u3002',
+  'Receive by email.': '\u90ae\u4ef6\u63a5\u6536\u3002',
+  'Units.': '\u5355\u4f4d\u8bf4\u660e\u3002',
+  'Material Specifications': '\u6750\u6599\u89c4\u683c',
+  'Type in what you need so we can quote accurately \u2014 fields are free text. Optional ones can be left blank.': '\u8f93\u5165\u60a8\u7684\u9700\u6c42\uff0c\u65b9\u4fbf\u6211\u4eec\u7cbe\u51c6\u62a5\u4ef7 \u2014 \u6240\u6709\u5b57\u6bb5\u5747\u81ea\u7531\u586b\u5199\uff0c\u53ef\u9009\u9879\u53ef\u4ee5\u7559\u7a7a\u3002',
+  'Target Country': '\u76ee\u6807\u56fd\u5bb6',
+  'Testing Standard': '\u68c0\u6d4b\u6807\u51c6',
+  'Domestic (CN) standard by default. International tests (REACH, FDA, OEKO-TEX, EN71-3\u2026) are extra and must be requested': '\u9ed8\u8ba4\u91c7\u7528\u4e2d\u56fd\u56fd\u5185\u6807\u51c6\u3002\u56fd\u9645\u68c0\u6d4b\uff08REACH\u3001FDA\u3001OEKO-TEX\u3001EN71-3\u2026\uff09\u53e6\u6536\u8d39\uff0c\u4e14\u5fc5\u987b\u7533\u8bf7',
+  'in advance': '\u63d0\u524d',
+  '\u2014 mention your target country.': '\u2014 \u8bf7\u6ce8\u660e\u76ee\u6807\u56fd\u5bb6\u3002',
+  'Domestic (CN) standard by default. International tests (REACH, FDA, OEKO-TEX, EN71-3\u2026) are extra \u2014 request in advance and tell us your target country.': '\u9ed8\u8ba4\u91c7\u7528\u4e2d\u56fd\u56fd\u5185\u6807\u51c6\u3002\u56fd\u9645\u68c0\u6d4b\uff08REACH\u3001FDA\u3001OEKO-TEX\u3001EN71-3\u2026\uff09\u989d\u5916\u6536\u8d39 \u2014 \u8bf7\u63d0\u524d\u7533\u8bf7\u5e76\u544a\u77e5\u76ee\u6807\u56fd\u5bb6\u3002',
+  'Key Features': '\u4e3b\u8981\u7279\u70b9',
+  'Typical Applications': '\u5178\u578b\u7528\u9014',
+  'Real-time price.': '\u5b9e\u65f6\u4ef7\u683c\u3002',
+  'Material prices move with the market \u2014 no fixed list price. Share your spec & quantity and we quote today.': '\u6750\u6599\u4ef7\u683c\u968f\u5e02\u573a\u6ce2\u52a8 \u2014 \u65e0\u56fa\u5b9a\u4ef7\u683c\u8868\u3002\u63d0\u4ea4\u60a8\u7684\u89c4\u683c\u4e0e\u6570\u91cf\uff0c\u6211\u4eec\u5f53\u5929\u62a5\u4ef7\u3002',
+  'Keep Exploring': '\u7ee7\u7eed\u6d4f\u89c8',
+  'Other Leather Series': '\u5176\u4ed6\u76ae\u9769\u7cfb\u5217',
+  'Product Range': '\u4ea7\u54c1\u8303\u56f4',
+  'Nine product lines from natural genuine leather to recycled eco materials. If none of these match your need, contact us \u2014 we customize textures, colors and formulas.': '\u4ece\u5929\u7136\u771f\u76ae\u5230\u518d\u751f\u73af\u4fdd\u6750\u6599\u5171\u4e5d\u5927\u4ea7\u54c1\u7cfb\u5217\u3002\u5982\u679c\u6ca1\u6709\u7b26\u5408\u60a8\u7684\u9700\u6c42\uff0c\u8bf7\u8054\u7cfb\u6211\u4eec \u2014 \u6211\u4eec\u53ef\u4ee5\u5b9a\u5236\u7eb9\u7406\u3001\u989c\u8272\u4e0e\u914d\u65b9\u3002',
+  /* checkout */
+  'Order': '\u8ba2\u5355',
+  'Checkout & Shipping': '\u7ed3\u7b97\u4e0e\u8fd0\u8f93',
+  'Submit your order \u2014 we confirm the real-time freight quote and send a payment link within one business day.': '\u63d0\u4ea4\u60a8\u7684\u8ba2\u5355 \u2014 \u6211\u4eec\u5c06\u5728\u4e00\u4e2a\u5de5\u4f5c\u65e5\u5185\u786e\u8ba4\u5b9e\u65f6\u8fd0\u8d39\u62a5\u4ef7\u5e76\u53d1\u9001\u4ed8\u6b3e\u94fe\u63a5\u3002',
+  'Your order is empty. Add leather materials from the product pages first.': '\u60a8\u7684\u8ba2\u5355\u4e3a\u7a7a\u3002\u8bf7\u5148\u4ece\u4ea7\u54c1\u9875\u6dfb\u52a0\u76ae\u9769\u6750\u6599\u3002',
+  'Genuine Leather Total': '\u771f\u76ae\u5408\u8ba1',
+  'Synthetic Leather Total': '\u5408\u6210\u9769\u5408\u8ba1',
+  'Phone / WhatsApp *': '\u7535\u8bdd / WhatsApp *',
+  'WeChat (optional)': '\u5fae\u4fe1\uff08\u9009\u586b\uff09',
+  'Country *': '\u56fd\u5bb6 *',
+  'City': '\u57ce\u5e02',
+  'Address *': '\u5730\u5740 *',
+  'Postal / ZIP Code': '\u90ae\u653f\u7f16\u7801',
+  'Shipping Method': '\u8fd0\u8f93\u65b9\u5f0f',
+  'International freight is charged at the real-time carrier rate.': '\u56fd\u9645\u8fd0\u8d39\u6309\u627f\u8fd0\u5546\u5b9e\u65f6\u8d39\u7387\u6536\u53d6\u3002',
+  'Pengye arranges shipping (recommended)': '\u9e4f\u4e1a\u5b89\u6392\u8fd0\u8f93\uff08\u63a8\u8350\uff09',
+  'We book the best carrier and confirm the real-time freight quote with you before payment \u2014 no hidden fees.': '\u6211\u4eec\u9884\u8ba2\u6700\u5408\u9002\u7684\u627f\u8fd0\u5546\uff0c\u5e76\u5728\u4ed8\u6b3e\u524d\u4e0e\u60a8\u786e\u8ba4\u5b9e\u65f6\u8fd0\u8d39\u62a5\u4ef7 \u2014 \u65e0\u9690\u85cf\u8d39\u7528\u3002',
+  'I will use my own carrier / forwarder': '\u6211\u4f7f\u7528\u81ea\u5df1\u7684\u8d27\u4ee3 / \u627f\u8fd0\u5546',
+  'You have a preferred logistics provider \u2014 tell us the carrier and account, we prepare the goods for pickup.': '\u60a8\u6709\u504f\u597d\u7684\u7269\u6d41\u5546 \u2014 \u544a\u8bc9\u6211\u4eec\u627f\u8fd0\u5546\u548c\u8d26\u53f7\uff0c\u6211\u4eec\u5907\u8d27\u4f9b\u60a8\u63d0\u8d27\u3002',
+  'Your Carrier / Forwarder *': '\u60a8\u7684\u627f\u8fd0\u5546 / \u8d27\u4ee3 *',
+  'Account No. / Collection Method': '\u8d26\u53f7 / \u53d6\u4ef6\u65b9\u5f0f',
+  'Payment': '\u4ed8\u6b3e\u65b9\u5f0f',
+  'We arrange the payment method for you based on order size \u2014 no need to choose now.': '\u6211\u4eec\u4f1a\u6839\u636e\u8ba2\u5355\u5927\u5c0f\u4e3a\u60a8\u5b89\u6392\u4ed8\u6b3e\u65b9\u5f0f \u2014 \u73b0\u5728\u65e0\u9700\u9009\u62e9\u3002',
+  'Large orders \u2014 T/T Bank Transfer': '\u5927\u5355 \u2014 T/T \u94f6\u884c\u8f6c\u8d26',
+  'Corporate account, standard for international trade \u2014 proforma invoice & contract with full documents.': '\u5bf9\u516c\u8d26\u6237\uff0c\u56fd\u9645\u8d38\u6613\u6807\u51c6 \u2014 \u5f62\u5f0f\u53d1\u7968\u4e0e\u5408\u540c\u53ca\u5168\u5957\u5355\u636e\u3002',
+  'Small orders \u2014 Tenpay Global': '\u5c0f\u5355 \u2014 Tenpay Global\uff08\u817e\u8baf\u667a\u6c47\u9e45\uff09',
+  'Tencent\u2019s licensed cross-border payment \u2014 simple and low-fee for small amounts, settles to CNY.': '\u817e\u8baf\u6301\u724c\u8de8\u5883\u652f\u4ed8 \u2014 \u5c0f\u989d\u7b80\u5355\u4f4e\u8d39\uff0c\u7ed3\u7b97\u4e3a\u4eba\u6c11\u5e01\u3002',
+  'Alternative \u2014 PayPal': '\u5907\u9009 \u2014 PayPal',
+  'Convenient for small orders when you prefer it.': '\u5c0f\u5355\u65b9\u4fbf\uff0c\u6309\u60a8\u7684\u504f\u597d\u9009\u62e9\u3002',
+  'Payment happens only after you approve the quotation. We never ask for cash \u2014 every payment is matched to your order with a proforma invoice and shipping documents, clean and traceable for customs and banks.': '\u4ec5\u5728\u60a8\u786e\u8ba4\u62a5\u4ef7\u540e\u624d\u4f1a\u6536\u6b3e\u3002\u6211\u4eec\u4ece\u4e0d\u8981\u6c42\u73b0\u91d1 \u2014 \u6bcf\u7b14\u4ed8\u6b3e\u90fd\u4e0e\u60a8\u7684\u8ba2\u5355\u5339\u914d\uff0c\u9644\u5f62\u5f0f\u53d1\u7968\u4e0e\u8fd0\u8f93\u5355\u636e\uff0c\u5bf9\u6d77\u5173\u548c\u94f6\u884c\u6e05\u6670\u53ef\u6eaf\u3002',
+  'Order Notes (colors, specs, documents needed)': '\u8ba2\u5355\u5907\u6ce8\uff08\u989c\u8272\u3001\u89c4\u683c\u3001\u6240\u9700\u6587\u4ef6\uff09',
+  'Send Order via WhatsApp': '\u901a\u8fc7 WhatsApp \u53d1\u9001\u8ba2\u5355',
+  'Copy Order': '\u590d\u5236\u8ba2\u5355',
+  'Order Summary': '\u8ba2\u5355\u6458\u8981',
+  'Material price: quoted by our team based on type, quantity and specification \u2014 usually within 24 hours.': '\u6750\u6599\u4ef7\u683c\uff1a\u7531\u6211\u4eec\u56e2\u961f\u6839\u636e\u7c7b\u578b\u3001\u6570\u91cf\u4e0e\u89c4\u683c\u62a5\u4ef7 \u2014 \u901a\u5e38\u5728 24 \u5c0f\u65f6\u5185\u3002',
+  'Freight: real-time carrier rate, confirmed before payment.': '\u8fd0\u8d39\uff1a\u5b9e\u65f6\u627f\u8fd0\u5546\u8d39\u7387\uff0c\u4ed8\u6b3e\u524d\u786e\u8ba4\u3002',
+  'Genuine leather priced per Chi; synthetic leather per Yard.': '\u771f\u76ae\u6309\u5c3a\u8ba1\u4ef7\uff1b\u5408\u6210\u9769\u6309\u7801\u8ba1\u4ef7\u3002',
+  'Testing: domestic (CN) standard by default \u2014 international tests (REACH, FDA, OEKO-TEX\u2026) must be requested in advance.': '\u68c0\u6d4b\uff1a\u9ed8\u8ba4\u4e2d\u56fd\u56fd\u5185\u6807\u51c6 \u2014 \u56fd\u9645\u68c0\u6d4b\uff08REACH\u3001FDA\u3001OEKO-TEX\u2026\uff09\u5fc5\u987b\u63d0\u524d\u7533\u8bf7\u3002',
+  /* track */
+  'Order Tracking': '\u8ba2\u5355\u8ddf\u8e2a',
+  'Track Your Shipment in Real Time': '\u5b9e\u65f6\u8ddf\u8e2a\u60a8\u7684\u8d27\u7269',
+  'Once your order ships, we send your tracking number and carrier by WhatsApp and email. Enter it below to follow your shipment live \u2014 status updates come straight from the carrier in real time.': '\u60a8\u7684\u8ba2\u5355\u53d1\u8d27\u540e\uff0c\u6211\u4eec\u4f1a\u901a\u8fc7 WhatsApp \u548c\u90ae\u4ef6\u5c06\u8fd0\u5355\u53f7\u4e0e\u627f\u8fd0\u5546\u53d1\u7ed9\u60a8\u3002\u5728\u4e0b\u65b9\u8f93\u5165\u5373\u53ef\u5b9e\u65f6\u8ddf\u8e2a\u8d27\u7269 \u2014 \u72b6\u6001\u66f4\u65b0\u76f4\u63a5\u6765\u81ea\u627f\u8fd0\u5546\u3002',
+  'Tracking Number *': '\u8fd0\u5355\u53f7 *',
+  'Carrier': '\u627f\u8fd0\u5546',
+  'Track Now \u2192': '\u7acb\u5373\u67e5\u8be2 \u2192',
+  'Covers 1,200+ carriers (DHL, FedEx, UPS, TNT, EMS, China Post, SF Express, USPS, air & ocean freight). Not sure which carrier? Leave Auto Detect selected \u2014 the tracking number identifies it automatically. Sea freight (FCL/LCL) is tracked via the shipping line\u2019s bill of lading \u2014 we send you the vessel tracking link with your booking. If a number shows no result or stops updating, message us on WhatsApp and we\u2019ll check it with the carrier for you.': '\u8986\u76d6 1,200+ \u5bb6\u627f\u8fd0\u5546\uff08DHL\u3001FedEx\u3001UPS\u3001TNT\u3001EMS\u3001\u4e2d\u56fd\u90ae\u653f\u3001\u987a\u4e30\u3001USPS\u3001\u7a7a\u8fd0\u4e0e\u6d77\u8fd0\uff09\u3002\u4e0d\u786e\u5b9a\u627f\u8fd0\u5546\uff1f\u4fdd\u7559\u81ea\u52a8\u8bc6\u522b\u5373\u53ef \u2014 \u8fd0\u5355\u53f7\u4f1a\u81ea\u52a8\u5339\u914d\u3002\u6d77\u8fd0\uff08FCL/LCL\uff09\u901a\u8fc7\u8239\u53f8\u63d0\u5355\u8ddf\u8e2a \u2014 \u6211\u4eec\u4f1a\u968f\u9884\u5b9a\u4fe1\u606f\u53d1\u7ed9\u60a8\u8239\u53ea\u8ddf\u8e2a\u94fe\u63a5\u3002\u5982\u679c\u8fd0\u5355\u53f7\u67e5\u4e0d\u5230\u6216\u505c\u6b62\u66f4\u65b0\uff0c\u8bf7\u5728 WhatsApp \u4e0a\u544a\u8bc9\u6211\u4eec\uff0c\u6211\u4eec\u4f1a\u5e2e\u60a8\u4e0e\u627f\u8fd0\u5546\u6838\u5b9e\u3002',
+  'Prefer the carrier\u2019s own site?': '\u66f4\u60f3\u7528\u627f\u8fd0\u5546\u5b98\u7f51\u67e5\u8be2\uff1f',
+  'Number not working or lost?': '\u8fd0\u5355\u53f7\u67e5\u4e0d\u5230\u6216\u4e22\u5931\uff1f',
+  'Message us on WhatsApp with your order number \u2014 we\u2019ll confirm your tracking number, carrier and live shipment status within minutes.': '\u5728 WhatsApp \u4e0a\u53d1\u6d88\u606f\u5e76\u9644\u4e0a\u60a8\u7684\u8ba2\u5355\u53f7 \u2014 \u6211\u4eec\u5c06\u5728\u51e0\u5206\u949f\u5185\u4e3a\u60a8\u786e\u8ba4\u8fd0\u5355\u53f7\u3001\u627f\u8fd0\u5546\u4e0e\u5b9e\u65f6\u7269\u6d41\u72b6\u6001\u3002',
+  'Questions about delivery?': '\u8fd0\u8f93\u95ee\u9898\uff1f',
+  /* FAQ */
+  'What is your minimum order quantity (MOQ)?': '\u8d77\u8ba2\u91cf\u662f\u591a\u5c11\uff1f',
+  'MOQ is flexible \u2014 confirmed in real time based on current stock and market conditions. Genuine leather is priced per Chi; synthetic leather per Yard. Samples are available \u2014 fee policy advised on inquiry.': '\u8d77\u8ba2\u91cf\u7075\u6d3b \u2014 \u6839\u636e\u5f53\u524d\u5e93\u5b58\u4e0e\u5e02\u573a\u884c\u60c5\u5b9e\u65f6\u786e\u8ba4\u3002\u771f\u76ae\u6309\u5c3a\u8ba1\u4ef7\uff1b\u5408\u6210\u9769\u6309\u7801\u8ba1\u4ef7\u3002\u53ef\u63d0\u4f9b\u6837\u54c1 \u2014 \u8d39\u7528\u653f\u7b56\u54a8\u8be2\u786e\u8ba4\u3002',
+  'How are materials priced and measured?': '\u6750\u6599\u5982\u4f55\u8ba1\u4ef7\u4e0e\u8ba1\u91cf\uff1f',
+  'Genuine leather is priced per Chi; synthetic leather is priced per Yard. For reference: 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d), and an average genuine hide is about 13\u201314 Chi. Your quotation always states the unit clearly.': '\u771f\u76ae\u6309\u5c3a\u8ba1\u4ef7\uff1b\u5408\u6210\u9769\u6309\u7801\u8ba1\u4ef7\u3002\u53c2\u8003\uff1a1 \u7801 = 0.9 \u7c73\u957f \u00d7 1.37 \u7c73\u5bbd\uff0854\u82f1\u5bf8\uff09\uff0c\u5e73\u5747\u6bcf\u5f20\u771f\u76ae\u7ea6 13\u201314 \u5c3a\u3002\u60a8\u7684\u62a5\u4ef7\u5355\u59cb\u7ec8\u4f1a\u6807\u660e\u5355\u4f4d\u3002',
+  'How is genuine leather classified?': '\u771f\u76ae\u5982\u4f55\u5206\u7ea7\uff1f',
+  'Genuine leather comes in three grades: full grain, split (second layer) and reconstituted (bonded). We supply all three \u2014 tell us the grade, thickness and finish you need.': '\u771f\u76ae\u5206\u4e3a\u4e09\u79cd\u7b49\u7ea7\uff1a\u5168\u7c92\u9762\u3001\u4e8c\u5c42\u76ae\u3001\u518d\u751f\u76ae\u3002\u4e09\u79cd\u6211\u4eec\u90fd\u63d0\u4f9b \u2014 \u544a\u8bc9\u6211\u4eec\u60a8\u9700\u8981\u7684\u7b49\u7ea7\u3001\u539a\u5ea6\u548c\u8868\u9762\u5904\u7406\u3002',
+  'Which testing standards do you use?': '\u4f60\u4eec\u91c7\u7528\u54ea\u4e9b\u68c0\u6d4b\u6807\u51c6\uff1f',
+  'Domestic (CN) standard by default. International tests such as REACH, FDA, OEKO-TEX and EN71-3 are available \u2014 please request them in advance and tell us your target country.': '\u9ed8\u8ba4\u4e2d\u56fd\u56fd\u5185\u6807\u51c6\u3002\u53ef\u63d0\u4f9b REACH\u3001FDA\u3001OEKO-TEX\u3001EN71-3 \u7b49\u56fd\u9645\u68c0\u6d4b \u2014 \u8bf7\u63d0\u524d\u7533\u8bf7\u5e76\u544a\u77e5\u76ee\u6807\u56fd\u5bb6\u3002',
+  'How are samples handled and priced?': '\u6837\u54c1\u5982\u4f55\u5904\u7406\u4e0e\u6536\u8d39\uff1f',
+  'Samples for genuine leather and microfiber are charged (material cost). For other materials we\u2019ll advise whether a sample fee applies \u2014 please contact us first so we can arrange the right sample and quote the shipping.': '\u771f\u76ae\u4e0e\u8d85\u7ea4\u6837\u54c1\u6536\u8d39\uff08\u6750\u6599\u6210\u672c\uff09\u3002\u5176\u4ed6\u6750\u6599\u662f\u5426\u6536\u53d6\u6837\u54c1\u8d39\u7528\u6211\u4eec\u4f1a\u544a\u77e5 \u2014 \u8bf7\u5148\u8054\u7cfb\u6211\u4eec\uff0c\u65b9\u4fbf\u5b89\u6392\u5408\u9002\u7684\u6837\u54c1\u5e76\u62a5\u51fa\u8fd0\u8d39\u3002',
+  'How is the international freight charged?': '\u56fd\u9645\u8fd0\u8d39\u5982\u4f55\u6536\u8d39\uff1f',
+  'Freight is charged at the real-time carrier rate (DHL, FedEx, UPS, sea freight, etc.) and confirmed with you before payment \u2014 no hidden fees. If you have your own carrier or forwarder, we can prepare the goods for your nominated pickup instead.': '\u8fd0\u8d39\u6309\u627f\u8fd0\u5546\u5b9e\u65f6\u8d39\u7387\u6536\u53d6\uff08DHL\u3001FedEx\u3001UPS\u3001\u6d77\u8fd0\u7b49\uff09\uff0c\u5e76\u5728\u4ed8\u6b3e\u524d\u4e0e\u60a8\u786e\u8ba4 \u2014 \u65e0\u9690\u85cf\u8d39\u7528\u3002\u5982\u679c\u60a8\u6709\u81ea\u5df1\u7684\u627f\u8fd0\u5546\u6216\u8d27\u4ee3\uff0c\u6211\u4eec\u53ef\u4ee5\u5907\u8d27\u4f9b\u60a8\u6307\u5b9a\u63d0\u8d27\u3002',
+  'How do I pay?': '\u5982\u4f55\u4ed8\u6b3e\uff1f',
+  'Send your order first \u2014 we reply with a real-time quotation within 24 hours. Once you approve the material and freight quote, we arrange the payment method for you based on order size: large orders via T/T bank transfer (corporate account, standard for international trade); small orders via Tenpay Global (Tencent\u2019s licensed cross-border payment, settles to CNY) or PayPal. Every payment is matched to your order with a proforma invoice and full documents \u2014 clean and traceable for customs and banks.': '\u5148\u63d0\u4ea4\u8ba2\u5355 \u2014 \u6211\u4eec\u5c06\u5728 24 \u5c0f\u65f6\u5185\u56de\u590d\u5b9e\u65f6\u62a5\u4ef7\u3002\u60a8\u786e\u8ba4\u6750\u6599\u4e0e\u8fd0\u8d39\u62a5\u4ef7\u540e\uff0c\u6211\u4eec\u4f1a\u6839\u636e\u8ba2\u5355\u89c4\u6a21\u4e3a\u60a8\u5b89\u6392\u4ed8\u6b3e\u65b9\u5f0f\uff1a\u5927\u5355\u8d70 T/T \u94f6\u884c\u8f6c\u8d26\uff08\u5bf9\u516c\u8d26\u6237\uff0c\u56fd\u9645\u8d38\u6613\u6807\u51c6\uff09\uff1b\u5c0f\u5355\u8d70 Tenpay Global\uff08\u817e\u8baf\u6301\u724c\u8de8\u5883\u652f\u4ed8\uff0c\u7ed3\u7b97\u4e3a\u4eba\u6c11\u5e01\uff09\u6216 PayPal\u3002\u6bcf\u7b14\u4ed8\u6b3e\u90fd\u4e0e\u8ba2\u5355\u5339\u914d\uff0c\u9644\u5f62\u5f0f\u53d1\u7968\u53ca\u5168\u5957\u5355\u636e \u2014 \u5bf9\u6d77\u5173\u548c\u94f6\u884c\u6e05\u6670\u53ef\u6eaf\u3002',
+  'How long is the delivery time?': '\u4ea4\u8d27\u5468\u671f\u591a\u957f\uff1f',
+  'Lead time depends on stock and your specifications \u2014 we confirm the exact timing in the quotation for every order, so there are no surprises.': '\u4ea4\u8d27\u5468\u671f\u53d6\u51b3\u4e8e\u5e93\u5b58\u4e0e\u60a8\u7684\u89c4\u683c \u2014 \u6bcf\u7b14\u8ba2\u5355\u7684\u7cbe\u786e\u65f6\u95f4\u6211\u4eec\u4f1a\u5728\u62a5\u4ef7\u4e2d\u786e\u8ba4\uff0c\u65e0\u610f\u5916\u3002',
+  'Can I get production videos before shipping?': '\u53d1\u8d27\u524d\u53ef\u4ee5\u83b7\u53d6\u751f\u4ea7\u89c6\u9891\u5417\uff1f',
+  'Yes. We share daily production and quality-inspection videos so you can see the progress and quality of your order anytime.': '\u53ef\u4ee5\u3002\u6211\u4eec\u4f1a\u5206\u4eab\u6bcf\u65e5\u751f\u4ea7\u4e0e\u8d28\u91cf\u68c0\u9a8c\u89c6\u9891\uff0c\u60a8\u53ef\u4ee5\u968f\u65f6\u770b\u5230\u8ba2\u5355\u7684\u8fdb\u5ea6\u4e0e\u8d28\u91cf\u3002',
+  'Do you support custom colors, textures and formulas?': '\u652f\u6301\u5b9a\u5236\u989c\u8272\u3001\u7eb9\u7406\u548c\u914d\u65b9\u5417\uff1f',
+  'Yes. Special textures, colors, thickness, backing materials and properties (high elasticity, high scratch resistance, hydrolysis resistance\u2026) can be developed to your specification.': '\u652f\u6301\u3002\u7279\u6b8a\u7eb9\u7406\u3001\u989c\u8272\u3001\u539a\u5ea6\u3001\u5e95\u9762\u6750\u6599\u4ee5\u53ca\u7279\u6b8a\u6027\u80fd\uff08\u9ad8\u5f39\u6027\u3001\u9ad8\u8010\u5212\u3001\u8010\u6c34\u89e3\u7b49\uff09\u53ef\u6309\u60a8\u7684\u89c4\u683c\u5f00\u53d1\u3002',
+  'Do you supply sofa or automotive leather?': '\u63d0\u4f9b\u6c99\u53d1\u6216\u6c7d\u8f66\u76ae\u9769\u5417\uff1f',
+  'Yes \u2014 we can source upholstery-grade leather for sofas and car interiors through our factory network. Please mention your application when you inquire.': '\u63d0\u4f9b \u2014 \u6211\u4eec\u53ef\u4ee5\u901a\u8fc7\u5de5\u5382\u7f51\u7edc\u4e3a\u6c99\u53d1\u548c\u6c7d\u8f66\u5185\u9970\u5bfb\u627e\u88c5\u9970\u7ea7\u76ae\u9769\u3002\u8be2\u4ef7\u65f6\u8bf7\u6ce8\u660e\u7528\u9014\u3002',
+  'Can I buy small quantities online?': '\u53ef\u4ee5\u5728\u7ebf\u4e70\u5c0f\u6279\u91cf\u5417\uff1f',
+  'Yes. Our Amazon retail store sells hydrolysis-resistant PU leather for retail and small-quantity buyers \u2014 shop directly at https://www.amazon.com/dp/B0G6V586N1 (hydrolysis-resistant PU leather).': '\u53ef\u4ee5\u3002\u6211\u4eec\u7684\u4e9a\u9a6c\u900a\u96f6\u552e\u5e97\u9488\u5bf9\u96f6\u552e\u4e0e\u5c0f\u6279\u91cf\u4e70\u5bb6\u9500\u552e\u8010\u6c34\u89e3 PU \u76ae\u9769 \u2014 \u76f4\u63a5\u8d2d\u4e70\uff1ahttps://www.amazon.com/dp/B0G6V586N1\uff08\u8010\u6c34\u89e3 PU \u76ae\u9769\uff09\u3002',
+  'Do you provide test reports and certificates?': '\u63d0\u4f9b\u68c0\u6d4b\u62a5\u544a\u4e0e\u8ba4\u8bc1\u5417\uff1f',
+  'Yes. We provide environmental and safety test reports (CTI) covering heavy metals, formaldehyde, phthalates, FDA 21 CFR 177.2600 and more. See our Certifications page.': '\u63d0\u4f9b\u3002\u6211\u4eec\u63d0\u4f9b\u8986\u76d6\u91cd\u91d1\u5c5e\u3001\u7532\u919b\u3001\u90bb\u82ef\u4e8c\u7532\u9178\u916f\u3001FDA 21 CFR 177.2600 \u7b49\u7684\u73af\u4fdd\u4e0e\u5b89\u5168\u68c0\u6d4b\u62a5\u544a\uff08CTI\uff09\u3002\u8bf7\u67e5\u770b\u8ba4\u8bc1\u9875\u3002',
+  'Can I contact you on WeChat?': '\u53ef\u4ee5\u901a\u8fc7\u5fae\u4fe1\u8054\u7cfb\u4f60\u4eec\u5417\uff1f',
+  'Yes, our WeChat number is +86 190 3739 0132 \u2014 tap the copy button on this page to save it.': '\u53ef\u4ee5\uff0c\u6211\u4eec\u7684\u5fae\u4fe1\u53f7\u662f +86 190 3739 0132 \u2014 \u70b9\u51fb\u672c\u9875\u590d\u5236\u6309\u94ae\u5373\u53ef\u4fdd\u5b58\u3002',
+  /* cart drawer / topbar / footer / fab */
+  'Your Order': '\u60a8\u7684\u8ba2\u5355',
+  'Your order is empty.': '\u60a8\u7684\u8ba2\u5355\u4e3a\u7a7a\u3002',
+  'Browse the leather series and add materials you need.': '\u6d4f\u89c8\u76ae\u9769\u7cfb\u5217\uff0c\u6dfb\u52a0\u60a8\u9700\u8981\u7684\u6750\u6599\u3002',
+  'Browse Products': '\u6d4f\u89c8\u4ea7\u54c1',
+  'No fixed prices \u2014 material & freight are quoted at real-time rates and confirmed with you before payment.': '\u65e0\u56fa\u5b9a\u4ef7\u683c \u2014 \u6750\u6599\u4e0e\u8fd0\u8d39\u6309\u5b9e\u65f6\u884c\u60c5\u62a5\u4ef7\uff0c\u4ed8\u6b3e\u524d\u4e0e\u60a8\u786e\u8ba4\u3002',
+  'Checkout \u2192': '\u53bb\u7ed3\u7b97 \u2192',
+  'Continue Browsing': '\u7ee7\u7eed\u6d4f\u89c8',
+  'Sample Service \u00b7 Flexible MOQ \u00b7 Real-Time Quote': '\u6837\u54c1\u670d\u52a1 \u00b7 \u7075\u6d3b\u8d77\u8ba2\u91cf \u00b7 \u5b9e\u65f6\u62a5\u4ef7',
+  'Live WhatsApp': 'WhatsApp \u5728\u7ebf',
+  'Premium leather materials from China. 20 years of trusted sourcing for global buyers \u2014 genuine, synthetic and eco leathers with low MOQ and verified quality.': '\u6765\u81ea\u4e2d\u56fd\u7684\u9ad8\u7aef\u76ae\u9769\u6750\u6599\u300220 \u5e74\u670d\u52a1\u5168\u7403\u4e70\u5bb6\u7684\u53ef\u9760\u91c7\u8d2d\u7ecf\u9a8c \u2014 \u771f\u76ae\u3001\u5408\u6210\u9769\u4e0e\u73af\u4fdd\u9769\uff0c\u4f4e\u8d77\u8ba2\u91cf\u3001\u54c1\u8d28\u53ef\u9760\u3002',
+  'All Products': '\u5168\u90e8\u4ea7\u54c1',
+  'Get in Touch': '\u8054\u7cfb\u6211\u4eec',
+  'WeChat: +86 190 3739 0132 (tap to copy)': '\u5fae\u4fe1\uff1a+86 190 3739 0132\uff08\u70b9\u51fb\u590d\u5236\uff09',
+  '\u00a9 2026 Pengye Leather. Your Trusted Leather Sourcing Partner in China. All Rights Reserved.': '\u00a9 2026 \u9e4f\u4e1a\u76ae\u9769\u3002\u4e2d\u56fd\u503c\u5f97\u4fe1\u8d56\u7684\u76ae\u9769\u91c7\u8d2d\u5408\u4f5c\u4f19\u4f34\u3002\u7248\u6743\u6240\u6709\u3002',
+  '24h reply \u2014 quote in real time': '24 \u5c0f\u65f6\u56de\u590d \u2014 \u5b9e\u65f6\u62a5\u4ef7',
+  '+86 190 3739 0132 \u00b7 tap to copy': '+86 190 3739 0132 \u00b7 \u70b9\u51fb\u590d\u5236',
+  'Phone': '\u7535\u8bdd',
+  /* split-node fragments */
+  'Shipping &amp; Contact Details': '\u8fd0\u8f93\u4e0e\u8054\u7cfb\u4fe1\u606f',
+  'Shipping & Contact Details': '\u8fd0\u8f93\u4e0e\u8054\u7cfb\u4fe1\u606f',
+  '* Required. Your order is sent directly to our sales team via WhatsApp / email.': '* \u5fc5\u586b\u3002\u60a8\u7684\u8ba2\u5355\u5c06\u76f4\u63a5\u901a\u8fc7 WhatsApp / \u90ae\u4ef6\u53d1\u9001\u7ed9\u6211\u4eec\u7684\u9500\u552e\u56e2\u961f\u3002',
+  'Email *': '\u90ae\u7bb1 *',
+  'Email button opens': '\u90ae\u4ef6\u6309\u94ae\u4f1a\u6253\u5f00',
+  'your own': '\u60a8\u81ea\u5df1\u7684',
+  'email app with the request addressed to': '\u90ae\u4ef6\u5e94\u7528\uff0c\u6536\u4ef6\u4eba\u5df2\u586b\u4e3a',
+  '\u2014 just press send. Or tap Copy Request and paste it into any email or chat.': '\u2014 \u70b9\u51fb\u53d1\u9001\u5373\u53ef\u3002\u6216\u70b9\u51fb\u590d\u5236\u7533\u8bf7\uff0c\u7c98\u8d34\u5230\u4efb\u4f55\u90ae\u4ef6\u6216\u804a\u5929\u5e94\u7528\u3002',
+  'email app with the order addressed to': '\u90ae\u4ef6\u5e94\u7528\uff0c\u8ba2\u5355\u6536\u4ef6\u4eba\u5df2\u586b\u4e3a',
+  '\u2014 just press send (no login needed by us). If you\u2019d rather not use email, tap Copy Order and paste the message into WhatsApp or any chat.': '\u2014 \u70b9\u51fb\u53d1\u9001\u5373\u53ef\uff08\u65e0\u9700\u6211\u4eec\u767b\u5f55\uff09\u3002\u5982\u679c\u60a8\u4e0d\u60f3\u7528\u90ae\u4ef6\uff0c\u70b9\u51fb\u590d\u5236\u8ba2\u5355\uff0c\u5c06\u6d88\u606f\u7c98\u8d34\u5230 WhatsApp \u6216\u4efb\u4f55\u804a\u5929\u5e94\u7528\u3002'
+};
+
 var CONTACT = {
-  address: 'Aoding Plot (\u5774\u9876\u5730\u6bb5), Shaliyuan Industrial Zone, Daling Town, Huidong County, Huizhou City, Guangdong Province, China 516321',
+  address: 'Aoding Plot, Shaliyuan Industrial Zone, Daling Town, Huidong County, Huizhou City, Guangdong Province, China 516321',
   email: 'sales@pengye-leather.com',
   phone: '+86 189 4808 8736',
   whatsapp: '8618948088736'
@@ -20,8 +363,13 @@ var PRODUCTS = [
     no: 'PL-01',
     name: 'Genuine Leather for Shoes & Bags - Full Grain, Split & Reconstituted Cowhide, Sold Per Chi',
     tagline: 'Natural cow, sheep and goat hides. Priced per Chi - sold per hide, ~13-14 Chi each.',
+    zhName: '鞋与箱包用真皮 - 全粒面、二层与再生牛皮，按尺销售',
+    zhTagline: '天然牛、羊、山羊皮，按尺计价 - 按张销售，每张约 13-14 尺。',
+    zhApplications: ['鞋类', '箱包配饰', '家具', '服装'],
     desc: 'Genuine leather is natural leather made from processed animal hides, distinct from man-made synthetic materials. Per light industry standards, only leather with 90%+ top-grain leather in the surface layer may be labeled \u201cgenuine leather\u201d. Raw materials mainly come from cowhide, sheepskin and pigskin. It can be identified by observing natural pore patterns, touching for softness and elasticity, and smelling for the characteristic animal hide scent. Daily care requires avoiding high temperatures and harsh chemicals, and keeping it ventilated and moisture-proof.',
+    zhDesc: '真皮是由动物皮加工而成的天然皮革，与人工合成材料不同。按轻工行业标准，只有表面层90%以上为头层革的皮革才能标注“真皮”。原料主要来自牛皮、羊皮和猪皮。可通过观察天然毛孔纹路、触摸柔软度与弹性、闻动物皮革特有的气味来鉴别。日常保养需避免高温与强化学试剂，保持通风防潮。',
     features: ['Natural grain and texture', 'Breathable and durable', 'Premium hand-feel', 'Timeless, high-end look'],
+    zhFeatures: ['天然粒面纹理', '透气耐用', '高级手感', '经典高端外观'],
     applications: ['Footwear', 'Bags & accessories', 'Furniture', 'Garments'],
     unit: 'ft',
     subtypes: ['Full Grain Leather', 'Split Leather', 'Reconstituted / Bonded'],
@@ -33,8 +381,13 @@ var PRODUCTS = [
     no: 'PL-02',
     name: 'Water-Based PU Leather for Shoe Upper - Eco-Friendly Solvent-Free Synthetic Leather, Scratch & Hydrolysis Resistant, Sold by Yard',
     tagline: 'Solvent-free, low-VOC eco polyurethane. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
+    zhName: '鞋面用水性PU皮革 - 环保无溶剂合成革，耐划耐水解，按码销售',
+    zhTagline: '无溶剂、低VOC环保聚氨酯，按码计价（1码=0.9米×1.37米）。',
+    zhApplications: ['鞋类', '沙发', '箱包', '汽车内饰'],
     desc: 'Water-based PU leather is an eco-friendly polyurethane synthetic leather using water as the medium with no added solvents, different from traditional solvent-based PU. Its production process features low VOC emissions and no toxic solvent residues, making it safe for humans and the environment. Made from water-based polyurethane resin via wet film-forming technology, it offers good scratch resistance and breathability. It can be identified by its lack of irritating odors, no pungent black smoke when burned, and a smooth, non-sticky feel. Daily care allows direct wiping with a damp cloth; avoid prolonged soaking and direct sunlight.',
+    zhDesc: '水性PU皮革是以水为介质、不添加溶剂的环保聚氨酯合成革，区别于传统溶剂型PU。生产过程VOC排放低、无有毒溶剂残留，对人体和环境安全。由水性聚氨酯树脂经湿法成膜工艺制成，耐刮性好、透气舒适。鉴别特征：无刺激性气味，燃烧无刺鼻黑烟，触感光滑不粘腻。日常保养可用湿布直接擦拭，避免长时间浸泡和暴晒。',
     features: ['No added solvents, low VOC', 'Safe for people and environment', 'Good scratch resistance', 'Breathable and smooth feel'],
+    zhFeatures: ['无溶剂添加、低VOC', '对人与环境安全', '耐刮性好', '透气光滑触感'],
     applications: ['Footwear', 'Upholstery', 'Bags', 'Auto interior'],
     unit: 'yd',
     cover: 'images/shuixin.jpg',
@@ -45,8 +398,13 @@ var PRODUCTS = [
     no: 'PL-03',
     name: 'Eco-Friendly PU Leather - REACH Compliant Low-Carbon Synthetic Leather for Shoes & Furniture, Sold by Yard',
     tagline: 'Low-carbon, REACH-compliant synthetic PU. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
+    zhName: '环保PU皮革 - 符合REACH低碳合成革，适用于鞋类与家具，按码销售',
+    zhTagline: '低碳、符合REACH的合成PU，按码计价（1码=0.9米×1.37米）。',
+    zhApplications: ['鞋类', '家具', '箱包', '环保产品线'],
     desc: 'Eco-friendly PU leather is a low-carbon compliant synthetic PU leather, produced with eco-friendly resins and additives, resulting in a significantly lower carbon footprint than standard PU. Its manufacturing strictly controls harmful substance emissions, meeting international environmental regulations like EU REACH, making it suitable for footwear and furniture with high environmental requirements. Made from modified polyurethane resin with eco-friendly additives, it offers stable physical properties and weather resistance. It can be verified via environmental test reports, lack of irritating odors when burned, and no harmful coating leaching.',
+    zhDesc: '环保PU皮革是一款低碳合规的合成PU，采用环保树脂与助剂生产，碳足迹显著低于标准PU。生产严格控制有害物质排放，符合欧盟REACH等国际环保法规，适用于环保要求高的鞋类与家具。由改性聚氨酯树脂配环保助剂制成，物理性能稳定、耐候性好。可通过环保检测报告、燃烧无刺激气味、涂层无有害物质析出等验证。',
     features: ['Lower carbon footprint', 'REACH & EU compliant', 'Stable physical properties', 'Verified via test reports'],
+    zhFeatures: ['更低碳足迹', '符合REACH与欧盟法规', '物理性能稳定', '检测报告可验证'],
     applications: ['Footwear', 'Furniture', 'Bags', 'Eco product lines'],
     unit: 'yd',
     cover: 'images/huanbaoq.jpg',
@@ -57,8 +415,13 @@ var PRODUCTS = [
     no: 'PL-04',
     name: 'Standard PU Leather for Shoes, Bags & Furniture - Versatile Polyurethane Synthetic Leather, Sold by Yard',
     tagline: 'Balanced, versatile everyday polyurethane. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
+    zhName: '标准PU皮革 - 多用途聚氨酯合成革，适用于鞋、箱包与家具，按码销售',
+    zhTagline: '性能均衡的多用途聚氨酯，按码计价（1码=0.9米×1.37米）。',
+    zhApplications: ['鞋类', '箱包', '家具', '文具'],
     desc: 'Standard PU leather is a synthetic leather based on conventional polyurethane resin, one of the most widely used artificial leather types. Composed of polyurethane resin, base fabric and additives, made via dry or wet processes, it offers stable wear resistance, flex resistance and easy processability. With moderate cost and balanced performance, it is widely used in footwear, bags, furniture and more. It can be identified by a slight plastic odor when burned, a uniform surface without natural pores, and a relatively firm feel. Daily care can use neutral cleaners; keep away from sharp objects to prevent scratches.',
+    zhDesc: '标准PU皮革是基于常规聚氨酯树脂的合成革，是应用最广泛的人造革之一。由聚氨酯树脂、基布和助剂组成，经干法或湿法工艺制成，耐磨、耐折性能稳定，易于加工。成本适中、性能均衡，广泛用于鞋类、箱包、家具等。鉴别特征：燃烧有轻微塑料气味，表面均匀无天然毛孔，手感较紧实。日常保养可用中性清洁剂，远离尖锐物防刮伤。',
     features: ['Stable wear and flex resistance', 'Easy to process', 'Moderate cost, balanced performance', 'Wide color and grain range'],
+    zhFeatures: ['耐磨耐折稳定', '易于加工', '成本适中、性能均衡', '颜色与纹路选择广'],
     applications: ['Footwear', 'Bags', 'Furniture', 'Stationery'],
     unit: 'yd',
     cover: 'images/main-banner5.jpg',
@@ -69,8 +432,13 @@ var PRODUCTS = [
     no: 'PL-05',
     name: 'PVC Leather - Waterproof Vinyl Synthetic Leather for Bags, Furniture & Outdoor Use, Sold by Yard',
     tagline: 'Economical, waterproof vinyl-based leather. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
+    zhName: 'PVC皮革 - 防水乙烯基合成革，适用于箱包、家具与户外，按码销售',
+    zhTagline: '经济实惠的防水乙烯基皮革，按码计价（1码=0.9米×1.37米）。',
+    zhApplications: ['户外产品', '家具', '平价鞋类', '箱包护套'],
     desc: 'PVC leather is a cost-effective synthetic leather mainly made of polyvinyl chloride resin, featuring excellent water resistance and easy maintenance. Composed of PVC resin, plasticizers, stabilizers and base fabric, made via calendering or coating processes, it is low-cost and highly cost-effective. With a smooth, dense surface and excellent water and moisture resistance, it is often used in outdoor products, furniture and budget-friendly footwear. It can be identified by the pungent hydrogen chloride odor when burned, self-extinguishing when removed from flame, and a relatively hard, plastic-like feel. Daily care allows direct washing; avoid high temperatures to prevent softening and deformation.',
+    zhDesc: 'PVC皮革是以聚氯乙烯树脂为主要原料的经济型合成革，具有优异的防水性和易维护性。由PVC树脂、增塑剂、稳定剂与基布组成，经压延或涂布工艺制成，成本低、性价比高。表面光滑致密，防水防潮性能优异，常用于户外产品、家具和平价鞋类。鉴别特征：燃烧有刺激性氯化氢气味，离火自熄，手感偏硬、似塑料。日常保养可直接水洗；避免高温以防软化变形。',
     features: ['Excellent waterproofing', 'Easy to clean and maintain', 'Low cost, high value', 'Dense, smooth surface'],
+    zhFeatures: ['优异防水性能', '易清洁易保养', '低成本高性价比', '致密光滑表面'],
     applications: ['Outdoor products', 'Furniture', 'Budget footwear', 'Cases & covers'],
     unit: 'yd',
     cover: 'images/pvc.jpg',
@@ -81,8 +449,13 @@ var PRODUCTS = [
     no: 'PL-06',
     name: 'Bio-Based Leather - Plant-Derived Sustainable Eco Leather for Footwear & Bags, Sold by Yard',
     tagline: 'Plant-derived sustainable material. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
+    zhName: '生物基皮革 - 植物来源可持续环保革，适用于鞋类与箱包，按码销售',
+    zhTagline: '植物来源可持续材料，按码计价（1码=0.9米×1.37米）。',
+    zhApplications: ['鞋类', '箱包', '汽车内饰', '环保品牌'],
     desc: 'Bio-based leather is a sustainable eco-leather based on plant-derived raw materials, different from traditional petroleum-based synthetic leather. Raw materials mainly come from plant fibers, starch-based or bio-based polyurethane resins, reducing reliance on fossil resources and carbon emissions during production. Combining eco-friendliness with leather-like texture, it is biodegradable or recyclable, making it a future-oriented sustainable material. It can be verified via bio-based content test reports, slight plant fiber odor when burned, and a feel close to natural leather. Daily care requires avoiding prolonged moisture and keeping it ventilated and dry.',
+    zhDesc: '生物基皮革是基于植物来源原料的可持续环保革，区别于传统石油基合成革。原料主要来自植物纤维、淀粉基或生物基聚氨酯树脂，减少化石资源依赖与生产碳排放。兼具环保性与类皮革质感，可生物降解或回收再利用，是面向未来的可持续材料。可通过生物基含量检测报告、燃烧轻微植物纤维气味、手感接近天然皮革等验证。日常保养需避免长时间受潮，保持通风干燥。',
     features: ['Plant-derived raw materials', 'Lower carbon footprint', 'Biodegradable or recyclable', 'Leather-like texture'],
+    zhFeatures: ['植物来源原料', '更低碳足迹', '可生物降解或回收', '类皮革质感'],
     applications: ['Footwear', 'Bags', 'Auto interior', 'Eco brands'],
     unit: 'yd',
     cover: 'images/shengwu.jpg',
@@ -93,8 +466,13 @@ var PRODUCTS = [
     no: 'PL-07',
     name: 'Microfiber Leather for Shoes, Bags & Sports - Ultra-Durable Premium Synthetic Leather, Sold by Yard',
     tagline: 'High-performance ultra-fine fiber leather. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
+    zhName: '超纤皮革 - 超耐用高端合成革，适用于鞋、箱包与运动用品，按码销售',
+    zhTagline: '高性能超细纤维皮革，按码计价（1码=0.9米×1.37米）。',
+    zhApplications: ['鞋类', '箱包', '运动用品', '汽车内饰'],
     desc: 'Microfiber leather is a synthetic leather made from high-performance microfiber base fabric composite with polyurethane resin, with performance close to or even better than natural genuine leather. Composed of island-in-sea microfiber base fabric and high-performance PU resin, made via impregnation, coagulation and buffing processes, it offers excellent wear resistance, tear strength and aging resistance. The surface texture can highly simulate natural leather, with a soft, delicate feel, making it a premium alternative to high-end genuine leather. It can be identified by its uniform, fine microfiber texture, soft elasticity close to genuine leather when touched, and no obvious wear after abrasion tests.',
+    zhDesc: '超纤皮革是由高性能超细纤维基布复合聚氨酯树脂制成的合成革，性能接近甚至优于天然真皮。由海岛型超细纤维基布与高性能PU树脂组成，经浸渍、凝固、磨皮等工艺制成，耐磨性、撕裂强度和抗老化性出色。表面纹理可高度仿真天然皮革，手感柔软细腻，是高端真皮的优质替代品。鉴别特征：纤维纹理均匀细腻，触摸弹性接近真皮，耐磨测试无明显磨损。',
     features: ['Wear, tear and aging resistant', 'Highly simulates natural leather', 'Soft, delicate hand-feel', 'Premium genuine-leather alternative'],
+    zhFeatures: ['耐磨抗撕裂抗老化', '高度仿真天然皮革', '柔软细腻手感', '高端真皮替代品'],
     applications: ['Footwear', 'Bags', 'Sports goods', 'Auto interior'],
     unit: 'yd',
     cover: 'images/chaoqian.jpg',
@@ -105,8 +483,13 @@ var PRODUCTS = [
     no: 'PL-08',
     name: 'Specialty Leather - Custom Embossed, Printed & Finished Leather for Fashion & Luxury, Sold by Yard',
     tagline: 'Custom embossed, printed and finished leather. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
+    zhName: '特种皮革 - 定制压花、印花与后整理皮革，适用于时尚与高端，按码销售',
+    zhTagline: '定制压花、印花与后整理皮革，按码计价（1码=0.9米×1.37米）。',
+    zhApplications: ['高端时尚', '奢侈品', '定制家具', '时尚配饰'],
     desc: 'Specialty leather is functional or decorative leather processed with custom patterns and special crafts, enabling personalized appearance and performance per customer requirements. Based on various substrates like genuine leather, PU or microfiber, it is treated with special processes such as embossing, hot stamping, lamination and flocking to create unique textures, lusters and feels \u2014 e.g., crocodile pattern, snake pattern, metallic finish and matte effect. Suitable for high-end fashion, luxury goods, custom furniture and other special applications. Identification requires combining process features with customer requirements, checking pattern consistency, craft details and special performance test reports.',
+    zhDesc: '特种皮革是按客户需求经定制图案与特殊工艺加工的装饰性或功能性皮革。基于真皮、PU或超纤等不同基材，通过压花、烫金、复合、植绒等特殊工艺处理，形成独特纹理、光泽与手感——如鳄鱼纹、蛇纹、金属质感、哑光效果。适用于高端时尚、奢侈品、定制家具等特殊应用。鉴别需结合工艺特征与客户要求，核对图案一致性、工艺细节与特殊性能检测报告。',
     features: ['Custom patterns and textures', 'Hot stamping, embossing, flocking', 'Unique luster and hand-feel', 'Made to your specification'],
+    zhFeatures: ['定制图案与纹理', '烫金、压花、植绒工艺', '独特光泽与手感', '按您的规格定制'],
     applications: ['High-end fashion', 'Luxury goods', 'Custom furniture', 'Fashion accessories'],
     unit: 'yd',
     cover: 'images/teshu.jpg',
@@ -117,8 +500,13 @@ var PRODUCTS = [
     no: 'PL-09',
     name: 'Recycled PET Bottle Leather - Sustainable Eco Material for Bags & Footwear, Sold by Yard',
     tagline: 'Bottle-to-leather circular material. Priced per Yard (1 Yard = 0.9 m x 1.37 m).',
+    zhName: '再生PET瓶皮革 - 可持续环保材料，适用于箱包与鞋类，按码销售',
+    zhTagline: '瓶到皮革的循环材料，按码计价（1码=0.9米×1.37米）。',
+    zhApplications: ['箱包', '鞋类', '家具', '户外产品'],
     desc: 'Recycled PET bottle leather is a sustainable eco-friendly material produced from recycled waste plastic bottles. Through crushing, granulation, fiber spinning and lamination processes, waste plastic resources are reused effectively, reducing plastic pollution and reliance on petroleum raw materials. This material features high toughness, strong tensile strength, excellent wear resistance and stable color fastness. With reliable performance similar to microfiber leather, it is highly recognized in the global market and widely used in bags, footwear, furniture and outdoor products.',
+    zhDesc: '再生PET瓶皮革是由回收废弃塑料瓶生产的可持续环保材料。通过破碎、造粒、纺丝与复合等工艺，有效再利用废塑料资源，减少塑料污染和对石油原料的依赖。该材料韧性高、抗拉强度大、耐磨性好、色牢度稳定。性能可靠，与超纤皮革相近，在全球市场认可度高，广泛用于箱包、鞋类、家具和户外产品。',
     features: ['Made from recycled bottles', 'High toughness and tensile strength', 'Stable color fastness', 'Globally recognized eco material'],
+    zhFeatures: ['由回收塑料瓶制成', '高韧性与抗拉强度', '色牢度稳定', '全球认可的环保材料'],
     applications: ['Bags', 'Footwear', 'Furniture', 'Outdoor products'],
     unit: 'yd',
     cover: 'images/huanbaopu.jpg',
@@ -130,32 +518,44 @@ var BENEFITS = [
   {
     icon: 'box',
     title: 'Flexible MOQ \u2014 Real-Time',
-    desc: 'MOQ confirmed in real time with our sales team \u2014 genuine leather priced per Chi, synthetics per Yard. No forced stockpiling \u2014 perfect for sampling and small batches.'
+    desc: 'MOQ confirmed in real time with our sales team \u2014 genuine leather priced per Chi, synthetics per Yard. No forced stockpiling \u2014 perfect for sampling and small batches.',
+    zhTitle: '\u7075\u6d3b\u4f4e\u8d77\u8ba2\u91cf \u2014 \u5b9e\u65f6\u786e\u8ba4',
+    zhDesc: '\u8d77\u8ba2\u91cf\u7531\u9500\u552e\u56e2\u961f\u5b9e\u65f6\u786e\u8ba4 \u2014 \u771f\u76ae\u6309\u5c3a\u8ba1\u4ef7\u3001\u5408\u6210\u9769\u6309\u7801\u8ba1\u4ef7\u3002\u4e0d\u5f3a\u8feb\u79ef\u538b\u5e93\u5b58 \u2014 \u9002\u5408\u6837\u54c1\u4e0e\u5c0f\u6279\u91cf\u8ba2\u5355\u3002'
   },
   {
     icon: 'layers',
     title: 'One-Stop Full Range Supply',
-    desc: 'Access to a broad network of quality factories \u2014 one stop for all your leather materials.'
+    desc: 'Access to a broad network of quality factories \u2014 one stop for all your leather materials.',
+    zhTitle: '\u4e00\u7ad9\u5f0f\u5168\u54c1\u7c7b\u4f9b\u5e94',
+    zhDesc: '\u62e5\u6709\u5e7f\u6cdb\u7684\u4f18\u8d28\u5de5\u5382\u7f51\u7edc \u2014 \u4e00\u7ad9\u5f0f\u6ee1\u8db3\u60a8\u6240\u6709\u76ae\u9769\u6750\u6599\u9700\u6c42\u3002'
   },
   {
     icon: 'shield',
     title: '100% Pre-Shipment Inspection',
-    desc: 'Full quality control before shipping, so you don\u2019t need to fly to China to check every order.'
+    desc: 'Full quality control before shipping, so you don\u2019t need to fly to China to check every order.',
+    zhTitle: '100% \u51fa\u8d27\u524d\u5168\u68c0',
+    zhDesc: '\u53d1\u8d27\u524d\u8fdb\u884c\u5168\u9762\u8d28\u91cf\u63a7\u5236\uff0c\u60a8\u65e0\u9700\u98de\u5230\u4e2d\u56fd\u68c0\u67e5\u6bcf\u4e00\u7b14\u8ba2\u5355\u3002'
   },
   {
     icon: 'truck',
     title: 'Real-Time Quote',
-    desc: 'Prices and freight are quoted in real time based on current market rates \u2014 send your spec &amp; quantity and we confirm today.'
+    desc: 'Prices and freight are quoted in real time based on current market rates \u2014 send your spec &amp; quantity and we confirm today.',
+    zhTitle: '\u5b9e\u65f6\u62a5\u4ef7',
+    zhDesc: '\u4ef7\u683c\u4e0e\u8fd0\u8d39\u6839\u636e\u5f53\u524d\u5e02\u573a\u884c\u60c5\u5b9e\u65f6\u62a5\u4ef7 \u2014 \u53d1\u9001\u89c4\u683c\u4e0e\u6570\u91cf\uff0c\u5f53\u5929\u7ed9\u60a8\u786e\u8ba4\u3002'
   },
   {
     icon: 'tag',
     title: 'Competitive Factory-Direct Prices',
-    desc: '20+ years of deep partnerships secure better pricing than sourcing from factories directly.'
+    desc: '20+ years of deep partnerships secure better pricing than sourcing from factories directly.',
+    zhTitle: '\u5177\u7ade\u4e89\u529b\u7684\u5de5\u5382\u76f4\u4f9b\u4ef7\u683c',
+    zhDesc: '20+ \u5e74\u6df1\u5ea6\u5408\u4f5c\u5173\u7cfb\u6bd4\u76f4\u63a5\u4ece\u5de5\u5382\u91c7\u8d2d\u66f4\u4f18\u4ef7\u3002'
   },
   {
     icon: 'file',
     title: 'Custom Development Support',
-    desc: 'Special textures, colors and formulas developed to your exact specification, with samples first.'
+    desc: 'Special textures, colors and formulas developed to your exact specification, with samples first.',
+    zhTitle: '\u5b9a\u5236\u5f00\u53d1\u652f\u6301',
+    zhDesc: '\u6309\u60a8\u7684\u7cbe\u786e\u89c4\u683c\u5f00\u53d1\u7279\u6b8a\u7eb9\u7406\u3001\u989c\u8272\u4e0e\u914d\u65b9\uff0c\u5148\u63d0\u4f9b\u6837\u54c1\u3002'
   }
 ];
 
@@ -163,22 +563,30 @@ var TRUST = [
   {
     icon: 'shield',
     title: 'Veteran-Owned & Operated',
-    desc: 'We run our business with military discipline and integrity. No hidden fees, no quality cutting, no broken promises.'
+    desc: 'We run our business with military discipline and integrity. No hidden fees, no quality cutting, no broken promises.',
+    zhTitle: '\u9000\u4f0d\u4eba\u58eb\u521b\u4e1a\u4e0e\u7ecf\u8425',
+    zhDesc: '\u6211\u4eec\u4ee5\u519b\u4eba\u7684\u7eaa\u5f8b\u4e0e\u8bda\u4fe1\u7ecf\u8425\u4e1a\u52a1\u3002\u65e0\u9690\u85cf\u8d39\u7528\u3001\u65e0\u8d28\u91cf\u7f29\u6c34\u3001\u65e0\u8fdd\u80cc\u627f\u8bfa\u3002'
   },
   {
     icon: 'video',
     title: 'Transparent Production & QC',
-    desc: 'We share daily production and quality-inspection videos with you. See the quality and progress clearly, anytime.'
+    desc: 'We share daily production and quality-inspection videos with you. See the quality and progress clearly, anytime.',
+    zhTitle: '\u900f\u660e\u7684\u751f\u4ea7\u4e0e\u54c1\u63a7',
+    zhDesc: '\u6211\u4eec\u4e0e\u60a8\u5206\u4eab\u6bcf\u65e5\u751f\u4ea7\u4e0e\u8d28\u91cf\u68c0\u9a8c\u89c6\u9891\u3002\u968f\u65f6\u6e05\u6670\u770b\u5230\u8d28\u91cf\u4e0e\u8fdb\u5ea6\u3002'
   },
   {
     icon: 'clock',
     title: '20 Years Industry Experience',
-    desc: 'Since 2006 we have specialized in leather sourcing. We know every factory, every material and every trick of the trade.'
+    desc: 'Since 2006 we have specialized in leather sourcing. We know every factory, every material and every trick of the trade.',
+    zhTitle: '20 \u5e74\u884c\u4e1a\u7ecf\u9a8c',
+    zhDesc: '\u81ea 2006 \u5e74\u4ee5\u6765\u4e13\u6ce8\u76ae\u9769\u91c7\u8d2d\u3002\u6211\u4eec\u4e86\u89e3\u6bcf\u5bb6\u5de5\u5382\u3001\u6bcf\u79cd\u6750\u6599\u3001\u6bcf\u4e2a\u884c\u4e1a\u95e8\u9053\u3002'
   },
   {
     icon: 'handshake',
     title: 'Long-Term Factory Partnerships',
-    desc: 'Long-term partnerships with top Chinese leather factories ensure stable stock access and competitive prices.'
+    desc: 'Long-term partnerships with top Chinese leather factories ensure stable stock access and competitive prices.',
+    zhTitle: '\u957f\u671f\u5de5\u5382\u5408\u4f5c\u4f19\u4f34',
+    zhDesc: '\u4e0e\u4e2d\u56fd\u9876\u7ea7\u76ae\u9769\u5de5\u5382\u7684\u957f\u671f\u5408\u4f5c\uff0c\u4fdd\u969c\u7a33\u5b9a\u8d27\u6e90\u4e0e\u7ade\u4e89\u529b\u4ef7\u683c\u3002'
   }
 ];
 
@@ -390,6 +798,7 @@ function addToCart(id, qty, priceIn, specs) {
 }
 
 function unitLabel(u) {
+  if (LANG === 'zh') return u === 'ft' ? '尺' : '码';
   if (u === 'ft') return 'Chi';
   return 'Yard';
 }
@@ -504,6 +913,7 @@ function renderCartDrawer() {
       '<a class="btn btn-primary" href="#/checkout">Checkout \u2192</a>' +
       '<a class="btn btn-outline-dark" href="#/products">Continue Browsing</a>';
   }
+  applyLang();
 }
 
 /* ---------- Checkout ---------- */
@@ -579,7 +989,7 @@ function renderCheckout() {
 
               '<div class="pay-methods">' +
                 '<div class="pay-method"><h5>Large orders \u2014 T/T Bank Transfer</h5><p>Corporate account, standard for international trade \u2014 proforma invoice &amp; contract with full documents.</p></div>' +
-                '<div class="pay-method"><h5>Small orders \u2014 Tenpay Global (\u667a\u6c47\u9e45)</h5><p>Tencent\u2019s licensed cross-border payment \u2014 simple and low-fee for small amounts, settles to CNY.</p></div>' +
+                '<div class="pay-method"><h5>Small orders \u2014 Tenpay Global</h5><p>Tencent\u2019s licensed cross-border payment \u2014 simple and low-fee for small amounts, settles to CNY.</p></div>' +
                 '<div class="pay-method"><h5>Alternative \u2014 PayPal</h5><p>Convenient for small orders when you prefer it.</p></div>' +
               '</div>' +
               '<p class="pay-note">Payment happens only after you approve the quotation. We never ask for cash \u2014 every payment is matched to your order with a proforma invoice and shipping documents, clean and traceable for customs and banks.</p>' +
@@ -645,7 +1055,7 @@ function buildOrderMessage(d) {
   lines.push('SHIPPING: ' + (d.method === 'own'
     ? 'Customer\u2019s own carrier \u2014 ' + (d.carrier || '-') + (d.account ? ' | Account: ' + d.account : '')
     : 'Pengye arranges \u2014 real-time freight quote to be confirmed before payment.'));
-  lines.push('PAYMENT: Arranged by Pengye based on order size \u2014 T/T (corporate) for large orders; Tenpay Global (\u667a\u6c47\u9e45) or PayPal for small orders. Confirmed on the quotation.');
+  lines.push('PAYMENT: Arranged by Pengye based on order size \u2014 T/T (corporate) for large orders; Tenpay Global or PayPal for small orders. Confirmed on the quotation.');
   lines.push('TESTING: Domestic (CN) standard by default. International tests (REACH / FDA / OEKO-TEX / EN71-3 etc.) requested in advance \u2014 ' + (d.details ? 'see notes.' : 'not required.'));
   if (d.details) {
     lines.push('');
@@ -747,15 +1157,15 @@ function renderHome() {
   }).join('');
 
   var benefits = BENEFITS.map(function (b) {
-    return '<div class="benefit-card">' + icon(b.icon, 'icon') + '<h3>' + esc(b.title) + '</h3><p>' + esc(b.desc) + '</p></div>';
+    return '<div class="benefit-card">' + icon(b.icon, 'icon') + '<h3>' + esc(T(b.title, b.zhTitle)) + '</h3><p>' + esc(T(b.desc, b.zhDesc)) + '</p></div>';
   }).join('');
 
   var swatches = PRODUCTS.map(function (p) {
     return '<a class="swatch-card" href="#/product/' + p.id + '">' +
-      '<div class="swatch-media"><span class="swatch-no">' + p.no + '</span><img src="' + p.cover + '" alt="' + esc(p.name) + '" loading="lazy"></div>' +
-      '<div class="swatch-body"><h3>' + esc(p.name) + '</h3><p>' + esc(p.tagline) + '</p>' +
-      '<div class="swatch-tags">' + p.applications.slice(0, 3).map(function (a) { return '<span>' + esc(a) + '</span>'; }).join('') + '</div>' +
-      '<span class="swatch-more">View details ' + ICONS.arrow + '</span></div></a>';
+      '<div class="swatch-media"><span class="swatch-no">' + p.no + '</span><img src="' + p.cover + '" alt="' + esc(T(p.name, p.zhName)) + '" loading="lazy"></div>' +
+      '<div class="swatch-body"><h3>' + esc(T(p.name, p.zhName)) + '</h3><p>' + esc(T(p.tagline, p.zhTagline)) + '</p>' +
+      '<div class="swatch-tags">' + p.applications.slice(0, 3).map(function (a, i) { return '<span>' + esc(LANG === 'zh' ? (p.zhApplications || [])[i] || a : a) + '</span>'; }).join('') + '</div>' +
+      '<span class="swatch-more">' + T('View details', '\u67e5\u770b\u8be6\u60c5') + ' ' + ICONS.arrow + '</span></div></a>';
   }).join('');
 
   var media = FACTORY_IMAGES.map(function (src) {
@@ -763,7 +1173,7 @@ function renderHome() {
   }).join('');
 
   var trust = TRUST.map(function (t) {
-    return '<div class="trust-card">' + icon(t.icon, 'icon') + '<h3>' + esc(t.title) + '</h3><p>' + esc(t.desc) + '</p></div>';
+    return '<div class="trust-card">' + icon(t.icon, 'icon') + '<h3>' + esc(T(t.title, t.zhTitle)) + '</h3><p>' + esc(T(t.desc, t.zhDesc)) + '</p></div>';
   }).join('');
 
   var partners = PARTNERS.map(function (p) { return '<div class="logo-cell">' + esc(p) + '</div>'; }).join('');
@@ -919,10 +1329,10 @@ function renderHome() {
 function renderProducts() {
   var swatches = PRODUCTS.map(function (p) {
     return '<a class="swatch-card" href="#/product/' + p.id + '">' +
-      '<div class="swatch-media"><span class="swatch-no">' + p.no + '</span><img src="' + p.cover + '" alt="' + esc(p.name) + '" loading="lazy"></div>' +
-      '<div class="swatch-body"><h3>' + esc(p.name) + '</h3><p>' + esc(p.tagline) + '</p>' +
-      '<div class="swatch-tags">' + p.applications.slice(0, 3).map(function (a) { return '<span>' + esc(a) + '</span>'; }).join('') + '</div>' +
-      '<span class="swatch-more">View details ' + ICONS.arrow + '</span></div></a>';
+      '<div class="swatch-media"><span class="swatch-no">' + p.no + '</span><img src="' + p.cover + '" alt="' + esc(T(p.name, p.zhName)) + '" loading="lazy"></div>' +
+      '<div class="swatch-body"><h3>' + esc(T(p.name, p.zhName)) + '</h3><p>' + esc(T(p.tagline, p.zhTagline)) + '</p>' +
+      '<div class="swatch-tags">' + p.applications.slice(0, 3).map(function (a, i) { return '<span>' + esc(LANG === 'zh' ? (p.zhApplications || [])[i] || a : a) + '</span>'; }).join('') + '</div>' +
+      '<span class="swatch-more">' + T('View details', '\u67e5\u770b\u8be6\u60c5') + ' ' + ICONS.arrow + '</span></div></a>';
   }).join('');
 
   return '' +
@@ -962,24 +1372,36 @@ function renderProduct(id) {
   galleryState.type = p.id;
 
   var thumbs = p.images.map(function (src, i) {
-    return '<img src="' + src + '" alt="' + esc(p.name) + ' ' + (i + 1) + '" class="' + (i === 0 ? 'active' : '') + '" data-gi="' + i + '" loading="lazy">';
+    return '<img src="' + src + '" alt="' + esc(T(p.name, p.zhName)) + ' ' + (i + 1) + '" class="' + (i === 0 ? 'active' : '') + '" data-gi="' + i + '" loading="lazy">';
   }).join('');
 
-  var feats = p.features.map(function (f) {
-    return '<li>' + ICONS.check + '<span>' + esc(f) + '</span></li>';
+  var feats = p.features.map(function (f, i) {
+    var fz = LANG === 'zh' ? ((p.zhFeatures || [])[i] || f) : f;
+    return '<li>' + ICONS.check + '<span>' + esc(fz) + '</span></li>';
   }).join('');
 
-  var apps = p.applications.map(function (a) { return '<span>' + esc(a) + '</span>'; }).join('');
+  var apps = p.applications.map(function (a, i) { return '<span>' + esc(LANG === 'zh' ? (p.zhApplications || [])[i] || a : a) + '</span>'; }).join('');
 
   var others = PRODUCTS.filter(function (x) { return x.id !== id; }).slice(0, 3);
 
   var unit = p.unit === 'ft' ? 'Chi' : 'Yard';
-  var moqNote = p.unit === 'ft'
+  var unitZh = p.unit === 'ft' ? '\u5c3a' : '\u7801';
+  var moqNote = T(
+    p.unit === 'ft'
     ? 'Genuine leather is priced per Chi. 1 hide \u2248 13\u201314 Chi. For reference: 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d). Quantity and MOQ confirmed in real time. Samples: genuine &amp; microfiber charged, others advised \u2014 contact us first.'
-    : 'MOQ is flexible and confirmed in real time \u2014 samples: genuine &amp; microfiber charged, others advised. Contact us first.';
-  var unitNote = p.unit === 'ft'
+    : 'MOQ is flexible and confirmed in real time \u2014 samples: genuine &amp; microfiber charged, others advised. Contact us first.',
+    p.unit === 'ft'
+    ? '\u771f\u76ae\u6309\u5c3a\u8ba1\u4ef7\u3002\u6bcf\u5f20\u76ae\u7ea6 13\u201314 \u5c3a\u3002\u53c2\u8003\uff1a1 \u7801 = 0.9 \u7c73\u957f \u00d7 1.37 \u7c73\u5bbd\uff0854\u82f1\u5bf8\uff09\u3002\u6570\u91cf\u4e0e\u8d77\u8ba2\u91cf\u5b9e\u65f6\u786e\u8ba4\u3002\u6837\u54c1\uff1a\u771f\u76ae\u4e0e\u8d85\u7ea4\u6536\u8d39\uff0c\u5176\u4ed6\u54a8\u8be2\u786e\u8ba4 \u2014 \u8bf7\u5148\u8054\u7cfb\u6211\u4eec\u3002'
+    : '\u8d77\u8ba2\u91cf\u7075\u6d3b\u4e14\u5b9e\u65f6\u786e\u8ba4 \u2014 \u6837\u54c1\uff1a\u771f\u76ae\u4e0e\u8d85\u7ea4\u6536\u8d39\uff0c\u5176\u4ed6\u54a8\u8be2\u786e\u8ba4\u3002\u8bf7\u5148\u8054\u7cfb\u6211\u4eec\u3002'
+  );
+  var unitNote = T(
+    p.unit === 'ft'
     ? 'Unit: Chi \u2014 1 hide \u2248 13\u201314 Chi \u00b7 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d)'
-    : 'Unit: Yard \u2014 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d), priced per Yard';
+    : 'Unit: Yard \u2014 1 Yard = 0.9 m long \u00d7 1.37 m wide (54\u201d), priced per Yard',
+    p.unit === 'ft'
+    ? '\u5355\u4f4d\uff1a\u5c3a \u2014 \u6bcf\u5f20\u76ae\u7ea6 13\u201314 \u5c3a \u00b7 1 \u7801 = 0.9 \u7c73\u957f \u00d7 1.37 \u7c73\u5bbd\uff0854\u82f1\u5bf8\uff09'
+    : '\u5355\u4f4d\uff1a\u7801 \u2014 1 \u7801 = 0.9 \u7c73\u957f \u00d7 1.37 \u7c73\u5bbd\uff0854\u82f1\u5bf8\uff09\uff0c\u6309\u7801\u8ba1\u4ef7'
+  );
 
   var gradeRow = '';
   if (p.subtypes && p.subtypes.length) {
@@ -1008,10 +1430,10 @@ function renderProduct(id) {
   return '' +
     '<div class="page-head">' +
       '<div class="container">' +
-        '<div class="crumb"><a href="#/home">Home</a> / <a href="#/products">Products</a> / ' + esc(p.name) + '</div>' +
+        '<div class="crumb"><a href="#/home">Home</a> / <a href="#/products">Products</a> / ' + esc(T(p.name, p.zhName)) + '</div>' +
         '<span class="kicker">' + p.no + '</span>' +
-        '<h1>' + esc(p.name) + '</h1>' +
-        '<p>' + esc(p.tagline) + '</p>' +
+        '<h1>' + esc(T(p.name, p.zhName)) + '</h1>' +
+        '<p>' + esc(T(p.tagline, p.zhTagline)) + '</p>' +
       '</div>' +
     '</div>' +
     '<section class="section">' +
@@ -1019,7 +1441,7 @@ function renderProduct(id) {
         '<div class="detail-layout">' +
           '<div class="gallery">' +
             '<div class="gallery-main" id="galleryMain">' +
-              '<img id="galleryImg" src="' + p.images[0] + '" alt="' + esc(p.name) + '" data-lightbox="' + p.images[0] + '">' +
+              '<img id="galleryImg" src="' + p.images[0] + '" alt="' + esc(T(p.name, p.zhName)) + '" data-lightbox="' + p.images[0] + '">' +
               '<button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Previous image">' + ICONS.chevL + '</button>' +
               '<button class="gallery-arrow gallery-next" id="galleryNext" aria-label="Next image">' + ICONS.chevR + '</button>' +
             '</div>' +
@@ -1027,10 +1449,10 @@ function renderProduct(id) {
           '</div>' +
           '<aside class="detail-info">' +
             '<div class="no">' + p.no + '</div>' +
-            '<h2>' + esc(p.name) + '</h2>' +
-            '<p class="tagline">' + esc(p.tagline) + '</p>' +
+            '<h2>' + esc(T(p.name, p.zhName)) + '</h2>' +
+            '<p class="tagline">' + esc(T(p.tagline, p.zhTagline)) + '</p>' +
             '<div class="quote-note">' + ICONS.check + '<span><strong>Real-time price.</strong> Material prices move with the market \u2014 no fixed list price. Share your spec &amp; quantity and we quote today.</span></div>' +
-            '<p class="body">' + esc(p.desc) + '</p>' +
+            '<p class="body">' + esc(LANG === 'zh' ? (p.zhDesc || p.desc) : p.desc) + '</p>' +
             '<h4>Key Features</h4>' +
             '<ul class="feat-list">' + feats + '</ul>' +
             '<h4>Typical Applications</h4>' +
@@ -1038,21 +1460,21 @@ function renderProduct(id) {
             specsPanel +
             '<div class="order-row">' +
               '<div class="order-qty-field">' +
-                '<label>Quantity (' + unit + ')</label>' +
+                '<label>' + T('Quantity (' + unit + ')', '\u6570\u91cf (' + unitZh + ')') + '</label>' +
                 '<p class="unit-note">' + unitNote + '</p>' +
                 '<div class="cart-qty">' +
                   '<button type="button" class="oq-dec" aria-label="Decrease quantity">\u2212</button>' +
                   '<input type="text" inputmode="numeric" class="oq-input" value="" placeholder="e.g. 300" aria-label="Quantity in ' + unit + '">' +
                   '<button type="button" class="oq-inc" aria-label="Increase quantity">+</button>' +
-                  '<span class="unit">' + unit + '</span>' +
+                  '<span class="unit">' + (LANG === 'zh' ? unitZh : unit) + '</span>' +
                 '</div>' +
               '</div>' +
-              '<a class="btn btn-primary" id="addToOrderBtn">' + ICONS.box + 'Add to Order</a>' +
+              '<a class="btn btn-primary" id="addToOrderBtn">' + ICONS.box + T('Add to Order', '\u52a0\u5165\u8ba2\u5355') + '</a>' +
             '</div>' +
             '<p class="form-hint">' + moqNote + '</p>' +
             '<div class="detail-cta">' +
-              '<a class="btn btn-outline-dark" href="#/sample">Request a Sample</a>' +
-              '<a class="btn btn-outline-dark" href="' + waLink('Hi, I\u2019m interested in ' + p.name + ' (' + p.no + '). Could you send details and a quotation?') + '" target="_blank" rel="noopener">' + ICONS.whatsapp + 'Ask on WhatsApp</a>' +
+              '<a class="btn btn-outline-dark" href="#/sample">' + T('Request a Sample', '\u7533\u8bf7\u6837\u54c1') + '</a>' +
+              '<a class="btn btn-outline-dark" href="' + waLink('Hi, I\u2019m interested in ' + p.name + ' (' + p.no + '). Could you send details and a quotation?') + '" target="_blank" rel="noopener">' + ICONS.whatsapp + T('Ask on WhatsApp', 'WhatsApp \u54a8\u8be2') + '</a>' +
             '</div>' +
           '</aside>' +
         '</div>' +
@@ -1066,8 +1488,8 @@ function renderProduct(id) {
         '</div>' +
         '<div class="swatch-grid">' + others.map(function (o) {
           return '<a class="swatch-card" href="#/product/' + o.id + '">' +
-            '<div class="swatch-media"><span class="swatch-no">' + o.no + '</span><img src="' + o.cover + '" alt="' + esc(o.name) + '" loading="lazy"></div>' +
-            '<div class="swatch-body"><h3>' + esc(o.name) + '</h3><p>' + esc(o.tagline) + '</p><span class="swatch-more">View details ' + ICONS.arrow + '</span></div></a>';
+            '<div class="swatch-media"><span class="swatch-no">' + o.no + '</span><img src="' + o.cover + '" alt="' + esc(T(o.name, o.zhName)) + '" loading="lazy"></div>' +
+            '<div class="swatch-body"><h3>' + esc(T(o.name, o.zhName)) + '</h3><p>' + esc(T(o.tagline, o.zhTagline)) + '</p><span class="swatch-more">' + T('View details', '\u67e5\u770b\u8be6\u60c5') + ' ' + ICONS.arrow + '</span></div></a>';
         }).join('') + '</div>' +
       '</div>' +
     '</section>';
@@ -1751,6 +2173,8 @@ function router() {
   toggle.setAttribute('aria-expanded', 'false');
   closeCart();
 
+  applyLang();
+  updateNavLang();
   bindViewEvents();
 }
 

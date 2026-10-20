@@ -158,6 +158,35 @@ h1, h2, h3, h4 {
 .site-nav .nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
 .site-nav .nav-link.active { color: var(--ember); }
 .nav-cta { margin-left: 10px; }
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+.lang-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #b9b2a6;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-family: inherit;
+}
+.lang-btn:hover { color: #fff; }
+.lang-btn.active { background: var(--ember); color: #fff; }
+@media (max-width: 900px) {
+  .lang-switch { margin-left: auto; }
+}
 .nav-toggle {
   display: none;
   flex-direction: column;
