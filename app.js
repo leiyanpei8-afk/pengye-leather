@@ -337,6 +337,11 @@ var I18N_ZH = {
   '24h reply \u2014 quote in real time': '24 \u5c0f\u65f6\u56de\u590d \u2014 \u5b9e\u65f6\u62a5\u4ef7',
   '+86 190 3739 0132 \u00b7 tap to copy': '+86 190 3739 0132 \u00b7 \u70b9\u51fb\u590d\u5236',
   'Phone': '\u7535\u8bdd',
+  /* footer product links */
+  'Water-Based PU': '\u6c34\u6027PU\u76ae\u9769',
+  'Eco-Friendly PU': '\u73af\u4fddPU\u76ae\u9769',
+  'Microfiber Leather': '\u8d85\u7ea4\u76ae\u9769',
+  'Recycled PET Leather': '\u518d\u751fPET\u76ae\u9769',
   /* split-node fragments */
   'Shipping &amp; Contact Details': '\u8fd0\u8f93\u4e0e\u8054\u7cfb\u4fe1\u606f',
   'Shipping & Contact Details': '\u8fd0\u8f93\u4e0e\u8054\u7cfb\u4fe1\u606f',
