@@ -32,16 +32,26 @@ function updateNavLang() {
   }
 }
 
-/* Post-render dictionary translation (exact text-node match) for static copy. */
+/* Post-render dictionary translation (exact text-node match) for static copy.
+   Bidirectional: zh translates matched nodes and remembers their original text;
+   back to en restores those originals so static copy is never left in Chinese. */
+var I18N_ORIG = (typeof WeakMap !== 'undefined') ? new WeakMap() : null;
 function applyLang() {
-  if (LANG !== 'zh') return;
   var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
   var stack = [];
   while (walker.nextNode()) stack.push(walker.currentNode);
   for (var i = 0; i < stack.length; i++) {
     var n = stack[i];
     var key = n.nodeValue.trim();
-    if (key && I18N_ZH.hasOwnProperty(key)) n.nodeValue = I18N_ZH[key];
+    if (!key) continue;
+    if (LANG === 'zh') {
+      if (I18N_ZH.hasOwnProperty(key)) {
+        if (I18N_ORIG && !I18N_ORIG.has(n)) I18N_ORIG.set(n, n.nodeValue);
+        n.nodeValue = I18N_ZH[key];
+      }
+    } else {
+      if (I18N_ORIG && I18N_ORIG.has(n)) n.nodeValue = I18N_ORIG.get(n);
+    }
   }
 }
 
